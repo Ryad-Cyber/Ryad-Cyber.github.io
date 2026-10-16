@@ -59,6 +59,9 @@
       </button>
     </div>
   </div>
+
+  <!-- Barre de progression de lecture (remplie par assets/js/main.js) -->
+  <div class="progress" aria-hidden="true"><span class="progress-fill" id="progress-bar"></span></div>
 </header>
 
 <main>
@@ -565,6 +568,19 @@
   </section>
 
 </main>
+
+<!-- Repères de section : masqués sans JavaScript et sous 900 px -->
+<nav class="dots" id="dot-nav" aria-label="Repères de section">
+  <ul>
+    <li><a href="#accueil"><span class="dot-label">Accueil</span><span class="dot" aria-hidden="true"></span></a></li>
+    <li><a href="#a-propos"><span class="dot-label">À propos</span><span class="dot" aria-hidden="true"></span></a></li>
+    <li><a href="#projets"><span class="dot-label">Projets</span><span class="dot" aria-hidden="true"></span></a></li>
+    <li><a href="#competences"><span class="dot-label">Compétences</span><span class="dot" aria-hidden="true"></span></a></li>
+    <li><a href="#parcours"><span class="dot-label">Parcours</span><span class="dot" aria-hidden="true"></span></a></li>
+    <li><a href="#formations"><span class="dot-label">Formations</span><span class="dot" aria-hidden="true"></span></a></li>
+    <li><a href="#contact"><span class="dot-label">Contact</span><span class="dot" aria-hidden="true"></span></a></li>
+  </ul>
+</nav>
 
 <footer class="site-footer">
   <div class="container footer-inner">

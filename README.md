@@ -17,7 +17,7 @@ Il fonctionne aussi bien en ligne qu'en double-cliquant sur `index.html` en loca
 │   └── index.html          Page anglaise (traduction complète)
 ├── assets/
 │   ├── css/style.css       Toute la mise en forme, partagée par les deux pages
-│   ├── js/main.js          Menu mobile + surlignage de la section courante
+│   ├── js/main.js          Menu mobile, section courante, barre de progression
 │   ├── photo.jpg           Photo de profil (placeholder à remplacer)
 │   └── favicon.svg         Favicon « RB »
 ├── .nojekyll               Demande à GitHub Pages de servir les fichiers tels quels
@@ -57,9 +57,24 @@ dépôt. Si le projet n'a pas de dépôt public, garder la ligne
 
 1. Ajouter la `<section class="section" id="mon-ancre">` dans les deux fichiers.
 2. Ajouter l'entrée correspondante dans `<nav class="site-nav">` (`<li><a href="#mon-ancre">…</a></li>`).
+3. Ajouter le point correspondant dans `<nav class="dots">`, en bas de page, juste avant le `<footer>`.
 
-Le surlignage automatique dans le menu fonctionne sans configuration : le JavaScript relie chaque
-lien `#ancre` à la section qui porte cet `id`.
+Le surlignage automatique du menu et des points fonctionne sans configuration : le JavaScript relie
+chaque lien `#ancre` à la section qui porte cet `id`. Une section sans point reste parfaitement
+fonctionnelle, elle n'apparaît simplement pas dans la colonne de droite.
+
+## Repères de lecture
+
+Deux repères discrets suivent le défilement, tous deux pilotés par `assets/js/main.js` :
+
+- une **barre de progression** de 2 px sous le menu (`<div class="progress">` dans l'en-tête) ;
+- une **colonne de points** à droite, un par section, masquée sous 900 px de large.
+
+Ils sont masqués par défaut en CSS et révélés par la classe `has-js` que le script pose sur
+`<html>` : sans JavaScript, ils n'apparaissent pas et la page reste identique par ailleurs. Le
+défilement animé au clic sur un point vient de `scroll-behavior: smooth`, déjà désactivé pour les
+visiteurs ayant activé « réduire les animations ». Pour les retirer, il suffit de supprimer les deux
+blocs HTML : le reste continue de fonctionner.
 
 ## Remplacer la photo
 

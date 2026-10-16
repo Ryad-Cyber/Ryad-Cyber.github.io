@@ -915,7 +915,109 @@ sup {
   }
 }
 
-/* --- 13. Preferences utilisateur -------------------------- */
+/* --- 13. Reperes de lecture (barre + points) -------------- */
+/* Masques par defaut : sans JavaScript ils ne servent a rien, et
+   main.js pose la classe .has-js sur <html> pour les reveler. */
+.progress,
+.dots {
+  display: none;
+}
+
+/* Barre de progression, collee sous l'en-tete sticky */
+.has-js .progress {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  pointer-events: none;
+}
+
+.progress-fill {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+/* Colonne de points, fixee a droite et centree en hauteur */
+.has-js .dots {
+  display: block;
+  position: fixed;
+  top: 50%;
+  right: 22px;
+  z-index: 40;
+  transform: translateY(-50%);
+}
+
+.dots ul {
+  display: grid;
+  gap: 6px;
+}
+
+.dots a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+}
+
+.dots a:hover {
+  text-decoration: none;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+  background: transparent;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.dots a:hover .dot,
+.dots a:focus-visible .dot {
+  border-color: var(--muted);
+}
+
+.dots a.is-active .dot {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Nom de la section, a gauche du point, au survol seulement */
+.dot-label {
+  position: absolute;
+  right: calc(100% + 4px);
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+
+.dots a:hover .dot-label,
+.dots a:focus-visible .dot-label {
+  opacity: 1;
+}
+
+/* Sous 900 px la colonne encombre : on la retire. */
+@media (max-width: 900px) {
+  .has-js .dots {
+    display: none;
+  }
+}
+
+/* --- 14. Preferences utilisateur -------------------------- */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -933,7 +1035,8 @@ sup {
   .site-header,
   .burger,
   .hero-actions,
-  .site-footer {
+  .site-footer,
+  .has-js .dots {
     display: none;
   }
 
