@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Aperçu des projets — refonte « dossier »</title>
+<title>Projets — Ryad Boujenan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
@@ -93,7 +93,9 @@
               <div class="case-content">
                 <ul class="scenarios">
                   <li>
-                    <h5>SSH Brute Force (Linux)</h5>
+                    <div class="scenario-head">
+                      <h5>SSH Brute Force (Linux)</h5>
+                    </div>
                     <p>
                       Détection des échecs d'authentification répétés depuis une même source, puis
                       corrélation en <strong>EQL</strong> de la séquence « échecs multiples suivis d'une
@@ -102,15 +104,20 @@
                     </p>
                   </li>
                   <li>
-                    <h5>PowerShell obfusqué (Windows 11)</h5>
+                    <div class="scenario-head">
+                      <h5>PowerShell obfusqué (Windows 11)</h5>
+                      <span class="attck">MITRE ATT&amp;CK T1059.001</span>
+                    </div>
                     <p>
                       Détection des commandes encodées en base64 passées à PowerShell, à partir des
                       blocs de script capturés par le Script Block Logging.
                     </p>
-                    <span class="attck">MITRE ATT&amp;CK T1059.001</span>
                   </li>
                   <li>
-                    <h5>Password Spray sur Active Directory (Windows Server)</h5>
+                    <div class="scenario-head">
+                      <h5>Password Spray sur Active Directory (Windows Server)</h5>
+                      <span class="attck">MITRE ATT&amp;CK T1110.003</span>
+                    </div>
                     <p>
                       Règle <strong>Threshold en KQL</strong> sur l'Event ID 4625 du contrôleur de
                       domaine, agrégée par <code>source.ip</code> avec une cardinalité sur
@@ -118,7 +125,6 @@
                       de comptes testés, peu de tentatives sur chacun — d'un brute force classique sur un
                       seul compte.
                     </p>
-                    <span class="attck">MITRE ATT&amp;CK T1110.003</span>
                   </li>
                 </ul>
               </div>
@@ -233,12 +239,6 @@
     </div>
   </section>
 </main>
-
-<div class="container">
-  <p class="preview-note">
-    Aperçu de la section Projets seule. Le reste du site sera refait après validation du traitement « CAS Nº ».
-  </p>
-</div>
 
 </body>
 </html>

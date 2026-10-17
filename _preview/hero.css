@@ -550,18 +550,23 @@ li code {
   border-top: 0;
 }
 
+/* Titre du scenario et son code ATT&CK sur la meme ligne : le code ne
+   peut pas etre lu comme appartenant au scenario suivant. */
+.scenario-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  margin-bottom: 6px;
+}
+
 .scenarios h5 {
-  margin-bottom: 4px;
   font-size: 1rem;
   font-weight: 600;
 }
 
 .scenarios p {
   margin: 0;
-}
-
-.scenarios .attck {
-  margin-top: 8px;
 }
 
 /* Liste de tags dans le corps d'un cas : meme registre que la ligne
@@ -617,16 +622,7 @@ li code {
   color: var(--ink-soft);
 }
 
-/* --- 8. Note d'apercu (hors design, a supprimer) ---------- */
-.preview-note {
-  border-top: 1px dashed var(--line);
-  padding: 24px 0 48px;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--ink-soft);
-}
-
-/* --- 9. Responsive ----------------------------------------- */
+/* --- 8. Responsive ----------------------------------------- */
 @media (max-width: 900px) {
   /* Le menu burger sera restyle dans la passe complete. */
   .site-nav {
@@ -702,7 +698,7 @@ li code {
   }
 }
 
-/* --- 10. Preferences utilisateur --------------------------- */
+/* --- 9. Preferences utilisateur ---------------------------- */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
