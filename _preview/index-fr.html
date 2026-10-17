@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ryad Boujenan — Élève ingénieur cybersécurité · SOC / Blue Team</title>
-<meta name="theme-color" content="#0b1014">
+<meta name="theme-color" content="#070a09">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
@@ -87,6 +87,7 @@
           <div class="hero-actions">
             <a class="btn btn-primary" href="#projets"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg>Voir mes projets</a>
             <a class="btn btn-secondary" href="voyages-fr.html"><svg class="i" aria-hidden="true"><use href="#i-globe"/></svg>Mes voyages</a>
+            <p class="hero-note">Passionné de voyages et d'échecs.</p>
           </div>
 
           <ul class="hero-links">
@@ -104,14 +105,10 @@
           <div class="stats">
             <p class="stats-title" id="stats-title">Fiche synthèse</p>
             <dl>
-              <div class="stats-row"><dt>Labs SOC</dt><dd>02</dd></div>
-              <div class="stats-row"><dt>Règles de détection</dt><dd>06</dd></div>
-              <div class="stats-row"><dt>Scénarios d'attaque documentés</dt><dd>03</dd></div>
+              <div class="stats-row"><dt>Spécialisation</dt><dd class="txt">SOC / Blue Team</dd></div>
+              <div class="stats-row"><dt>Disponibilité</dt><dd class="txt">PFE · février 2027</dd></div>
+              <div class="stats-row"><dt>Projets</dt><dd>03</dd></div>
               <div class="stats-row"><dt>Formations &amp; certifications</dt><dd>05 <span class="note">dont 1 en cours</span></dd></div>
-              <div class="stats-row stats-row--codes">
-                <dt>Techniques ATT&amp;CK</dt>
-                <dd><code>T1059.001</code> <code>T1110.003</code></dd>
-              </div>
             </dl>
           </div>
         </aside>
@@ -123,13 +120,9 @@
   <!-- ============ PROJETS ============ -->
   <section class="section" id="projets">
     <div class="container">
-      <div class="section-head">
-        <p class="eyebrow"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg>01 · Projets</p>
-        <h2>Ce que j'ai construit</h2>
-        <p class="section-sub">
-          Trois projets de supervision et de réponse, chacun validé par des attaques simulées contre
-          mes propres machines plutôt que sur des jeux de logs tout faits.
-        </p>
+      <div class="section-head section-head--solo">
+        <span class="h-no" aria-hidden="true">01</span>
+        <h2>Projets</h2>
       </div>
 
       <!-- Masquee sans JavaScript : toutes les cartes restent alors visibles. -->
@@ -148,8 +141,8 @@
         <!-- ===== CAS Nº1 : Lab SOC Elastic Security (image : capture de CE lab) ===== -->
         <article class="card panel" data-cat="soc" aria-labelledby="p-elastic">
           <figure class="card-media card-media--screenshot">
-            <img src="../assets/projets/elastic-alertes.jpg" alt="Tableau de bord des alertes dans Kibana : niveaux de sévérité, alertes par nom de règle et liste des alertes du lab" width="900" height="329" loading="lazy" decoding="async">
-            <figcaption>Alertes générées par les règles du lab, dans Kibana</figcaption>
+            <img src="../assets/projets/kibana-rules-overview.png" alt="Liste des règles de détection du lab dans Kibana : quatre règles personnalisées avec leur sévérité et leur dernière exécution" width="1660" height="538" loading="lazy" decoding="async">
+            <figcaption>Les 4 règles de détection du lab, dans Kibana</figcaption>
           </figure>
           <div class="card-badges">
             <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>SOC / Blue Team</span>
@@ -215,6 +208,30 @@
                         de comptes testés, peu de tentatives sur chacun — d'un brute force classique sur un
                         seul compte.
                       </p>
+                      <figure class="detail-fig">
+                        <a href="../assets/projets/kibana-ad-discover-raw-events.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
+                          <img src="../assets/projets/kibana-ad-discover-raw-events.png" alt="Kibana Discover : événements bruts filtrés sur event.code 4625 et host.name dc01" width="1650" height="666" loading="lazy" decoding="async">
+                        </a>
+                        <figcaption>Les événements bruts : échecs de connexion (event.code 4625) sur dc01, dans Kibana Discover</figcaption>
+                      </figure>
+                      <figure class="detail-fig">
+                        <a href="../assets/projets/kibana-ad-rule-definition.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
+                          <img src="../assets/projets/kibana-ad-rule-definition.png" alt="Définition de la règle : requête KQL event.code 4625 et host.name dc01, type Seuil, regroupement par source.ip avec au moins 3 valeurs uniques de user.name" width="610" height="417" loading="lazy" decoding="async">
+                        </a>
+                        <figcaption>La règle : requête KQL, type Seuil, regroupement par source.ip</figcaption>
+                      </figure>
+                      <figure class="detail-fig">
+                        <a href="../assets/projets/kibana-ad-rule-severity-mitre.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
+                          <img src="../assets/projets/kibana-ad-rule-severity-mitre.png" alt="Détails de la règle : sévérité Medium, score de risque 47, technique MITRE ATT&amp;CK T1110.003 Pulvérisation de mots de passe" width="940" height="472" loading="lazy" decoding="async">
+                        </a>
+                        <figcaption>Sévérité Medium (score 47) et rattachement MITRE ATT&amp;CK : Force brute (T1110) › Pulvérisation de mots de passe (T1110.003)</figcaption>
+                      </figure>
+                      <figure class="detail-fig">
+                        <a href="../assets/projets/kibana-ad-alert-detail.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
+                          <img src="../assets/projets/kibana-ad-alert-detail.png" alt="Alerte Password Spray Detection - DC01 dans Kibana, avec son panneau de détail" width="1672" height="601" loading="lazy" decoding="async">
+                        </a>
+                        <figcaption>L'alerte « Password Spray Detection - DC01 » générée, avec son détail</figcaption>
+                      </figure>
                     </li>
                   </ul>
                 </div>
@@ -277,7 +294,7 @@
         <!-- ===== CAS Nº3 : KASBAH 2026 (image : photo de CET exercice) ===== -->
         <article class="card panel" data-cat="grc" aria-labelledby="p-kasbah">
           <figure class="card-media">
-            <img src="../assets/kasbah_photo.jpeg" alt="Présentation d'un scénario de crise devant l'écran de projection, pendant l'exercice KASBAH 2026" width="1206" height="904" loading="lazy" decoding="async">
+            <img src="../assets/projets/kasbah_photo.jpeg" alt="Présentation d'un scénario de crise devant l'écran de projection, pendant l'exercice KASBAH 2026" width="1206" height="904" loading="lazy" decoding="async">
             <figcaption>Présentation lors de l'exercice de crise KASBAH 2026</figcaption>
           </figure>
           <div class="card-badges">
@@ -608,7 +625,7 @@
             <h3>Centres d'intérêt</h3>
           </div>
           <ul class="tags">
-            <li>Échecs</li><li>Voyage</li><li>Football américain</li>
+            <li>Voyages</li><li>Échecs</li><li>Football américain</li>
           </ul>
         </div>
       </div>

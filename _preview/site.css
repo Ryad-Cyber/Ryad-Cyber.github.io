@@ -7,18 +7,19 @@
 
 /* --- 1. Variables ------------------------------------------ */
 :root {
-  --bg: #0b1014;        /* fond general */
-  --panel: #121a21;     /* cartes et panneaux */
-  --panel-2: #0e151b;   /* champs, zones en creux */
-  --border: #22303b;    /* --panel eclairci : bordure fine des panneaux */
-  --border-strong: #31424f;
+  --bg: #070a09;        /* fond general : quasi noir, sans dominante bleue */
+  --panel: #0e1413;     /* cartes et panneaux */
+  --panel-2: #0a100f;   /* champs, zones en creux */
+  --border: #1c2825;    /* filets internes, --panel eclairci */
+  --glow: rgba(40, 209, 124, 0.24); /* bordure lumineuse des panneaux */
+  --border-strong: #2b3d37;
 
-  --text: #e6edf3;
-  --muted: #8899a6;
+  --text: #e8f0ec;
+  --muted: #8a9a93;
 
-  --accent: #35c2b1;    /* liens, onglet actif, bordures actives */
-  --accent-soft: rgba(53, 194, 177, 0.12);
-  --accent-line: rgba(53, 194, 177, 0.35);
+  --accent: #28d17c;    /* liens, onglet actif, bordures actives, points d'etat */
+  --accent-soft: rgba(40, 209, 124, 0.12);
+  --accent-line: rgba(40, 209, 124, 0.38);
   --gold: #d9a441;      /* certifications uniquement */
   --gold-soft: rgba(217, 164, 65, 0.12);
   --gold-line: rgba(217, 164, 65, 0.35);
@@ -135,7 +136,7 @@ strong {
 
 .panel {
   background: var(--panel);
-  border: 1px solid var(--border);
+  border: 1px solid var(--glow);
   border-radius: var(--radius);
 }
 
@@ -214,7 +215,7 @@ strong {
 }
 
 .btn-primary:hover {
-  background: #4fd3c2;
+  background: #4be69a;
 }
 
 .btn-secondary {
@@ -253,7 +254,7 @@ strong {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(11, 16, 20, 0.92);
+  background: rgba(7, 10, 9, 0.92);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
 }
@@ -605,7 +606,7 @@ strong {
 }
 
 .filter[aria-pressed="true"] .count {
-  background: rgba(53, 194, 177, 0.18);
+  background: rgba(40, 209, 124, 0.2);
   color: var(--accent);
 }
 
@@ -628,10 +629,6 @@ strong {
   flex-direction: column;
   padding: 18px;
   transition: border-color 0.15s ease;
-}
-
-.card:hover {
-  border-color: var(--border-strong);
 }
 
 .card-media {
@@ -1365,6 +1362,95 @@ a.contact-row:hover {
   color: var(--muted);
 }
 
+/* --- 11 bis. Titre de section en typographie seule (Projets) -- */
+/* Pas de phrase d'introduction : un numero mono, le titre en grand
+   corps condense, et un filet d'accent. */
+.section-head--solo {
+  margin-bottom: 36px;
+}
+
+.section-head--solo .h-no {
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+}
+
+.section-head--solo h2 {
+  font-size: clamp(3rem, 8vw, 4.75rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.section-head--solo h2::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 3px;
+  margin: 18px auto 0;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+/* --- 11 ter. Details de cas : captures --------------------- */
+.detail-fig {
+  margin: 12px 0 0;
+}
+
+.detail-fig a {
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  background: var(--panel-2);
+  transition: border-color 0.15s ease;
+}
+
+.detail-fig a:hover {
+  border-color: var(--accent);
+}
+
+.detail-fig img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.detail-fig figcaption {
+  margin-top: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.hero-note {
+  align-self: center;
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+.card:hover {
+  border-color: var(--accent-line);
+}
+
+/* Capture tres large (liste de regles) : cadre plus allonge pour
+   garder les noms de regles lisibles dans la carte. */
+.card-media--screenshot img {
+  aspect-ratio: 7 / 3;
+}
+
+/* Valeurs textuelles de la fiche (pas des chiffres) */
+.stats-row dd.txt {
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
 /* --- 12. Pied de page -------------------------------------- */
 .site-footer {
   border-top: 1px solid var(--border);
@@ -1544,7 +1630,7 @@ a.contact-row:hover {
   bottom: 8px;
   padding: 3px 9px;
   border-radius: 7px;
-  background: rgba(11, 16, 20, 0.86);
+  background: rgba(7, 10, 9, 0.88);
   font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--text);
@@ -1562,7 +1648,7 @@ a.contact-row:hover {
   margin: -22px 0 0 -22px;
   border: 1px solid var(--accent-line);
   border-radius: 50%;
-  background: rgba(11, 16, 20, 0.8);
+  background: rgba(7, 10, 9, 0.82);
   color: var(--accent);
   font-size: 0.875rem;
 }
@@ -1580,7 +1666,7 @@ a.contact-row:hover {
   align-items: center;
   justify-content: center;
   padding: 24px;
-  background: rgba(5, 8, 10, 0.94);
+  background: rgba(3, 5, 4, 0.95);
 }
 
 .lightbox-figure {
