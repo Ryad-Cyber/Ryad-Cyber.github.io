@@ -4,17 +4,47 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ryad Boujenan — Élève ingénieur cybersécurité · SOC / Blue Team</title>
+<meta name="theme-color" content="#0b1014">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,300&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="hero.css">
+<link rel="stylesheet" href="site.css">
 </head>
 <body>
 
+<!-- Icones : sprite unique, reutilise via <use> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6z"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 19h10a4.5 4.5 0 0 0 .6-8.96A6.5 6.5 0 0 0 5.2 9.5 4.75 4.75 0 0 0 7 19z"/></symbol>
+  <symbol id="i-chip" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></symbol>
+  <symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M9 12.5l2 2 4-4"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4.5"/><path d="M11.2 11.8L20 3M16.5 6.5l3 3M14.5 8.5l2 2"/></symbol>
+  <symbol id="i-folder" viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2z"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></symbol>
+  <symbol id="i-github" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M10 14L21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 2l10 5-10 5L2 7z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></symbol>
+  <symbol id="i-activity" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></symbol>
+  <symbol id="i-shield-alert" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6z"/><path d="M12 8v4M12 16h.01"/></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="8" rx="2"/><rect x="2" y="13" width="20" height="8" rx="2"/><path d="M6 7h.01M6 17h.01"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></symbol>
+  <symbol id="i-graduation" viewBox="0 0 24 24"><path d="M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.83l8.57 3.91a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></symbol>
+  <symbol id="i-award" viewBox="0 0 24 24"><path d="M15.48 12.89l1.51 8.53a.5.5 0 0 1-.81.47l-3.58-2.69a1 1 0 0 0-1.2 0l-3.59 2.69a.5.5 0 0 1-.81-.47l1.51-8.53"/><circle cx="12" cy="8" r="6"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M22 2L15 22l-4-9-9-4z"/><path d="M22 2L11 13"/></symbol>
+  <symbol id="i-languages" viewBox="0 0 24 24"><path d="M5 8l6 6"/><path d="M4 14l6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="M22 22l-5-10-5 10"/><path d="M14 18h6"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"/></symbol>
+  <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></symbol>
+</svg>
+
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="#accueil">Ryad Boujenan</a>
+    <a class="brand" href="#accueil"><span class="brand-mark">RB</span>Ryad Boujenan</a>
 
     <nav class="site-nav" aria-label="Navigation principale">
       <ul>
@@ -43,10 +73,7 @@
 
       <div class="hero-grid">
         <div class="hero-main">
-          <p class="hero-status">
-            <span class="status-mark" aria-hidden="true"></span>
-            En recherche — stage PFE · février 2027
-          </p>
+          <p class="status-pill"><span class="dot" aria-hidden="true"></span>En recherche — stage PFE · février 2027</p>
 
           <h1>Ryad Boujenan</h1>
           <p class="hero-role">Élève ingénieur en cybersécurité — SOC / Blue&nbsp;Team</p>
@@ -58,16 +85,18 @@
           </p>
 
           <div class="hero-actions">
-            <a class="btn" href="#projets">Voir mes projets</a>
-            <ul class="hero-contact">
-              <li><a href="https://github.com/Ryad-Cyber" target="_blank" rel="noopener">GitHub</a></li>
-              <li><a href="https://www.linkedin.com/in/ryadboujenan" target="_blank" rel="noopener">LinkedIn</a></li>
-              <li><a href="mailto:ryadboujenan@outlook.com">ryadboujenan@outlook.com</a></li>
-            </ul>
+            <a class="btn btn-primary" href="#projets"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg>Voir mes projets</a>
+            <a class="btn btn-secondary" href="voyages-fr.html"><svg class="i" aria-hidden="true"><use href="#i-globe"/></svg>Mes voyages</a>
           </div>
+
+          <ul class="hero-links">
+            <li><a href="https://github.com/Ryad-Cyber" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg>GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/ryadboujenan" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-linkedin"/></svg>LinkedIn</a></li>
+            <li><a href="mailto:ryadboujenan@outlook.com"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>ryadboujenan@outlook.com</a></li>
+          </ul>
         </div>
 
-        <aside class="hero-side" aria-labelledby="stats-title">
+        <aside class="hero-side panel" aria-labelledby="stats-title">
           <figure class="id-photo">
             <img src="../assets/photo.jpg" alt="Portrait de Ryad Boujenan" width="560" height="700" decoding="async">
           </figure>
@@ -75,22 +104,10 @@
           <div class="stats">
             <p class="stats-title" id="stats-title">Fiche synthèse</p>
             <dl>
-              <div class="stats-row">
-                <dt>Labs SOC</dt>
-                <dd>02</dd>
-              </div>
-              <div class="stats-row">
-                <dt>Règles de détection</dt>
-                <dd>06</dd>
-              </div>
-              <div class="stats-row">
-                <dt>Scénarios d'attaque documentés</dt>
-                <dd>03</dd>
-              </div>
-              <div class="stats-row">
-                <dt>Formations &amp; certifications</dt>
-                <dd>05 <span class="note">dont 1 en cours</span></dd>
-              </div>
+              <div class="stats-row"><dt>Labs SOC</dt><dd>02</dd></div>
+              <div class="stats-row"><dt>Règles de détection</dt><dd>06</dd></div>
+              <div class="stats-row"><dt>Scénarios d'attaque documentés</dt><dd>03</dd></div>
+              <div class="stats-row"><dt>Formations &amp; certifications</dt><dd>05 <span class="note">dont 1 en cours</span></dd></div>
               <div class="stats-row stats-row--codes">
                 <dt>Techniques ATT&amp;CK</dt>
                 <dd><code>T1059.001</code> <code>T1110.003</code></dd>
@@ -107,7 +124,7 @@
   <section class="section" id="projets">
     <div class="container">
       <div class="section-head">
-        <p class="section-no">01 — Projets</p>
+        <p class="eyebrow"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg>01 · Projets</p>
         <h2>Ce que j'ai construit</h2>
         <p class="section-sub">
           Trois projets de supervision et de réponse, chacun validé par des attaques simulées contre
@@ -115,193 +132,200 @@
         </p>
       </div>
 
-      <div class="filters" id="filters" data-all-label="Tous" data-order="soc pentest cloud ia dev" aria-label="Filtrer les projets par catégorie"></div>
+      <!-- Masquee sans JavaScript : toutes les cartes restent alors visibles. -->
+      <div class="filters" id="filters" role="group" aria-label="Filtrer les projets par catégorie" hidden>
+        <button class="filter" type="button" data-filter="all" data-label="Tous" aria-pressed="true"><svg class="i" aria-hidden="true"><use href="#i-grid"/></svg>Tous<span class="count"></span></button>
+        <button class="filter" type="button" data-filter="soc" data-label="SOC / Blue Team" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>SOC / Blue Team<span class="count"></span></button>
+        <button class="filter" type="button" data-filter="redteam" data-label="Red Team / Pentest" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-target"/></svg>Red Team / Pentest<span class="count"></span></button>
+        <button class="filter" type="button" data-filter="cloud" data-label="Cloud" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-cloud"/></svg>Cloud<span class="count"></span></button>
+        <button class="filter" type="button" data-filter="ia" data-label="IA" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-chip"/></svg>IA<span class="count"></span></button>
+        <button class="filter" type="button" data-filter="grc" data-label="GRC" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-clipboard"/></svg>GRC<span class="count"></span></button>
+        <button class="filter" type="button" data-filter="crypto" data-label="Cryptographie" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Cryptographie<span class="count"></span></button>
+      </div>
 
       <div class="cards" id="projects">
 
-        <!-- ===== Projet : Lab SOC Elastic Security ===== -->
-        <article class="card" data-cat="soc" data-cat-name="Blue Team / SOC" aria-labelledby="p-elastic">
+        <!-- ===== CAS Nº1 : Lab SOC Elastic Security (image : capture de CE lab) ===== -->
+        <article class="card panel" data-cat="soc" aria-labelledby="p-elastic">
           <figure class="card-media card-media--screenshot">
             <img src="../assets/projets/elastic-alertes.jpg" alt="Tableau de bord des alertes dans Kibana : niveaux de sévérité, alertes par nom de règle et liste des alertes du lab" width="900" height="329" loading="lazy" decoding="async">
             <figcaption>Alertes générées par les règles du lab, dans Kibana</figcaption>
           </figure>
-          <div class="card-head">
-            <h3 id="p-elastic"><span class="case-no">CAS Nº1</span> Lab SOC Elastic Security</h3>
-            <span class="card-when">2026 · Projet personnel</span>
+          <div class="card-badges">
+            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>SOC / Blue Team</span>
+            <span class="badge">2026 · Projet personnel</span>
           </div>
-          <span class="card-cat">Blue Team / SOC</span>
+          <h3 id="p-elastic"><span class="case-no">CAS Nº1</span>Lab SOC Elastic Security</h3>
           <p class="card-desc">
             Un SOC complet monté en laboratoire : 4 règles de détection écrites et validées par de
             vraies attaques contre des machines Linux et Windows.
           </p>
-          <ul class="card-tags">
+          <ul class="tags">
             <li>Elasticsearch</li><li>Kibana</li><li>Elastic Security</li><li>Fleet</li><li>Elastic Agent</li><li>Sysmon</li><li>KQL</li><li>EQL</li><li>MITRE ATT&amp;CK</li><li>Windows Server / AD</li><li>Ubuntu</li>
           </ul>
-          <p class="card-links">
-            <a href="https://github.com/Ryad-Cyber/elastic-security-soc-lab" target="_blank" rel="noopener">Dépôt GitHub — règles et guides d'investigation</a>
-          </p>
 
-          <details class="card-detail">
-            <summary>Lire le cas en détail</summary>
-
-            <div class="detail-row">
-              <h4>Contexte</h4>
-              <p>
-                Je voulais travailler la détection sur mes propres données, et pas sur des jeux de logs
-                préparés. J'ai donc construit un SOC complet en laboratoire — collecte, règles,
-                investigation — puis joué de vraies attaques contre des machines Linux et Windows pour
-                écrire et éprouver les détections correspondantes.
-              </p>
-            </div>
-
-            <div class="detail-row">
-              <h4>Ce que j'ai fait</h4>
-              <ol class="steps">
-                <li>Déployé la stack Elasticsearch + Kibana avec Fleet, et enrôlé des Elastic Agents sur Ubuntu, Windows 11 et un contrôleur de domaine Windows Server.</li>
-                <li>Instrumenté les postes Windows avec Sysmon et activé le Script Block Logging PowerShell pour obtenir les événements nécessaires aux détections.</li>
-                <li>Écrit et validé <strong>4 règles de détection</strong> couvrant 3 scénarios d'attaque, chacune déclenchée par une attaque simulée puis ajustée pour limiter les faux positifs.</li>
-                <li>Rédigé un guide d'investigation par règle : ce que l'alerte signifie, les champs à vérifier en priorité, et les étapes de qualification.</li>
-                <li>Documenté l'ensemble du lab sur GitHub pour qu'il soit reproductible.</li>
-              </ol>
-            </div>
-
-            <div class="detail-row">
-              <h4>Les 3 scénarios de détection</h4>
-              <ul class="scenarios">
-                <li>
-                  <div class="scenario-head">
-                    <h5>SSH Brute Force (Linux)</h5>
-                  </div>
+          <div class="card-actions">
+            <details class="card-detail">
+              <summary class="btn btn-soft"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span></summary>
+              <div class="detail-body">
+                <div class="detail-row">
+                  <h4>Contexte</h4>
                   <p>
-                    Détection des échecs d'authentification répétés depuis une même source, puis
-                    corrélation en <strong>EQL</strong> de la séquence « échecs multiples suivis d'une
-                    connexion réussie » — le signal qui distingue une tentative d'une compromission
-                    probable.
+                    Je voulais travailler la détection sur mes propres données, et pas sur des jeux de logs
+                    préparés. J'ai donc construit un SOC complet en laboratoire — collecte, règles,
+                    investigation — puis joué de vraies attaques contre des machines Linux et Windows pour
+                    écrire et éprouver les détections correspondantes.
                   </p>
-                </li>
-                <li>
-                  <div class="scenario-head">
-                    <h5>PowerShell obfusqué (Windows 11)</h5>
-                    <span class="attck">MITRE ATT&amp;CK T1059.001</span>
-                  </div>
-                  <p>
-                    Détection des commandes encodées en base64 passées à PowerShell, à partir des
-                    blocs de script capturés par le Script Block Logging.
-                  </p>
-                </li>
-                <li>
-                  <div class="scenario-head">
-                    <h5>Password Spray sur Active Directory (Windows Server)</h5>
-                    <span class="attck">MITRE ATT&amp;CK T1110.003</span>
-                  </div>
-                  <p>
-                    Règle <strong>Threshold en KQL</strong> sur l'Event ID 4625 du contrôleur de
-                    domaine, agrégée par <code>source.ip</code> avec une cardinalité sur
-                    <code>user.name</code> : c'est ce critère qui sépare un password spray — beaucoup
-                    de comptes testés, peu de tentatives sur chacun — d'un brute force classique sur un
-                    seul compte.
-                  </p>
-                </li>
-              </ul>
-            </div>
-          </details>
+                </div>
+                <div class="detail-row">
+                  <h4>Ce que j'ai fait</h4>
+                  <ol class="steps">
+                    <li>Déployé la stack Elasticsearch + Kibana avec Fleet, et enrôlé des Elastic Agents sur Ubuntu, Windows 11 et un contrôleur de domaine Windows Server.</li>
+                    <li>Instrumenté les postes Windows avec Sysmon et activé le Script Block Logging PowerShell pour obtenir les événements nécessaires aux détections.</li>
+                    <li>Écrit et validé <strong>4 règles de détection</strong> couvrant 3 scénarios d'attaque, chacune déclenchée par une attaque simulée puis ajustée pour limiter les faux positifs.</li>
+                    <li>Rédigé un guide d'investigation par règle : ce que l'alerte signifie, les champs à vérifier en priorité, et les étapes de qualification.</li>
+                    <li>Documenté l'ensemble du lab sur GitHub pour qu'il soit reproductible.</li>
+                  </ol>
+                </div>
+                <div class="detail-row">
+                  <h4>Les 3 scénarios de détection</h4>
+                  <ul class="scenarios">
+                    <li>
+                      <div class="scenario-head"><h5>SSH Brute Force (Linux)</h5></div>
+                      <p>
+                        Détection des échecs d'authentification répétés depuis une même source, puis
+                        corrélation en <strong>EQL</strong> de la séquence « échecs multiples suivis d'une
+                        connexion réussie » — le signal qui distingue une tentative d'une compromission
+                        probable.
+                      </p>
+                    </li>
+                    <li>
+                      <div class="scenario-head"><h5>PowerShell obfusqué (Windows 11)</h5><span class="attck">MITRE ATT&amp;CK T1059.001</span></div>
+                      <p>
+                        Détection des commandes encodées en base64 passées à PowerShell, à partir des
+                        blocs de script capturés par le Script Block Logging.
+                      </p>
+                    </li>
+                    <li>
+                      <div class="scenario-head"><h5>Password Spray sur Active Directory (Windows Server)</h5><span class="attck">MITRE ATT&amp;CK T1110.003</span></div>
+                      <p>
+                        Règle <strong>Threshold en KQL</strong> sur l'Event ID 4625 du contrôleur de
+                        domaine, agrégée par <code>source.ip</code> avec une cardinalité sur
+                        <code>user.name</code> : c'est ce critère qui sépare un password spray — beaucoup
+                        de comptes testés, peu de tentatives sur chacun — d'un brute force classique sur un
+                        seul compte.
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+            <a class="btn btn-ghost" href="https://github.com/Ryad-Cyber/elastic-security-soc-lab" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg>Code — règles et guides d'investigation</a>
+          </div>
         </article>
 
-        <!-- ===== Projet : Lab Wazuh ===== -->
-        <article class="card" data-cat="soc" data-cat-name="Blue Team / SOC" aria-labelledby="p-wazuh">
-          <!-- Emplacement de la capture Wazuh : deposer assets/projets/wazuh-alertes.jpg
-               puis decommenter ce bloc et corriger width/height.
+        <!-- ===== CAS Nº2 : Lab Wazuh — volontairement sans image tant qu'il
+             n'existe pas de vraie capture Wazuh. Ne jamais y mettre la capture
+             d'un autre projet. Une fois assets/projets/wazuh-alertes.jpg depose,
+             decommenter ce bloc et corriger width/height.
           <figure class="card-media card-media--screenshot">
             <img src="../assets/projets/wazuh-alertes.jpg" alt="Tableau de bord Wazuh affichant les alertes des regles personnalisees" width="900" height="400" loading="lazy" decoding="async">
             <figcaption>Alertes des regles personnalisees dans le dashboard Wazuh</figcaption>
           </figure>
-          -->
-          <div class="card-head">
-            <h3 id="p-wazuh"><span class="case-no">CAS Nº2</span> Lab Wazuh (SIEM) multi-VM</h3>
-            <span class="card-when">05/2026 · Projet académique</span>
+        ===== -->
+        <article class="card panel" data-cat="soc" aria-labelledby="p-wazuh">
+          <div class="card-badges">
+            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>SOC / Blue Team</span>
+            <span class="badge">05/2026 · Projet académique</span>
           </div>
-          <span class="card-cat">Blue Team / SOC</span>
+          <h3 id="p-wazuh"><span class="case-no">CAS Nº2</span>Lab Wazuh (SIEM) multi-VM</h3>
           <p class="card-desc">
             Un SIEM open source déployé sur plusieurs machines virtuelles, avec 2 règles de détection
             personnalisées validées par attaques simulées.
           </p>
-          <ul class="card-tags">
+          <ul class="tags">
             <li>Wazuh</li><li>VMware</li><li>Linux</li><li>Windows</li><li>MITRE ATT&amp;CK</li><li>Nmap</li><li>Syslog</li>
           </ul>
-          <p class="card-links">
-            <span class="no-repo">Projet académique — documentation interne, dépôt non public.</span>
-          </p>
 
-          <details class="card-detail">
-            <summary>Lire le cas en détail</summary>
-
-            <div class="detail-row">
-              <h4>Contexte</h4>
-              <p>
-                Déployer un SIEM open source sur une infrastructure hétérogène de plusieurs machines
-                virtuelles, et vérifier de bout en bout qu'il détecte réellement des attaques — pas
-                seulement qu'il collecte des logs.
-              </p>
-            </div>
-
-            <div class="detail-row">
-              <h4>Ce que j'ai fait</h4>
-              <ol class="steps">
-                <li>Installé le manager Wazuh et déployé les agents sur des machines Linux et Windows, avec centralisation des journaux.</li>
-                <li>Écrit <strong>2 règles de détection personnalisées</strong>, mappées sur le framework MITRE ATT&amp;CK.</li>
-                <li>Validé chaque règle par attaque simulée — brute force SSH et scans Nmap — et vérifié la remontée des alertes dans le dashboard.</li>
-                <li>Comparé le comportement de Wazuh à celui d'Elastic Security sur des scénarios équivalents, pour comprendre ce que chaque outil rend facile ou difficile.</li>
-              </ol>
-            </div>
-          </details>
+          <div class="card-actions">
+            <details class="card-detail">
+              <summary class="btn btn-soft"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span></summary>
+              <div class="detail-body">
+                <div class="detail-row">
+                  <h4>Contexte</h4>
+                  <p>
+                    Déployer un SIEM open source sur une infrastructure hétérogène de plusieurs machines
+                    virtuelles, et vérifier de bout en bout qu'il détecte réellement des attaques — pas
+                    seulement qu'il collecte des logs.
+                  </p>
+                </div>
+                <div class="detail-row">
+                  <h4>Ce que j'ai fait</h4>
+                  <ol class="steps">
+                    <li>Installé le manager Wazuh et déployé les agents sur des machines Linux et Windows, avec centralisation des journaux.</li>
+                    <li>Écrit <strong>2 règles de détection personnalisées</strong>, mappées sur le framework MITRE ATT&amp;CK.</li>
+                    <li>Validé chaque règle par attaque simulée — brute force SSH et scans Nmap — et vérifié la remontée des alertes dans le dashboard.</li>
+                    <li>Comparé le comportement de Wazuh à celui d'Elastic Security sur des scénarios équivalents, pour comprendre ce que chaque outil rend facile ou difficile.</li>
+                  </ol>
+                </div>
+              </div>
+            </details>
+            <p class="no-repo">Projet académique — documentation interne, dépôt non public.</p>
+          </div>
         </article>
 
-        <!-- ===== Projet : KASBAH 2026 ===== -->
-        <article class="card" data-cat="soc" data-cat-name="Blue Team / SOC" aria-labelledby="p-kasbah">
+        <!-- ===== CAS Nº3 : KASBAH 2026 (image : photo de CET exercice) ===== -->
+        <article class="card panel" data-cat="grc" aria-labelledby="p-kasbah">
           <figure class="card-media">
             <img src="../assets/kasbah_photo.jpeg" alt="Présentation d'un scénario de crise devant l'écran de projection, pendant l'exercice KASBAH 2026" width="1206" height="904" loading="lazy" decoding="async">
             <figcaption>Présentation lors de l'exercice de crise KASBAH 2026</figcaption>
           </figure>
-          <div class="card-head">
-            <h3 id="p-kasbah"><span class="case-no">CAS Nº3</span> KASBAH 2026 — gestion de crise cyber</h3>
-            <span class="card-when">09/2026 · EMSI × CyberSup</span>
+          <div class="card-badges">
+            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-clipboard"/></svg>GRC</span>
+            <span class="badge">09/2026 · EMSI × CyberSup</span>
           </div>
-          <span class="card-cat">Blue Team / SOC</span>
+          <h3 id="p-kasbah"><span class="case-no">CAS Nº3</span>KASBAH 2026 — gestion de crise cyber</h3>
           <p class="card-desc">
             Trois jours de gestion de crise face à une cyberattaque simulée, au sein de la cellule
             Direction.
           </p>
-          <ul class="card-tags">
+          <ul class="tags">
             <li>Gestion de crise</li><li>Coordination</li><li>Prise de décision</li><li>Communication</li><li>Travail sous pression</li>
           </ul>
-          <p class="card-links">
-            <a href="https://kasbah.cybersup.ai/certificat/KSB26-0K0CQJVF" target="_blank" rel="noopener">Certificat de participation</a>
-          </p>
 
-          <details class="card-detail">
-            <summary>Lire le cas en détail</summary>
-
-            <div class="detail-row">
-              <h4>Contexte</h4>
-              <p>
-                Compétition de gestion de crise cyber sur trois jours : une cyberattaque simulée contre
-                une organisation, à traiter en temps réel avec une information partielle et des
-                décisions à prendre vite.
-              </p>
-            </div>
-
-            <div class="detail-row">
-              <h4>Ce que j'ai fait</h4>
-              <ul class="dashes">
-                <li>Membre de la <strong>cellule Direction</strong> : arbitrage des priorités pendant toute la durée de la crise.</li>
-                <li>Décisions de confinement mises en balance avec la continuité d'activité.</li>
-                <li>Coordination et communication avec les cellules techniques et les interlocuteurs externes.</li>
-                <li>Retour d'expérience utile pour un analyste : une alerte n'a de valeur que si elle est qualifiée et transmise clairement à ceux qui décident.</li>
-              </ul>
-            </div>
-          </details>
+          <div class="card-actions">
+            <details class="card-detail">
+              <summary class="btn btn-soft"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span></summary>
+              <div class="detail-body">
+                <div class="detail-row">
+                  <h4>Contexte</h4>
+                  <p>
+                    Compétition de gestion de crise cyber sur trois jours : une cyberattaque simulée contre
+                    une organisation, à traiter en temps réel avec une information partielle et des
+                    décisions à prendre vite.
+                  </p>
+                </div>
+                <div class="detail-row">
+                  <h4>Ce que j'ai fait</h4>
+                  <ul class="dashes">
+                    <li>Membre de la <strong>cellule Direction</strong> : arbitrage des priorités pendant toute la durée de la crise.</li>
+                    <li>Décisions de confinement mises en balance avec la continuité d'activité.</li>
+                    <li>Coordination et communication avec les cellules techniques et les interlocuteurs externes.</li>
+                    <li>Retour d'expérience utile pour un analyste : une alerte n'a de valeur que si elle est qualifiée et transmise clairement à ceux qui décident.</li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+            <a class="btn btn-ghost" href="https://kasbah.cybersup.ai/certificat/KSB26-0K0CQJVF" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-award"/></svg>Certificat de participation</a>
+          </div>
         </article>
 
+      </div>
+
+      <div class="empty-state panel" id="projects-empty" hidden>
+        <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg></span>
+        <h3>Projets à venir</h3>
+        <p>Aucun projet publié pour l'instant dans la catégorie <strong data-cat-label></strong>.</p>
       </div>
     </div>
   </section>
@@ -310,7 +334,7 @@
   <section class="section" id="competences">
     <div class="container">
       <div class="section-head">
-        <p class="section-no">02 — Compétences</p>
+        <p class="eyebrow"><svg class="i" aria-hidden="true"><use href="#i-layers"/></svg>02 · Compétences</p>
         <h2>Outils et domaines</h2>
         <p class="section-sub">
           Je me spécialise en sécurité défensive : détection, triage d'alertes et investigation sur
@@ -319,44 +343,65 @@
       </div>
 
       <div class="skill-groups">
-        <div class="skill-group">
-          <h3>SIEM &amp; détection</h3>
+        <div class="skill-group panel">
+          <div class="panel-head">
+            <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-activity"/></svg></span>
+            <h3>SIEM &amp; détection</h3>
+          </div>
           <ul class="tags">
             <li>Splunk Enterprise Security</li><li>Elastic Security / ELK</li><li>Wazuh</li><li>Règles MITRE ATT&amp;CK</li><li>KQL</li><li>EQL</li>
           </ul>
         </div>
 
-        <div class="skill-group">
-          <h3>Analyse &amp; investigation</h3>
+        <div class="skill-group panel">
+          <div class="panel-head">
+            <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-search"/></svg></span>
+            <h3>Analyse &amp; investigation</h3>
+          </div>
           <ul class="tags">
             <li>Triage d'alertes</li><li>Logs Linux &amp; Windows</li><li>Sysmon</li><li>PowerShell logging</li><li>Syslog</li><li>Wireshark</li>
           </ul>
         </div>
 
-        <div class="skill-group">
-          <h3>Gestion des vulnérabilités</h3>
+        <div class="skill-group panel">
+          <div class="panel-head">
+            <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-shield-alert"/></svg></span>
+            <h3>Gestion des vulnérabilités</h3>
+          </div>
           <ul class="tags">
             <li>GVM / OpenVAS</li><li>Nessus</li><li>CVE / CVSS</li><li>Nmap</li>
           </ul>
         </div>
 
-        <div class="skill-group">
-          <h3>Systèmes &amp; réseaux</h3>
+        <div class="skill-group panel">
+          <div class="panel-head">
+            <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-server"/></svg></span>
+            <h3>Systèmes &amp; réseaux</h3>
+          </div>
           <ul class="tags">
             <li>Linux (Red Hat, Ubuntu)</li><li>Windows Server</li><li>Active Directory</li><li>Docker</li><li>VMware</li><li>TCP/IP</li><li>DNS</li><li>TLS</li><li>VPN</li>
           </ul>
         </div>
 
-        <div class="skill-group">
-          <h3>Programmation &amp; outillage</h3>
+        <div class="skill-group panel">
+          <div class="panel-head">
+            <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-code"/></svg></span>
+            <h3>Programmation &amp; outillage</h3>
+          </div>
           <ul class="tags">
             <li>Python</li><li>Bash</li><li>PowerShell</li><li>SQL</li><li>Git</li><li>CI/CD (GitHub Actions)</li>
           </ul>
         </div>
       </div>
 
-      <div class="skills-note">
-        <h3>Ce qu'une règle de détection m'oblige à comprendre</h3>
+      <div class="skills-note panel">
+        <div class="panel-head">
+          <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg></span>
+          <div>
+            <h3>Ce qu'une règle de détection m'oblige à comprendre</h3>
+            <span class="sub">Pourquoi la détection</span>
+          </div>
+        </div>
         <p>
           Ce qui me plaît concrètement dans la cybersécurité défensive, c'est le moment où une attaque
           devient <strong>visible dans les logs</strong>. Écrire une règle oblige à comprendre un
@@ -380,19 +425,26 @@
   <section class="section" id="parcours">
     <div class="container">
       <div class="section-head">
-        <p class="section-no">03 — Parcours</p>
+        <p class="eyebrow"><svg class="i" aria-hidden="true"><use href="#i-route"/></svg>03 · Parcours</p>
         <h2>Études, stages et certifications</h2>
       </div>
 
       <div class="parcours-grid">
 
         <!-- Colonne gauche : timeline -->
-        <div>
-          <h3 class="col-title">Études et expériences</h3>
+        <div class="parcours-col panel">
+          <div class="panel-head">
+            <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-graduation"/></svg></span>
+            <div>
+              <h3>Études et expériences</h3>
+              <span class="sub">Parcours académique et stages</span>
+            </div>
+          </div>
+
           <ol class="timeline">
             <li>
               <span class="tl-when">07/2026 — 09/2026</span>
-              <h3>Stagiaire en cybersécurité</h3>
+              <h4>Stagiaire en cybersécurité</h4>
               <p class="tl-where">Nethash — Paris, France</p>
               <ul class="dashes">
                 <li>Automatisation de scans Nmap en Python, planifiés par Cron, avec consolidation des résultats.</li>
@@ -403,7 +455,7 @@
 
             <li>
               <span class="tl-when">07/2025 — 08/2025</span>
-              <h3>Stagiaire développeur web full-stack</h3>
+              <h4>Stagiaire développeur web full-stack</h4>
               <p class="tl-where">SIMDATA — Orléans, France</p>
               <ul class="dashes">
                 <li>Développement d'une application web en Python/Django adossée à une base MySQL.</li>
@@ -414,7 +466,7 @@
 
             <li class="is-current">
               <span class="tl-when">2022 — 2027</span>
-              <h3>Cycle ingénieur — Informatique et réseaux, option cybersécurité</h3>
+              <h4>Cycle ingénieur — Informatique et réseaux, option cybersécurité</h4>
               <p class="tl-where">EMSI — Casablanca, Maroc · 5<sup>e</sup> année en cours</p>
               <dl class="kv">
                 <dt>Les fondations</dt>
@@ -426,16 +478,22 @@
 
             <li>
               <span class="tl-when">2022</span>
-              <h3>Baccalauréat général — Mathématiques, Physique-Chimie</h3>
+              <h4>Baccalauréat général — Mathématiques, Physique-Chimie</h4>
               <p class="tl-where">Lycée Charles Péguy — Orléans, France</p>
             </li>
           </ol>
         </div>
 
-        <!-- Colonne droite : certifications -->
-        <div>
-          <h3 class="col-title">Formations &amp; certifications</h3>
-          <p class="section-sub" style="margin: 12px 0 4px; font-size: 0.9375rem">
+        <!-- Colonne droite : certifications (seul usage de l'or) -->
+        <div class="parcours-col panel">
+          <div class="panel-head">
+            <span class="ico-tile ico-tile--gold"><svg class="i" aria-hidden="true"><use href="#i-award"/></svg></span>
+            <div>
+              <h3>Formations &amp; certifications</h3>
+              <span class="sub sub--gold">Certifications vérifiables</span>
+            </div>
+          </div>
+          <p class="section-sub" style="margin: 0 0 18px; font-size: 0.9375rem">
             Des formations choisies pour aller directement vers le métier d'analyste : requêtes SIEM,
             administration système et fondamentaux de la sécurité offensive côté défense.
           </p>
@@ -447,7 +505,7 @@
                 <img src="../assets/certifications/splunk-soc-essentials.jpg" alt="Certificat Splunk : SOC Essentials, Investigating with Splunk ES 8.x" width="760" height="537" loading="lazy" decoding="async">
               </span>
               <div class="cert-body">
-                <h3>Cours SOC Splunk</h3>
+                <h4>Cours SOC Splunk</h4>
                 <p class="cert-meta">
                   <span class="cert-org">Splunk Education</span>
                   <span class="cert-date">10/2026 · 13 crédits horaires</span>
@@ -466,13 +524,13 @@
                 <img src="../assets/certifications/redhat-rh124.jpg" alt="Certificat Coursera : Administration Linux avec Red Hat RH124" width="760" height="587" loading="lazy" decoding="async">
               </a>
               <div class="cert-body">
-                <h3>Administration Linux avec Red Hat RH124</h3>
+                <h4>Administration Linux avec Red Hat RH124</h4>
                 <p class="cert-meta">
                   <span class="cert-org">Honoris Educational Network · Coursera</span>
                   <span class="cert-date">12/10/2026</span>
                 </p>
                 <p class="cert-desc">Administration système Red Hat Enterprise Linux : utilisateurs et permissions, services, réseau, journaux système — les bases indispensables pour investiguer sur un hôte Linux.</p>
-                <a class="cert-verify" href="https://coursera.org/verify/B3DQ61QTQIX2" target="_blank" rel="noopener">Vérifier le certificat</a>
+                <a class="cert-verify" href="https://coursera.org/verify/B3DQ61QTQIX2" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-external"/></svg>Vérifier le certificat</a>
               </div>
             </article>
 
@@ -481,13 +539,13 @@
                 <img src="../assets/certifications/cisco-ethical-hacker.jpg" alt="Certificat Cisco Networking Academy : Ethical Hacker" width="760" height="587" loading="lazy" decoding="async">
               </a>
               <div class="cert-body">
-                <h3>Ethical Hacker</h3>
+                <h4>Ethical Hacker</h4>
                 <p class="cert-meta">
                   <span class="cert-org">Cisco Networking Academy</span>
                   <span class="cert-date">05/10/2026</span>
                 </p>
                 <p class="cert-desc">Méthodologie d'attaque, reconnaissance, exploitation et reporting. Côté défense, savoir comment une attaque est menée est ce qui permet d'écrire des détections pertinentes.</p>
-                <a class="cert-verify" href="https://www.credly.com/badges/e7869115-2372-4988-b7e6-7b40f05216f7/public_url" target="_blank" rel="noopener">Vérifier sur Credly</a>
+                <a class="cert-verify" href="https://www.credly.com/badges/e7869115-2372-4988-b7e6-7b40f05216f7/public_url" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-external"/></svg>Vérifier sur Credly</a>
               </div>
             </article>
 
@@ -496,7 +554,7 @@
                 <img src="../assets/certifications/supervision-reseaux.jpg" alt="Attestation de réussite : module Supervision des réseaux" width="760" height="465" loading="lazy" decoding="async">
               </span>
               <div class="cert-body">
-                <h3>Supervision des réseaux</h3>
+                <h4>Supervision des réseaux</h4>
                 <p class="cert-meta">
                   <span class="cert-org">ENSET Mohammedia — Prof. Azeddine Khiat</span>
                   <span class="cert-date">11/06/2026</span>
@@ -507,7 +565,7 @@
 
             <article class="cert cert--text-only">
               <div class="cert-body">
-                <h3>AWS Academy Cloud Foundations</h3>
+                <h4>AWS Academy Cloud Foundations</h4>
                 <p class="cert-meta">
                   <span class="cert-org">AWS Academy</span>
                 </p>
@@ -519,7 +577,7 @@
           </div>
 
           <div class="learning-note">
-            <h3>J'apprends surtout en construisant</h3>
+            <h4>J'apprends surtout en construisant</h4>
             <p>
               En parallèle des cours : un <strong>lab SOC Elastic Security</strong> monté de bout en
               bout, un <strong>lab Wazuh multi-VM</strong> avec des agents Linux et Windows, trois
@@ -530,9 +588,12 @@
 
       </div>
 
-      <div class="about-grid" style="margin-top: 44px">
-        <div class="about-item">
-          <h3>Langues</h3>
+      <div class="side-panels">
+        <div class="panel">
+          <div class="panel-head">
+            <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-languages"/></svg></span>
+            <h3>Langues</h3>
+          </div>
           <dl class="kv">
             <dt>Français</dt><dd>Courant</dd>
             <dt>Anglais</dt><dd>C1</dd>
@@ -542,12 +603,13 @@
           </dl>
         </div>
 
-        <div class="about-item">
-          <h3>Centres d'intérêt</h3>
-          <ul class="dashes">
-            <li>Échecs</li>
-            <li>Voyage</li>
-            <li>Football américain</li>
+        <div class="panel">
+          <div class="panel-head">
+            <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-heart"/></svg></span>
+            <h3>Centres d'intérêt</h3>
+          </div>
+          <ul class="tags">
+            <li>Échecs</li><li>Voyage</li><li>Football américain</li>
           </ul>
         </div>
       </div>
@@ -558,7 +620,7 @@
   <section class="section" id="contact">
     <div class="container">
       <div class="section-head">
-        <p class="section-no">04 — Contact</p>
+        <p class="eyebrow"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>04 · Contact</p>
         <h2>Me contacter</h2>
         <p class="section-sub">
           Pour un stage, une question sur un projet ou simplement échanger : le plus simple est
@@ -567,193 +629,69 @@
       </div>
 
       <div class="contact-grid">
-        <div class="contact-item">
-          <span class="k">E-mail</span>
-          <a href="mailto:ryadboujenan@outlook.com">ryadboujenan@outlook.com</a>
-        </div>
-        <div class="contact-item">
-          <span class="k">LinkedIn</span>
-          <a href="https://www.linkedin.com/in/ryadboujenan" target="_blank" rel="noopener">in/ryadboujenan</a>
-        </div>
-        <div class="contact-item">
-          <span class="k">GitHub</span>
-          <a href="https://github.com/Ryad-Cyber" target="_blank" rel="noopener">Ryad-Cyber</a>
-        </div>
-      </div>
 
-      <div class="availability">
-        <h3>Recherche en cours</h3>
-        <dl>
-          <dt>Poste</dt><dd>Stage de fin d'études (PFE) — analyste SOC</dd>
-          <dt>Durée</dt><dd>4 à 6 mois</dd>
-          <dt>Début</dt><dd>À partir de février 2027</dd>
-          <dt>Lieu</dt><dd>France ou Suisse</dd>
-          <dt>Statut</dt><dd>Citoyen de l'Union européenne (nationalité espagnole) — aucune démarche d'autorisation de travail nécessaire</dd>
-        </dl>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ VOYAGES (bloc de fin, hors menu) ============ -->
-  <section class="section travel-end" id="voyages" aria-labelledby="voyages-titre">
-    <div class="container">
-      <div class="section-head">
-        <h2 id="voyages-titre">Voyages</h2>
-        <p class="travel-line">Voyager est ma passion première.</p>
-      </div>
-
-      <div class="countries" id="gallery">
-
-        <section class="country" aria-labelledby="pays-ca">
-          <div class="country-head">
-            <img class="flag" src="../assets/flags/ca.svg" alt="" width="24" height="16">
-            <h3 id="pays-ca">Canada</h3>
-          </div>
-          <div class="places">
-            <figure class="place">
-              <figcaption class="place-name">Chutes du Niagara</figcaption>
-              <div class="place-photos">
-                <a class="photo-link" href="../assets/voyages/niagara-1.jpeg" data-caption="Chutes du Niagara, Canada"><img src="../assets/voyages/thumbs/niagara-1.jpeg" alt="Chutes du Niagara, Canada" width="360" height="480" loading="lazy" decoding="async"></a>
-              </div>
-            </figure>
-            <figure class="place">
-              <figcaption class="place-name">Québec</figcaption>
-              <div class="place-photos">
-                <a class="photo-link" href="../assets/voyages/quebec-1.jpeg" data-caption="Québec, Canada"><img src="../assets/voyages/thumbs/quebec-1.jpeg" alt="Québec, Canada" width="360" height="480" loading="lazy" decoding="async"></a>
-              </div>
-            </figure>
-            <figure class="place">
-              <figcaption class="place-name">Toronto</figcaption>
-              <div class="place-photos">
-                <a class="photo-link" href="../assets/voyages/toronto-1.jpeg" data-caption="Toronto, Canada"><img src="../assets/voyages/thumbs/toronto-1.jpeg" alt="Toronto, Canada" width="360" height="480" loading="lazy" decoding="async"></a>
-                <a class="photo-link" href="../assets/voyages/toronto-2.jpeg" data-caption="Toronto, Canada"><img src="../assets/voyages/thumbs/toronto-2.jpeg" alt="Toronto, Canada" width="425" height="480" loading="lazy" decoding="async"></a>
-              </div>
-            </figure>
-          </div>
-        </section>
-
-        <section class="country" aria-labelledby="pays-us">
-          <div class="country-head">
-            <img class="flag" src="../assets/flags/us.svg" alt="" width="24" height="16">
-            <h3 id="pays-us">États-Unis</h3>
-          </div>
-          <div class="places">
-            <figure class="place">
-              <figcaption class="place-name">New York</figcaption>
-              <div class="place-photos">
-                <a class="photo-link" href="../assets/voyages/newyork-1.jpeg" data-caption="New York, États-Unis"><img src="../assets/voyages/thumbs/newyork-1.jpeg" alt="New York, États-Unis" width="360" height="480" loading="lazy" decoding="async"></a>
-                <a class="photo-link" href="../assets/voyages/newyork-2.jpeg" data-caption="New York, États-Unis"><img src="../assets/voyages/thumbs/newyork-2.jpeg" alt="New York, États-Unis" width="360" height="480" loading="lazy" decoding="async"></a>
-                <a class="photo-link" href="../assets/voyages/newyork-3.jpeg" data-caption="New York, États-Unis"><img src="../assets/voyages/thumbs/newyork-3.jpeg" alt="New York, États-Unis" width="480" height="360" loading="lazy" decoding="async"></a>
-              </div>
-            </figure>
-            <figure class="place">
-              <figcaption class="place-name">Central Park</figcaption>
-              <div class="place-photos">
-                <a class="photo-link" href="../assets/voyages/centralpark-1.jpeg" data-caption="Central Park, New York"><img src="../assets/voyages/thumbs/centralpark-1.jpeg" alt="Central Park, New York" width="360" height="480" loading="lazy" decoding="async"></a>
-              </div>
-            </figure>
-          </div>
-        </section>
-
-        <section class="country" aria-labelledby="pays-es">
-          <div class="country-head">
-            <img class="flag" src="../assets/flags/es.svg" alt="" width="24" height="16">
-            <h3 id="pays-es">Espagne</h3>
-          </div>
-          <div class="places">
-            <div class="place">
-              <div class="place-photos">
-                <a class="photo-link" href="../assets/voyages/espagne-1.jpeg" data-caption="Espagne"><img src="../assets/voyages/thumbs/espagne-1.jpeg" alt="Espagne" width="360" height="480" loading="lazy" decoding="async"></a>
-                <a class="photo-link" href="../assets/voyages/espagne-2.jpeg" data-caption="Espagne"><img src="../assets/voyages/thumbs/espagne-2.jpeg" alt="Espagne" width="360" height="480" loading="lazy" decoding="async"></a>
-              </div>
+        <!-- Colonne gauche : coordonnees -->
+        <div class="contact-col panel">
+          <div class="panel-head">
+            <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg></span>
+            <div>
+              <h3>Coordonnées</h3>
+              <span class="sub">Réponse rapide par e-mail</span>
             </div>
           </div>
-        </section>
 
-        <section class="country" aria-labelledby="pays-ro">
-          <div class="country-head">
-            <img class="flag" src="../assets/flags/ro.svg" alt="" width="24" height="16">
-            <h3 id="pays-ro">Roumanie</h3>
+          <div class="contact-rows">
+            <a class="contact-row" href="mailto:ryadboujenan@outlook.com">
+              <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg></span>
+              <span><span class="k">E-mail</span><span class="v">ryadboujenan@outlook.com</span></span>
+            </a>
+            <a class="contact-row" href="https://github.com/Ryad-Cyber" target="_blank" rel="noopener">
+              <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg></span>
+              <span><span class="k">GitHub</span><span class="v">Ryad-Cyber</span></span>
+            </a>
+            <a class="contact-row" href="https://www.linkedin.com/in/ryadboujenan" target="_blank" rel="noopener">
+              <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-linkedin"/></svg></span>
+              <span><span class="k">LinkedIn</span><span class="v">in/ryadboujenan</span></span>
+            </a>
           </div>
-          <div class="places">
-            <figure class="place">
-              <figcaption class="place-name">Brașov</figcaption>
-              <div class="place-photos">
-                <a class="photo-link" href="../assets/voyages/brasov-1.jpeg" data-caption="Brașov, Roumanie"><img src="../assets/voyages/thumbs/brasov-1.jpeg" alt="Brașov, Roumanie" width="360" height="480" loading="lazy" decoding="async"></a>
-                <a class="photo-link" href="../assets/voyages/brasov-2.jpeg" data-caption="Brașov, Roumanie"><img src="../assets/voyages/thumbs/brasov-2.jpeg" alt="Brașov, Roumanie" width="360" height="480" loading="lazy" decoding="async"></a>
-                <a class="photo-link" href="../assets/voyages/brasov-3.jpeg" data-caption="Brașov, Roumanie"><img src="../assets/voyages/thumbs/brasov-3.jpeg" alt="Brașov, Roumanie" width="480" height="360" loading="lazy" decoding="async"></a>
-              </div>
-            </figure>
-            <figure class="place">
-              <figcaption class="place-name">Ski, en vidéo</figcaption>
-              <div class="place-photos">
-                <a class="photo-link" href="../assets/voyages/ski-roumanie.mp4" data-type="video" data-caption="Ski, Roumanie" aria-label="Vidéo : ski en Roumanie">
-                  <video src="../assets/voyages/ski-roumanie.mp4#t=0.1" muted playsinline preload="metadata" tabindex="-1" aria-hidden="true"></video>
-                  <span class="play-badge" aria-hidden="true">▶</span>
-                </a>
-              </div>
-            </figure>
-          </div>
-        </section>
 
-        <section class="country" aria-labelledby="pays-tr">
-          <div class="country-head">
-            <img class="flag" src="../assets/flags/tr.svg" alt="" width="24" height="16">
-            <h3 id="pays-tr">Turquie</h3>
+          <div class="availability">
+            <h4>Recherche en cours</h4>
+            <dl>
+              <dt>Poste</dt><dd>Stage de fin d'études (PFE) — analyste SOC</dd>
+              <dt>Durée</dt><dd>4 à 6 mois</dd>
+              <dt>Début</dt><dd>À partir de février 2027</dd>
+              <dt>Lieu</dt><dd>France ou Suisse</dd>
+              <dt>Statut</dt><dd>Citoyen de l'Union européenne (nationalité espagnole) — aucune démarche d'autorisation de travail nécessaire</dd>
+            </dl>
           </div>
-          <div class="places">
-            <div class="place">
-              <div class="place-photos">
-                <a class="photo-link" href="../assets/voyages/turquie-1.jpeg" data-caption="Turquie"><img src="../assets/voyages/thumbs/turquie-1.jpeg" alt="Turquie" width="360" height="480" loading="lazy" decoding="async"></a>
-                <a class="photo-link" href="../assets/voyages/turquie-2.jpeg" data-caption="Turquie"><img src="../assets/voyages/thumbs/turquie-2.jpeg" alt="Turquie" width="360" height="480" loading="lazy" decoding="async"></a>
-              </div>
+        </div>
+
+        <!-- Colonne droite : formulaire. Sans serveur : le message s'ouvre
+             dans la messagerie du visiteur (mailto). -->
+        <div class="contact-col panel">
+          <div class="panel-head">
+            <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg></span>
+            <div>
+              <h3>Envoyer un message</h3>
+              <span class="sub">Directement depuis cette page</span>
             </div>
           </div>
-        </section>
 
-        <section class="country" aria-labelledby="pays-ma">
-          <div class="country-head">
-            <img class="flag" src="../assets/flags/ma.svg" alt="" width="24" height="16">
-            <h3 id="pays-ma">Maroc</h3>
-          </div>
-          <div class="places">
-            <figure class="place">
-              <figcaption class="place-name">Erfoud</figcaption>
-              <div class="place-photos">
-                <a class="photo-link" href="../assets/voyages/erfoud-1.jpeg" data-caption="Erfoud, Maroc"><img src="../assets/voyages/thumbs/erfoud-1.jpeg" alt="Erfoud, Maroc" width="283" height="480" loading="lazy" decoding="async"></a>
-                <a class="photo-link" href="../assets/voyages/erfoud-2.jpeg" data-caption="Erfoud, Maroc"><img src="../assets/voyages/thumbs/erfoud-2.jpeg" alt="Erfoud, Maroc" width="249" height="480" loading="lazy" decoding="async"></a>
-              </div>
-            </figure>
-            <figure class="place">
-              <figcaption class="place-name">Fès</figcaption>
-              <div class="place-photos">
-                <a class="photo-link" href="../assets/voyages/fes-1.jpeg" data-caption="Fès, Maroc"><img src="../assets/voyages/thumbs/fes-1.jpeg" alt="Fès, Maroc" width="270" height="480" loading="lazy" decoding="async"></a>
-              </div>
-            </figure>
-          </div>
-        </section>
+          <form class="contact-form" id="contact-form" action="mailto:ryadboujenan@outlook.com" method="post" enctype="text/plain" data-to="ryadboujenan@outlook.com" data-subject="Contact portfolio">
+            <label for="cf-nom">Nom</label>
+            <input id="cf-nom" name="nom" type="text" autocomplete="name" required placeholder="Votre nom">
 
-        <section class="country" aria-labelledby="activites">
-          <div class="country-head">
-            <h3 id="activites">Activités</h3>
-          </div>
-          <div class="places">
-            <figure class="place">
-              <figcaption class="place-name">Ski</figcaption>
-              <div class="place-photos">
-                <a class="photo-link" href="../assets/voyages/ski-1.jpeg" data-caption="Ski"><img src="../assets/voyages/thumbs/ski-1.jpeg" alt="Ski" width="360" height="480" loading="lazy" decoding="async"></a>
-                <a class="photo-link" href="../assets/voyages/ski-2.jpeg" data-caption="Ski"><img src="../assets/voyages/thumbs/ski-2.jpeg" alt="Ski" width="360" height="480" loading="lazy" decoding="async"></a>
-              </div>
-            </figure>
-            <figure class="place">
-              <figcaption class="place-name">Paramoteur, brevet obtenu</figcaption>
-              <div class="place-photos">
-                <a class="photo-link" href="../assets/voyages/paramoteur-1.jpeg" data-caption="Paramoteur (brevet obtenu)"><img src="../assets/voyages/thumbs/paramoteur-1.jpeg" alt="Paramoteur" width="270" height="480" loading="lazy" decoding="async"></a>
-                <a class="photo-link" href="../assets/voyages/paramoteur-brevet.jpeg" data-caption="Brevet de paramoteur"><img src="../assets/voyages/thumbs/paramoteur-brevet.jpeg" alt="Brevet de paramoteur" width="360" height="480" loading="lazy" decoding="async"></a>
-              </div>
-            </figure>
-          </div>
-        </section>
+            <label for="cf-email">E-mail</label>
+            <input id="cf-email" name="email" type="email" autocomplete="email" required placeholder="vous@exemple.com">
+
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" rows="6" required placeholder="Votre message…"></textarea>
+
+            <button class="btn btn-primary" type="submit"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg>Envoyer le message</button>
+            <p class="form-note">L'envoi ouvre votre messagerie avec le message prérempli.</p>
+          </form>
+        </div>
 
       </div>
     </div>
@@ -764,23 +702,11 @@
 <footer class="site-footer">
   <div class="container footer-inner">
     <span>© 2026 Ryad Boujenan</span>
+    <a href="voyages-fr.html">Mes voyages</a>
     <a href="hero-en.html" hreflang="en" lang="en">Read this page in English</a>
   </div>
 </footer>
 
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visionneuse de photos" hidden>
-  <figure class="lightbox-figure">
-    <div class="lightbox-media" id="lightbox-media"></div>
-    <figcaption class="lightbox-caption">
-      <span id="lightbox-caption"></span>
-      <span class="lightbox-count" id="lightbox-count"></span>
-    </figcaption>
-  </figure>
-  <button class="lightbox-btn lightbox-close" id="lightbox-close" type="button" aria-label="Fermer">&times;</button>
-  <button class="lightbox-btn lightbox-prev" id="lightbox-prev" type="button" aria-label="Photo précédente">&lsaquo;</button>
-  <button class="lightbox-btn lightbox-next" id="lightbox-next" type="button" aria-label="Photo suivante">&rsaquo;</button>
-</div>
-
-<script src="preview.js" defer></script>
+<script src="site.js" defer></script>
 </body>
 </html>
