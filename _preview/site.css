@@ -7,19 +7,20 @@
 
 /* --- 1. Variables ------------------------------------------ */
 :root {
-  --bg: #070a09;        /* fond general : quasi noir, sans dominante bleue */
-  --panel: #0e1413;     /* cartes et panneaux */
-  --panel-2: #0a100f;   /* champs, zones en creux */
-  --border: #1c2825;    /* filets internes, --panel eclairci */
-  --glow: rgba(40, 209, 124, 0.24); /* bordure lumineuse des panneaux */
-  --border-strong: #2b3d37;
+  --bg: #060b14;        /* fond general : bleu nuit tres sombre */
+  --panel: #0d1420;     /* cartes et panneaux */
+  --panel-2: #09101a;   /* champs, zones en creux */
+  --border: #1b2738;    /* filets internes, --panel eclairci */
+  --glow: rgba(53, 167, 232, 0.24); /* bordure lumineuse des panneaux */
+  --border-strong: #2a3a52;
 
-  --text: #e8f0ec;
-  --muted: #8a9a93;
+  --text: #e6edf5;
+  --muted: #8698ad;
 
-  --accent: #28d17c;    /* liens, onglet actif, bordures actives, points d'etat */
-  --accent-soft: rgba(40, 209, 124, 0.12);
-  --accent-line: rgba(40, 209, 124, 0.38);
+  --accent: #35a7e8;    /* liens, onglet actif, bordures actives */
+  --accent-2: #28d17c;  /* points d'etat, indicateurs "termine" */
+  --accent-soft: rgba(53, 167, 232, 0.12);
+  --accent-line: rgba(53, 167, 232, 0.4);
   --gold: #d9a441;      /* certifications uniquement */
   --gold-soft: rgba(217, 164, 65, 0.12);
   --gold-line: rgba(217, 164, 65, 0.35);
@@ -215,7 +216,7 @@ strong {
 }
 
 .btn-primary:hover {
-  background: #4be69a;
+  background: #63bdf0;
 }
 
 .btn-secondary {
@@ -254,7 +255,7 @@ strong {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(7, 10, 9, 0.92);
+  background: rgba(6, 11, 20, 0.92);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
 }
@@ -606,7 +607,7 @@ strong {
 }
 
 .filter[aria-pressed="true"] .count {
-  background: rgba(40, 209, 124, 0.2);
+  background: rgba(53, 167, 232, 0.2);
   color: var(--accent);
 }
 
@@ -1451,6 +1452,198 @@ a.contact-row:hover {
   line-height: 1.4;
 }
 
+/* --- 11 quater. Fond anime "cyberdefense" ------------------- */
+/* Calque fixe derriere tout le contenu : boucliers, nuages et reseau
+   de points en SVG en ligne, tres peu opaques et legerement flous.
+   Chaque calque est une tuile de 1800 x 1400 dessinee deux fois :
+   une translation d'exactement une tuile boucle sans raccord. */
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  contain: strict;
+}
+
+.bg-layer {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1800px;
+  height: 2800px;
+  margin-left: -900px;
+  color: var(--accent);
+  filter: blur(0.6px);
+  transform: translateY(-700px);
+  will-change: transform;
+}
+
+.bg-layer svg {
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.bg-layer svg * {
+  vector-effect: non-scaling-stroke;
+}
+
+.bg-layer--shields {
+  opacity: 0.07;
+}
+
+.bg-layer--clouds {
+  opacity: 0.06;
+}
+
+.bg-layer--network {
+  opacity: 0.08;
+}
+
+.bg-layer--network circle {
+  fill: currentColor;
+  stroke: none;
+}
+
+.bg-layer--network circle.ring {
+  fill: none;
+  stroke: currentColor;
+}
+
+.bg-layer--network .lines {
+  stroke-width: 1;
+}
+
+/* Deux touches de vert seulement, comme sur l'image de reference */
+.bg-layer .g {
+  stroke: var(--accent-2);
+}
+
+.bg-layer--network circle.g {
+  fill: var(--accent-2);
+}
+
+@keyframes bg-drift {
+  from {
+    transform: translateY(-1400px);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* L'animation n'existe que si l'utilisateur n'a rien demande :
+   avec prefers-reduced-motion, le fond reste totalement immobile. */
+@media (prefers-reduced-motion: no-preference) {
+  .bg-layer--network {
+    animation: bg-drift 620s linear -210s infinite;
+  }
+
+  .bg-layer--clouds {
+    animation: bg-drift 460s linear -90s infinite;
+  }
+
+  .bg-layer--shields {
+    animation: bg-drift 360s linear -150s infinite;
+  }
+}
+
+/* Lueur radiale bleutee derriere le hero (defile avec lui) */
+.hero {
+  position: relative;
+  overflow: clip;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -160px;
+  left: 50%;
+  width: 1300px;
+  height: 820px;
+  margin-left: -650px;
+  background: radial-gradient(closest-side, rgba(53, 167, 232, 0.15), rgba(53, 167, 232, 0.05) 55%, transparent);
+  pointer-events: none;
+}
+
+/* --- 11 quinquies. Indicateurs d'etat (vert) --------------- */
+.status-pill .dot,
+.stats-row dd.live::before {
+  background: var(--accent-2);
+}
+
+.stats-row dd.live::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 7px;
+  border-radius: 50%;
+  vertical-align: 1px;
+}
+
+/* --- 11 sexies. Competences : une phrase, puis les outils -- */
+.skill-lead {
+  margin: 0 0 14px;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+.tags--quiet {
+  gap: 5px;
+}
+
+.tags--quiet li {
+  padding: 1px 7px;
+  border-color: var(--border);
+  background: transparent;
+  font-size: 0.6875rem;
+  color: var(--muted);
+}
+
+/* --- 11 septies. Carte de projet en preparation ------------ */
+/* Jamais confondable avec un vrai projet : pointilles, fond en
+   creux, aucun titre de projet, aucune image ni lien. */
+.card--placeholder {
+  min-height: 170px;
+  border-style: dashed;
+  border-color: var(--border-strong);
+  background: var(--panel-2);
+}
+
+.card--placeholder:hover {
+  border-color: var(--border-strong);
+}
+
+.card--placeholder h3 {
+  font-size: 1.125rem;
+  color: var(--muted);
+}
+
+.badge-soon {
+  border-style: dashed;
+  border-color: var(--border-strong);
+  color: var(--muted);
+}
+
+/* --- 11 octies. Video verticale (9:16) dans un carrousel --- */
+.photo.photo--tall video {
+  width: 146px;
+}
+
+@media (max-width: 640px) {
+  .photo.photo--tall video {
+    width: 112px;
+  }
+}
+
 /* --- 12. Pied de page -------------------------------------- */
 .site-footer {
   border-top: 1px solid var(--border);
@@ -1630,7 +1823,7 @@ a.contact-row:hover {
   bottom: 8px;
   padding: 3px 9px;
   border-radius: 7px;
-  background: rgba(7, 10, 9, 0.88);
+  background: rgba(6, 11, 20, 0.88);
   font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--text);
@@ -1648,7 +1841,7 @@ a.contact-row:hover {
   margin: -22px 0 0 -22px;
   border: 1px solid var(--accent-line);
   border-radius: 50%;
-  background: rgba(7, 10, 9, 0.82);
+  background: rgba(6, 11, 20, 0.82);
   color: var(--accent);
   font-size: 0.875rem;
 }
@@ -1666,7 +1859,7 @@ a.contact-row:hover {
   align-items: center;
   justify-content: center;
   padding: 24px;
-  background: rgba(3, 5, 4, 0.95);
+  background: rgba(3, 6, 12, 0.95);
 }
 
 .lightbox-figure {

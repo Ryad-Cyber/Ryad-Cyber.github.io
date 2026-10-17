@@ -30,14 +30,21 @@
     var cards = toArray(grid.querySelectorAll(".card"));
     var buttons = toArray(bar.querySelectorAll(".filter"));
 
+    // Une carte "en preparation" n'est pas un projet : elle n'apparait
+    // que dans sa propre categorie, jamais dans "Tous", et ne compte pas.
+    var isPlaceholder = function (card) {
+      return card.hasAttribute("data-placeholder");
+    };
+
     var matches = function (card, key) {
-      return key === "all" || card.getAttribute("data-cat") === key;
+      if (key === "all") return !isPlaceholder(card);
+      return card.getAttribute("data-cat") === key;
     };
 
     buttons.forEach(function (b) {
       var key = b.getAttribute("data-filter");
       var n = cards.filter(function (c) {
-        return matches(c, key);
+        return !isPlaceholder(c) && matches(c, key);
       }).length;
       var badge = b.querySelector(".count");
       if (badge) badge.textContent = String(n);
@@ -70,6 +77,9 @@
       var b = event.target.closest(".filter");
       if (b) apply(b);
     });
+
+    // Etat initial : "Tous", donc sans les cartes en preparation.
+    apply(buttons[0]);
   }
 
   /* --- 2. Section courante dans le menu ------------------- */
