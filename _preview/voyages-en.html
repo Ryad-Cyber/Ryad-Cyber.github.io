@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#060b14">
 <title>Travel — Ryad Boujenan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -124,33 +125,117 @@
           </div>
         </section>
 
-        <!-- Romania -->
-        <section class="country" aria-labelledby="pays-ro">
-          <div class="country-head">
-            <img class="flag" src="../assets/flags/ro.svg" alt="" width="24" height="16">
-            <h3 id="pays-ro">Romania</h3>
-            <span class="country-count">3 photos · 1 video</span>
-          </div>
-          <div class="places">
-            <figure class="place">
-              <figcaption class="place-name">Brașov</figcaption>
-              <div class="place-photos">
-                <a class="photo-link" href="../assets/voyages/brasov-1.jpeg" data-caption="Brașov, Romania"><img src="../assets/voyages/thumbs/brasov-1.jpeg" alt="Brașov, Romania" width="360" height="480" loading="lazy" decoding="async"></a>
-                <a class="photo-link" href="../assets/voyages/brasov-2.jpeg" data-caption="Brașov, Romania"><img src="../assets/voyages/thumbs/brasov-2.jpeg" alt="Brașov, Romania" width="360" height="480" loading="lazy" decoding="async"></a>
-                <a class="photo-link" href="../assets/voyages/brasov-3.jpeg" data-caption="Brașov, Romania"><img src="../assets/voyages/thumbs/brasov-3.jpeg" alt="Brașov, Romania" width="480" height="360" loading="lazy" decoding="async"></a>
-              </div>
-            </figure>
-            <figure class="place">
-              <figcaption class="place-name">Skiing, on video</figcaption>
-              <div class="place-photos">
-                <a class="photo-link" href="../assets/voyages/ski-roumanie.mp4" data-type="video" data-caption="Skiing, Romania" aria-label="Video: skiing in Romania">
-                  <video src="../assets/voyages/ski-roumanie.mp4#t=0.1" muted playsinline preload="metadata" tabindex="-1" aria-hidden="true"></video>
-                  <span class="play-badge" aria-hidden="true">▶</span>
-                </a>
-              </div>
-            </figure>
-          </div>
-        </section>
+        ```html
+<!-- Romania -->
+<section class="country" aria-labelledby="pays-ro">
+  <div class="country-head">
+    <img
+      class="flag"
+      src="../assets/flags/ro.svg"
+      alt=""
+      width="24"
+      height="16"
+    >
+    <h3 id="pays-ro">Romania</h3>
+    <span class="country-count">3 photos · 2 videos</span>
+  </div>
+
+  <div class="places">
+    <figure class="place">
+      <figcaption class="place-name">Brașov</figcaption>
+
+      <div class="place-photos">
+        <a
+          class="photo-link"
+          href="../assets/voyages/brasov-1.jpeg"
+          data-caption="Brașov, Romania"
+        >
+          <img
+            src="../assets/voyages/thumbs/brasov-1.jpeg"
+            alt="Brașov, Romania"
+            width="360"
+            height="480"
+            loading="lazy"
+            decoding="async"
+          >
+        </a>
+
+        <a
+          class="photo-link"
+          href="../assets/voyages/brasov-2.jpeg"
+          data-caption="Brașov, Romania"
+        >
+          <img
+            src="../assets/voyages/thumbs/brasov-2.jpeg"
+            alt="Brașov, Romania"
+            width="360"
+            height="480"
+            loading="lazy"
+            decoding="async"
+          >
+        </a>
+
+        <a
+          class="photo-link"
+          href="../assets/voyages/brasov-3.jpeg"
+          data-caption="Brașov, Romania"
+        >
+          <img
+            src="../assets/voyages/thumbs/brasov-3.jpeg"
+            alt="Brașov, Romania"
+            width="480"
+            height="360"
+            loading="lazy"
+            decoding="async"
+          >
+        </a>
+      </div>
+    </figure>
+
+    <figure class="place">
+      <figcaption class="place-name">Skiing and travel videos</figcaption>
+
+      <div class="place-photos">
+        <a
+          class="photo-link"
+          href="../assets/voyages/ski-roumanie.mp4"
+          data-type="video"
+          data-caption="Skiing in Romania"
+          aria-label="Video: skiing in Romania"
+        >
+          <video
+            src="../assets/voyages/ski-roumanie.mp4#t=0.1"
+            muted
+            playsinline
+            preload="metadata"
+            tabindex="-1"
+            aria-hidden="true"
+          ></video>
+          <span class="play-badge" aria-hidden="true">▶</span>
+        </a>
+
+        <a
+          class="photo-link"
+          href="../assets/voyages/ski-train.mp4"
+          data-type="video"
+          data-caption="On the way to the ski resort"
+          aria-label="Video: travelling to the ski resort by train"
+        >
+          <video
+            src="../assets/voyages/ski-train.mp4#t=0.1"
+            muted
+            playsinline
+            preload="metadata"
+            tabindex="-1"
+            aria-hidden="true"
+          ></video>
+          <span class="play-badge" aria-hidden="true">▶</span>
+        </a>
+      </div>
+    </figure>
+  </div>
+</section>
+```
 
         <!-- Türkiye: no city recorded for these photos -->
         <section class="country" aria-labelledby="pays-tr">
@@ -197,7 +282,7 @@
         <section class="country" aria-labelledby="activites">
           <div class="country-head">
             <h3 id="activites">Other</h3>
-            <span class="country-count">4 photos</span>
+            <span class="country-count">4 photos · 1 video</span>
           </div>
           <div class="places">
             <figure class="place">

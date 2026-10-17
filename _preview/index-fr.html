@@ -87,9 +87,10 @@
           <p class="hero-role">Élève ingénieur en cybersécurité — SOC / Blue&nbsp;Team</p>
 
           <p class="lede">
-            J'ai 21 ans et je termine un cycle d'ingénieur en <strong>informatique et réseaux, option
+            Je termine un cycle d'ingénieur en <strong>informatique et réseaux, option
             cybersécurité</strong>, à l'EMSI Casablanca. Je recherche un <strong>stage de fin d'études
-            d'analyste SOC de 4 à 6 mois, à partir de février 2027</strong>, en France ou en Suisse.
+            en cybersécurité, orienté SOC / Blue Team, de 4 à 6 mois à partir de février 2027</strong>,
+            en priorité en Suisse, mais également ouvert aux opportunités en France.
           </p>
 
           <div class="hero-actions">
@@ -144,7 +145,7 @@
         <button class="filter" type="button" data-filter="crypto" data-label="Cryptographie" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Cryptographie<span class="count"></span></button>
       </div>
 
-      <div class="cards" id="projects">
+      <div class="cards" id="project-cards">
 
         <!-- ===== CAS Nº1 : Lab SOC Elastic Security (image : capture de CE lab) ===== -->
         <article class="card panel" data-cat="soc" aria-labelledby="p-elastic">
@@ -158,8 +159,8 @@
           </div>
           <h3 id="p-elastic"><span class="case-no">CAS Nº1</span>Lab SOC Elastic Security</h3>
           <p class="card-desc">
-            Un SOC complet monté en laboratoire : 4 règles de détection écrites et validées par de
-            vraies attaques contre des machines Linux et Windows.
+            Un environnement de détection monté en laboratoire : 4 règles personnalisées,
+            testées à l'aide d'attaques simulées sur des machines Linux et Windows.
           </p>
           <ul class="tags">
             <li>Elasticsearch</li><li>Kibana</li><li>Elastic Security</li><li>Fleet</li><li>Elastic Agent</li><li>Sysmon</li><li>KQL</li><li>EQL</li><li>MITRE ATT&amp;CK</li><li>Windows Server / AD</li><li>Ubuntu</li>
@@ -172,10 +173,10 @@
                 <div class="detail-row">
                   <h4>Contexte</h4>
                   <p>
-                    Je voulais travailler la détection sur mes propres données, et pas sur des jeux de logs
-                    préparés. J'ai donc construit un SOC complet en laboratoire — collecte, règles,
-                    investigation — puis joué de vraies attaques contre des machines Linux et Windows pour
-                    écrire et éprouver les détections correspondantes.
+                    Je voulais travailler la détection sur mes propres données, plutôt que sur des jeux de logs préparés. J'ai
+                    donc monté un environnement de détection en laboratoire, de la collecte des événements à
+                    l'investigation des alertes, puis simulé des attaques sur des machines Linux et Windows pour écrire et
+                    tester les règles correspondantes.
                   </p>
                 </div>
                 <div class="detail-row">
@@ -183,7 +184,7 @@
                   <ol class="steps">
                     <li>Déployé la stack Elasticsearch + Kibana avec Fleet, et enrôlé des Elastic Agents sur Ubuntu, Windows 11 et un contrôleur de domaine Windows Server.</li>
                     <li>Instrumenté les postes Windows avec Sysmon et activé le Script Block Logging PowerShell pour obtenir les événements nécessaires aux détections.</li>
-                    <li>Écrit et validé <strong>4 règles de détection</strong> couvrant 3 scénarios d'attaque, chacune déclenchée par une attaque simulée puis ajustée pour limiter les faux positifs.</li>
+                    <li>Écrit et testé <strong>4 règles de détection</strong> couvrant 3 scénarios d'attaque simulés, puis ajusté les règles pour limiter les faux positifs.</li>
                     <li>Rédigé un guide d'investigation par règle : ce que l'alerte signifie, les champs à vérifier en priorité, et les étapes de qualification.</li>
                     <li>Documenté l'ensemble du lab sur GitHub pour qu'il soit reproductible.</li>
                   </ol>
@@ -266,7 +267,7 @@
           <h3 id="p-wazuh"><span class="case-no">CAS Nº2</span>Lab Wazuh (SIEM) multi-VM</h3>
           <p class="card-desc">
             Un SIEM open source déployé sur plusieurs machines virtuelles, avec 2 règles de détection
-            personnalisées validées par attaques simulées.
+            personnalisées testées à l'aide de scénarios d'attaque en laboratoire.
           </p>
           <ul class="tags">
             <li>Wazuh</li><li>VMware</li><li>Linux</li><li>Windows</li><li>MITRE ATT&amp;CK</li><li>Nmap</li><li>Syslog</li>
@@ -289,7 +290,7 @@
                   <ol class="steps">
                     <li>Installé le manager Wazuh et déployé les agents sur des machines Linux et Windows, avec centralisation des journaux.</li>
                     <li>Écrit <strong>2 règles de détection personnalisées</strong>, mappées sur le framework MITRE ATT&amp;CK.</li>
-                    <li>Validé chaque règle par attaque simulée — brute force SSH et scans Nmap — et vérifié la remontée des alertes dans le dashboard.</li>
+                    <li>Testé chaque règle à l'aide de scénarios en laboratoire — brute force SSH et scans Nmap — puis vérifié la remontée des alertes dans le tableau de bord.</li>
                     <li>Comparé le comportement de Wazuh à celui d'Elastic Security sur des scénarios équivalents, pour comprendre ce que chaque outil rend facile ou difficile.</li>
                   </ol>
                 </div>
@@ -400,9 +401,12 @@
             <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-activity"/></svg></span>
             <h3>Détection &amp; SIEM</h3>
           </div>
-          <p class="skill-lead">J'écris des règles de détection sur Elastic Security et Wazuh, je les valide par des attaques simulées, puis j'investigue les alertes dans les logs Linux et Windows.</p>
+          <p class="skill-lead">
+            J'écris des règles de détection sur Elastic Security et Wazuh, je les teste
+            dans mes laboratoires, puis j'analyse les alertes et les journaux Linux et Windows.
+          </p>
           <ul class="tags tags--quiet">
-            <li>Splunk Enterprise Security</li><li>Elastic Security / ELK</li><li>Wazuh</li><li>Règles MITRE ATT&amp;CK</li><li>KQL</li><li>EQL</li><li>Triage d'alertes</li><li>Logs Linux &amp; Windows</li><li>Sysmon</li><li>PowerShell logging</li><li>Syslog</li><li>Wireshark</li>
+            <li>Splunk Enterprise Security (formation)</li><li>Elastic Security / ELK</li><li>Wazuh</li><li>Règles MITRE ATT&amp;CK</li><li>KQL</li><li>EQL</li><li>Triage d'alertes</li><li>Logs Linux &amp; Windows</li><li>Sysmon</li><li>PowerShell logging</li><li>Syslog</li><li>Wireshark</li>
           </ul>
         </div>
         <div class="skill-group panel">
@@ -420,7 +424,11 @@
             <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-target"/></svg></span>
             <h3>Offensif</h3>
           </div>
-          <p class="skill-lead">Je joue de vraies attaques contre mes labs pour éprouver mes détections ; chez Nethash, mes scans GVM/OpenVAS ont identifié 68 vulnérabilités et 122 CVE.</p>
+          <p class="skill-lead">
+            Je simule des attaques dans mes laboratoires pour éprouver mes détections.
+            Chez Nethash, mes scans GVM/OpenVAS ont contribué à identifier
+            68 vulnérabilités et 122 CVE.
+          </p>
           <ul class="tags tags--quiet">
             <li>GVM / OpenVAS</li><li>Nessus</li><li>CVE / CVSS</li><li>Nmap</li>
           </ul>
@@ -717,8 +725,8 @@
               <dt>Poste</dt><dd>Stage de fin d'études (PFE) — analyste SOC</dd>
               <dt>Durée</dt><dd>4 à 6 mois</dd>
               <dt>Début</dt><dd>À partir de février 2027</dd>
-              <dt>Lieu</dt><dd>France ou Suisse</dd>
-              <dt>Statut</dt><dd>Citoyen de l'Union européenne (nationalité espagnole) — aucune démarche d'autorisation de travail nécessaire</dd>
+              <dt>Lieu</dt><dd>Suisse en priorité, France également</dd>
+              <dt>Nationalité</dt><dd>Espagnole — citoyen de l'Union européenne</dd>
             </dl>
           </div>
         </div>

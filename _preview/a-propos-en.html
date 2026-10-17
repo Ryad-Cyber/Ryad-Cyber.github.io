@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,11 +20,11 @@
     <nav class="site-nav" aria-label="Main navigation">
       <ul>
         <li><a href="hero-en.html">Home</a></li>
-        <li><a href="a-propos-en.html" aria-current="true">About</a></li>
+        <li><a href="a-propos-en.html" aria-current="page">About</a></li>
         <li><a href="projets-en.html">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#experience">Experience</a></li>
-        <li><a href="formations-en.html">Training</a></li>
+        <li><a href="formations-en.html">Education</a></li>
         <li><a href="voyages-en.html">Travel</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -31,13 +32,12 @@
 
     <p class="lang-switch">
       <a href="a-propos-fr.html" hreflang="fr" lang="fr">FR</a> /
-      <span aria-current="true">EN</span>
+      <span aria-current="page">EN</span>
     </p>
   </div>
 </header>
 
 <main>
-  <!-- ============ ABOUT ============ -->
   <section class="section" id="about">
     <div class="container">
       <div class="section-head">
@@ -46,53 +46,56 @@
       </div>
 
       <p class="about-lede">
-        I am 21 and finishing an engineering degree in <strong>computer engineering and networks
-        with a cybersecurity major</strong> at EMSI Casablanca (2022–2027). What I genuinely enjoy
-        about defensive security is the moment an attack becomes <strong>visible in the logs</strong>.
-        That is the work of a SOC, and it is the work I want to do.
+        I am completing an engineering degree in
+        <strong>computer engineering and networks, specialising in cybersecurity</strong>
+        at EMSI Casablanca (2022–2027). What interests me most about defensive security
+        is understanding how suspicious activity becomes <strong>visible in security logs</strong>.
+        I want to build my career in a Security Operations Centre (SOC), focusing on
+        detection, investigation and incident response.
       </p>
 
       <div class="about-grid">
         <div class="about-item">
           <h3>My degree</h3>
           <dl class="kv">
-            <dt>The foundations</dt>
-            <dd>Linux and Windows Server systems, Active Directory, TCP/IP, DNS, TLS, VPN, virtualisation, programming</dd>
-            <dt>Then the security specialisation</dt>
-            <dd>Cryptography, network security, vulnerability management, security monitoring</dd>
+            <dt>Technical foundations</dt>
+            <dd>Linux and Windows Server, Active Directory, TCP/IP, DNS, TLS, VPNs, virtualisation and programming</dd>
+            <dt>Cybersecurity coursework</dt>
+            <dd>Cryptography, network security, vulnerability management and security monitoring</dd>
           </dl>
         </div>
 
         <div class="about-item">
-          <h3>I mostly learn by building</h3>
-          <p>Alongside the coursework:</p>
+          <h3>Learning through hands-on projects</h3>
+          <p>Alongside my coursework, I have worked on:</p>
           <ul class="dashes">
-            <li>a full <strong>Elastic Security SOC lab</strong>, set up end to end;</li>
+            <li>an <strong>Elastic Security lab</strong> configured to explore security monitoring and detection;</li>
             <li>a <strong>multi-VM Wazuh lab</strong> with Linux and Windows agents;</li>
             <li>three SOC-focused Splunk courses;</li>
-            <li>Red Hat Linux administration (RH124).</li>
+            <li>Red Hat Linux system administration (RH124).</li>
           </ul>
         </div>
 
         <div class="about-item">
-          <h3>During my internships</h3>
+          <h3>Internship experience</h3>
           <ul class="dashes">
-            <li><strong>Nethash</strong>, Paris — Nmap scans automated in Python, GVM/OpenVAS vulnerability assessment campaigns.</li>
-            <li><strong>SIMDATA</strong>, Orléans — a first internship in full-stack web development, experience I now rely on to script and automate my own tooling.</li>
+            <li><strong>Nethash</strong>, Paris — automated Nmap scans with Python and worked on vulnerability assessment campaigns using GVM/OpenVAS.</li>
+            <li><strong>SIMDATA</strong>, Orléans — gained initial full-stack web development experience, including skills I can apply to scripting and automation.</li>
           </ul>
         </div>
 
         <div class="about-item">
-          <h3>What writing a detection rule forces me to understand</h3>
-          <p>An attacker's behaviour, not just the tool they happen to use:</p>
+          <h3>Thinking like a defender</h3>
+          <p>Writing a detection rule means understanding an attacker's behaviour, not just the tool being used:</p>
           <ul class="dashes">
-            <li>which events it generates;</li>
-            <li>what separates it from legitimate activity;</li>
-            <li>where the threshold for raising an alert actually sits.</li>
+            <li>which events and logs the activity generates;</li>
+            <li>how to distinguish suspicious behaviour from legitimate activity;</li>
+            <li>how to define a useful alert threshold.</li>
           </ul>
           <p>
-            I like what comes next just as much: triage, investigation, cutting down false positives,
-            and the documentation that lets someone else retrace the investigation.
+            I am also interested in what follows an alert: triage, investigation,
+            reducing false positives and documenting findings so that another analyst
+            can understand and reproduce the investigation.
           </p>
         </div>
       </div>
@@ -102,3 +105,4 @@
 
 </body>
 </html>
+```

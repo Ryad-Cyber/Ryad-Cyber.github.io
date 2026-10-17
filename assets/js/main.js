@@ -1,9 +1,11 @@
 /* ============================================================
    Ryad Boujenan - portfolio
-   Trois comportements : le menu mobile, la section courante
-   (menu + points lateraux) et la barre de progression.
-   La page reste entierement lisible sans ce fichier : les deux
-   reperes de lecture restent simplement masques.
+   Quatre comportements : le menu mobile, la section courante
+   (menu + points lateraux), la barre de progression et la
+   visionneuse de la galerie voyages.
+   La page reste entierement lisible sans ce fichier : les reperes
+   de lecture restent masques et les vignettes redeviennent de
+   simples liens vers la photo en pleine taille.
    ============================================================ */
 (function () {
   "use strict";
@@ -44,7 +46,7 @@
     });
 
     window.addEventListener("resize", function () {
-      if (window.innerWidth > 880) closeNav();
+      if (window.innerWidth > 950) closeNav();
     });
   }
 
@@ -128,6 +130,115 @@
     window.addEventListener("scroll", request, { passive: true });
     window.addEventListener("resize", request);
     draw();
+  }
+
+  /* --- Visionneuse de la galerie voyages ------------------ */
+  // Chaque vignette est un lien vers la photo en pleine taille :
+  // sans JS le clic ouvre simplement l'image dans le navigateur.
+  var gallery = document.getElementById("gallery");
+  var box = document.getElementById("lightbox");
+
+  if (gallery && box) {
+    var tiles = toArray(gallery.querySelectorAll(".tile-link"));
+    var media = document.getElementById("lightbox-media");
+    var caption = document.getElementById("lightbox-caption");
+    var counter = document.getElementById("lightbox-count");
+    var btnClose = document.getElementById("lightbox-close");
+    var btnPrev = document.getElementById("lightbox-prev");
+    var btnNext = document.getElementById("lightbox-next");
+    var current = 0;
+    var opener = null;
+
+    var pad = function (n) {
+      return (n < 10 ? "0" : "") + n;
+    };
+
+    var show = function (i) {
+      current = (i + tiles.length) % tiles.length;
+
+      var tile = tiles[current];
+      var text = tile.getAttribute("data-caption") || "";
+      var node;
+
+      if (tile.getAttribute("data-type") === "video") {
+        node = document.createElement("video");
+        node.controls = true;
+        node.muted = true;
+        node.playsInline = true;
+        node.preload = "metadata";
+      } else {
+        node = document.createElement("img");
+        node.alt = text;
+        node.decoding = "async";
+      }
+      node.src = tile.getAttribute("href");
+
+      media.innerHTML = "";
+      media.appendChild(node);
+      caption.textContent = text;
+      counter.textContent = pad(current + 1) + " / " + pad(tiles.length);
+    };
+
+    var open = function (i, trigger) {
+      opener = trigger || null;
+      // Compense la disparition de la barre de defilement.
+      var gap = window.innerWidth - root.clientWidth;
+      if (gap > 0) document.body.style.paddingRight = gap + "px";
+      root.classList.add("is-locked");
+      box.hidden = false;
+      show(i);
+      btnClose.focus();
+    };
+
+    var close = function () {
+      box.hidden = true;
+      root.classList.remove("is-locked");
+      document.body.style.paddingRight = "";
+      media.innerHTML = ""; // arrete la video et libere le fichier
+      if (opener) opener.focus();
+    };
+
+    tiles.forEach(function (tile, i) {
+      tile.addEventListener("click", function (event) {
+        event.preventDefault();
+        open(i, tile);
+      });
+    });
+
+    btnClose.addEventListener("click", close);
+    btnPrev.addEventListener("click", function () {
+      show(current - 1);
+    });
+    btnNext.addEventListener("click", function () {
+      show(current + 1);
+    });
+
+    // Clic en dehors de l'image : on ferme.
+    box.addEventListener("click", function (event) {
+      if (event.target === box || event.target === media) close();
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (box.hidden) return;
+
+      if (event.key === "Escape") {
+        close();
+      } else if (event.key === "ArrowLeft") {
+        show(current - 1);
+      } else if (event.key === "ArrowRight") {
+        show(current + 1);
+      } else if (event.key === "Tab") {
+        // Focus garde dans la visionneuse tant qu'elle est ouverte.
+        // Recalcule a chaque fois : les controles video en font partie.
+        var focusables = toArray(box.querySelectorAll("video[controls], button"));
+        var pos = focusables.indexOf(document.activeElement);
+        var next = event.shiftKey ? pos - 1 : pos + 1;
+        if (pos === -1 || next < 0 || next >= focusables.length) {
+          event.preventDefault();
+          focusables[event.shiftKey ? focusables.length - 1 : 0].focus();
+        }
+      }
+    });
   }
 
   /* --- Annee du pied de page ------------------------------ */

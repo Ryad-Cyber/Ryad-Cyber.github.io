@@ -17,8 +17,11 @@ Il fonctionne aussi bien en ligne qu'en double-cliquant sur `index.html` en loca
 │   └── index.html          Page anglaise (traduction complète)
 ├── assets/
 │   ├── css/style.css       Toute la mise en forme, partagée par les deux pages
-│   ├── js/main.js          Menu mobile, section courante, barre de progression
+│   ├── js/main.js          Menu mobile, section courante, progression, visionneuse
 │   ├── photo.jpg           Photo de profil (placeholder à remplacer)
+│   ├── projets/            Illustrations des cartes projet (KASBAH, captures des labs)
+│   ├── voyages/            Photos de la section Voyages, en pleine taille
+│   │   └── thumbs/         Vignettes 480 px générées, affichées dans la grille
 │   └── favicon.svg         Favicon « RB »
 ├── .nojekyll               Demande à GitHub Pages de servir les fichiers tels quels
 └── README.md
@@ -62,6 +65,40 @@ dépôt. Si le projet n'a pas de dépôt public, garder la ligne
 Le surlignage automatique du menu et des points fonctionne sans configuration : le JavaScript relie
 chaque lien `#ancre` à la section qui porte cet `id`. Une section sans point reste parfaitement
 fonctionnelle, elle n'apparaît simplement pas dans la colonne de droite.
+
+## Ajouter ou retirer une photo de voyage
+
+Chaque vignette est un bloc `<li class="tile">` dans `<ul class="gallery">`, à reproduire dans les
+deux fichiers. Le lien `href` pointe vers l'image **pleine taille**, l'`src` de l'image vers sa
+**vignette** dans `thumbs/` :
+
+```html
+<li class="tile">
+  <a class="tile-link" href="assets/voyages/lisbonne-1.jpeg" data-caption="Lisbonne, Portugal">
+    <img src="assets/voyages/thumbs/lisbonne-1.jpeg" alt="Lisbonne, Portugal"
+         width="360" height="480" loading="lazy" decoding="async">
+    <span class="tile-caption" aria-hidden="true">Lisbonne</span>
+  </a>
+</li>
+```
+
+`data-caption` est le texte affiché dans la visionneuse, le `<span>` la légende courte au survol.
+La classe `tile-accent` agrandit une vignette en 2 × 2 — deux suffisent, au-delà la grille perd sa
+régularité. La vidéo est le seul bloc portant `data-type="video"`.
+
+Après avoir déposé de nouvelles photos dans `assets/voyages/`, régénérer les vignettes depuis la
+racine du projet :
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools\make-thumbs.ps1
+```
+
+Le script réduit à 480 px sur le grand côté en qualité 78, redresse l'orientation EXIF, n'écrit que
+dans `thumbs/` et affiche les dimensions obtenues — à reporter dans les attributs `width`/`height`.
+Sans vignette, la grille chargerait l'original en pleine taille à chaque case.
+
+Les noms de fichiers sont **en minuscules sans accent** volontairement : GitHub Pages est sensible à
+la casse, une majuscule oubliée donne une image cassée en ligne alors qu'elle s'affiche en local.
 
 ## Repères de lecture
 

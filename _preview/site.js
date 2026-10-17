@@ -23,7 +23,7 @@
 
   /* --- 1. Filtres de projets ------------------------------ */
   var bar = document.getElementById("filters");
-  var grid = document.getElementById("projects");
+  var grid = document.getElementById("project-cards");
   var empty = document.getElementById("projects-empty");
 
   if (bar && grid) {
