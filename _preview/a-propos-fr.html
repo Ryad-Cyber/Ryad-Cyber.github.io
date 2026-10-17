@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>À propos — Ryad Boujenan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="hero.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="hero-fr.html">Ryad Boujenan</a>
+
+    <nav class="site-nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="hero-fr.html">Accueil</a></li>
+        <li><a href="a-propos-fr.html" aria-current="true">À propos</a></li>
+        <li><a href="projets-fr.html">Projets</a></li>
+        <li><a href="#competences">Compétences</a></li>
+        <li><a href="#parcours">Parcours</a></li>
+        <li><a href="#formations">Formations</a></li>
+        <li><a href="voyages-fr.html">Voyages</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <p class="lang-switch">
+      <span aria-current="true">FR</span> /
+      <a href="hero-en.html" hreflang="en" lang="en">EN</a>
+    </p>
+  </div>
+</header>
+
+<main>
+  <!-- ============ À PROPOS ============ -->
+  <section class="section" id="a-propos">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-no">01 — À propos</p>
+        <h2>Qui je suis</h2>
+      </div>
+
+      <p class="about-lede">
+        J'ai 21 ans et je termine un cycle d'ingénieur en <strong>informatique et réseaux, option
+        cybersécurité</strong>, à l'EMSI Casablanca (2022–2027). Ce qui me plaît concrètement dans la
+        cybersécurité défensive, c'est le moment où une attaque devient <strong>visible dans les
+        logs</strong>. C'est le travail d'un SOC, et c'est celui que je veux faire.
+      </p>
+
+      <div class="about-grid">
+        <div class="about-item">
+          <h3>Mon cursus</h3>
+          <dl class="kv">
+            <dt>Les fondations</dt>
+            <dd>Systèmes Linux et Windows Server, Active Directory, TCP/IP, DNS, TLS, VPN, virtualisation, programmation</dd>
+            <dt>Puis la spécialisation sécurité</dt>
+            <dd>Cryptographie, sécurité des réseaux, gestion des vulnérabilités, supervision de sécurité</dd>
+          </dl>
+        </div>
+
+        <div class="about-item">
+          <h3>J'apprends surtout en construisant</h3>
+          <p>En parallèle des cours :</p>
+          <ul class="dashes">
+            <li>un <strong>lab SOC Elastic Security</strong>, monté de bout en bout ;</li>
+            <li>un <strong>lab Wazuh multi-VM</strong> avec des agents Linux et Windows ;</li>
+            <li>trois cours Splunk orientés SOC ;</li>
+            <li>l'administration Linux Red Hat (RH124).</li>
+          </ul>
+        </div>
+
+        <div class="about-item">
+          <h3>En stage</h3>
+          <ul class="dashes">
+            <li><strong>Nethash</strong>, Paris — scans Nmap automatisés en Python, campagnes de scans de vulnérabilités GVM/OpenVAS.</li>
+            <li><strong>SIMDATA</strong>, Orléans — un premier stage de développement web full-stack, une expérience qui me sert aujourd'hui pour scripter et automatiser mes propres outils.</li>
+          </ul>
+        </div>
+
+        <div class="about-item">
+          <h3>Ce qu'une règle de détection m'oblige à comprendre</h3>
+          <p>Un comportement d'attaquant, pas seulement l'outil qu'il utilise :</p>
+          <ul class="dashes">
+            <li>quels événements il génère ;</li>
+            <li>ce qui le distingue de l'activité légitime ;</li>
+            <li>où se situe le seuil au-delà duquel on alerte.</li>
+          </ul>
+          <p>
+            J'aime autant ce qui vient ensuite : le triage, l'investigation, la réduction des faux
+            positifs, et la documentation qui permet à quelqu'un d'autre de rejouer l'enquête.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>
