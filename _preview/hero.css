@@ -508,14 +508,19 @@ li code {
   counter-reset: step;
 }
 
+/* Numero en absolu : en grille, chaque <strong> du texte deviendrait
+   un element de grille distinct et le texte s'empilerait mot a mot. */
 .steps li {
-  display: grid;
-  grid-template-columns: 2.4em minmax(0, 1fr);
+  position: relative;
+  padding-left: 2.4em;
   counter-increment: step;
 }
 
 .steps li::before {
   content: counter(step, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0;
   font-family: var(--font-mono);
   font-size: 0.8125rem;
   line-height: 2;
@@ -567,6 +572,28 @@ li code {
 
 .scenarios p {
   margin: 0;
+}
+
+/* Piece en tete de cas : point d'entree visuel, format modere */
+.case-visual {
+  max-width: 460px;
+  margin: 0 0 28px;
+}
+
+.case-visual img {
+  width: 100%;
+  height: auto;
+  padding: 4px;
+  border: 1px solid var(--ink);
+  background: #fff;
+}
+
+.case-visual figcaption {
+  margin-top: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
 }
 
 /* Liste de tags dans le corps d'un cas : meme registre que la ligne
@@ -676,6 +703,103 @@ li code {
 
 .about-item .dashes + p {
   margin-top: 12px;
+}
+
+/* --- 8 bis. Certifications --------------------------------- */
+.certs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 48px;
+}
+
+.cert {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  align-items: start;
+  gap: 18px;
+  padding: 22px 0 26px;
+  border-top: 1px solid var(--line);
+}
+
+/* Entree sans visuel : le texte occupe toute la largeur */
+.cert--text-only {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.cert-visual {
+  display: block;
+  padding: 3px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.cert-visual img {
+  width: 100%;
+  height: auto;
+}
+
+/* Seules les certifications verifiables sont des liens */
+a.cert-visual {
+  transition: border-color 0.12s ease;
+}
+
+a.cert-visual:hover {
+  border-color: var(--accent);
+}
+
+.cert-body h3 {
+  font-size: 1.0625rem;
+  line-height: 1.2;
+}
+
+.cert-meta {
+  margin: 8px 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.7;
+}
+
+.cert-org {
+  display: block;
+  color: var(--teal);
+}
+
+.cert-date {
+  display: block;
+  color: var(--ink-soft);
+}
+
+.cert-status {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 1px 7px;
+  border: 1px solid var(--ink-soft);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--ink-soft);
+}
+
+/* Les trois cours d'une meme entree */
+.cert-courses {
+  display: grid;
+  gap: 7px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dotted var(--line);
+  font-size: 0.875rem;
+}
+
+.cert-courses .when {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--ink-soft);
+}
+
+.cert-verify {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 0.875rem;
 }
 
 /* --- 9. Voyages : registre libre, groupe par pays ---------- */
@@ -965,12 +1089,22 @@ html.is-locked body {
 }
 
 @media (max-width: 760px) {
-  .about-grid {
+  .about-grid,
+  .certs {
     grid-template-columns: minmax(0, 1fr);
   }
 
   .about-lede {
     font-size: 1.125rem;
+  }
+
+  .cert {
+    grid-template-columns: 120px minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .cert--text-only {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
