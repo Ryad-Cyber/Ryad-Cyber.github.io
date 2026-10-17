@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aperçu des projets — refonte « dossier »</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="hero.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="hero-fr.html">Ryad Boujenan</a>
+
+    <nav class="site-nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="hero-fr.html">Accueil</a></li>
+        <li><a href="#a-propos">À propos</a></li>
+        <li><a href="#projets" aria-current="true">Projets</a></li>
+        <li><a href="#competences">Compétences</a></li>
+        <li><a href="#parcours">Parcours</a></li>
+        <li><a href="#formations">Formations</a></li>
+        <li><a href="#voyages">Voyages</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <p class="lang-switch">
+      <span aria-current="true">FR</span> /
+      <a href="projets-en.html" hreflang="en" lang="en">EN</a>
+    </p>
+  </div>
+</header>
+
+<main>
+  <!-- ============ PROJETS ============ -->
+  <section class="section" id="projets">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-no">02 — Projets</p>
+        <h2>Ce que j'ai construit</h2>
+        <p class="section-sub">
+          Trois projets de supervision et de réponse, chacun validé par des attaques simulées contre
+          mes propres machines plutôt que sur des jeux de logs tout faits.
+        </p>
+      </div>
+
+      <div class="cases">
+
+        <!-- Cas 1 -->
+        <article class="case" aria-labelledby="cas-1">
+          <header class="case-head">
+            <h3 id="cas-1"><span class="case-no">CAS Nº1</span> <span class="case-sep" aria-hidden="true">—</span> Lab SOC Elastic Security</h3>
+            <p class="case-meta">
+              <span class="meta-date">2026</span>
+              <span>Projet personnel</span>
+              <span class="meta-tools">Elasticsearch, Kibana, Elastic Security, Fleet, Elastic Agent, Sysmon, KQL, EQL, MITRE ATT&amp;CK, Windows Server / AD, Ubuntu</span>
+            </p>
+          </header>
+
+          <div class="case-body">
+            <div class="case-row">
+              <h4 class="case-label">Contexte</h4>
+              <div class="case-content">
+                <p>
+                  Je voulais travailler la détection sur mes propres données, et pas sur des jeux de logs
+                  préparés. J'ai donc construit un SOC complet en laboratoire — collecte, règles,
+                  investigation — puis joué de vraies attaques contre des machines Linux et Windows pour
+                  écrire et éprouver les détections correspondantes.
+                </p>
+              </div>
+            </div>
+
+            <div class="case-row">
+              <h4 class="case-label">Ce que j'ai fait</h4>
+              <div class="case-content">
+                <ol class="steps">
+                  <li>Déployé la stack Elasticsearch + Kibana avec Fleet, et enrôlé des Elastic Agents sur Ubuntu, Windows 11 et un contrôleur de domaine Windows Server.</li>
+                  <li>Instrumenté les postes Windows avec Sysmon et activé le Script Block Logging PowerShell pour obtenir les événements nécessaires aux détections.</li>
+                  <li>Écrit et validé <strong>4 règles de détection</strong> couvrant 3 scénarios d'attaque, chacune déclenchée par une attaque simulée puis ajustée pour limiter les faux positifs.</li>
+                  <li>Rédigé un guide d'investigation par règle : ce que l'alerte signifie, les champs à vérifier en priorité, et les étapes de qualification.</li>
+                  <li>Documenté l'ensemble du lab sur GitHub pour qu'il soit reproductible.</li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="case-row">
+              <h4 class="case-label">Les 3 scénarios de détection</h4>
+              <div class="case-content">
+                <ul class="scenarios">
+                  <li>
+                    <h5>SSH Brute Force (Linux)</h5>
+                    <p>
+                      Détection des échecs d'authentification répétés depuis une même source, puis
+                      corrélation en <strong>EQL</strong> de la séquence « échecs multiples suivis d'une
+                      connexion réussie » — le signal qui distingue une tentative d'une compromission
+                      probable.
+                    </p>
+                  </li>
+                  <li>
+                    <h5>PowerShell obfusqué (Windows 11)</h5>
+                    <p>
+                      Détection des commandes encodées en base64 passées à PowerShell, à partir des
+                      blocs de script capturés par le Script Block Logging.
+                    </p>
+                    <span class="attck">MITRE ATT&amp;CK T1059.001</span>
+                  </li>
+                  <li>
+                    <h5>Password Spray sur Active Directory (Windows Server)</h5>
+                    <p>
+                      Règle <strong>Threshold en KQL</strong> sur l'Event ID 4625 du contrôleur de
+                      domaine, agrégée par <code>source.ip</code> avec une cardinalité sur
+                      <code>user.name</code> : c'est ce critère qui sépare un password spray — beaucoup
+                      de comptes testés, peu de tentatives sur chacun — d'un brute force classique sur un
+                      seul compte.
+                    </p>
+                    <span class="attck">MITRE ATT&amp;CK T1110.003</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <p class="case-foot">
+            <a href="https://github.com/Ryad-Cyber/elastic-security-soc-lab" target="_blank" rel="noopener">Dépôt GitHub — règles et guides d'investigation</a>
+          </p>
+        </article>
+
+        <!-- Cas 2 -->
+        <article class="case" aria-labelledby="cas-2">
+          <header class="case-head">
+            <h3 id="cas-2"><span class="case-no">CAS Nº2</span> <span class="case-sep" aria-hidden="true">—</span> Lab Wazuh (SIEM) multi-VM</h3>
+            <p class="case-meta">
+              <span class="meta-date">05/2026</span>
+              <span>Projet académique</span>
+              <span class="meta-tools">Wazuh, VMware, Linux, Windows, MITRE ATT&amp;CK, Nmap, Syslog</span>
+            </p>
+          </header>
+
+          <div class="case-body">
+            <div class="case-row">
+              <h4 class="case-label">Contexte</h4>
+              <div class="case-content">
+                <p>
+                  Déployer un SIEM open source sur une infrastructure hétérogène de plusieurs machines
+                  virtuelles, et vérifier de bout en bout qu'il détecte réellement des attaques — pas
+                  seulement qu'il collecte des logs.
+                </p>
+              </div>
+            </div>
+
+            <div class="case-row">
+              <h4 class="case-label">Ce que j'ai fait</h4>
+              <div class="case-content">
+                <ol class="steps">
+                  <li>Installé le manager Wazuh et déployé les agents sur des machines Linux et Windows, avec centralisation des journaux.</li>
+                  <li>Écrit <strong>2 règles de détection personnalisées</strong>, mappées sur le framework MITRE ATT&amp;CK.</li>
+                  <li>Validé chaque règle par attaque simulée — brute force SSH et scans Nmap — et vérifié la remontée des alertes dans le dashboard.</li>
+                  <li>Comparé le comportement de Wazuh à celui d'Elastic Security sur des scénarios équivalents, pour comprendre ce que chaque outil rend facile ou difficile.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <p class="case-foot">
+            <span class="no-repo">Projet académique — documentation interne, dépôt non public.</span>
+          </p>
+        </article>
+
+        <!-- Cas 3 -->
+        <article class="case" aria-labelledby="cas-3">
+          <header class="case-head">
+            <h3 id="cas-3"><span class="case-no">CAS Nº3</span> <span class="case-sep" aria-hidden="true">—</span> KASBAH 2026 — gestion de crise cyber</h3>
+            <p class="case-meta">
+              <span class="meta-date">09/2026</span>
+              <span>EMSI × CyberSup</span>
+            </p>
+          </header>
+
+          <div class="case-body">
+            <div class="case-row">
+              <h4 class="case-label">Contexte</h4>
+              <div class="case-content">
+                <p>
+                  Compétition de gestion de crise cyber sur trois jours : une cyberattaque simulée contre
+                  une organisation, à traiter en temps réel avec une information partielle et des
+                  décisions à prendre vite.
+                </p>
+              </div>
+            </div>
+
+            <div class="case-row">
+              <h4 class="case-label">Ce que j'ai fait</h4>
+              <div class="case-content">
+                <ul class="dashes">
+                  <li>Membre de la <strong>cellule Direction</strong> : arbitrage des priorités pendant toute la durée de la crise.</li>
+                  <li>Décisions de confinement mises en balance avec la continuité d'activité.</li>
+                  <li>Coordination et communication avec les cellules techniques et les interlocuteurs externes.</li>
+                  <li>Retour d'expérience utile pour un analyste : une alerte n'a de valeur que si elle est qualifiée et transmise clairement à ceux qui décident.</li>
+                </ul>
+
+                <figure class="case-figure">
+                  <img src="../assets/kasbah_photo.jpeg" alt="Présentation d'un scénario de crise devant l'écran de projection, pendant l'exercice KASBAH 2026" width="1206" height="904" loading="lazy" decoding="async">
+                  <figcaption>Présentation lors de l'exercice de crise KASBAH 2026</figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <div class="case-row">
+              <h4 class="case-label">Compétences mobilisées</h4>
+              <div class="case-content">
+                <ul class="tag-list">
+                  <li>Gestion de crise</li>
+                  <li>Coordination</li>
+                  <li>Prise de décision</li>
+                  <li>Communication</li>
+                  <li>Travail sous pression</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <p class="case-foot">
+            <a href="https://kasbah.cybersup.ai/certificat/KSB26-0K0CQJVF" target="_blank" rel="noopener">Certificat de participation</a>
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="container">
+  <p class="preview-note">
+    Aperçu de la section Projets seule. Le reste du site sera refait après validation du traitement « CAS Nº ».
+  </p>
+</div>
+
+</body>
+</html>
