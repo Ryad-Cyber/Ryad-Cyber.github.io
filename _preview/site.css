@@ -1,8 +1,7 @@
 /* ============================================================
    Ryad Boujenan - portfolio, theme sombre.
    Structure inspiree de satvik.live (densite, panneaux, filtres),
-   palette propre au site. Remplace hero.css pour les nouvelles
-   pages ; hero.css reste en place pour les anciens apercus.
+   palette propre au site : fond bleu nuit, panneaux a bordure fine.
    ============================================================ */
 
 /* --- 1. Variables ------------------------------------------ */
@@ -471,6 +470,9 @@ strong {
 }
 
 .stats-row dt {
+  /* Filet de securite : un libelle long ne doit jamais chevaucher sa valeur. */
+  min-width: 0;
+  overflow-wrap: anywhere;
   font-size: 0.875rem;
   color: var(--muted);
 }
