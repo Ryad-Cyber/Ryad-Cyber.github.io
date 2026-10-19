@@ -1105,13 +1105,74 @@ strong {
   height: auto;
 }
 
-/* Visuel cliquable seulement quand une verification existe */
+/* Chaque visuel ouvre le certificat en grand dans la visionneuse */
 a.cert-visual {
+  cursor: zoom-in;
   transition: border-color 0.15s ease;
 }
 
-a.cert-visual:hover {
+a.cert-visual:hover,
+a.cert-visual:focus-visible {
   border-color: var(--gold);
+}
+
+/* Colonne de gauche quand le visuel alterne entre plusieurs certificats */
+.cert-media {
+  align-self: start;
+}
+
+/* Les trois certificats Splunk occupent la meme case et se succedent.
+   Sans JavaScript, seul le premier (is-on) reste visible. */
+.cert-rotator {
+  position: relative;
+  display: block;
+  aspect-ratio: 1200 / 849;
+}
+
+.cert-rotator .cert-visual {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.7s ease, border-color 0.15s ease;
+}
+
+.cert-rotator .cert-visual.is-on {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cert-rotator .cert-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.cert-dots {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.cert-dots i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--border-strong);
+  transition: background-color 0.4s ease;
+}
+
+.cert-dots i.is-on {
+  background: var(--gold);
+}
+
+.certs-all {
+  margin-top: 16px;
+}
+
+.certs-all[hidden] {
+  display: none;
 }
 
 .cert-body h4 {

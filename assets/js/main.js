@@ -3,12 +3,14 @@
    1. Filtres de projets (7 onglets fixes, etat vide).
    2. Section courante dans le menu.
    3. Formulaire de contact -> messagerie de l'utilisateur.
-   4. Carrousels de la page Voyages.
-   5. Visionneuse des photos de voyage.
+   4. Carrousels de la section Voyages.
+   5. Visionneuse : photos de voyage et certificats.
+   6. Alternance des trois certificats Splunk.
    Sans JavaScript : toutes les cartes restent visibles, le detail
    des cas se deplie (<details>), le formulaire s'envoie en mailto,
-   les carrousels defilent au doigt ou a la barre, et chaque photo
-   reste un lien vers l'image en pleine taille.
+   les carrousels defilent au doigt ou a la barre, chaque photo et
+   chaque certificat reste un lien vers l'image en pleine taille,
+   et le visuel Splunk montre le premier des trois certificats.
    ============================================================ */
 (function () {
   "use strict";
@@ -192,12 +194,12 @@
     update();
   });
 
-  /* --- 5. Visionneuse -------------------------------------- */
-  var gallery = document.getElementById("gallery");
+  /* --- 5. Visionneuse (photos de voyage + certificats) ------ */
   var box = document.getElementById("lightbox");
+  var groups = toArray(document.querySelectorAll("[data-gallery]"));
 
-  if (gallery && box) {
-    var tiles = toArray(gallery.querySelectorAll(".photo"));
+  if (box && groups.length) {
+    var tiles = [];
     var media = document.getElementById("lightbox-media");
     var caption = document.getElementById("lightbox-caption");
     var counter = document.getElementById("lightbox-count");
@@ -209,6 +211,12 @@
 
     var pad = function (n) {
       return (n < 10 ? "0" : "") + n;
+    };
+
+    /* Un groupe = une suite parcourable : les photos d'un pays,
+       ou l'ensemble des certificats. */
+    var tilesOf = function (group) {
+      return toArray(group.querySelectorAll("a.photo, a.cert-visual"));
     };
 
     var show = function (i) {
@@ -236,7 +244,8 @@
       counter.textContent = pad(current + 1) + " / " + pad(tiles.length);
     };
 
-    var open = function (i, trigger) {
+    var open = function (list, i, trigger) {
+      tiles = list;
       opener = trigger || null;
       var gap = window.innerWidth - root.clientWidth;
       if (gap > 0) document.body.style.paddingRight = gap + "px";
@@ -254,10 +263,25 @@
       if (opener) opener.focus();
     };
 
-    tiles.forEach(function (tile, i) {
-      tile.addEventListener("click", function (event) {
-        event.preventDefault();
-        open(i, tile);
+    groups.forEach(function (group) {
+      var list = tilesOf(group);
+      list.forEach(function (tile, i) {
+        tile.addEventListener("click", function (event) {
+          event.preventDefault();
+          open(list, i, tile);
+        });
+      });
+    });
+
+    /* Bouton « voir tous les certificats » : ouvre le groupe entier.
+       Masque dans le HTML, il n'apparait que si le JS repond. */
+    toArray(document.querySelectorAll("[data-open-gallery]")).forEach(function (btn) {
+      var group = document.getElementById(btn.getAttribute("data-open-gallery"));
+      if (!group) return;
+      btn.hidden = false;
+      btn.addEventListener("click", function () {
+        var list = tilesOf(group);
+        if (list.length) open(list, 0, btn);
       });
     });
 
@@ -292,4 +316,62 @@
       }
     });
   }
+
+  /* --- 6. Alternance des trois certificats Splunk ----------- */
+  toArray(document.querySelectorAll("[data-rotator]")).forEach(function (rot) {
+    var slides = toArray(rot.querySelectorAll(".cert-visual"));
+    var holder = rot.parentNode || rot;
+    var dots = toArray(holder.querySelectorAll(".cert-dots i"));
+    var timer = null;
+    var index = 0;
+
+    // Mouvement non souhaite ou rien a faire tourner : on laisse le premier.
+    if (reduced || slides.length < 2) return;
+
+    var goTo = function (i) {
+      index = (i + slides.length) % slides.length;
+      slides.forEach(function (slide, n) {
+        var on = n === index;
+        slide.classList.toggle("is-on", on);
+        slide.setAttribute("tabindex", on ? "0" : "-1");
+        if (on) {
+          slide.removeAttribute("aria-hidden");
+        } else {
+          slide.setAttribute("aria-hidden", "true");
+        }
+      });
+      dots.forEach(function (dot, n) {
+        dot.classList.toggle("is-on", n === index);
+      });
+    };
+
+    var stop = function () {
+      window.clearInterval(timer);
+      timer = null;
+    };
+
+    var start = function () {
+      if (timer) return;
+      timer = window.setInterval(function () {
+        // Ne pas defiler derriere la visionneuse ouverte.
+        if (root.classList.contains("is-locked")) return;
+        goTo(index + 1);
+      }, 4500);
+    };
+
+    // La lecture d'un certificat prime sur le defilement.
+    rot.addEventListener("mouseenter", stop);
+    rot.addEventListener("mouseleave", start);
+    rot.addEventListener("focusin", stop);
+    rot.addEventListener("focusout", start);
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) {
+        stop();
+      } else {
+        start();
+      }
+    });
+
+    start();
+  });
 })();
