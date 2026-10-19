@@ -451,7 +451,6 @@ strong {
   object-fit: cover;
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-sm);
-  filter: grayscale(1) contrast(1.05);
 }
 
 .stats-title {

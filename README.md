@@ -1,212 +1,131 @@
-# Portfolio — Ryad Boujenan
+# Ryad Boujenan | Cybersecurity Portfolio
 
-Portfolio statique, bilingue français / anglais, pour un profil **SOC / Blue Team**.
-Pas de framework, pas de build, pas de dépendance : HTML + CSS + JavaScript natif.
+**SOC Analyst · Blue Team · Cybersecurity & Cloud Security**
 
-**Une seule adresse, celle du CV :** <https://ryad-cyber.github.io/>
-La version anglaise est à <https://ryad-cyber.github.io/en/>.
+Welcome to my personal portfolio, where I present my cybersecurity projects, technical skills, certifications, academic background, and professional development.
 
-Il n'existe **pas** de seconde version du site. Tout vit dans ces deux pages.
+The portfolio is designed to showcase my learning journey in cybersecurity, with a particular interest in security operations, threat detection, incident investigation, and cloud security.
+
+🌐 **Portfolio:** https://ryad-cyber.github.io/
+🇫🇷 French version available by default · 🇬🇧 English version: https://ryad-cyber.github.io/en/
 
 ---
 
-## Structure
+## About the Portfolio
 
-```
+This website brings together the main elements of my cybersecurity journey in one place.
+
+It provides an overview of:
+
+* **Cybersecurity projects:** practical labs, security scenarios, investigations, and technical exercises.
+* **SOC & Blue Team:** security monitoring, log analysis, threat detection, and incident investigation.
+* **Technical skills:** security tools, technologies, and concepts studied or practiced.
+* **Education & experience:** academic background, professional experience, and career development.
+* **Certifications:** training achievements and relevant credentials.
+* **Travel:** a personal section reflecting experiences beyond technology.
+* **Contact:** ways to connect with me professionally.
+
+The goal is to present my work clearly and demonstrate a practical, hands-on approach to learning cybersecurity.
+
+> This portfolio is a work in progress. Projects and skills are presented according to my actual experience and learning progress.
+
+## Technologies
+
+The portfolio is built with standard web technologies:
+
+| Technology   | Purpose                                                  |
+| ------------ | -------------------------------------------------------- |
+| HTML5        | Structure and content                                    |
+| CSS3         | Responsive layout, visual design, and animations         |
+| JavaScript   | Project filters, navigation, carousels, and image viewer |
+| Git & GitHub | Version control and source code hosting                  |
+| GitHub Pages | Website hosting                                          |
+
+The website uses no front-end framework or build process. Its lightweight architecture makes it straightforward to maintain and deploy.
+
+## Features
+
+* **Bilingual website:** French and English versions with matching content and structure.
+* **Cybersecurity-inspired design:** dark interface, technical grid, network patterns, and cloud security motifs.
+* **Interactive project portfolio:** category filters and expandable project details.
+* **Project documentation:** objectives, results, tools, and practical scenarios.
+* **Responsive design:** adapted to desktop, tablet, and mobile screens.
+* **Travel gallery:** country-based photo carousels and an image viewer.
+* **Accessibility considerations:** semantic HTML, keyboard-friendly native elements, and support for reduced motion.
+* **Simple deployment:** published through GitHub Pages without a build step.
+
+## Repository Structure
+
+```text
 .
-├── index.html              Portfolio complet — français
-├── en/index.html           Portfolio complet — anglais, structure identique
-│
+├── index.html              # French portfolio
+├── en/
+│   └── index.html          # English portfolio
 ├── assets/
-│   ├── css/style.css       Toute la mise en forme des deux pages
-│   ├── js/main.js          Filtres, section courante, formulaire, carrousels, visionneuse
-│   ├── photo.jpg           Photo de profil
-│   ├── favicon.svg         Favicon « RB »
-│   ├── certifications/     Certificats rasterisés en JPEG (jamais de PDF brut)
-│   ├── projets/            Captures des labs + photo KASBAH
-│   ├── logos/              Logos des établissements (EMSI, lycée, Nethash)
-│   ├── flags/              Drapeaux SVG de la section Voyages
-│   └── voyages/            Photos et vidéos de voyage
-│       └── thumbs/         Vignettes 480 px générées par tools/make-thumbs.ps1
-│
-├── tools/make-thumbs.ps1   Génère les vignettes de assets/voyages/
-├── .nojekyll               Sert les fichiers tels quels
+│   ├── css/
+│   │   └── style.css       # Shared styles
+│   ├── js/
+│   │   └── main.js         # Interactive features
+│   ├── certifications/     # Certification images
+│   ├── projets/            # Project screenshots and visuals
+│   ├── logos/              # Education and organization logos
+│   ├── flags/              # Travel section flags
+│   └── voyages/             # Travel photos, videos, and thumbnails
+├── tools/
+│   └── make-thumbs.ps1     # Travel thumbnail generation script
+├── .nojekyll
 └── README.md
 ```
 
-Chaque page est autonome : le texte est écrit directement dans le HTML, il n'y a pas de
-fichier de contenu séparé ni de gabarit à compiler.
+Both language versions share the same CSS and JavaScript files. Content is written directly in each HTML page, so there is no separate content management system or compilation process.
 
----
+## Local Development
 
-## La page
+To run the portfolio locally:
 
-Une seule page par langue, six sections, six entrées de menu :
-**Accueil · Projets · Compétences · Parcours · Voyages · Contact**.
+1. Clone the repository.
+2. Open `index.html` in a browser to view the French version.
+3. Open `en/index.html` to view the English version.
+4. Test navigation, project filters, galleries, and responsive behavior.
 
-Les ancres diffèrent selon la langue, le reste est identique :
+No package installation or build command is required.
 
-| Section | FR | EN |
-| --- | --- | --- |
-| Accueil | `#accueil` | `#home` |
-| Projets | `#projets` | `#projects` |
-| Compétences | `#competences` | `#skills` |
-| Parcours | `#parcours` | `#experience` |
-| Voyages | `#voyages` | `#voyages` |
-| Contact | `#contact` | `#contact` |
+### Adding Travel Photos
 
-Le menu surligne la section courante (IntersectionObserver). Sous 860 px il est masqué :
-la navigation se fait au défilement.
+Travel images are stored in `assets/voyages/`, with generated thumbnails in `assets/voyages/thumbs/`.
 
-### Fond
-
-Cinq calques empilés derrière le contenu, tous décoratifs (`aria-hidden`) :
-
-1. `.bg-depth` — halo bleuté en haut, assombrissement en bas, pour la profondeur.
-2. `.bg-grid` — grille technique de 64 px, estompée par un masque radial.
-3. `.bg-layer--network` — nœuds reliés par des lignes fines.
-4. `.bg-layer--clouds` — glyphes de nuage.
-5. `.bg-layer--shields` — contours de boucliers.
-
-Les trois derniers dérivent lentement vers le bas. Chacun est une tuile de 1800 × 1400 px
-dessinée deux fois : une translation d'exactement une tuile boucle sans raccord.
-**Tout est immobile** quand le visiteur a activé « réduire les animations ».
-
-Les opacités sont basses à dessein (3 à 8 %). Les augmenter ferait passer le texte
-secondaire sous le seuil AA dans la bannière, là où les calques se cumulent.
-
-### Filtres de projets
-
-Sept onglets : **Tous · SOC / Blue Team · Red Team / Pentest · Cloud · IA · GRC ·
-Cryptographie**. Tous cliquables, même vides.
-
-Chaque carte porte `data-cat="<clé>"`. Les clés sont **identiques dans les deux langues**
-(`soc`, `redteam`, `cloud`, `ia`, `grc`, `crypto`) : seuls les libellés changent.
-
-Trois cartes portent `data-placeholder` (Pentest, IA, Cryptographie). Elles annoncent un
-projet en préparation, **ne comptent pas** dans les compteurs et **n'apparaissent pas** dans
-« Tous ». Une catégorie sans projet affiche un état vide.
-
-### Carte de projet
-
-Visible sans déplier : image, catégorie, date, titre, description courte, **Objectif**,
-**Résultat**, outils, lien. Le détail complet (contexte, étapes, scénarios de détection,
-captures) est replié dans un `<details>`, qui fonctionne sans JavaScript.
-
-### Section Voyages
-
-Intégrée à la page, pas sur un site séparé. Un bloc par pays, drapeau SVG, défilement
-horizontal des photos (flèches ou glissement au doigt), nom du lieu sur chaque photo,
-visionneuse au clic. Le bouton « Mes voyages » de la bannière y mène par ancre.
-
-### Formulaire de contact
-
-Sans serveur : l'envoi ouvre la messagerie du visiteur avec le message prérempli (`mailto`).
-Pour recevoir les messages directement, il faudrait un service externe type Formspree et
-remplacer l'attribut `action` du formulaire.
-
----
-
-## Modifier le contenu
-
-**Toute modification de fond doit être reportée dans les deux langues**, sinon les versions
-divergent. Les sections portent les mêmes commentaires dans les deux fichiers.
-
-| Ce que tu veux changer | Où |
-| --- | --- |
-| Nom, rôle, phrase d'accroche | `<section class="hero">` |
-| Fiche synthèse (4 lignes) | `<div class="stats">` |
-| Un projet | un `<article class="card panel">` |
-| Une compétence | un `<div class="skill-group panel">` |
-| Une expérience, un diplôme | un `<li>` de `<ol class="timeline">` |
-| Une certification | un `<article class="cert">` |
-| Un pays, une photo | un `<section class="country panel">` |
-| Disponibilité, contact | `<div class="availability">` et `.contact-rows` |
-
-### Ajouter un projet
-
-Copier un `<article class="card panel">` existant et remplacer son contenu. Le compteur de
-l'onglet se met à jour tout seul. Si la catégorie avait une carte `data-placeholder`, la
-retirer. Penser à mettre à jour la ligne « Projets » de la fiche synthèse, écrite en dur.
-
-### Ajouter une photo de voyage
-
-Déposer l'image dans `assets/voyages/`, en **minuscules, sans accent ni espace** : GitHub
-Pages est sensible à la casse, une majuscule oubliée casse l'image en ligne alors qu'elle
-s'affiche en local.
-
-Régénérer les vignettes depuis la racine :
+To regenerate thumbnails on Windows, run the following command from the repository root:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File tools\make-thumbs.ps1
 ```
 
-Le script réduit à 480 px sur le grand côté, redresse l'orientation EXIF, n'écrit que dans
-`thumbs/` et affiche les dimensions obtenues — à reporter dans `width`/`height`.
+Remember to update the corresponding country section in both language versions when adding new photos.
 
-Puis ajouter la vignette dans le bloc pays, **dans les deux langues** :
+## Deployment
 
-```html
-<li><a class="photo" href="assets/voyages/lisbonne-1.jpeg" data-caption="Lisbonne, Portugal">
-  <img src="assets/voyages/thumbs/lisbonne-1.jpeg" alt="Lisbonne, Portugal"
-       width="360" height="480" loading="lazy" decoding="async">
-  <span class="photo-label" aria-hidden="true">Lisbonne</span>
-</a></li>
-```
+The website is hosted using GitHub Pages.
 
-Dans `en/index.html`, les chemins commencent par `../assets/`. Une vidéo porte
-`data-type="video"`, et la classe `photo--tall` si elle est verticale.
+Changes committed and pushed to the `main` branch are published at:
 
-### Ajouter une certification
+**https://ryad-cyber.github.io/**
 
-Les certificats sont **rasterisés en JPEG** dans `assets/certifications/`, jamais liés en PDF
-brut. Le visuel n'est un lien que si une vérification publique existe (Coursera, Credly) ;
-sinon c'est une simple image.
-
----
-
-## Couleurs et polices
-
-Tout est dans le bloc `:root` en haut de `assets/css/style.css` :
-
-| Variable | Usage |
-| --- | --- |
-| `--bg` `#060b14` | fond général, bleu nuit |
-| `--panel` `#0d1420` | cartes et panneaux |
-| `--text` `#e6edf5` / `--muted` `#8698ad` | textes |
-| `--accent` `#35a7e8` | liens, onglet actif, bordures actives |
-| `--accent-2` `#28d17c` | points d'état uniquement |
-| `--gold` `#d9a441` | certifications uniquement |
-
-Les contrastes sont vérifiés AA (≥ 4,5:1) sur tous les textes, y compris dans le pire cas :
-du texte secondaire par-dessus la lueur de la bannière, le halo de profondeur, la grille et
-un trait de motif cumulés. Changer une couleur ou une opacité de fond impose de revérifier.
-
-Polices : **IBM Plex** (Sans, Sans Condensed, Mono) via Google Fonts — seule dépendance
-réseau du site. Hors ligne, le navigateur retombe sur les polices système.
-
----
-
-## Déployer
-
-Le dépôt s'appelle `Ryad-Cyber.github.io`, donc tout push sur `main` publie immédiatement à
-la racine du domaine. Aucune configuration supplémentaire n'est nécessaire.
+Typical deployment workflow:
 
 ```bash
-git add <les fichiers modifiés>
-git commit -m "Description du changement"
-git push
+git add index.html en/index.html assets/
+git commit -m "Update portfolio"
+git push origin main
 ```
 
-Éviter `git add .` : le dossier contient des fichiers de travail non destinés au site
-(PDF sources des certifications, captures d'écran de référence, photos non utilisées).
+Only stage the files intended for publication. Source documents, unused images, and working files should not be committed accidentally.
 
-### Vérifications avant de publier
+## Contact
 
-- Ouvrir `index.html` et `en/index.html` en local, tester la bascule FR/EN dans les deux sens.
-- Réduire la fenêtre à 390 px : aucun débordement horizontal.
-- Cliquer chaque onglet de filtre, ouvrir un cas, ouvrir une photo dans la visionneuse.
-- Vérifier que les liens externes (GitHub, LinkedIn, Coursera, Credly, certificat KASBAH)
-  répondent.
-- Après le push, recharger la page **en ligne** en forçant le cache : GitHub Pages met une
-  à deux minutes à publier.
+If you would like to discuss cybersecurity, security operations, cloud security, or professional opportunities, feel free to connect with me through the contact information available on my portfolio.
+
+🔗 **Portfolio:** https://ryad-cyber.github.io/
+
+---
+
+*Built and maintained by Ryad Boujenan.*
