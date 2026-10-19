@@ -1,78 +1,103 @@
 /* ============================================================
-   Ryad Boujenan - portfolio
-   Quatre comportements : le menu mobile, la section courante
-   (menu + points lateraux), la barre de progression et la
-   visionneuse de la galerie voyages.
-   La page reste entierement lisible sans ce fichier : les reperes
-   de lecture restent masques et les vignettes redeviennent de
-   simples liens vers la photo en pleine taille.
+   Ryad Boujenan - portfolio, comportements des pages.
+   1. Filtres de projets (7 onglets fixes, etat vide).
+   2. Section courante dans le menu.
+   3. Formulaire de contact -> messagerie de l'utilisateur.
+   4. Carrousels de la page Voyages.
+   5. Visionneuse des photos de voyage.
+   Sans JavaScript : toutes les cartes restent visibles, le detail
+   des cas se deplie (<details>), le formulaire s'envoie en mailto,
+   les carrousels defilent au doigt ou a la barre, et chaque photo
+   reste un lien vers l'image en pleine taille.
    ============================================================ */
 (function () {
   "use strict";
 
   var root = document.documentElement;
+  var reduced =
+    window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // Revele les reperes de lecture : ils n'ont aucun sens sans JS.
-  root.classList.add("has-js");
-
-  var nav = document.getElementById("site-nav");
-  var toggle = document.getElementById("nav-toggle");
-  var dots = document.getElementById("dot-nav");
-
-  function toArray(list) {
+  var toArray = function (list) {
     return list ? Array.prototype.slice.call(list) : [];
+  };
+
+  /* --- 1. Filtres de projets ------------------------------ */
+  var bar = document.getElementById("filters");
+  var grid = document.getElementById("project-cards");
+  var empty = document.getElementById("projects-empty");
+
+  if (bar && grid) {
+    var cards = toArray(grid.querySelectorAll(".card"));
+    var buttons = toArray(bar.querySelectorAll(".filter"));
+
+    // Une carte "en preparation" n'est pas un projet : elle n'apparait
+    // que dans sa propre categorie, jamais dans "Tous", et ne compte pas.
+    var isPlaceholder = function (card) {
+      return card.hasAttribute("data-placeholder");
+    };
+
+    var matches = function (card, key) {
+      if (key === "all") return !isPlaceholder(card);
+      return card.getAttribute("data-cat") === key;
+    };
+
+    buttons.forEach(function (b) {
+      var key = b.getAttribute("data-filter");
+      var n = cards.filter(function (c) {
+        return !isPlaceholder(c) && matches(c, key);
+      }).length;
+      var badge = b.querySelector(".count");
+      if (badge) badge.textContent = String(n);
+    });
+
+    var apply = function (btn) {
+      var key = btn.getAttribute("data-filter");
+      var shown = 0;
+
+      buttons.forEach(function (x) {
+        x.setAttribute("aria-pressed", x === btn ? "true" : "false");
+      });
+      cards.forEach(function (c) {
+        var on = matches(c, key);
+        c.hidden = !on;
+        if (on) shown++;
+      });
+
+      // Categorie sans projet : la grille cede la place a l'etat vide.
+      grid.hidden = shown === 0;
+      if (empty) {
+        empty.hidden = shown !== 0;
+        var label = empty.querySelector("[data-cat-label]");
+        if (label) label.textContent = btn.getAttribute("data-label") || "";
+      }
+    };
+
+    bar.hidden = false;
+    bar.addEventListener("click", function (event) {
+      var b = event.target.closest(".filter");
+      if (b) apply(b);
+    });
+
+    // Etat initial : "Tous", donc sans les cartes en preparation.
+    apply(buttons[0]);
   }
 
-  /* --- Menu mobile ---------------------------------------- */
-  function closeNav() {
-    if (!nav || !toggle) return;
-    nav.classList.remove("is-open");
-    toggle.setAttribute("aria-expanded", "false");
-  }
-
-  if (nav && toggle) {
-    toggle.addEventListener("click", function () {
-      var isOpen = nav.classList.toggle("is-open");
-      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    });
-
-    // Fermer apres un clic sur une ancre, a l'echap, ou en passant en desktop.
-    nav.addEventListener("click", function (event) {
-      if (event.target.closest("a")) closeNav();
-    });
-
-    document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape") closeNav();
-    });
-
-    window.addEventListener("resize", function () {
-      if (window.innerWidth > 950) closeNav();
-    });
-  }
-
-  /* --- Section courante : menu du haut + points lateraux --- */
-  // Les deux navigations pointent sur les memes ancres : un seul
-  // observateur les met a jour ensemble.
-  var links = toArray(nav && nav.querySelectorAll("a[href^='#']")).concat(
-    toArray(dots && dots.querySelectorAll("a[href^='#']"))
-  );
+  /* --- 2. Section courante dans le menu ------------------- */
+  var nav = document.querySelector(".site-nav");
+  var links = toArray(nav && nav.querySelectorAll("a[href^='#']"));
 
   if (links.length && "IntersectionObserver" in window) {
-    var sections = []; // ids des sections, dans l'ordre de la page
+    var order = [];
     var visible = {};
 
     links.forEach(function (link) {
       var id = link.getAttribute("href").slice(1);
-      if (id && document.getElementById(id) && sections.indexOf(id) === -1) {
-        sections.push(id);
-      }
+      if (id && document.getElementById(id)) order.push(id);
     });
 
     var setActive = function (id) {
       links.forEach(function (link) {
-        var active = link.getAttribute("href") === "#" + id;
-        link.classList.toggle("is-active", active);
-        if (active) {
+        if (link.getAttribute("href") === "#" + id) {
           link.setAttribute("aria-current", "true");
         } else {
           link.removeAttribute("aria-current");
@@ -82,64 +107,97 @@
 
     var observer = new IntersectionObserver(
       function (entries) {
-        entries.forEach(function (entry) {
-          visible[entry.target.id] = entry.isIntersecting;
+        entries.forEach(function (e) {
+          visible[e.target.id] = e.isIntersecting;
         });
-
-        // Si plusieurs sections traversent la bande, la premiere
-        // dans l'ordre de la page gagne : le repere ne saute pas.
-        for (var i = 0; i < sections.length; i++) {
-          if (visible[sections[i]]) {
-            setActive(sections[i]);
+        for (var i = 0; i < order.length; i++) {
+          if (visible[order[i]]) {
+            setActive(order[i]);
             return;
           }
         }
       },
-      // Bande de detection : le haut de la fenetre, sous l'en-tete.
       { rootMargin: "-20% 0px -70% 0px" }
     );
 
-    sections.forEach(function (id) {
+    order.forEach(function (id) {
       observer.observe(document.getElementById(id));
     });
   }
 
-  /* --- Barre de progression de lecture -------------------- */
-  // Seul endroit ou un listener de scroll est necessaire : il est
-  // passif et cale sur requestAnimationFrame, donc sans cout notable.
-  var bar = document.getElementById("progress-bar");
+  /* --- 3. Formulaire de contact --------------------------- */
+  // Pas de serveur : le message est prepare dans la messagerie du
+  // visiteur, qui n'a plus qu'a l'envoyer.
+  var form = document.getElementById("contact-form");
 
-  if (bar) {
-    var ticking = false;
+  if (form) {
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var name = form.elements.nom.value.trim();
+      var email = form.elements.email.value.trim();
+      var message = form.elements.message.value.trim();
+      var subject = (form.getAttribute("data-subject") || "Contact") + " — " + name;
+      var body = message + "\n\n— " + name + "\n" + email;
 
-    var draw = function () {
-      ticking = false;
-      var scrollable = root.scrollHeight - window.innerHeight;
-      var ratio = scrollable > 0 ? window.pageYOffset / scrollable : 0;
-      if (ratio < 0) ratio = 0;
-      if (ratio > 1) ratio = 1;
-      bar.style.transform = "scaleX(" + ratio.toFixed(4) + ")";
-    };
-
-    var request = function () {
-      if (ticking) return;
-      ticking = true;
-      window.requestAnimationFrame(draw);
-    };
-
-    window.addEventListener("scroll", request, { passive: true });
-    window.addEventListener("resize", request);
-    draw();
+      window.location.href =
+        "mailto:" + form.getAttribute("data-to") +
+        "?subject=" + encodeURIComponent(subject) +
+        "&body=" + encodeURIComponent(body);
+    });
   }
 
-  /* --- Visionneuse de la galerie voyages ------------------ */
-  // Chaque vignette est un lien vers la photo en pleine taille :
-  // sans JS le clic ouvre simplement l'image dans le navigateur.
+  /* --- 4. Carrousels --------------------------------------- */
+  toArray(document.querySelectorAll("[data-carousel]")).forEach(function (wrap) {
+    var track = wrap.querySelector(".track");
+    var navBox = wrap.querySelector(".carousel-nav");
+    var prev = wrap.querySelector("[data-dir='-1']");
+    var next = wrap.querySelector("[data-dir='1']");
+    if (!track || !navBox || !prev || !next) return;
+
+    var update = function () {
+      var max = track.scrollWidth - track.clientWidth;
+      // Pas de fleches quand tout tient a l'ecran.
+      navBox.hidden = max <= 2;
+      prev.disabled = track.scrollLeft <= 2;
+      next.disabled = track.scrollLeft >= max - 2;
+    };
+
+    [prev, next].forEach(function (b) {
+      b.addEventListener("click", function () {
+        var dir = Number(b.getAttribute("data-dir"));
+        track.scrollBy({
+          left: dir * track.clientWidth * 0.85,
+          behavior: reduced ? "auto" : "smooth"
+        });
+      });
+    });
+
+    var pending = false;
+    track.addEventListener(
+      "scroll",
+      function () {
+        if (pending) return;
+        pending = true;
+        window.requestAnimationFrame(function () {
+          pending = false;
+          update();
+        });
+      },
+      { passive: true }
+    );
+    window.addEventListener("resize", update);
+    toArray(track.querySelectorAll("img")).forEach(function (img) {
+      img.addEventListener("load", update);
+    });
+    update();
+  });
+
+  /* --- 5. Visionneuse -------------------------------------- */
   var gallery = document.getElementById("gallery");
   var box = document.getElementById("lightbox");
 
   if (gallery && box) {
-    var tiles = toArray(gallery.querySelectorAll(".tile-link"));
+    var tiles = toArray(gallery.querySelectorAll(".photo"));
     var media = document.getElementById("lightbox-media");
     var caption = document.getElementById("lightbox-caption");
     var counter = document.getElementById("lightbox-count");
@@ -155,7 +213,6 @@
 
     var show = function (i) {
       current = (i + tiles.length) % tiles.length;
-
       var tile = tiles[current];
       var text = tile.getAttribute("data-caption") || "";
       var node;
@@ -181,7 +238,6 @@
 
     var open = function (i, trigger) {
       opener = trigger || null;
-      // Compense la disparition de la barre de defilement.
       var gap = window.innerWidth - root.clientWidth;
       if (gap > 0) document.body.style.paddingRight = gap + "px";
       root.classList.add("is-locked");
@@ -194,7 +250,7 @@
       box.hidden = true;
       root.classList.remove("is-locked");
       document.body.style.paddingRight = "";
-      media.innerHTML = ""; // arrete la video et libere le fichier
+      media.innerHTML = ""; // arrete la video
       if (opener) opener.focus();
     };
 
@@ -213,14 +269,12 @@
       show(current + 1);
     });
 
-    // Clic en dehors de l'image : on ferme.
     box.addEventListener("click", function (event) {
       if (event.target === box || event.target === media) close();
     });
 
     document.addEventListener("keydown", function (event) {
       if (box.hidden) return;
-
       if (event.key === "Escape") {
         close();
       } else if (event.key === "ArrowLeft") {
@@ -228,20 +282,14 @@
       } else if (event.key === "ArrowRight") {
         show(current + 1);
       } else if (event.key === "Tab") {
-        // Focus garde dans la visionneuse tant qu'elle est ouverte.
-        // Recalcule a chaque fois : les controles video en font partie.
         var focusables = toArray(box.querySelectorAll("video[controls], button"));
         var pos = focusables.indexOf(document.activeElement);
-        var next = event.shiftKey ? pos - 1 : pos + 1;
-        if (pos === -1 || next < 0 || next >= focusables.length) {
+        var step = event.shiftKey ? pos - 1 : pos + 1;
+        if (pos === -1 || step < 0 || step >= focusables.length) {
           event.preventDefault();
           focusables[event.shiftKey ? focusables.length - 1 : 0].focus();
         }
       }
     });
   }
-
-  /* --- Annee du pied de page ------------------------------ */
-  var year = document.getElementById("year");
-  if (year) year.textContent = String(new Date().getFullYear());
 })();
