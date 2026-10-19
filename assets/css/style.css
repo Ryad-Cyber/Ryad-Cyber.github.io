@@ -1100,6 +1100,13 @@ strong {
   background: #fff;
 }
 
+/* Page supplementaire d'un certificat : presente pour la visionneuse,
+   jamais affichee en vignette. Sans cette regle, le display:block
+   ci-dessus annule l'attribut hidden et la case du texte est prise. */
+.cert-visual[hidden] {
+  display: none;
+}
+
 .cert-visual img {
   width: 100%;
   height: auto;
