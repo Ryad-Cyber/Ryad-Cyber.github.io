@@ -191,6 +191,11 @@
     toArray(track.querySelectorAll("img")).forEach(function (img) {
       img.addEventListener("load", update);
     });
+
+    // Replie, un carrousel n'a pas de largeur : on remesure a l'ouverture.
+    var folded = wrap.closest ? wrap.closest("details") : null;
+    if (folded) folded.addEventListener("toggle", update);
+
     update();
   });
 

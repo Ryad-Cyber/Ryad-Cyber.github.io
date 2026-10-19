@@ -1758,10 +1758,112 @@ a.contact-row:hover {
   color: var(--muted);
 }
 
+/* Carnet de voyage : replie par defaut. Sans JavaScript, <details>
+   fait tout le travail et les photos restent accessibles. */
+.carnet > summary {
+  list-style: none;
+}
+
+.carnet > summary::-webkit-details-marker {
+  display: none;
+}
+
+.carnet-teaser {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 22px;
+  padding: 18px 22px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--panel);
+  cursor: pointer;
+  transition: border-color 0.18s ease;
+}
+
+.carnet > summary:hover,
+.carnet > summary:focus-visible {
+  border-color: var(--accent);
+}
+
+/* Drapeaux legerement superposes, comme des tampons sur un passeport */
+.carnet-flags {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.carnet-flags .flag {
+  margin-right: -7px;
+  box-shadow: 0 0 0 2px var(--panel);
+}
+
+.carnet-flags .flag:last-child {
+  margin-right: 0;
+}
+
+.carnet-text {
+  display: grid;
+  gap: 3px;
+  flex: 1 1 220px;
+  min-width: 0;
+}
+
+.carnet-text strong {
+  font-size: 1.0625rem;
+}
+
+.carnet-sub {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.carnet-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--accent);
+}
+
+.carnet-cta .i {
+  transition: transform 0.2s ease;
+}
+
+.carnet[open] .carnet-cta .i {
+  transform: rotate(90deg);
+}
+
+.carnet > summary .when-open {
+  display: none;
+}
+
+.carnet[open] > summary .when-open {
+  display: inline;
+}
+
+.carnet[open] > summary .when-closed {
+  display: none;
+}
+
+/* Mention discrete des pays sans photo */
+.carnet-aside {
+  margin: 14px 4px 0;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
 .countries {
   display: grid;
   gap: 20px;
   padding-bottom: 72px;
+}
+
+.carnet .countries {
+  margin-top: 18px;
 }
 
 .country {

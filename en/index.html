@@ -657,9 +657,11 @@
             </article>
 
             <article class="cert">
-              <a class="cert-visual" href="../assets/certifications/supervision-reseaux.jpg" data-caption="Network monitoring — ENSET Mohammedia, 11/06/2026">
+              <a class="cert-visual" href="../assets/certifications/supervision-reseaux-p1.jpg" data-caption="Network monitoring — ENSET Mohammedia, 11/06/2026 · page 1/2">
                 <img src="../assets/certifications/supervision-reseaux.jpg" alt="Certificate of completion: Network monitoring module" width="760" height="465" loading="lazy" decoding="async">
               </a>
+              <!-- Seconde page de l'attestation : pas de vignette, mais elle suit la premiere dans la visionneuse -->
+              <a class="cert-visual" href="../assets/certifications/supervision-reseaux-p2.jpg" data-caption="Network monitoring — ENSET Mohammedia, 11/06/2026 · page 2/2" hidden></a>
               <div class="cert-body">
                 <h4>Network monitoring</h4>
                 <p class="cert-meta">
@@ -685,7 +687,7 @@
 
           <!-- Visionneuse des certificats : s'affiche seulement si le JS est actif -->
           <button class="btn btn-soft certs-all" type="button" data-open-gallery="certs" hidden>
-            <svg class="i" aria-hidden="true"><use href="#i-award"/></svg>View all 7 certificates
+            <svg class="i" aria-hidden="true"><use href="#i-award"/></svg>View all certificates
           </button>
 
           <div class="learning-note">
@@ -737,6 +739,29 @@
         <h2>Travel</h2>
         <p class="section-sub">Travel is my first passion.</p>
       </div>
+
+      <!-- Carnet replie : on montre les drapeaux, les photos viennent au clic.
+           Sans JavaScript, <details> suffit. -->
+      <details class="carnet">
+        <summary class="carnet-teaser">
+          <span class="carnet-flags" aria-hidden="true">
+            <img class="flag" src="../assets/flags/ca.svg" alt="" width="30" height="20">
+            <img class="flag" src="../assets/flags/us.svg" alt="" width="30" height="20">
+            <img class="flag" src="../assets/flags/es.svg" alt="" width="30" height="20">
+            <img class="flag" src="../assets/flags/ro.svg" alt="" width="30" height="20">
+            <img class="flag" src="../assets/flags/tr.svg" alt="" width="30" height="20">
+            <img class="flag" src="../assets/flags/ma.svg" alt="" width="30" height="20">
+          </span>
+          <span class="carnet-text">
+            <strong>Six countries, one photo diary</strong>
+            <span class="carnet-sub">Canada · United States · Spain · Romania · Türkiye · Morocco</span>
+          </span>
+          <span class="carnet-cta">
+            <span class="when-closed">Open the diary</span>
+            <span class="when-open">Close the diary</span>
+            <svg class="i" aria-hidden="true"><use href="#i-chevron-right"/></svg>
+          </span>
+        </summary>
 
       <div class="countries" id="gallery" data-gallery>
   
@@ -872,8 +897,11 @@
             <li><a class="photo" href="../assets/voyages/paramoteur-brevet.jpeg" data-caption="Paramotor licence"><img src="../assets/voyages/thumbs/paramoteur-brevet.jpeg" alt="Paramotor licence" width="360" height="480" loading="lazy" decoding="async"><span class="photo-label" aria-hidden="true">Paramotor licence</span></a></li>
           </ul>
         </section>
-  
+
         </div>
+      </details>
+
+      <p class="carnet-aside">And a few more that don't have a page here: Germany, Belgium…</p>
     </div>
   </section>
 
