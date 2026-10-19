@@ -1804,8 +1804,23 @@ a.contact-row:hover {
   box-shadow: 0 0 0 2px var(--panel);
 }
 
-.carnet-flags .flag:last-child {
-  margin-right: 0;
+/* Pastille discrete : d'autres pays visites, sans leur propre page.
+   Le detail (lesquels) reste dans l'infobulle et dans le texte
+   accessible aux lecteurs d'ecran, pas affiche en clair. */
+.carnet-flags-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-left: 11px;
+  border-radius: 50%;
+  background: var(--panel-2);
+  box-shadow: 0 0 0 1px var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: var(--muted);
+  cursor: default;
 }
 
 .carnet-text {
@@ -1856,11 +1871,17 @@ a.contact-row:hover {
   display: none;
 }
 
-/* Mention discrete des pays sans photo */
-.carnet-aside {
-  margin: 14px 4px 0;
-  font-size: 0.8125rem;
-  color: var(--muted);
+/* Texte present pour les lecteurs d'ecran seulement (ex. la pastille +2) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  clip-path: inset(50%);
+  border: 0;
 }
 
 .countries {
