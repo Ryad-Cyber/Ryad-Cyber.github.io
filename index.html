@@ -308,6 +308,51 @@
                     <li>Comparé le comportement de Wazuh à celui d'Elastic Security sur des scénarios équivalents, pour comprendre ce que chaque outil rend facile ou difficile.</li>
                   </ol>
                 </div>
+                <div class="detail-row">
+                  <h4>Scan, attaque simulée et détection</h4>
+                  <ul class="scenarios">
+                    <li>
+                      <div class="scenario-head"><h5>Scan réseau avec Nmap</h5><span class="attck">MITRE ATT&amp;CK T1046</span></div>
+                      <p>
+                        Reconnaissance initiale de la machine cible pour identifier les services exposés
+                        avant de simuler une attaque.
+                      </p>
+                      <figure class="detail-fig">
+                        <a href="assets/projets/wazuh-nmap-scan.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
+                          <img src="assets/projets/wazuh-nmap-scan.png" alt="Terminal : sudo nmap -sS 192.168.139.128, ports 22 (ssh) et 80 (http) ouverts" width="592" height="150" loading="lazy" decoding="async">
+                        </a>
+                        <figcaption>Scan Nmap : ports 22 (SSH) et 80 (HTTP) détectés ouverts sur la machine cible</figcaption>
+                      </figure>
+                    </li>
+                    <li>
+                      <div class="scenario-head"><h5>Brute force SSH avec Hydra</h5><span class="attck">MITRE ATT&amp;CK T1110</span></div>
+                      <p>
+                        Tentative de brute force contre le service SSH identifié, pour générer les
+                        échecs d'authentification que la règle de détection doit remonter.
+                      </p>
+                      <figure class="detail-fig">
+                        <a href="assets/projets/wazuh-hydra-ssh-bruteforce.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
+                          <img src="assets/projets/wazuh-hydra-ssh-bruteforce.png" alt="Terminal : hydra -l user -P passwords.txt ssh://192.168.139.128, resultat 0 mot de passe valide trouve" width="597" height="228" loading="lazy" decoding="async">
+                        </a>
+                        <figcaption>Hydra contre le port SSH : tentative sans succès, pour déclencher les alertes d'échec d'authentification</figcaption>
+                      </figure>
+                    </li>
+                    <li>
+                      <div class="scenario-head"><h5>Alertes et règle personnalisée</h5></div>
+                      <p>
+                        Les échecs d'authentification SSH et PAM remontent dans le tableau de bord, aux
+                        côtés de la règle personnalisée <code>100002</code> qui qualifie la création d'un
+                        compte utilisateur suspect.
+                      </p>
+                      <figure class="detail-fig">
+                        <a href="assets/projets/wazuh-detection-alerts-rules.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
+                          <img src="assets/projets/wazuh-detection-alerts-rules.png" alt="Tableau de bord Wazuh Threat Hunting : alertes d'echec d'authentification SSH et PAM, et regle personnalisee 100002 niveau 10 sur la creation d'un compte suspect" width="924" height="450" loading="lazy" decoding="async">
+                        </a>
+                        <figcaption>Alertes Wazuh : échecs d'authentification SSH/PAM, et règle personnalisée 100002 (niveau 10)</figcaption>
+                      </figure>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </details>
             <p class="no-repo">Projet académique — documentation interne, dépôt non public.</p>

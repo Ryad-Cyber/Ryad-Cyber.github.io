@@ -307,6 +307,51 @@
                     <li>Compared how Wazuh and Elastic Security behave on equivalent scenarios, to understand what each tool makes easy or hard.</li>
                   </ol>
                 </div>
+                <div class="detail-row">
+                  <h4>Scan, simulated attack and detection</h4>
+                  <ul class="scenarios">
+                    <li>
+                      <div class="scenario-head"><h5>Network scan with Nmap</h5><span class="attck">MITRE ATT&amp;CK T1046</span></div>
+                      <p>
+                        Initial reconnaissance of the target machine to identify exposed services before
+                        simulating an attack.
+                      </p>
+                      <figure class="detail-fig">
+                        <a href="../assets/projets/wazuh-nmap-scan.png" target="_blank" rel="noopener" title="Open image full size">
+                          <img src="../assets/projets/wazuh-nmap-scan.png" alt="Terminal: sudo nmap -sS 192.168.139.128, ports 22 (ssh) and 80 (http) open" width="592" height="150" loading="lazy" decoding="async">
+                        </a>
+                        <figcaption>Nmap scan: ports 22 (SSH) and 80 (HTTP) found open on the target machine</figcaption>
+                      </figure>
+                    </li>
+                    <li>
+                      <div class="scenario-head"><h5>SSH brute force with Hydra</h5><span class="attck">MITRE ATT&amp;CK T1110</span></div>
+                      <p>
+                        Brute-force attempt against the SSH service identified above, to generate the
+                        authentication failures the detection rule has to surface.
+                      </p>
+                      <figure class="detail-fig">
+                        <a href="../assets/projets/wazuh-hydra-ssh-bruteforce.png" target="_blank" rel="noopener" title="Open image full size">
+                          <img src="../assets/projets/wazuh-hydra-ssh-bruteforce.png" alt="Terminal: hydra -l user -P passwords.txt ssh://192.168.139.128, result 0 valid password found" width="597" height="228" loading="lazy" decoding="async">
+                        </a>
+                        <figcaption>Hydra against the SSH port: unsuccessful attempt, to trigger the authentication-failure alerts</figcaption>
+                      </figure>
+                    </li>
+                    <li>
+                      <div class="scenario-head"><h5>Alerts and custom rule</h5></div>
+                      <p>
+                        The SSH and PAM authentication failures surface on the dashboard, alongside the
+                        custom rule <code>100002</code> that flags the creation of a suspicious user
+                        account.
+                      </p>
+                      <figure class="detail-fig">
+                        <a href="../assets/projets/wazuh-detection-alerts-rules.png" target="_blank" rel="noopener" title="Open image full size">
+                          <img src="../assets/projets/wazuh-detection-alerts-rules.png" alt="Wazuh Threat Hunting dashboard: SSH and PAM authentication-failure alerts, and custom rule 100002 level 10 for a suspicious account creation" width="924" height="450" loading="lazy" decoding="async">
+                        </a>
+                        <figcaption>Wazuh alerts: SSH/PAM authentication failures, and custom rule 100002 (level 10)</figcaption>
+                      </figure>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </details>
             <p class="no-repo">Academic project — internal documentation, repository not public.</p>
