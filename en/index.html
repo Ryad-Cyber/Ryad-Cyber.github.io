@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ryad Boujenan — Cybersecurity engineering student · SOC / Blue Team</title>
+<title>Ryad Boujenan — Cybersecurity engineering student</title>
 <meta name="theme-color" content="#060b14">
-<meta name="description" content="Ryad Boujenan, final-year cybersecurity engineering student at EMSI Casablanca. SOC / Blue Team: detection, alert triage and SIEM investigation. Looking for a 4-to-6-month final-year internship from February 2027, primarily in Switzerland.">
+<meta name="description" content="Ryad Boujenan, final-year cybersecurity engineering student at EMSI Casablanca. Detection, cloud security and risk management. Looking for a 4-to-6-month final-year internship from February 2027, primarily in Switzerland.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
@@ -90,12 +90,12 @@
           <p class="status-pill"><span class="dot" aria-hidden="true"></span>Available — final-year internship · February 2027</p>
 
           <h1>Ryad Boujenan</h1>
-          <p class="hero-role">Cybersecurity engineering student — SOC / Blue&nbsp;Team</p>
+          <p class="hero-role">Cybersecurity engineering student</p>
 
           <p class="lede">
             I am completing an engineering degree in <strong>computer engineering and networks,
             cybersecurity major</strong>, at EMSI Casablanca. I am looking for a <strong>final-year
-            cybersecurity internship focused on SOC / Blue Team, 4 to 6 months from February 2027</strong>,
+            cybersecurity internship, 4 to 6 months from February 2027</strong>,
             primarily in Switzerland, and equally open to opportunities in France.
           </p>
 
@@ -120,7 +120,7 @@
           <div class="stats">
             <p class="stats-title" id="stats-title">At a glance</p>
             <dl>
-              <div class="stats-row"><dt>Specialisation</dt><dd class="txt">SOC / Blue Team</dd></div>
+              <div class="stats-row"><dt>Field</dt><dd class="txt">Cybersecurity</dd></div>
               <div class="stats-row"><dt>Availability</dt><dd class="txt live">Internship · Feb 2027</dd></div>
               <div class="stats-row"><dt>Projects</dt><dd>03</dd></div>
               <div class="stats-row"><dt>Training &amp; certifications</dt><dd>06</dd></div>
@@ -143,7 +143,7 @@
       <!-- Masquee sans JavaScript : toutes les cartes restent alors visibles. -->
       <div class="filters" id="filters" role="group" aria-label="Filter projects by category" hidden>
         <button class="filter" type="button" data-filter="all" data-label="All" aria-pressed="true"><svg class="i" aria-hidden="true"><use href="#i-grid"/></svg>All<span class="count"></span></button>
-        <button class="filter" type="button" data-filter="soc" data-label="SOC / Blue Team" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>SOC / Blue Team<span class="count"></span></button>
+        <button class="filter" type="button" data-filter="soc" data-label="Detection &amp; SIEM" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Detection &amp; SIEM<span class="count"></span></button>
         <button class="filter" type="button" data-filter="redteam" data-label="Red Team / Pentest" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-target"/></svg>Red Team / Pentest<span class="count"></span></button>
         <button class="filter" type="button" data-filter="cloud" data-label="Cloud" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-cloud"/></svg>Cloud<span class="count"></span></button>
         <button class="filter" type="button" data-filter="ia" data-label="AI" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-chip"/></svg>AI<span class="count"></span></button>
@@ -160,7 +160,7 @@
             <figcaption>The lab's 4 detection rules, in Kibana</figcaption>
           </figure>
           <div class="card-badges">
-            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>SOC / Blue Team</span>
+            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Detection &amp; SIEM</span>
             <span class="badge">2026 · Personal project</span>
           </div>
           <h3 id="p-elastic"><span class="case-no">CAS Nº1</span>Lab SOC Elastic Security</h3>
@@ -269,8 +269,12 @@
           </figure>
         ===== -->
         <article class="card panel" data-cat="soc" aria-labelledby="p-wazuh">
+          <figure class="card-media card-media--screenshot">
+            <img src="../assets/projets/wazuh-detection-alerts-rules.png" alt="Wazuh Threat Hunting dashboard: SSH and PAM authentication-failure alerts, and custom rule 100002 level 10 for a suspicious account creation" width="924" height="396" loading="lazy" decoding="async">
+            <figcaption>Wazuh alerts: SSH/PAM authentication failures, and custom rule 100002 (level 10)</figcaption>
+          </figure>
           <div class="card-badges">
-            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>SOC / Blue Team</span>
+            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Detection &amp; SIEM</span>
             <span class="badge">05/2026 · Academic project</span>
           </div>
           <h3 id="p-wazuh"><span class="case-no">CAS Nº2</span>Lab Wazuh (SIEM) multi-VM</h3>
@@ -341,14 +345,8 @@
                       <p>
                         The SSH and PAM authentication failures surface on the dashboard, alongside the
                         custom rule <code>100002</code> that flags the creation of a suspicious user
-                        account.
+                        account — visible directly on the project card.
                       </p>
-                      <figure class="detail-fig">
-                        <a href="../assets/projets/wazuh-detection-alerts-rules.png" target="_blank" rel="noopener" title="Open image full size">
-                          <img src="../assets/projets/wazuh-detection-alerts-rules.png" alt="Wazuh Threat Hunting dashboard: SSH and PAM authentication-failure alerts, and custom rule 100002 level 10 for a suspicious account creation" width="924" height="450" loading="lazy" decoding="async">
-                        </a>
-                        <figcaption>Wazuh alerts: SSH/PAM authentication failures, and custom rule 100002 (level 10)</figcaption>
-                      </figure>
                     </li>
                   </ul>
                 </div>
@@ -452,7 +450,8 @@
         <p class="eyebrow"><svg class="i" aria-hidden="true"><use href="#i-layers"/></svg>02 · Skills</p>
         <h2>Tools and areas</h2>
         <p class="section-sub">
-          I specialise in defensive security: detection, alert triage and SIEM investigation.
+          From network fundamentals to detection, by way of offensive security and cloud: the areas
+          I'm building skills in.
         </p>
       </div>
 
@@ -537,8 +536,7 @@
         </p>
         <p>
           That's the cross-cutting approach I want to keep building on: understanding systems,
-          anticipating risks, and helping secure them, with a particular interest in the SOC and
-          defensive security.
+          anticipating risks, and helping secure them.
         </p>
       </div>
     </div>
@@ -998,7 +996,7 @@
           <div class="availability">
             <h4>What I am looking for</h4>
             <dl>
-              <dt>Role</dt><dd>Final-year internship — SOC analyst</dd>
+              <dt>Role</dt><dd>Final-year internship — cybersecurity</dd>
               <dt>Length</dt><dd>4 to 6 months</dd>
               <dt>Start</dt><dd>From February 2027</dd>
               <dt>Location</dt><dd>Switzerland preferred, France also</dd>
