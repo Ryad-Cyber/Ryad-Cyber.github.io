@@ -6,11 +6,13 @@
    4. Carrousels de la section Voyages.
    5. Visionneuse : photos de voyage et certificats.
    6. Alternance des trois certificats Splunk.
+   7. Detail des projets dans une fenetre modale.
    Sans JavaScript : toutes les cartes restent visibles, le detail
-   des cas se deplie (<details>), le formulaire s'envoie en mailto,
-   les carrousels defilent au doigt ou a la barre, chaque photo et
-   chaque certificat reste un lien vers l'image en pleine taille,
-   et le visuel Splunk montre le premier des trois certificats.
+   des cas se deplie (<details>) a la place de la fenetre modale, le
+   formulaire s'envoie en mailto, les carrousels defilent au doigt ou
+   a la barre, chaque photo et chaque certificat reste un lien vers
+   l'image en pleine taille, et le visuel Splunk montre le premier
+   des trois certificats.
    ============================================================ */
 (function () {
   "use strict";
@@ -379,4 +381,79 @@
 
     start();
   });
+
+  /* --- 7. Detail des projets dans une fenetre modale -------- */
+  // <details class="card-detail"> reste la source de verite et le
+  // repli sans JS. Ici, on intercepte l'ouverture pour presenter le
+  // meme contenu dans une <dialog> premium plutot que de le deplier
+  // dans la carte.
+  var projectDialog = document.getElementById("project-dialog");
+  var projectDialogBody = document.getElementById("project-dialog-body");
+  var projectDialogClose = document.getElementById("project-dialog-close");
+
+  if (
+    projectDialog &&
+    projectDialogBody &&
+    projectDialogClose &&
+    "showModal" in projectDialog
+  ) {
+    var activeDetails = null;
+    var activePlaceholder = null;
+
+    // Seule la fermeture native (bouton, clic hors cadre, Echap)
+    // restaure le contenu : un point unique, quelle que soit la
+    // facon dont la boite s'est fermee.
+    projectDialog.addEventListener("close", function () {
+      var body = projectDialogBody.querySelector(".detail-body");
+      if (body && activePlaceholder && activePlaceholder.parentNode) {
+        activePlaceholder.parentNode.replaceChild(body, activePlaceholder);
+      }
+      if (activeDetails && !activeDetails.contains(document.activeElement)) {
+        var summaryEl = activeDetails.querySelector(":scope > summary");
+        if (summaryEl) summaryEl.focus();
+      }
+      activeDetails = null;
+      activePlaceholder = null;
+    });
+
+    toArray(document.querySelectorAll(".card-detail")).forEach(function (details) {
+      var summary = details.querySelector(":scope > summary");
+      var body = details.querySelector(":scope > .detail-body");
+      var card = details.closest(".card");
+      var heading = card && card.querySelector("h3");
+      if (!summary || !body) return;
+
+      summary.addEventListener("click", function (event) {
+        event.preventDefault();
+        if (projectDialog.open) projectDialog.close();
+
+        projectDialogBody.innerHTML = "";
+        if (heading) {
+          var title = document.createElement("h3");
+          title.className = "project-dialog-title";
+          title.innerHTML = heading.innerHTML; // garde le <span class="case-no">
+          projectDialogBody.appendChild(title);
+        }
+        activePlaceholder = document.createComment("project-detail");
+        body.parentNode.replaceChild(activePlaceholder, body);
+        projectDialogBody.appendChild(body);
+        activeDetails = details;
+        projectDialog.showModal();
+      });
+    });
+
+    projectDialogClose.addEventListener("click", function () {
+      projectDialog.close();
+    });
+
+    projectDialog.addEventListener("click", function (event) {
+      var rect = projectDialog.getBoundingClientRect();
+      var inside =
+        event.clientX >= rect.left &&
+        event.clientX <= rect.right &&
+        event.clientY >= rect.top &&
+        event.clientY <= rect.bottom;
+      if (!inside) projectDialog.close();
+    });
+  }
 })();

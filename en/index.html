@@ -53,6 +53,8 @@
   <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></symbol>
   <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></symbol>
   <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></symbol>
+  <symbol id="i-chess" viewBox="0 0 24 24"><circle cx="12" cy="6.5" r="2.8"/><path d="M9 12.5h6l1.2 6.5H7.8z"/><path d="M6.5 19h11"/></symbol>
+  <symbol id="i-football" viewBox="0 0 24 24"><g transform="rotate(-24 12 12)"><ellipse cx="12" cy="12" rx="9" ry="5"/><path d="M5.5 12h13"/><path d="M9.5 10v4M12 9.5v5M14.5 10v4"/></g></symbol>
 </svg>
 
 <header class="site-header">
@@ -100,7 +102,7 @@
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#projects"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg>See my projects</a>
+            <a class="btn btn-primary" href="projects/index.html"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg>See my projects</a>
             <a class="btn btn-secondary" href="#voyages"><svg class="i" aria-hidden="true"><use href="#i-globe"/></svg>My travels</a>
             <p class="hero-note">Passionate about travel and chess.</p>
           </div>
@@ -168,10 +170,6 @@
             A detection environment built in a lab: 4 custom rules, tested with
             simulated attacks on Linux and Windows machines.
           </p>
-          <dl class="card-facts">
-            <dt>Objective</dt><dd>Practise detection on my own data rather than on prepared log datasets.</dd>
-            <dt>Outcome</dt><dd>4 rules validated across 3 attack scenarios, an investigation guide per rule, and the whole lab documented on GitHub.</dd>
-          </dl>
           <ul class="tags">
             <li>Elasticsearch</li><li>Kibana</li><li>Elastic Security</li><li>Fleet</li><li>Elastic Agent</li><li>Sysmon</li><li>KQL</li><li>EQL</li><li>MITRE ATT&amp;CK</li><li>Windows Server / AD</li><li>Ubuntu</li>
           </ul>
@@ -180,6 +178,12 @@
             <details class="card-detail">
               <summary class="btn btn-soft"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg><span class="when-closed">Read the case in detail</span><span class="when-open">Collapse the detail</span></summary>
               <div class="detail-body">
+                <div class="detail-row">
+                  <dl class="card-facts">
+                    <dt>Objective</dt><dd>Practise detection on my own data rather than on prepared log datasets.</dd>
+                    <dt>Outcome</dt><dd>4 rules validated across 3 attack scenarios, an investigation guide per rule, and the whole lab documented on GitHub.</dd>
+                  </dl>
+                </div>
                 <div class="detail-row">
                   <h4>Context</h4>
                   <p>
@@ -282,10 +286,6 @@
             An open-source SIEM deployed across several virtual machines, with 2 custom detection
             rules tested using lab attack scenarios.
           </p>
-          <dl class="card-facts">
-            <dt>Objective</dt><dd>Verify end to end that an open-source SIEM actually detects attacks, not merely that it collects logs.</dd>
-            <dt>Outcome</dt><dd>2 custom rules mapped to MITRE ATT&amp;CK, tested with SSH brute force and Nmap scans, and compared with Elastic Security.</dd>
-          </dl>
           <ul class="tags">
             <li>Wazuh</li><li>VMware</li><li>Linux</li><li>Windows</li><li>MITRE ATT&amp;CK</li><li>Nmap</li><li>Syslog</li>
           </ul>
@@ -294,6 +294,12 @@
             <details class="card-detail">
               <summary class="btn btn-soft"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg><span class="when-closed">Read the case in detail</span><span class="when-open">Collapse the detail</span></summary>
               <div class="detail-body">
+                <div class="detail-row">
+                  <dl class="card-facts">
+                    <dt>Objective</dt><dd>Verify end to end that an open-source SIEM actually detects attacks, not merely that it collects logs.</dd>
+                    <dt>Outcome</dt><dd>2 custom rules mapped to MITRE ATT&amp;CK, tested with SSH brute force and Nmap scans, and compared with Elastic Security.</dd>
+                  </dl>
+                </div>
                 <div class="detail-row">
                   <h4>Context</h4>
                   <p>
@@ -371,10 +377,6 @@
             Three days of crisis management facing a simulated cyberattack, within the executive
             cell.
           </p>
-          <dl class="card-facts">
-            <dt>Objective</dt><dd>Handle a simulated cyberattack in real time, with partial information and decisions to make quickly.</dd>
-            <dt>Outcome</dt><dd>Priorities arbitrated within the executive cell, and coordination with the technical cells and external stakeholders.</dd>
-          </dl>
           <ul class="tags">
             <li>Crisis management</li><li>Coordination</li><li>Decision-making</li><li>Communication</li><li>Working under pressure</li>
           </ul>
@@ -383,6 +385,12 @@
             <details class="card-detail">
               <summary class="btn btn-soft"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg><span class="when-closed">Read the case in detail</span><span class="when-open">Collapse the detail</span></summary>
               <div class="detail-body">
+                <div class="detail-row">
+                  <dl class="card-facts">
+                    <dt>Objective</dt><dd>Handle a simulated cyberattack in real time, with partial information and decisions to make quickly.</dd>
+                    <dt>Outcome</dt><dd>Priorities arbitrated within the executive cell, and coordination with the technical cells and external stakeholders.</dd>
+                  </dl>
+                </div>
                 <div class="detail-row">
                   <h4>Context</h4>
                   <p>
@@ -498,9 +506,9 @@
             <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-cloud"/></svg></span>
             <h3>Cloud</h3>
           </div>
-          <p class="skill-lead">I am training on cloud fundamentals: core services, the shared responsibility model, identity and logging.</p>
+          <p class="skill-lead">I am training on cloud fundamentals with AWS Academy: identity management, compute and storage, virtual networking, monitoring, and the shared responsibility model.</p>
           <ul class="tags tags--quiet">
-            <li>AWS Academy Cloud Foundations</li>
+            <li>AWS Academy Cloud Foundations</li><li>IAM</li><li>EC2</li><li>S3</li><li>VPC</li><li>CloudWatch</li><li>Shared responsibility model</li><li>Docker</li>
           </ul>
         </div>
         <div class="skill-group panel">
@@ -767,14 +775,16 @@
           </dl>
         </div>
 
-        <div class="panel">
+        <div class="panel panel--interests">
           <div class="panel-head">
             <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-heart"/></svg></span>
             <h3>Interests</h3>
           </div>
-          <ul class="tags">
-            <li>Travel</li><li>Chess</li><li>American football</li>
-          </ul>
+          <div class="interest-grid">
+            <div class="interest-item"><svg class="i" aria-hidden="true"><use href="#i-globe"/></svg>Travel</div>
+            <div class="interest-item"><svg class="i" aria-hidden="true"><use href="#i-chess"/></svg>Chess</div>
+            <div class="interest-item"><svg class="i" aria-hidden="true"><use href="#i-football"/></svg>American football</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1056,6 +1066,13 @@
   <button class="lightbox-btn lightbox-prev" id="lightbox-prev" type="button" aria-label="Previous">&lsaquo;</button>
   <button class="lightbox-btn lightbox-next" id="lightbox-next" type="button" aria-label="Next">&rsaquo;</button>
 </div>
+
+<!-- Project detail: without JavaScript, the content stays inside
+     <details class="card-detail"> in each card. -->
+<dialog class="project-dialog" id="project-dialog" aria-label="Project detail">
+  <button class="project-dialog-close" id="project-dialog-close" type="button" aria-label="Close">&times;</button>
+  <div class="project-dialog-body" id="project-dialog-body"></div>
+</dialog>
 
 <script src="../assets/js/main.js" defer></script>
 </body>

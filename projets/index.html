@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projets — Ryad Boujenan</title>
+<meta name="theme-color" content="#060b14">
+<meta name="description" content="Les projets de cybersécurité de Ryad Boujenan : détection et SIEM, gestion de crise, et les cas à venir en Red Team, cloud, IA et cryptographie.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<!--bg:start-->
+<div class="bg" aria-hidden="true">
+  <div class="bg-depth"></div>
+  <div class="bg-grid"></div>
+  <div class="bg-layer bg-layer--network"><svg viewBox="0 0 1800 2800" width="1800" height="2800" focusable="false"><defs><g id="bg-network"><path d="M297.4 103.1L416.6 270.1M297.4 103.1L232.5 439.3M416.6 270.1L452.5 448.3M817.8 138.3L687.1 394.1M817.8 138.3L1130.4 139.1M1130.4 139.1L1109.5 386.2M1532.6 216.6L1696.2 516.4M232.5 439.3L452.5 448.3M416.6 270.1L232.5 439.3M452.5 448.3L478.4 665.9M687.1 394.1L712.1 631.2M452.5 448.3L687.1 394.1M1109.5 386.2L1318.4 631.1M1696.2 516.4L1572.6 659.1M276.6 701.7L241.8 868.5M276.6 701.7L478.4 665.9M478.4 665.9L712.1 631.2M1008.2 759.6L818.9 940M712.1 631.2L1008.2 759.6M1318.4 631.1L1572.6 659.1M241.8 868.5L422.1 943.1M276.6 701.7L422.1 943.1M818.9 940L833.6 1126M1606.2 1014.4L1569.2 1241.1M1606.2 1014.4L1326.4 1204.8M233.7 1219.3L475.2 1237.2M422.1 943.1L233.7 1219.3M422.1 943.1L475.2 1237.2M1326.4 1204.8L1569.2 1241.1" class="lines"/><circle cx="297.4" cy="103.1" r="4"/><circle cx="416.6" cy="270.1" r="3.8"/><circle cx="817.8" cy="138.3" r="4"/><circle cx="1130.4" cy="139.1" r="3.7"/><circle cx="1532.6" cy="216.6" r="3.1" class="g"/><circle cx="232.5" cy="439.3" r="3.7"/><circle cx="452.5" cy="448.3" r="2.7"/><circle cx="687.1" cy="394.1" r="3.7"/><circle cx="1109.5" cy="386.2" r="2.9"/><circle cx="1696.2" cy="516.4" r="2.5"/><circle cx="276.6" cy="701.7" r="3.3"/><circle cx="478.4" cy="665.9" r="3.4"/><circle cx="712.1" cy="631.2" r="2.6"/><circle cx="1008.2" cy="759.6" r="4.2" class="g"/><circle cx="1318.4" cy="631.1" r="3.1"/><circle cx="1572.6" cy="659.1" r="7" class="ring"/><circle cx="241.8" cy="868.5" r="2.5"/><circle cx="422.1" cy="943.1" r="2.7"/><circle cx="818.9" cy="940" r="4.5"/><circle cx="1606.2" cy="1014.4" r="2.6"/><circle cx="233.7" cy="1219.3" r="3.3"/><circle cx="475.2" cy="1237.2" r="3.4"/><circle cx="833.6" cy="1126" r="7" class="ring"/><circle cx="1326.4" cy="1204.8" r="2.4"/><circle cx="1569.2" cy="1241.1" r="2.6"/></g></defs><use href="#bg-network"/><use href="#bg-network" y="1400"/></svg></div>
+  <div class="bg-layer bg-layer--clouds"><svg viewBox="0 0 1800 2800" width="1800" height="2800" focusable="false"><defs><g id="bg-clouds"><g transform="translate(123.4 387) scale(1.4) translate(-42 -28)"><path d="M22 48a16 16 0 0 1-2-31.9a24 24 0 0 1 45-6a19 19 0 0 1 14 37.9Z"/><path d="M34 34L48 24L62 34M48 24V40"/><circle cx="34" cy="34" r="2.4"/><circle cx="48" cy="24" r="2.4"/><circle cx="62" cy="34" r="2.4"/><circle cx="48" cy="40" r="2.4"/></g><g transform="translate(792.5 270) scale(1.6) translate(-42 -28)"><path d="M22 48a16 16 0 0 1-2-31.9a24 24 0 0 1 45-6a19 19 0 0 1 14 37.9Z"/></g><g transform="translate(1562.4 441.3) scale(1.9) translate(-42 -28)"><path d="M22 48a16 16 0 0 1-2-31.9a24 24 0 0 1 45-6a19 19 0 0 1 14 37.9Z"/><path d="M34 34L48 24L62 34M48 24V40"/><circle cx="34" cy="34" r="2.4"/><circle cx="48" cy="24" r="2.4"/><circle cx="62" cy="34" r="2.4"/><circle cx="48" cy="40" r="2.4"/></g><g transform="translate(464.3 968.4) scale(1.3) translate(-42 -28)"><path d="M22 48a16 16 0 0 1-2-31.9a24 24 0 0 1 45-6a19 19 0 0 1 14 37.9Z"/></g><g transform="translate(1139.1 1145) scale(1.4) translate(-42 -28)"><path d="M22 48a16 16 0 0 1-2-31.9a24 24 0 0 1 45-6a19 19 0 0 1 14 37.9Z"/><path d="M34 34L48 24L62 34M48 24V40"/><circle cx="34" cy="34" r="2.4"/><circle cx="48" cy="24" r="2.4"/><circle cx="62" cy="34" r="2.4"/><circle cx="48" cy="40" r="2.4"/></g><g transform="translate(1673.2 925.5) scale(1.8) translate(-42 -28)"><path d="M22 48a16 16 0 0 1-2-31.9a24 24 0 0 1 45-6a19 19 0 0 1 14 37.9Z"/></g></g></defs><use href="#bg-clouds"/><use href="#bg-clouds" y="1400"/></svg></div>
+  <div class="bg-layer bg-layer--shields"><svg viewBox="0 0 1800 2800" width="1800" height="2800" focusable="false"><defs><g id="bg-shields"><g transform="translate(309 253.5) rotate(2.2) scale(1.4)"><path d="M0 -52L36 -39V-4C36 24 19 41 0 52C-19 41 -36 24 -36 -4V-39Z"/><path d="M0 -32L22 -24V-2C22 15 11 25 0 31C-11 25 -22 15 -22 -2V-24Z"/></g><g transform="translate(911.4 154.9) rotate(0.7) scale(1.8)"><path d="M0 -52L36 -39V-4C36 24 19 41 0 52C-19 41 -36 24 -36 -4V-39Z"/><path d="M-14 0L-4 11L15 -12"/></g><g transform="translate(1485.1 229.6) rotate(8.2) scale(1.5)"><path d="M0 -52L36 -39V-4C36 24 19 41 0 52C-19 41 -36 24 -36 -4V-39Z"/><circle cx="0" cy="-7" r="8"/><path d="M0 1V17"/></g><g transform="translate(351.1 733.9) rotate(-8.1) scale(1.3)"><path d="M0 -52L36 -39V-4C36 24 19 41 0 52C-19 41 -36 24 -36 -4V-39Z"/><circle cx="0" cy="-2" r="15"/><circle cx="0" cy="-2" r="5"/></g><g transform="translate(832.8 680.6) rotate(-3) scale(1.1)" class="g"><path d="M0 -52L36 -39V-4C36 24 19 41 0 52C-19 41 -36 24 -36 -4V-39Z"/><path d="M0 -32L22 -24V-2C22 15 11 25 0 31C-11 25 -22 15 -22 -2V-24Z"/></g><g transform="translate(1388.2 718.1) rotate(1.8) scale(1.5)"><path d="M0 -52L36 -39V-4C36 24 19 41 0 52C-19 41 -36 24 -36 -4V-39Z"/><path d="M-14 0L-4 11L15 -12"/></g><g transform="translate(403.3 1223.7) rotate(6.5) scale(1.3)"><path d="M0 -52L36 -39V-4C36 24 19 41 0 52C-19 41 -36 24 -36 -4V-39Z"/><circle cx="0" cy="-7" r="8"/><path d="M0 1V17"/></g><g transform="translate(936.9 1120.3) rotate(-10.7) scale(1.2)" class="g"><path d="M0 -52L36 -39V-4C36 24 19 41 0 52C-19 41 -36 24 -36 -4V-39Z"/><circle cx="0" cy="-2" r="15"/><circle cx="0" cy="-2" r="5"/></g><g transform="translate(1643.3 1128.7) rotate(-8.5) scale(1.6)"><path d="M0 -52L36 -39V-4C36 24 19 41 0 52C-19 41 -36 24 -36 -4V-39Z"/><path d="M0 -32L22 -24V-2C22 15 11 25 0 31C-11 25 -22 15 -22 -2V-24Z"/></g></g></defs><use href="#bg-shields"/><use href="#bg-shields" y="1400"/></svg></div>
+</div>
+<!--bg:end-->
+
+<!-- Icones : sprite unique, reutilise via <use> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6z"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 19h10a4.5 4.5 0 0 0 .6-8.96A6.5 6.5 0 0 0 5.2 9.5 4.75 4.75 0 0 0 7 19z"/></symbol>
+  <symbol id="i-chip" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></symbol>
+  <symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M9 12.5l2 2 4-4"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4.5"/><path d="M11.2 11.8L20 3M16.5 6.5l3 3M14.5 8.5l2 2"/></symbol>
+  <symbol id="i-folder" viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2z"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></symbol>
+  <symbol id="i-github" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M10 14L21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 2l10 5-10 5L2 7z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></symbol>
+  <symbol id="i-activity" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></symbol>
+  <symbol id="i-shield-alert" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6z"/><path d="M12 8v4M12 16h.01"/></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="8" rx="2"/><rect x="2" y="13" width="20" height="8" rx="2"/><path d="M6 7h.01M6 17h.01"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></symbol>
+  <symbol id="i-graduation" viewBox="0 0 24 24"><path d="M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.83l8.57 3.91a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></symbol>
+  <symbol id="i-award" viewBox="0 0 24 24"><path d="M15.48 12.89l1.51 8.53a.5.5 0 0 1-.81.47l-3.58-2.69a1 1 0 0 0-1.2 0l-3.59 2.69a.5.5 0 0 1-.81-.47l1.51-8.53"/><circle cx="12" cy="8" r="6"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M22 2L15 22l-4-9-9-4z"/><path d="M22 2L11 13"/></symbol>
+  <symbol id="i-languages" viewBox="0 0 24 24"><path d="M5 8l6 6"/><path d="M4 14l6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="M22 22l-5-10-5 10"/><path d="M14 18h6"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"/></symbol>
+  <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></symbol>
+  <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></symbol>
+  <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></symbol>
+</svg>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="../index.html#accueil"><span class="brand-mark">RB</span>Ryad Boujenan</a>
+
+    <nav class="site-nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="../index.html#accueil">Accueil</a></li>
+        <li><a href="../index.html#projets">Projets</a></li>
+        <li><a href="../index.html#competences">Compétences</a></li>
+        <li><a href="../index.html#parcours">Parcours</a></li>
+        <li><a href="../index.html#voyages">Voyages</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <p class="lang-switch">
+      <span aria-current="true">FR</span> /
+      <a href="../en/projects/index.html" hreflang="en" lang="en">EN</a>
+    </p>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ PROJETS ============ -->
+  <section class="section" id="projets-page">
+    <div class="container">
+
+      <p class="cert-page-back">
+        <a href="../index.html#projets"><svg class="i" aria-hidden="true"><use href="#i-chevron-left"/></svg>Retour au portfolio</a>
+      </p>
+
+      <div class="section-head">
+        <p class="eyebrow"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg>Projets</p>
+        <h2>Tous mes projets</h2>
+        <p class="section-sub">
+          Détection, SIEM et gestion de crise pour l'instant, avec des cas en Red Team, cloud, IA
+          et cryptographie en préparation.
+        </p>
+      </div>
+
+      <!-- Masquee sans JavaScript : toutes les cartes restent alors visibles. -->
+      <div class="filters" id="filters" role="group" aria-label="Filtrer les projets par catégorie" hidden>
+        <button class="filter" type="button" data-filter="all" data-label="Tous" aria-pressed="true"><svg class="i" aria-hidden="true"><use href="#i-grid"/></svg>Tous<span class="count"></span></button>
+        <button class="filter" type="button" data-filter="soc" data-label="Détection &amp; SIEM" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Détection &amp; SIEM<span class="count"></span></button>
+        <button class="filter" type="button" data-filter="redteam" data-label="Red Team / Pentest" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-target"/></svg>Red Team / Pentest<span class="count"></span></button>
+        <button class="filter" type="button" data-filter="cloud" data-label="Cloud" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-cloud"/></svg>Cloud<span class="count"></span></button>
+        <button class="filter" type="button" data-filter="ia" data-label="IA" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-chip"/></svg>IA<span class="count"></span></button>
+        <button class="filter" type="button" data-filter="grc" data-label="GRC" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-clipboard"/></svg>GRC<span class="count"></span></button>
+        <button class="filter" type="button" data-filter="crypto" data-label="Cryptographie" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Cryptographie<span class="count"></span></button>
+      </div>
+
+      <div class="cards" id="project-cards">
+
+        <!-- ===== CAS Nº1 : Lab SOC Elastic Security (image : capture de CE lab) ===== -->
+        <article class="card panel" data-cat="soc" aria-labelledby="p-elastic">
+          <figure class="card-media card-media--screenshot">
+            <img src="../assets/projets/kibana-rules-overview.png" alt="Liste des règles de détection du lab dans Kibana : quatre règles personnalisées avec leur sévérité et leur dernière exécution" width="1660" height="538" loading="lazy" decoding="async">
+            <figcaption>Les 4 règles de détection du lab, dans Kibana</figcaption>
+          </figure>
+          <div class="card-badges">
+            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Détection &amp; SIEM</span>
+            <span class="badge">2026 · Projet personnel</span>
+          </div>
+          <h3 id="p-elastic"><span class="case-no">CAS Nº1</span>Lab SOC Elastic Security</h3>
+          <p class="card-desc">
+            Un environnement de détection monté en laboratoire : 4 règles personnalisées,
+            testées à l'aide d'attaques simulées sur des machines Linux et Windows.
+          </p>
+          <ul class="tags">
+            <li>Elasticsearch</li><li>Kibana</li><li>Elastic Security</li><li>Fleet</li><li>Elastic Agent</li><li>Sysmon</li><li>KQL</li><li>EQL</li><li>MITRE ATT&amp;CK</li><li>Windows Server / AD</li><li>Ubuntu</li>
+          </ul>
+
+          <div class="card-actions">
+            <details class="card-detail">
+              <summary class="btn btn-soft"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span></summary>
+              <div class="detail-body">
+                <div class="detail-row">
+                  <dl class="card-facts">
+                    <dt>Objectif</dt><dd>Travailler la détection sur mes propres données, plutôt que sur des jeux de logs préparés.</dd>
+                    <dt>Résultat</dt><dd>4 règles validées sur 3 scénarios d'attaque, un guide d'investigation par règle, et le lab documenté sur GitHub.</dd>
+                  </dl>
+                </div>
+                <div class="detail-row">
+                  <h4>Contexte</h4>
+                  <p>
+                    Je voulais travailler la détection sur mes propres données, plutôt que sur des jeux de logs préparés. J'ai
+                    donc monté un environnement de détection en laboratoire, de la collecte des événements à
+                    l'investigation des alertes, puis simulé des attaques sur des machines Linux et Windows pour écrire et
+                    tester les règles correspondantes.
+                  </p>
+                </div>
+                <div class="detail-row">
+                  <h4>Ce que j'ai fait</h4>
+                  <ol class="steps">
+                    <li>Déployé la stack Elasticsearch + Kibana avec Fleet, et enrôlé des Elastic Agents sur Ubuntu, Windows 11 et un contrôleur de domaine Windows Server.</li>
+                    <li>Instrumenté les postes Windows avec Sysmon et activé le Script Block Logging PowerShell pour obtenir les événements nécessaires aux détections.</li>
+                    <li>Écrit et testé <strong>4 règles de détection</strong> couvrant 3 scénarios d'attaque simulés, puis ajusté les règles pour limiter les faux positifs.</li>
+                    <li>Rédigé un guide d'investigation par règle : ce que l'alerte signifie, les champs à vérifier en priorité, et les étapes de qualification.</li>
+                    <li>Documenté l'ensemble du lab sur GitHub pour qu'il soit reproductible.</li>
+                  </ol>
+                </div>
+                <div class="detail-row">
+                  <h4>Les 3 scénarios de détection</h4>
+                  <ul class="scenarios">
+                    <li>
+                      <div class="scenario-head"><h5>SSH Brute Force (Linux)</h5></div>
+                      <p>
+                        Détection des échecs d'authentification répétés depuis une même source, puis
+                        corrélation en <strong>EQL</strong> de la séquence « échecs multiples suivis d'une
+                        connexion réussie » — le signal qui distingue une tentative d'une compromission
+                        probable.
+                      </p>
+                    </li>
+                    <li>
+                      <div class="scenario-head"><h5>PowerShell obfusqué (Windows 11)</h5><span class="attck">MITRE ATT&amp;CK T1059.001</span></div>
+                      <p>
+                        Détection des commandes encodées en base64 passées à PowerShell, à partir des
+                        blocs de script capturés par le Script Block Logging.
+                      </p>
+                    </li>
+                    <li>
+                      <div class="scenario-head"><h5>Password Spray sur Active Directory (Windows Server)</h5><span class="attck">MITRE ATT&amp;CK T1110.003</span></div>
+                      <p>
+                        Règle <strong>Threshold en KQL</strong> sur l'Event ID 4625 du contrôleur de
+                        domaine, agrégée par <code>source.ip</code> avec une cardinalité sur
+                        <code>user.name</code> : c'est ce critère qui sépare un password spray — beaucoup
+                        de comptes testés, peu de tentatives sur chacun — d'un brute force classique sur un
+                        seul compte.
+                      </p>
+                      <figure class="detail-fig">
+                        <a href="../assets/projets/kibana-ad-discover-raw-events.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
+                          <img src="../assets/projets/kibana-ad-discover-raw-events.png" alt="Kibana Discover : événements bruts filtrés sur event.code 4625 et host.name dc01" width="1650" height="666" loading="lazy" decoding="async">
+                        </a>
+                        <figcaption>Les événements bruts : échecs de connexion (event.code 4625) sur dc01, dans Kibana Discover</figcaption>
+                      </figure>
+                      <figure class="detail-fig">
+                        <a href="../assets/projets/kibana-ad-rule-definition.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
+                          <img src="../assets/projets/kibana-ad-rule-definition.png" alt="Définition de la règle : requête KQL event.code 4625 et host.name dc01, type Seuil, regroupement par source.ip avec au moins 3 valeurs uniques de user.name" width="610" height="417" loading="lazy" decoding="async">
+                        </a>
+                        <figcaption>La règle : requête KQL, type Seuil, regroupement par source.ip</figcaption>
+                      </figure>
+                      <figure class="detail-fig">
+                        <a href="../assets/projets/kibana-ad-rule-severity-mitre.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
+                          <img src="../assets/projets/kibana-ad-rule-severity-mitre.png" alt="Détails de la règle : sévérité Medium, score de risque 47, technique MITRE ATT&amp;CK T1110.003 Pulvérisation de mots de passe" width="940" height="472" loading="lazy" decoding="async">
+                        </a>
+                        <figcaption>Sévérité Medium (score 47) et rattachement MITRE ATT&amp;CK : Force brute (T1110) › Pulvérisation de mots de passe (T1110.003)</figcaption>
+                      </figure>
+                      <figure class="detail-fig">
+                        <a href="../assets/projets/kibana-ad-alert-detail.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
+                          <img src="../assets/projets/kibana-ad-alert-detail.png" alt="Alerte Password Spray Detection - DC01 dans Kibana, avec son panneau de détail" width="1672" height="601" loading="lazy" decoding="async">
+                        </a>
+                        <figcaption>L'alerte « Password Spray Detection - DC01 » générée, avec son détail</figcaption>
+                      </figure>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+            <a class="btn btn-ghost" href="https://github.com/Ryad-Cyber/elastic-security-soc-lab" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg>Code — règles et guides d'investigation</a>
+          </div>
+        </article>
+
+        <article class="card panel" data-cat="soc" aria-labelledby="p-wazuh">
+          <figure class="card-media card-media--screenshot">
+            <img src="../assets/projets/wazuh-detection-alerts-rules.png" alt="Tableau de bord Wazuh Threat Hunting : alertes d'echec d'authentification SSH et PAM, et regle personnalisee 100002 niveau 10 sur la creation d'un compte suspect" width="924" height="396" loading="lazy" decoding="async">
+            <figcaption>Alertes Wazuh : échecs d'authentification SSH/PAM, et règle personnalisée 100002 (niveau 10)</figcaption>
+          </figure>
+          <div class="card-badges">
+            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Détection &amp; SIEM</span>
+            <span class="badge">05/2026 · Projet académique</span>
+          </div>
+          <h3 id="p-wazuh"><span class="case-no">CAS Nº2</span>Lab Wazuh (SIEM) multi-VM</h3>
+          <p class="card-desc">
+            Un SIEM open source déployé sur plusieurs machines virtuelles, avec 2 règles de détection
+            personnalisées testées à l'aide de scénarios d'attaque en laboratoire.
+          </p>
+          <ul class="tags">
+            <li>Wazuh</li><li>VMware</li><li>Linux</li><li>Windows</li><li>MITRE ATT&amp;CK</li><li>Nmap</li><li>Syslog</li>
+          </ul>
+
+          <div class="card-actions">
+            <details class="card-detail">
+              <summary class="btn btn-soft"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span></summary>
+              <div class="detail-body">
+                <div class="detail-row">
+                  <dl class="card-facts">
+                    <dt>Objectif</dt><dd>Vérifier de bout en bout qu'un SIEM open source détecte réellement des attaques, pas seulement qu'il collecte des logs.</dd>
+                    <dt>Résultat</dt><dd>2 règles personnalisées mappées MITRE ATT&amp;CK, testées par brute force SSH et scans Nmap, puis comparées à Elastic Security.</dd>
+                  </dl>
+                </div>
+                <div class="detail-row">
+                  <h4>Contexte</h4>
+                  <p>
+                    Déployer un SIEM open source sur une infrastructure hétérogène de plusieurs machines
+                    virtuelles, et vérifier de bout en bout qu'il détecte réellement des attaques — pas
+                    seulement qu'il collecte des logs.
+                  </p>
+                </div>
+                <div class="detail-row">
+                  <h4>Ce que j'ai fait</h4>
+                  <ol class="steps">
+                    <li>Installé le manager Wazuh et déployé les agents sur des machines Linux et Windows, avec centralisation des journaux.</li>
+                    <li>Écrit <strong>2 règles de détection personnalisées</strong>, mappées sur le framework MITRE ATT&amp;CK.</li>
+                    <li>Testé chaque règle à l'aide de scénarios en laboratoire — brute force SSH et scans Nmap — puis vérifié la remontée des alertes dans le tableau de bord.</li>
+                    <li>Comparé le comportement de Wazuh à celui d'Elastic Security sur des scénarios équivalents, pour comprendre ce que chaque outil rend facile ou difficile.</li>
+                  </ol>
+                </div>
+                <div class="detail-row">
+                  <h4>Scan, attaque simulée et détection</h4>
+                  <ul class="scenarios">
+                    <li>
+                      <div class="scenario-head"><h5>Scan réseau avec Nmap</h5><span class="attck">MITRE ATT&amp;CK T1046</span></div>
+                      <p>
+                        Reconnaissance initiale de la machine cible pour identifier les services exposés
+                        avant de simuler une attaque.
+                      </p>
+                      <figure class="detail-fig">
+                        <a href="../assets/projets/wazuh-nmap-scan.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
+                          <img src="../assets/projets/wazuh-nmap-scan.png" alt="Terminal : sudo nmap -sS 192.168.139.128, ports 22 (ssh) et 80 (http) ouverts" width="592" height="150" loading="lazy" decoding="async">
+                        </a>
+                        <figcaption>Scan Nmap : ports 22 (SSH) et 80 (HTTP) détectés ouverts sur la machine cible</figcaption>
+                      </figure>
+                    </li>
+                    <li>
+                      <div class="scenario-head"><h5>Brute force SSH avec Hydra</h5><span class="attck">MITRE ATT&amp;CK T1110</span></div>
+                      <p>
+                        Tentative de brute force contre le service SSH identifié, pour générer les
+                        échecs d'authentification que la règle de détection doit remonter.
+                      </p>
+                      <figure class="detail-fig">
+                        <a href="../assets/projets/wazuh-hydra-ssh-bruteforce.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
+                          <img src="../assets/projets/wazuh-hydra-ssh-bruteforce.png" alt="Terminal : hydra -l user -P passwords.txt ssh://192.168.139.128, resultat 0 mot de passe valide trouve" width="597" height="228" loading="lazy" decoding="async">
+                        </a>
+                        <figcaption>Hydra contre le port SSH : tentative sans succès, pour déclencher les alertes d'échec d'authentification</figcaption>
+                      </figure>
+                    </li>
+                    <li>
+                      <div class="scenario-head"><h5>Alertes et règle personnalisée</h5></div>
+                      <p>
+                        Les échecs d'authentification SSH et PAM remontent dans le tableau de bord, aux
+                        côtés de la règle personnalisée <code>100002</code> qui qualifie la création d'un
+                        compte utilisateur suspect — visible directement sur la carte du projet.
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+            <p class="no-repo">Projet académique — documentation interne, dépôt non public.</p>
+          </div>
+        </article>
+
+        <article class="card panel" data-cat="grc" aria-labelledby="p-kasbah">
+          <figure class="card-media">
+            <img src="../assets/projets/kasbah_photo.jpeg" alt="Présentation d'un scénario de crise devant l'écran de projection, pendant l'exercice KASBAH 2026" width="1206" height="904" loading="lazy" decoding="async">
+            <figcaption>Présentation lors de l'exercice de crise KASBAH 2026</figcaption>
+          </figure>
+          <div class="card-badges">
+            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-clipboard"/></svg>GRC</span>
+            <span class="badge">09/2026 · EMSI × CyberSup</span>
+          </div>
+          <h3 id="p-kasbah"><span class="case-no">CAS Nº3</span>KASBAH 2026 — gestion de crise cyber</h3>
+          <p class="card-desc">
+            Trois jours de gestion de crise face à une cyberattaque simulée, au sein de la cellule
+            Direction.
+          </p>
+          <ul class="tags">
+            <li>Gestion de crise</li><li>Coordination</li><li>Prise de décision</li><li>Communication</li><li>Travail sous pression</li>
+          </ul>
+
+          <div class="card-actions">
+            <details class="card-detail">
+              <summary class="btn btn-soft"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span></summary>
+              <div class="detail-body">
+                <div class="detail-row">
+                  <dl class="card-facts">
+                    <dt>Objectif</dt><dd>Traiter en temps réel une cyberattaque simulée, avec une information partielle et des décisions à prendre vite.</dd>
+                    <dt>Résultat</dt><dd>Arbitrage des priorités au sein de la cellule Direction, et coordination avec les cellules techniques et les interlocuteurs externes.</dd>
+                  </dl>
+                </div>
+                <div class="detail-row">
+                  <h4>Contexte</h4>
+                  <p>
+                    Compétition de gestion de crise cyber sur trois jours : une cyberattaque simulée contre
+                    une organisation, à traiter en temps réel avec une information partielle et des
+                    décisions à prendre vite.
+                  </p>
+                </div>
+                <div class="detail-row">
+                  <h4>Ce que j'ai fait</h4>
+                  <ul class="dashes">
+                    <li>Membre de la <strong>cellule Direction</strong> : arbitrage des priorités pendant toute la durée de la crise.</li>
+                    <li>Décisions de confinement mises en balance avec la continuité d'activité.</li>
+                    <li>Coordination et communication avec les cellules techniques et les interlocuteurs externes.</li>
+                    <li>Retour d'expérience utile pour un analyste : une alerte n'a de valeur que si elle est qualifiée et transmise clairement à ceux qui décident.</li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+            <a class="btn btn-ghost" href="https://kasbah.cybersup.ai/certificat/KSB26-0K0CQJVF" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-award"/></svg>Certificat de participation</a>
+          </div>
+        </article>
+
+        <article class="card card--placeholder panel" data-cat="redteam" data-placeholder>
+          <div class="card-badges">
+            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-target"/></svg>Red Team / Pentest</span>
+            <span class="badge badge-soon">En préparation</span>
+          </div>
+          <h3>Projet en cours de documentation</h3>
+        </article>
+
+        <article class="card card--placeholder panel" data-cat="ia" data-placeholder>
+          <div class="card-badges">
+            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-chip"/></svg>IA</span>
+            <span class="badge badge-soon">En préparation</span>
+          </div>
+          <h3>Projet en cours de documentation</h3>
+        </article>
+
+        <article class="card card--placeholder panel" data-cat="crypto" data-placeholder>
+          <div class="card-badges">
+            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Cryptographie</span>
+            <span class="badge badge-soon">En préparation</span>
+          </div>
+          <h3>Projet en cours de documentation</h3>
+        </article>
+
+      </div>
+
+      <div class="empty-state panel" id="projects-empty" hidden>
+        <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg></span>
+        <h3>Projets à venir</h3>
+        <p>Aucun projet publié pour l'instant dans la catégorie <strong data-cat-label></strong>.</p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <span>© 2026 Ryad Boujenan</span>
+    <a href="../en/projects/index.html" hreflang="en" lang="en">Read this page in English</a>
+  </div>
+</footer>
+
+<!-- Detail des projets : sans JavaScript, le contenu reste dans
+     <details class="card-detail"> au sein de chaque carte. -->
+<dialog class="project-dialog" id="project-dialog" aria-label="Détail du projet">
+  <button class="project-dialog-close" id="project-dialog-close" type="button" aria-label="Fermer">&times;</button>
+  <div class="project-dialog-body" id="project-dialog-body"></div>
+</dialog>
+
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>

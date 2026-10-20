@@ -53,6 +53,8 @@
   <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></symbol>
   <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></symbol>
   <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></symbol>
+  <symbol id="i-chess" viewBox="0 0 24 24"><circle cx="12" cy="6.5" r="2.8"/><path d="M9 12.5h6l1.2 6.5H7.8z"/><path d="M6.5 19h11"/></symbol>
+  <symbol id="i-football" viewBox="0 0 24 24"><g transform="rotate(-24 12 12)"><ellipse cx="12" cy="12" rx="9" ry="5"/><path d="M5.5 12h13"/><path d="M9.5 10v4M12 9.5v5M14.5 10v4"/></g></symbol>
 </svg>
 
 <header class="site-header">
@@ -100,7 +102,7 @@
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#projets"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg>Voir mes projets</a>
+            <a class="btn btn-primary" href="projets/index.html"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg>Voir mes projets</a>
             <a class="btn btn-secondary" href="#voyages"><svg class="i" aria-hidden="true"><use href="#i-globe"/></svg>Mes voyages</a>
             <p class="hero-note">Passionné de voyages et d'échecs.</p>
           </div>
@@ -168,10 +170,6 @@
             Un environnement de détection monté en laboratoire : 4 règles personnalisées,
             testées à l'aide d'attaques simulées sur des machines Linux et Windows.
           </p>
-          <dl class="card-facts">
-            <dt>Objectif</dt><dd>Travailler la détection sur mes propres données, plutôt que sur des jeux de logs préparés.</dd>
-            <dt>Résultat</dt><dd>4 règles validées sur 3 scénarios d'attaque, un guide d'investigation par règle, et le lab documenté sur GitHub.</dd>
-          </dl>
           <ul class="tags">
             <li>Elasticsearch</li><li>Kibana</li><li>Elastic Security</li><li>Fleet</li><li>Elastic Agent</li><li>Sysmon</li><li>KQL</li><li>EQL</li><li>MITRE ATT&amp;CK</li><li>Windows Server / AD</li><li>Ubuntu</li>
           </ul>
@@ -180,6 +178,12 @@
             <details class="card-detail">
               <summary class="btn btn-soft"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span></summary>
               <div class="detail-body">
+                <div class="detail-row">
+                  <dl class="card-facts">
+                    <dt>Objectif</dt><dd>Travailler la détection sur mes propres données, plutôt que sur des jeux de logs préparés.</dd>
+                    <dt>Résultat</dt><dd>4 règles validées sur 3 scénarios d'attaque, un guide d'investigation par règle, et le lab documenté sur GitHub.</dd>
+                  </dl>
+                </div>
                 <div class="detail-row">
                   <h4>Contexte</h4>
                   <p>
@@ -283,10 +287,6 @@
             Un SIEM open source déployé sur plusieurs machines virtuelles, avec 2 règles de détection
             personnalisées testées à l'aide de scénarios d'attaque en laboratoire.
           </p>
-          <dl class="card-facts">
-            <dt>Objectif</dt><dd>Vérifier de bout en bout qu'un SIEM open source détecte réellement des attaques, pas seulement qu'il collecte des logs.</dd>
-            <dt>Résultat</dt><dd>2 règles personnalisées mappées MITRE ATT&amp;CK, testées par brute force SSH et scans Nmap, puis comparées à Elastic Security.</dd>
-          </dl>
           <ul class="tags">
             <li>Wazuh</li><li>VMware</li><li>Linux</li><li>Windows</li><li>MITRE ATT&amp;CK</li><li>Nmap</li><li>Syslog</li>
           </ul>
@@ -295,6 +295,12 @@
             <details class="card-detail">
               <summary class="btn btn-soft"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span></summary>
               <div class="detail-body">
+                <div class="detail-row">
+                  <dl class="card-facts">
+                    <dt>Objectif</dt><dd>Vérifier de bout en bout qu'un SIEM open source détecte réellement des attaques, pas seulement qu'il collecte des logs.</dd>
+                    <dt>Résultat</dt><dd>2 règles personnalisées mappées MITRE ATT&amp;CK, testées par brute force SSH et scans Nmap, puis comparées à Elastic Security.</dd>
+                  </dl>
+                </div>
                 <div class="detail-row">
                   <h4>Contexte</h4>
                   <p>
@@ -372,10 +378,6 @@
             Trois jours de gestion de crise face à une cyberattaque simulée, au sein de la cellule
             Direction.
           </p>
-          <dl class="card-facts">
-            <dt>Objectif</dt><dd>Traiter en temps réel une cyberattaque simulée, avec une information partielle et des décisions à prendre vite.</dd>
-            <dt>Résultat</dt><dd>Arbitrage des priorités au sein de la cellule Direction, et coordination avec les cellules techniques et les interlocuteurs externes.</dd>
-          </dl>
           <ul class="tags">
             <li>Gestion de crise</li><li>Coordination</li><li>Prise de décision</li><li>Communication</li><li>Travail sous pression</li>
           </ul>
@@ -384,6 +386,12 @@
             <details class="card-detail">
               <summary class="btn btn-soft"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span></summary>
               <div class="detail-body">
+                <div class="detail-row">
+                  <dl class="card-facts">
+                    <dt>Objectif</dt><dd>Traiter en temps réel une cyberattaque simulée, avec une information partielle et des décisions à prendre vite.</dd>
+                    <dt>Résultat</dt><dd>Arbitrage des priorités au sein de la cellule Direction, et coordination avec les cellules techniques et les interlocuteurs externes.</dd>
+                  </dl>
+                </div>
                 <div class="detail-row">
                   <h4>Contexte</h4>
                   <p>
@@ -499,9 +507,9 @@
             <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-cloud"/></svg></span>
             <h3>Cloud</h3>
           </div>
-          <p class="skill-lead">Je me forme aux fondamentaux du cloud : services de base, responsabilité partagée, identités et journalisation.</p>
+          <p class="skill-lead">Je me forme aux fondamentaux du cloud avec AWS Academy : gestion des identités, calcul et stockage, réseau virtuel, supervision, et modèle de responsabilité partagée.</p>
           <ul class="tags tags--quiet">
-            <li>AWS Academy Cloud Foundations</li>
+            <li>AWS Academy Cloud Foundations</li><li>IAM</li><li>EC2</li><li>S3</li><li>VPC</li><li>CloudWatch</li><li>Modèle de responsabilité partagée</li><li>Docker</li>
           </ul>
         </div>
         <div class="skill-group panel">
@@ -769,14 +777,16 @@
           </dl>
         </div>
 
-        <div class="panel">
+        <div class="panel panel--interests">
           <div class="panel-head">
             <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-heart"/></svg></span>
             <h3>Centres d'intérêt</h3>
           </div>
-          <ul class="tags">
-            <li>Voyages</li><li>Échecs</li><li>Football américain</li>
-          </ul>
+          <div class="interest-grid">
+            <div class="interest-item"><svg class="i" aria-hidden="true"><use href="#i-globe"/></svg>Voyages</div>
+            <div class="interest-item"><svg class="i" aria-hidden="true"><use href="#i-chess"/></svg>Échecs</div>
+            <div class="interest-item"><svg class="i" aria-hidden="true"><use href="#i-football"/></svg>Football américain</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1058,6 +1068,13 @@
   <button class="lightbox-btn lightbox-prev" id="lightbox-prev" type="button" aria-label="Précédent">&lsaquo;</button>
   <button class="lightbox-btn lightbox-next" id="lightbox-next" type="button" aria-label="Suivant">&rsaquo;</button>
 </div>
+
+<!-- Detail des projets : sans JavaScript, le contenu reste dans
+     <details class="card-detail"> au sein de chaque carte. -->
+<dialog class="project-dialog" id="project-dialog" aria-label="Détail du projet">
+  <button class="project-dialog-close" id="project-dialog-close" type="button" aria-label="Fermer">&times;</button>
+  <div class="project-dialog-body" id="project-dialog-body"></div>
+</dialog>
 
 <script src="assets/js/main.js" defer></script>
 </body>
