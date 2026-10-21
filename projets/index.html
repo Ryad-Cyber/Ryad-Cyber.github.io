@@ -91,8 +91,8 @@
         <p class="eyebrow"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg>Projets</p>
         <h2>Tous mes projets</h2>
         <p class="section-sub">
-          Détection, SIEM et gestion de crise pour l'instant, avec des cas en Red Team, cloud, IA
-          et cryptographie en préparation.
+          Détection, SIEM, gestion de crise et pentest Linux, avec des cas en cloud, IA et
+          cryptographie en préparation.
         </p>
       </div>
 
@@ -359,12 +359,140 @@
           </div>
         </article>
 
-        <article class="card card--placeholder panel" data-cat="redteam" data-placeholder>
+        <!-- ===== CAS Nº4 : VulnHub DC-4 (Red Team / Pentest) ===== -->
+        <article class="card panel" data-cat="redteam" aria-labelledby="p-dc4">
+          <figure class="card-media card-media--screenshot">
+            <img src="../assets/projets/acces-interface-web.png" alt="Navigateur : interface System Tools, authentification réussie sur DC-4" width="1368" height="522" loading="lazy" decoding="async">
+            <figcaption>Accès à l'interface web System Tools après authentification</figcaption>
+          </figure>
           <div class="card-badges">
             <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-target"/></svg>Red Team / Pentest</span>
-            <span class="badge badge-soon">En préparation</span>
+            <span class="badge">10/2026 · Projet personnel</span>
           </div>
-          <h3>Projet en cours de documentation</h3>
+          <h3 id="p-dc4"><span class="case-no">CAS Nº4</span>Pentest Linux — VulnHub DC-4</h3>
+          <p class="card-desc">
+            Compromission de bout en bout d'une machine Linux VulnHub en laboratoire isolé :
+            reconnaissance, accès initial, mouvement latéral et élévation de privilèges jusqu'à root.
+          </p>
+          <ul class="tags">
+            <li>Kali Linux</li><li>Nmap</li><li>Hydra</li><li>SSH</li><li>Linux</li><li>Sudo</li><li>VulnHub</li><li>MITRE ATT&amp;CK</li>
+          </ul>
+
+          <div class="card-actions">
+            <details class="card-detail">
+              <summary class="btn btn-soft"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span></summary>
+              <div class="detail-body">
+                <div class="detail-row">
+                  <dl class="card-facts">
+                    <dt>Objectif</dt><dd>Conduire un pentest méthodique sur DC-4 (VulnHub) dans un lab isolé, de la reconnaissance jusqu'à l'obtention de root.</dd>
+                    <dt>Résultat</dt><dd>Accès root validé : compte UID 0 créé via une règle Sudo trop permissive, puis lecture du flag dans /root/flag.txt.</dd>
+                  </dl>
+                </div>
+                <div class="detail-row">
+                  <h4>Présentation et objectifs</h4>
+                  <p>
+                    DC-4 est une machine Linux volontairement vulnérable publiée sur VulnHub. Je l'ai
+                    exécutée dans un laboratoire isolé, depuis Kali Linux, pour travailler une chaîne
+                    d'attaque complète : reconnaissance des services, accès initial, énumération locale,
+                    mouvement latéral et élévation de privilèges.
+                  </p>
+                </div>
+                <div class="detail-row">
+                  <h4>Méthodologie et chaîne d'attaque</h4>
+                  <ul class="scenarios">
+                    <li>
+                      <div class="scenario-head"><h5>Reconnaissance</h5><span class="attck">MITRE ATT&amp;CK T1046</span></div>
+                      <p>
+                        Scan Nmap de la cible : identification des services SSH (port 22) et HTTP
+                        (port 80, nginx — interface « System Tools »).
+                      </p>
+                      <figure class="detail-fig">
+                        <a href="../assets/projets/reconnaissance-nmap.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
+                          <img src="../assets/projets/reconnaissance-nmap.png" alt="Terminal Kali : scan Nmap -sV -sC, ports 22/ssh et 80/http ouverts sur la cible DC-4" width="769" height="321" loading="lazy" decoding="async">
+                        </a>
+                        <figcaption>Scan Nmap : SSH et HTTP ouverts sur la machine cible</figcaption>
+                      </figure>
+                    </li>
+                    <li>
+                      <div class="scenario-head"><h5>Accès initial</h5><span class="attck">MITRE ATT&amp;CK T1110</span></div>
+                      <p>
+                        Test du formulaire d'authentification web avec Hydra, puis connexion SSH avec
+                        le compte <code>jim</code>. L'interface web « System Tools » confirme l'accès
+                        authentifié obtenu.
+                      </p>
+                      <figure class="detail-fig">
+                        <a href="../assets/projets/acces-interface-web.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
+                          <img src="../assets/projets/acces-interface-web.png" alt="Navigateur : interface System Tools, message You are currently logged in sur la cible DC-4" width="1368" height="522" loading="lazy" decoding="async">
+                        </a>
+                        <figcaption>Interface web System Tools après authentification réussie</figcaption>
+                      </figure>
+                    </li>
+                    <li>
+                      <div class="scenario-head"><h5>Énumération locale et mouvement latéral</h5><span class="attck">MITRE ATT&amp;CK T1552</span></div>
+                      <p>
+                        Lecture de <code>/var/mail/jim</code> : un message laisse apparaître un mot de
+                        passe transmis en clair pour le compte <code>charles</code>. Passage de
+                        <code>jim</code> à <code>charles</code> (les secrets ne sont pas reproduits ici).
+                      </p>
+                      <figure class="detail-fig">
+                        <a href="../assets/projets/mail_jim-redacted.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
+                          <img src="../assets/projets/mail_jim-redacted.png" alt="Terminal : cat /var/mail/jim, message de charles avec mot de passe censuré" width="846" height="412" loading="lazy" decoding="async">
+                        </a>
+                        <figcaption>Boîte mail de jim : identifiants de charles exposés en clair</figcaption>
+                      </figure>
+                    </li>
+                    <li>
+                      <div class="scenario-head"><h5>Élévation de privilèges</h5><span class="attck">MITRE ATT&amp;CK T1548.003</span></div>
+                      <p>
+                        <code>sudo -l</code> montre que <code>charles</code> peut exécuter
+                        <code>/usr/bin/teehee</code> en tant que root sans mot de passe. Cette
+                        autorisation a servi à ajouter une entrée dans <code>/etc/passwd</code> et à
+                        créer un compte disposant de l'UID 0.
+                      </p>
+                      <figure class="detail-fig">
+                        <a href="../assets/projets/sudo-charles.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
+                          <img src="../assets/projets/sudo-charles.png" alt="Terminal : sudo -l, (root) NOPASSWD: /usr/bin/teehee pour charles" width="655" height="111" loading="lazy" decoding="async">
+                        </a>
+                        <figcaption>Règle Sudo : teehee exécutable en root sans mot de passe</figcaption>
+                      </figure>
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-row">
+                  <h4>Résultats obtenus</h4>
+                  <ul class="dashes">
+                    <li>Chaîne d'attaque complète en laboratoire isolé, de la reconnaissance à root.</li>
+                    <li>Validation des privilèges avec <code>id</code> (UID 0), puis lecture de <code>/root/flag.txt</code>.</li>
+                    <li>Deux failles principales exploitées : exposition d'identifiants et règle Sudo trop permissive.</li>
+                  </ul>
+                </div>
+                <div class="detail-row">
+                  <h4>Analyse des failles</h4>
+                  <ul class="dashes">
+                    <li><strong>Exposition d'identifiants</strong> : un mot de passe transmis en clair dans la messagerie locale a permis le mouvement latéral vers <code>charles</code>.</li>
+                    <li><strong>Règle Sudo trop permissive</strong> : <code>teehee</code> exécutable en root (NOPASSWD) a permis d'écrire dans <code>/etc/passwd</code> et de créer un compte UID 0.</li>
+                  </ul>
+                </div>
+                <div class="detail-row">
+                  <h4>Recommandations de remédiation</h4>
+                  <ul class="dashes">
+                    <li>Ne jamais transmettre de mots de passe en clair (messagerie, tickets, fichiers partagés) ; privilégier un gestionnaire de secrets et la rotation immédiate en cas d'exposition.</li>
+                    <li>Restreindre les règles Sudo au strict nécessaire ; éviter NOPASSWD sur des binaires capables d'écrire des fichiers système.</li>
+                    <li>Renforcer l'authentification du formulaire web (limitation de débit, verrouillage de compte, mots de passe robustes) pour freiner le brute force.</li>
+                    <li>Surveiller les accès SSH, les lectures de boîtes mail et les modifications de <code>/etc/passwd</code>.</li>
+                  </ul>
+                </div>
+                <div class="detail-row">
+                  <h4>Compétences et outils mobilisés</h4>
+                  <p>
+                    Kali Linux, Nmap, Hydra, SSH, énumération Linux, analyse de règles Sudo et
+                    méthodologie de pentest offensif en environnement isolé.
+                  </p>
+                </div>
+              </div>
+            </details>
+            <p class="no-repo">Lab VulnHub isolé — documentation personnelle, dépôt non public.</p>
+          </div>
         </article>
 
         <article class="card card--placeholder panel" data-cat="ia" data-placeholder>
