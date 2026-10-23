@@ -4,16 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Projects — Ryad Boujenan</title>
-<meta name="theme-color" content="#142a2d">
+<meta name="theme-color" content="#080f20">
 <meta name="description" content="Cybersecurity projects by Ryad Boujenan: AWS infrastructure and security, Elastic Security, Wazuh, Linux pentesting and cyber crisis management.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&display=swap">
-<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../../assets/css/style.css">
-<link rel="stylesheet" href="../../assets/css/editorial.css">
+<link rel="icon" href="../../assets/favicon.svg?v=20261023-blue" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20261023-blue">
+<link rel="stylesheet" href="../../assets/css/security.css?v=20261023-blue">
 </head>
 <body>
+<div class="network-backdrop" aria-hidden="true"></div>
 <a class="skip-link" href="#main-content">Skip to content</a>
 
 <!-- Background intentionally quiet: content and evidence lead. -->
@@ -53,10 +54,7 @@
   <div class="container header-inner">
     <a class="brand" href="../index.html#home"><span class="brand-mark">RB</span>Ryad Boujenan</a>
 
-    <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">
-      <svg class="i i-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-      <svg class="i i-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
-    </button>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation" hidden><span class="menu-glyph" aria-hidden="true"></span></button>
     <nav class="site-nav" id="site-nav" aria-label="Main navigation">
       <ul>
         <li><a href="../index.html#home">Home</a></li>
@@ -105,25 +103,10 @@
         <button class="filter" type="button" data-filter="crypto" data-label="Cryptography" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Cryptography<span class="count"></span></button>
       </div>
 
-      <p class="project-index">FIELD NOTES / 05 DOCUMENTED PROJECTS</p>
+      <p class="project-index">05 projects · objectives, methods and results</p>
 <div class="cards" id="project-cards">
-<article class="card panel card--cloud" data-cat="cloud" aria-labelledby="p-aws">
-      <figure class="card-media card-media--aws"><img src="../../assets/projets/aws-vpc-architecture-routes.jpeg" alt="Lab VPC — 10.1.0.0/16, Public Subnet 1 — 10.1.11.0/24" width="2048" height="876" loading="lazy"><figcaption>AWS / IAM · VPC · EC2</figcaption></figure><div class="card-content">
-      <div class="card-badges"><span class="badge badge-cat">Cloud</span><span class="badge">2026 · AWS Academy</span></div>
-      <h3 id="p-aws"><span class="case-no">CASE Nº5</span>AWS Cloud Foundations — Infrastructure &amp; Security</h3>
-      <p class="card-desc">First hands-on AWS practice: IAM permissions, VPC networking, EC2 instances and Security Group filtering.</p>
-      <ul class="tags"><li>AWS</li><li>IAM</li><li>IAM Policies</li><li>VPC</li><li>Subnets</li><li>Route Tables</li><li>EC2</li><li>Security Groups</li><li>JSON</li><li>TCP/IP</li><li>SSH</li></ul>
-      <div class="card-actions"><details class="card-detail"><summary class="btn btn-soft"><span class="when-closed">Explore the lab ↗</span><span class="when-open">Collapse details</span></summary>
-      <div class="detail-body"><div class="detail-row"><dl class="card-facts"><dt>Context</dt><dd>AWS Academy Cloud Foundations</dd><dt>Scope</dt><dd>Educational lab</dd></dl></div>
-      <div class="detail-row"><h4>Context and objective</h4><p>A practical project completed during AWS Academy Cloud Foundations to work with fundamental AWS infrastructure components and their security. This is a training environment, not a professional security audit or a production infrastructure.</p></div>
-      <div class="detail-row"><h4>Technical work</h4><ol class="steps"><li><strong>IAM permissions.</strong> Analysis and configuration of the JSON <code>EC2-Admin-Policy</code>: <code>ec2:Describe*</code>, <code>ec2:StartInstances</code> and <code>ec2:StopInstances</code>. Goal: understand granular permissions and the principle of least privilege.</li>
-    <li><strong>VPC architecture.</strong> Study of <code>Lab VPC — 10.1.0.0/16</code>, <code>Public Subnet 1 — 10.1.11.0/24</code> and the public route table (Public Route Table, displayed as “Public” in the screenshot). Goal: understand segmentation, routing and connectivity.</li>
-    <li><strong>EC2 and Security Groups.</strong> Work with <code>LabHost</code> and <code>Bastion Host</code>; observation and configuration of inbound network rules, including SSH on <code>TCP/22</code>. Goal: understand instance administration and network filtering.</li></ol></div>
-      <div class="detail-row"><h4>Annotated screenshots</h4><p>Each screenshot opens at full size in a new tab.</p><figure class="detail-fig"><a href="../../assets/projets/aws-iam-policy-json.png" target="_blank" rel="noopener" aria-label="Open screenshot 01 / IAM"><img src="../../assets/projets/aws-iam-policy-json.png" width="1881" height="701" loading="lazy" alt="EC2-Admin-Policy: EC2 permissions in JSON."></a><figcaption><strong>01 / IAM — EC2-Admin-Policy: EC2 permissions in JSON.</strong> Describe, StartInstances and StopInstances actions are visible. The wildcard resource remains broad: this screenshot does not establish full least privilege.</figcaption></figure><figure class="detail-fig"><a href="../../assets/projets/aws-vpc-architecture-routes.jpeg" target="_blank" rel="noopener" aria-label="Open screenshot 02 / VPC"><img src="../../assets/projets/aws-vpc-architecture-routes.jpeg" width="2048" height="876" loading="lazy" alt="Lab VPC: network, subnet and routing."></a><figcaption><strong>02 / VPC — Lab VPC: network, subnet and routing.</strong> The map shows 10.1.0.0/16, Public Subnet 1 at 10.1.11.0/24 and its association with the “Public” route table. Route destinations are not displayed.</figcaption></figure><figure class="detail-fig"><a href="../../assets/projets/aws-ec2-security-groups.png" target="_blank" rel="noopener" aria-label="Open screenshot 03 / EC2"><img src="../../assets/projets/aws-ec2-security-groups.png" width="1657" height="694" loading="lazy" alt="LabHost and Bastion Host: instances and security group."></a><figcaption><strong>03 / EC2 — LabHost and Bastion Host: instances and security group.</strong> Both instances and the group attached to LabHost are visible. Inbound rule details are outside the frame: the screenshot cannot verify the source allowed on TCP/22.</figcaption></figure></div>
-      <div class="detail-row"><h4>What I learned</h4><p>Connect IAM permissions, network organization and Security Group rules. Distinguish a learning configuration from a hardened configuration; in particular, a limited set of IAM actions is insufficient when the resource scope remains broad.</p></div></div></details>
-      <p class="no-repo">Training lab · 3 documented screenshots</p></div></div></article>
 
-        <article class="card panel" data-cat="soc" aria-labelledby="p-elastic">
+<article class="card panel card--featured" data-cat="soc" aria-labelledby="p-elastic">
           <figure class="card-media card-media--screenshot">
             <img src="../../assets/projets/kibana-rules-overview.png" alt="The lab's detection rules in Kibana: four custom rules with their severity and last run" width="1660" height="538" loading="lazy" decoding="async">
             <figcaption>The lab's 4 detection rules, in Kibana</figcaption>
@@ -143,7 +126,7 @@
 
           <div class="card-actions">
             <details class="card-detail">
-              <summary class="btn btn-soft"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg><span class="when-closed">Read the case in detail</span><span class="when-open">Collapse the detail</span></summary>
+              <summary class="btn btn-soft"><span class="when-closed">Read the case in detail</span><span class="when-open">Collapse the detail</span><span aria-hidden="true">↗</span></summary>
               <div class="detail-body">
                 <div class="detail-row">
                   <dl class="card-facts">
@@ -230,7 +213,7 @@
           </div>
         </div></article>
 
-        <article class="card panel" data-cat="soc" aria-labelledby="p-wazuh">
+<article class="card panel" data-cat="soc" aria-labelledby="p-wazuh">
           <figure class="card-media card-media--screenshot">
             <img src="../../assets/projets/wazuh-detection-alerts-rules.png" alt="Wazuh Threat Hunting dashboard: SSH and PAM authentication-failure alerts, and custom rule 100002 level 10 for a suspicious account creation" width="924" height="396" loading="lazy" decoding="async">
             <figcaption>Wazuh alerts: SSH/PAM authentication failures, and custom rule 100002 (level 10)</figcaption>
@@ -250,7 +233,7 @@
 
           <div class="card-actions">
             <details class="card-detail">
-              <summary class="btn btn-soft"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg><span class="when-closed">Read the case in detail</span><span class="when-open">Collapse the detail</span></summary>
+              <summary class="btn btn-soft"><span class="when-closed">Read the case in detail</span><span class="when-open">Collapse the detail</span><span aria-hidden="true">↗</span></summary>
               <div class="detail-body">
                 <div class="detail-row">
                   <dl class="card-facts">
@@ -320,7 +303,7 @@
           </div>
         </div></article>
 
-        <article class="card panel" data-cat="grc" aria-labelledby="p-kasbah">
+<article class="card panel" data-cat="grc" aria-labelledby="p-kasbah">
           <figure class="card-media">
             <img src="../../assets/projets/kasbah_photo.jpeg" alt="Presenting a crisis scenario in front of the projection screen during the KASBAH 2026 exercise" width="1206" height="904" loading="lazy" decoding="async">
             <figcaption>Presenting during the KASBAH 2026 crisis exercise</figcaption>
@@ -340,7 +323,7 @@
 
           <div class="card-actions">
             <details class="card-detail">
-              <summary class="btn btn-soft"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg><span class="when-closed">Read the case in detail</span><span class="when-open">Collapse the detail</span></summary>
+              <summary class="btn btn-soft"><span class="when-closed">Read the case in detail</span><span class="when-open">Collapse the detail</span><span aria-hidden="true">↗</span></summary>
               <div class="detail-body">
                 <div class="detail-row">
                   <dl class="card-facts">
@@ -371,8 +354,7 @@
           </div>
         </div></article>
 
-        <!-- ===== CAS Nº4 : VulnHub DC-4 (Red Team / Pentest) ===== -->
-        <article class="card panel" data-cat="redteam" aria-labelledby="p-dc4">
+<article class="card panel" data-cat="redteam" aria-labelledby="p-dc4">
           <figure class="card-media card-media--screenshot">
             <img src="../../assets/projets/acces-interface-web.png" alt="Browser: System Tools interface, successful authentication on DC-4" width="1368" height="522" loading="lazy" decoding="async">
             <figcaption>Access to the System Tools web interface after authentication</figcaption>
@@ -392,7 +374,7 @@
 
           <div class="card-actions">
             <details class="card-detail">
-              <summary class="btn btn-soft"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg><span class="when-closed">Read the case in detail</span><span class="when-open">Collapse the detail</span></summary>
+              <summary class="btn btn-soft"><span class="when-closed">Read the case in detail</span><span class="when-open">Collapse the detail</span><span aria-hidden="true">↗</span></summary>
               <div class="detail-body">
                 <div class="detail-row">
                   <dl class="card-facts">
@@ -506,6 +488,22 @@
           </div>
         </div></article>
 
+<article class="card panel card--cloud" data-cat="cloud" aria-labelledby="p-aws">
+      <figure class="card-media card-media--aws"><img src="../../assets/projets/aws-vpc-architecture-routes.jpeg" alt="Lab VPC — 10.1.0.0/16, Public Subnet 1 — 10.1.11.0/24" width="2048" height="876" loading="lazy"><figcaption>AWS / IAM · VPC · EC2</figcaption></figure><div class="card-content">
+      <div class="card-badges"><span class="badge badge-cat">Cloud</span><span class="badge">2026 · AWS Academy</span></div>
+      <h3 id="p-aws"><span class="case-no">CASE Nº5</span>AWS Cloud Foundations — Infrastructure &amp; Security</h3>
+      <p class="card-desc">First hands-on AWS practice: IAM permissions, VPC networking, EC2 instances and Security Group filtering.</p>
+      <ul class="tags"><li>AWS</li><li>IAM</li><li>IAM Policies</li><li>VPC</li><li>Subnets</li><li>Route Tables</li><li>EC2</li><li>Security Groups</li><li>JSON</li><li>TCP/IP</li><li>SSH</li></ul>
+      <div class="card-actions"><details class="card-detail"><summary class="btn btn-soft"><span class="when-closed">Read the case in detail</span><span class="when-open">Collapse the detail</span><span aria-hidden="true">↗</span></summary>
+      <div class="detail-body"><div class="detail-row"><dl class="card-facts"><dt>Context</dt><dd>AWS Academy Cloud Foundations</dd><dt>Scope</dt><dd>Educational lab</dd></dl></div>
+      <div class="detail-row"><h4>Context and objective</h4><p>A practical project completed during AWS Academy Cloud Foundations to work with fundamental AWS infrastructure components and their security. This is a training environment, not a professional security audit or a production infrastructure.</p></div>
+      <div class="detail-row"><h4>Technical work</h4><ol class="steps"><li><strong>IAM permissions.</strong> Analysis and configuration of the JSON <code>EC2-Admin-Policy</code>: <code>ec2:Describe*</code>, <code>ec2:StartInstances</code> and <code>ec2:StopInstances</code>. Goal: understand granular permissions and the principle of least privilege.</li>
+    <li><strong>VPC architecture.</strong> Study of <code>Lab VPC — 10.1.0.0/16</code>, <code>Public Subnet 1 — 10.1.11.0/24</code> and the public route table (Public Route Table, displayed as “Public” in the screenshot). Goal: understand segmentation, routing and connectivity.</li>
+    <li><strong>EC2 and Security Groups.</strong> Work with <code>LabHost</code> and <code>Bastion Host</code>; observation and configuration of inbound network rules, including SSH on <code>TCP/22</code>. Goal: understand instance administration and network filtering.</li></ol></div>
+      <div class="detail-row"><h4>Annotated screenshots</h4><p>Select a screenshot to enlarge it and browse the gallery.</p><figure class="detail-fig"><a href="../../assets/projets/aws-iam-policy-json.png" target="_blank" rel="noopener" aria-label="Open screenshot 01 / IAM"><img src="../../assets/projets/aws-iam-policy-json.png" width="1881" height="701" loading="lazy" alt="EC2-Admin-Policy: EC2 permissions in JSON."></a><figcaption><strong>01 / IAM — EC2-Admin-Policy: EC2 permissions in JSON.</strong> Describe, StartInstances and StopInstances actions are visible. The wildcard resource remains broad: this screenshot does not establish full least privilege.</figcaption></figure><figure class="detail-fig"><a href="../../assets/projets/aws-vpc-architecture-routes.jpeg" target="_blank" rel="noopener" aria-label="Open screenshot 02 / VPC"><img src="../../assets/projets/aws-vpc-architecture-routes.jpeg" width="2048" height="876" loading="lazy" alt="Lab VPC: network, subnet and routing."></a><figcaption><strong>02 / VPC — Lab VPC: network, subnet and routing.</strong> The map shows 10.1.0.0/16, Public Subnet 1 at 10.1.11.0/24 and its association with the “Public” route table. Route destinations are not displayed.</figcaption></figure><figure class="detail-fig"><a href="../../assets/projets/aws-ec2-security-groups.png" target="_blank" rel="noopener" aria-label="Open screenshot 03 / EC2"><img src="../../assets/projets/aws-ec2-security-groups.png" width="1657" height="694" loading="lazy" alt="LabHost and Bastion Host: instances and security group."></a><figcaption><strong>03 / EC2 — LabHost and Bastion Host: instances and security group.</strong> Both instances and the group attached to LabHost are visible. Inbound rule details are outside the frame: the screenshot cannot verify the source allowed on TCP/22.</figcaption></figure></div>
+      <div class="detail-row"><h4>What I learned</h4><p>Connect IAM permissions, network organization and Security Group rules. Distinguish a learning configuration from a hardened configuration; in particular, a limited set of IAM actions is insufficient when the resource scope remains broad.</p></div></div></details>
+      <p class="no-repo">Training lab · 3 documented screenshots</p></div></div></article>
+
         <article class="card card--placeholder panel" data-cat="ia" data-placeholder>
           <div class="card-badges">
             <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-chip"/></svg>IA</span>
@@ -549,6 +547,12 @@
   <div class="project-dialog-body" id="project-dialog-body"></div>
 </dialog>
 
-<script src="../../assets/js/main.js" defer></script>
+<dialog class="capture-dialog" id="capture-dialog" aria-labelledby="capture-title">
+  <div class="capture-toolbar"><p id="capture-title">Project screenshots</p><span id="capture-count"></span><button type="button" id="capture-close" aria-label="Close screenshot">×</button></div>
+  <figure><img id="capture-image" alt=""><figcaption id="capture-caption"></figcaption></figure>
+  <div class="capture-controls"><button type="button" id="capture-prev" aria-label="Previous screenshot">←</button><a id="capture-original" target="_blank" rel="noopener">Open original ↗</a><button type="button" id="capture-next" aria-label="Next screenshot">→</button></div>
+</dialog>
+
+<script src="../../assets/js/main.js?v=20261023-blue" defer></script>
 </body>
 </html>

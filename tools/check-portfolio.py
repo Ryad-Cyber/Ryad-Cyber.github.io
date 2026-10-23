@@ -3,6 +3,7 @@ from pathlib import Path
 from html.parser import HTMLParser
 from urllib.parse import urlsplit, unquote
 from collections import Counter
+import re
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -24,6 +25,11 @@ class Page(HTMLParser):
 pages = {p: Page(p.read_text(encoding='utf-8')) for p in ROOT.rglob('*.html')}
 errors, checked = [], 0
 for path, page in pages.items():
+    source = path.read_text(encoding='utf-8')
+    if source.count('class="menu-toggle"') != 1 or 'class="menu-glyph"' not in source:
+        errors.append(f'{path}: navigation must use one menu button and one glyph')
+    if 'security.css?v=20261023-blue' not in source or 'main.js?v=20261023-blue' not in source:
+        errors.append(f'{path}: missing shared, versioned styles or script')
     duplicates = [key for key, n in Counter(page.ids).items() if n > 1]
     if duplicates: errors.append(f'{path}: duplicate IDs: {duplicates}')
     for link in page.links:
@@ -40,12 +46,24 @@ for path, page in pages.items():
     if page.projects:
         if Counter(page.projects) != Counter({'soc': 2, 'redteam': 1, 'grc': 1, 'cloud': 1}):
             errors.append(f'{path}: unexpected projects {page.projects}')
+        summaries = re.findall(r'<summary class="btn btn-soft">(.*?)</summary>', source, re.S)
+        expected = 'Read the case in detail' if path.relative_to(ROOT).parts[0] == 'en' else 'Lire le cas en détail'
+        if len(summaries) != 5 or any(expected not in summary for summary in summaries):
+            errors.append(f'{path}: inconsistent project buttons')
+        if 'id="capture-dialog"' not in source:
+            errors.append(f'{path}: missing screenshot gallery')
     if path in (ROOT/'index.html', ROOT/'en/index.html'):
         if page.telephones != ['tel:[PHONE_REMOVED]']:
             errors.append(f'{path}: incorrect telephone {page.telephones}')
+        if 'id="contact-form"' in source or 'class="contact-email"' not in source:
+            errors.append(f'{path}: compact direct contact expected')
+        language_grid = re.search(r'<dl class="language-grid">(.*?)</dl>', source, re.S)
+        expected_levels = ['Fluent', 'C1', 'Fluent', 'Basic', 'Beginner'] if path.parent.name == 'en' else ['Courant', 'C1', 'Courant', 'Notions', 'Débutant']
+        if not language_grid or re.findall(r'<dd>(.*?)</dd>', language_grid[1]) != expected_levels:
+            errors.append(f'{path}: language levels changed or missing')
 
 for filename in ('aws-iam-policy-json.png', 'aws-vpc-architecture-routes.jpeg', 'aws-ec2-security-groups.png'):
     if not (ROOT/'assets/projets'/filename).is_file(): errors.append(f'Missing AWS screenshot: {filename}')
 if errors:
     raise SystemExit('\n'.join(errors))
-print(f'PASS: {len(pages)} HTML pages; {checked} local links/assets/anchors; unique IDs; 5 projects on each project listing; FR/EN telephone; 3 AWS screenshots.')
+print(f'PASS: {len(pages)} HTML pages; {checked} local references; unique IDs; 5 projects and matching buttons; screenshot galleries; FR/EN contact and unchanged language levels; consistent navigation and versioned assets.')

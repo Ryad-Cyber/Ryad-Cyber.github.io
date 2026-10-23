@@ -46,8 +46,8 @@ The website uses no front-end framework or build process. Its lightweight archit
 ## Features
 
 * **Bilingual website:** French and English versions with matching content and structure.
-* **Editorial technical design:** deep green introduction, warm paper surfaces, condensed typography, numbered case studies and readable screenshots.
-* **Interactive project portfolio:** category filters and expandable project details.
+* **SOC / Cloud visual identity:** midnight blue, restrained electric blue accents, a subtle network grid, and Barlow Condensed name typography.
+* **Interactive project portfolio:** category filters, a featured case, four complementary cases, detailed studies and keyboard-accessible screenshot galleries.
 * **Project documentation:** objectives, results, tools, and practical scenarios.
 * **Responsive design:** adapted to desktop, tablet, and mobile screens.
 * **Travel gallery:** country-based photo carousels and an image viewer.
@@ -64,7 +64,7 @@ The website uses no front-end framework or build process. Its lightweight archit
 ├── assets/
 │   ├── css/
 │   │   ├── style.css       # Shared styles and component behavior
-│   │   └── editorial.css   # Shared visual direction and responsive layouts
+│   │   └── security.css    # Shared SOC / Cloud visual direction and responsive layouts
 │   ├── js/
 │   │   └── main.js         # Interactive features
 │   ├── certifications/     # Certification images
