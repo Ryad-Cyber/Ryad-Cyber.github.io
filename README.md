@@ -1,6 +1,6 @@
 # Ryad Boujenan | Cybersecurity Portfolio
 
-**SOC Analyst · Blue Team · Cybersecurity & Cloud Security**
+**Computer Engineering · Networks · Systems · Cybersecurity**
 
 Welcome to my personal portfolio, where I present my cybersecurity projects, technical skills, certifications, academic background, and professional development.
 
@@ -47,7 +47,7 @@ The website uses no front-end framework or build process. Its lightweight archit
 
 * **Bilingual website:** French and English versions with matching content and structure.
 * **SOC / Cloud visual identity:** midnight blue, restrained electric blue accents, a subtle network grid, and Barlow Condensed name typography.
-* **Interactive project portfolio:** category filters, a featured case, four complementary cases, detailed studies and keyboard-accessible screenshot galleries.
+* **Interactive project portfolio:** regular compact project grid, visible category labels, detailed studies and keyboard-accessible screenshot galleries.
 * **Project documentation:** objectives, results, tools, and practical scenarios.
 * **Responsive design:** adapted to desktop, tablet, and mobile screens.
 * **Travel gallery:** country-based photo carousels and an image viewer.
