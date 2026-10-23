@@ -48,6 +48,14 @@ for path, page in pages.items():
             errors.append(f'{path}: project cards must not use a featured layout')
         if Counter(page.projects) != Counter({'soc': 2, 'redteam': 1, 'grc': 1, 'cloud': 1}):
             errors.append(f'{path}: unexpected projects {page.projects}')
+        cards = re.findall(r'<article class="card [^"]+" data-cat="(?:soc|redteam|grc|cloud)"[^>]*>(.*?)</article>', source, re.S)
+        for card in cards:
+            cover = re.search(r'<figure class="card-media[^"]*">\s*<img src="([^"]+)"', card)
+            detail_images = re.findall(r'<figure class="detail-fig">\s*<a href="([^"]+)"', card)
+            if not cover or detail_images.count(cover[1]) != 1:
+                errors.append(f'{path}: project cover missing or duplicated in case gallery: {cover[1] if cover else "unknown"}')
+        if len(cards) != 5:
+            errors.append(f'{path}: expected five cards with image galleries, found {len(cards)}')
         summaries = re.findall(r'<summary class="btn btn-soft">(.*?)</summary>', source, re.S)
         expected = 'Read the case in detail' if path.relative_to(ROOT).parts[0] == 'en' else 'Lire le cas en détail'
         if len(summaries) != 5 or any(expected not in summary for summary in summaries):
