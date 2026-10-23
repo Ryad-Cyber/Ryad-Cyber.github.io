@@ -46,7 +46,7 @@ The website uses no front-end framework or build process. Its lightweight archit
 ## Features
 
 * **Bilingual website:** French and English versions with matching content and structure.
-* **Cybersecurity-inspired design:** dark interface, technical grid, network patterns, and cloud security motifs.
+* **Editorial technical design:** deep green introduction, warm paper surfaces, condensed typography, numbered case studies and readable screenshots.
 * **Interactive project portfolio:** category filters and expandable project details.
 * **Project documentation:** objectives, results, tools, and practical scenarios.
 * **Responsive design:** adapted to desktop, tablet, and mobile screens.
@@ -63,7 +63,8 @@ The website uses no front-end framework or build process. Its lightweight archit
 │   └── index.html          # English portfolio
 ├── assets/
 │   ├── css/
-│   │   └── style.css       # Shared styles
+│   │   ├── style.css       # Shared styles and component behavior
+│   │   └── editorial.css   # Shared visual direction and responsive layouts
 │   ├── js/
 │   │   └── main.js         # Interactive features
 │   ├── certifications/     # Certification images

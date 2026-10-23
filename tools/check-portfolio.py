@@ -1,0 +1,51 @@
+"""Validate local links, assets, IDs and project integration without dependencies."""
+from pathlib import Path
+from html.parser import HTMLParser
+from urllib.parse import urlsplit, unquote
+from collections import Counter
+
+ROOT = Path(__file__).resolve().parents[1]
+
+class Page(HTMLParser):
+    def __init__(self, source):
+        super().__init__(convert_charrefs=True)
+        self.ids, self.links, self.projects, self.telephones = [], [], [], []
+        self.feed(source)
+
+    def handle_starttag(self, tag, attrs):
+        a = dict(attrs)
+        if 'id' in a: self.ids.append(a['id'])
+        if tag == 'article' and 'data-cat' in a and 'data-placeholder' not in a:
+            self.projects.append(a['data-cat'])
+        for key in ('href', 'src', 'poster'):
+            if a.get(key): self.links.append(a[key])
+        if a.get('href', '').startswith('tel:'): self.telephones.append(a['href'])
+
+pages = {p: Page(p.read_text(encoding='utf-8')) for p in ROOT.rglob('*.html')}
+errors, checked = [], 0
+for path, page in pages.items():
+    duplicates = [key for key, n in Counter(page.ids).items() if n > 1]
+    if duplicates: errors.append(f'{path}: duplicate IDs: {duplicates}')
+    for link in page.links:
+        url = urlsplit(link)
+        if url.scheme or url.netloc: continue
+        target = (ROOT/unquote(url.path.lstrip('/'))) if url.path.startswith('/') else (path.parent/unquote(url.path))
+        target = target.resolve()
+        if target.is_dir(): target /= 'index.html'
+        checked += 1
+        if not target.exists():
+            errors.append(f'{path.relative_to(ROOT)}: missing {link}')
+        elif url.fragment and target in pages and unquote(url.fragment) not in pages[target].ids:
+            errors.append(f'{path.relative_to(ROOT)}: missing anchor {link}')
+    if page.projects:
+        if Counter(page.projects) != Counter({'soc': 2, 'redteam': 1, 'grc': 1, 'cloud': 1}):
+            errors.append(f'{path}: unexpected projects {page.projects}')
+    if path in (ROOT/'index.html', ROOT/'en/index.html'):
+        if page.telephones != ['tel:+33783897766']:
+            errors.append(f'{path}: incorrect telephone {page.telephones}')
+
+for filename in ('aws-iam-policy-json.png', 'aws-vpc-architecture-routes.jpeg', 'aws-ec2-security-groups.png'):
+    if not (ROOT/'assets/projets'/filename).is_file(): errors.append(f'Missing AWS screenshot: {filename}')
+if errors:
+    raise SystemExit('\n'.join(errors))
+print(f'PASS: {len(pages)} HTML pages; {checked} local links/assets/anchors; unique IDs; 5 projects on each project listing; FR/EN telephone; 3 AWS screenshots.')

@@ -25,6 +25,36 @@
     return list ? Array.prototype.slice.call(list) : [];
   };
 
+  /* Navigation mobile : même contenu et même accès au clavier. */
+  var menuToggle = document.querySelector(".menu-toggle");
+  var menu = document.getElementById("site-nav");
+  if (menuToggle && menu) {
+    root.classList.add("has-js-menu");
+    var closeMenu = function () {
+      menuToggle.setAttribute("aria-expanded", "false");
+      menu.classList.remove("is-open");
+      root.classList.remove("is-menu-open");
+      toArray(document.querySelectorAll("main, .site-footer")).forEach(function (element) { element.inert = false; });
+    };
+    menuToggle.addEventListener("click", function () {
+      var opened = menuToggle.getAttribute("aria-expanded") !== "true";
+      menuToggle.setAttribute("aria-expanded", String(opened));
+      menu.classList.toggle("is-open", opened);
+      root.classList.toggle("is-menu-open", opened);
+      toArray(document.querySelectorAll("main, .site-footer")).forEach(function (element) { element.inert = opened; });
+    });
+    menu.addEventListener("click", function (event) {
+      if (event.target.closest("a")) closeMenu();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && menuToggle.getAttribute("aria-expanded") === "true") {
+        closeMenu();
+        menuToggle.focus();
+      }
+    });
+    window.matchMedia("(max-width: 860px)").addEventListener("change", closeMenu);
+  }
+
   /* --- 1. Filtres de projets ------------------------------ */
   var bar = document.getElementById("filters");
   var grid = document.getElementById("project-cards");
@@ -33,6 +63,10 @@
   if (bar && grid) {
     var cards = toArray(grid.querySelectorAll(".card"));
     var buttons = toArray(bar.querySelectorAll(".filter"));
+    toArray(document.querySelectorAll("[data-project-total]")).forEach(function (total) {
+      var count = cards.filter(function (card) { return !card.hasAttribute("data-placeholder"); }).length;
+      total.textContent = String(count).padStart(2, "0");
+    });
 
     // Une carte "en preparation" n'est pas un projet : elle n'apparait
     // que dans sa propre categorie, jamais dans "Tous", et ne compte pas.
