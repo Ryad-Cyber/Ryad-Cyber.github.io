@@ -407,11 +407,11 @@
           </div>
           <h3 id="p-dc4"><span class="case-no">CASE Nº4</span>Linux pentest — VulnHub DC-4</h3>
           <p class="card-desc">
-            End-to-end compromise of a VulnHub Linux machine in an isolated lab: reconnaissance,
-            initial access, lateral movement and privilege escalation to root.
+            Isolated lab pentest: web access, command injection, a reverse shell, local progression
+            and privilege escalation to root.
           </p>
           <ul class="tags">
-            <li>Kali Linux</li><li>Nmap</li><li>Hydra</li><li>SSH</li><li>Linux</li><li>Sudo</li><li>VulnHub</li><li>MITRE ATT&amp;CK</li>
+            <li>Kali Linux</li><li>Nmap</li><li>Burp Suite</li><li>Netcat</li><li>SSH</li><li>Linux</li><li>Sudo</li><li>VulnHub</li><li>MITRE ATT&amp;CK</li>
           </ul>
 
           <div class="card-actions">
@@ -428,8 +428,9 @@
                   <h4>Overview and objectives</h4>
                   <p>
                     DC-4 is a deliberately vulnerable Linux machine published on VulnHub. I ran it in an
-                    isolated lab from Kali Linux to practise a full attack chain: service discovery,
-                    initial access, local enumeration, lateral movement and privilege escalation.
+                    isolated lab from Kali Linux to practise a full attack chain: reconnaissance,
+                    web access, command injection, a <code>www-data</code> shell, local progression
+                    and privilege escalation.
                   </p>
                 </div>
                 <div class="detail-row">
@@ -449,40 +450,60 @@
                       </figure>
                     </li>
                     <li>
-                      <div class="scenario-head"><h5>Initial access</h5><span class="attck">MITRE ATT&amp;CK T1110</span></div>
+                      <div class="scenario-head"><h5>Web authentication</h5><span class="attck">MITRE ATT&amp;CK T1110</span></div>
                       <p>
-                        Brute-forced the web login form with Hydra, then connected over SSH as
-                        <code>jim</code>. The « System Tools » web interface confirms the authenticated
-                        access obtained.
+                        Used Burp Suite Intruder to intercept HTTP requests to <code>login.php</code>
+                        and test authentication in the lab, gaining access to the “System Tools”
+                        administrative interface.
                       </p>
                       <figure class="detail-fig">
                         <a href="../../assets/projets/acces-interface-web.png" target="_blank" rel="noopener" title="Open image full size">
                           <img src="../../assets/projets/acces-interface-web.png" alt="Browser: System Tools interface, You are currently logged in on DC-4" width="1368" height="522" loading="lazy" decoding="async">
                         </a>
-                        <figcaption>System Tools web interface after successful authentication</figcaption>
+                        <figcaption>System Tools interface after web authentication.</figcaption>
                       </figure>
                     </li>
                     <li>
-                      <div class="scenario-head"><h5>Local enumeration and lateral movement</h5><span class="attck">MITRE ATT&amp;CK T1552</span></div>
+                      <div class="scenario-head"><h5>Command injection and reverse shell</h5><span class="attck">MITRE ATT&amp;CK T1059.004</span></div>
                       <p>
-                        Reading <code>/var/mail/jim</code> revealed a message with a password sent in
-                        cleartext for the <code>charles</code> account. Moved from <code>jim</code> to
-                        <code>charles</code> (secrets are not reproduced here).
+                        In Burp Suite Repeater, modified a POST request to <code>/command.php</code>
+                        to exploit command injection. The HTTP 504 response alone does not prove
+                        access; the Netcat screenshot shows the incoming connection, and
+                        <code>id</code> confirms a shell as <code>www-data</code>.
+                      </p>
+                      <figure class="detail-fig">
+                        <a href="../../assets/projets/burpsuite-netcat-reverse-shell.png" target="_blank" rel="noopener" title="Open image full size">
+                          <img src="../../assets/projets/burpsuite-netcat-reverse-shell.png" alt="Burp Suite Repeater: modified POST request to command.php and HTTP 504 response" width="512" height="146" loading="lazy" decoding="async">
+                        </a>
+                        <figcaption>Injection request in Burp Suite Repeater.</figcaption>
+                      </figure>
+                      <figure class="detail-fig">
+                        <a href="../../assets/projets/acces-systeme.png" target="_blank" rel="noopener" title="Open image full size">
+                          <img src="../../assets/projets/acces-systeme.png" alt="Netcat terminal: incoming connection and id command showing the www-data user" width="625" height="154" loading="lazy" decoding="async">
+                        </a>
+                        <figcaption>Netcat reverse shell: system access confirmed as <code>www-data</code>.</figcaption>
+                      </figure>
+                    </li>
+                    <li>
+                      <div class="scenario-head"><h5>Local enumeration and progression</h5><span class="attck">MITRE ATT&amp;CK T1552.001</span></div>
+                      <p>
+                        A session as <code>jim</code> shows a plaintext password in
+                        <code>/var/mail/jim</code>, allowing progression to the
+                        <code>charles</code> account. The available screenshots do not document
+                        the transition from <code>www-data</code> to <code>jim</code>.
                       </p>
                       <figure class="detail-fig">
                         <a href="../../assets/projets/mail_jim-redacted.png" target="_blank" rel="noopener" title="Open image full size">
                           <img src="../../assets/projets/mail_jim-redacted.png" alt="Terminal: cat /var/mail/jim, message from charles with password redacted" width="846" height="412" loading="lazy" decoding="async">
                         </a>
-                        <figcaption>jim's mailbox: charles's credentials exposed in cleartext</figcaption>
+                        <figcaption>jim's local mail: charles's password is redacted in the screenshot.</figcaption>
                       </figure>
                     </li>
                     <li>
-                      <div class="scenario-head"><h5>Privilege escalation</h5><span class="attck">MITRE ATT&amp;CK T1548.003</span></div>
+                      <div class="scenario-head"><h5>Privilege analysis</h5><span class="attck">MITRE ATT&amp;CK T1548.003</span></div>
                       <p>
                         <code>sudo -l</code> showed that <code>charles</code> may run
-                        <code>/usr/bin/teehee</code> as root without a password. That permission was
-                        used to append an entry to <code>/etc/passwd</code> and create an account with
-                        UID 0.
+                        <code>/usr/bin/teehee</code> as root without a password.
                       </p>
                       <figure class="detail-fig">
                         <a href="../../assets/projets/sudo-charles.png" target="_blank" rel="noopener" title="Open image full size">
@@ -491,19 +512,29 @@
                         <figcaption>Sudo rule: teehee runnable as root without a password</figcaption>
                       </figure>
                     </li>
+                    <li>
+                      <div class="scenario-head"><h5>Privilege escalation and root</h5><span class="attck">MITRE ATT&amp;CK T1548.003</span></div>
+                      <p>
+                        The excessive Sudo permission allowed an entry to be appended to
+                        <code>/etc/passwd</code> via <code>teehee</code>, creating a UID 0 account.
+                        Root access was then validated and the final flag read. No screenshot is
+                        available for this step.
+                      </p>
+                    </li>
                   </ul>
                 </div>
                 <div class="detail-row">
                   <h4>Results</h4>
                   <ul class="dashes">
-                    <li>Full attack chain in an isolated lab, from reconnaissance to root.</li>
+                    <li>Attack chain documented: network reconnaissance, web access, command injection, <code>www-data</code> shell, local progression and root.</li>
                     <li>Privileges validated with <code>id</code> (UID 0), then <code>/root/flag.txt</code> read.</li>
-                    <li>Two main findings exploited: exposed credentials and an overly permissive Sudo rule.</li>
+                    <li>Findings exploited: command injection, exposed credentials and an overly permissive Sudo rule.</li>
                   </ul>
                 </div>
                 <div class="detail-row">
                   <h4>Vulnerability analysis</h4>
                   <ul class="dashes">
+                    <li><strong>Command injection</strong>: the web interface executes user-controlled input through <code>/command.php</code>, providing system access as <code>www-data</code>.</li>
                     <li><strong>Exposed credentials</strong>: a password sent in cleartext via local mail enabled lateral movement to <code>charles</code>.</li>
                     <li><strong>Overly permissive Sudo rule</strong>: <code>teehee</code> runnable as root (NOPASSWD) allowed writing to <code>/etc/passwd</code> and creating a UID 0 account.</li>
                   </ul>
@@ -511,6 +542,7 @@
                 <div class="detail-row">
                   <h4>Remediation recommendations</h4>
                   <ul class="dashes">
+                    <li>Prevent web input from reaching system command execution; validate parameters strictly and limit the service account's privileges.</li>
                     <li>Never send passwords in cleartext (mail, tickets, shared files); use a secrets manager and rotate immediately if exposed.</li>
                     <li>Restrict Sudo rules to the minimum required; avoid NOPASSWD on binaries that can write system files.</li>
                     <li>Harden the web login (rate limiting, account lockout, strong passwords) to slow brute force.</li>
@@ -520,7 +552,7 @@
                 <div class="detail-row">
                   <h4>Skills and tools used</h4>
                   <p>
-                    Kali Linux, Nmap, Hydra, SSH, Linux enumeration, Sudo rule analysis and offensive
+                    Kali Linux, Nmap, Burp Suite Intruder and Repeater, Netcat, Linux enumeration, Sudo rule analysis and offensive
                     pentest methodology in an isolated environment.
                   </p>
                 </div>

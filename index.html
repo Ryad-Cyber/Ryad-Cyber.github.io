@@ -457,11 +457,11 @@
           </div>
           <h3 id="p-dc4"><span class="case-no">CAS Nº4</span>Pentest Linux — VulnHub DC-4</h3>
           <p class="card-desc">
-            Compromission de bout en bout d'une machine Linux VulnHub en laboratoire isolé :
-            reconnaissance, accès initial, mouvement latéral et élévation de privilèges jusqu'à root.
+            Pentest en laboratoire isolé : accès web, injection de commandes, reverse shell,
+            progression locale et élévation de privilèges jusqu'à root.
           </p>
           <ul class="tags">
-            <li>Kali Linux</li><li>Nmap</li><li>Hydra</li><li>SSH</li><li>Linux</li><li>Sudo</li><li>VulnHub</li><li>MITRE ATT&amp;CK</li>
+            <li>Kali Linux</li><li>Nmap</li><li>Burp Suite</li><li>Netcat</li><li>SSH</li><li>Linux</li><li>Sudo</li><li>VulnHub</li><li>MITRE ATT&amp;CK</li>
           </ul>
 
           <div class="card-actions">
@@ -479,8 +479,8 @@
                   <p>
                     DC-4 est une machine Linux volontairement vulnérable publiée sur VulnHub. Je l'ai
                     exécutée dans un laboratoire isolé, depuis Kali Linux, pour travailler une chaîne
-                    d'attaque complète : reconnaissance des services, accès initial, énumération locale,
-                    mouvement latéral et élévation de privilèges.
+                    d'attaque complète : reconnaissance, accès web, injection de commandes, shell
+                    sous <code>www-data</code>, progression locale et élévation de privilèges.
                   </p>
                 </div>
                 <div class="detail-row">
@@ -500,40 +500,60 @@
                       </figure>
                     </li>
                     <li>
-                      <div class="scenario-head"><h5>Accès initial</h5><span class="attck">MITRE ATT&amp;CK T1110</span></div>
+                      <div class="scenario-head"><h5>Authentification web</h5><span class="attck">MITRE ATT&amp;CK T1110</span></div>
                       <p>
-                        Test du formulaire d'authentification web avec Hydra, puis connexion SSH avec
-                        le compte <code>jim</code>. L'interface web « System Tools » confirme l'accès
-                        authentifié obtenu.
+                        Avec Burp Suite Intruder, interception des requêtes HTTP de <code>login.php</code>
+                        et tests d'authentification dans le lab, jusqu'à l'accès à l'interface
+                        d'administration « System Tools ».
                       </p>
                       <figure class="detail-fig">
                         <a href="assets/projets/acces-interface-web.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
                           <img src="assets/projets/acces-interface-web.png" alt="Navigateur : interface System Tools, message You are currently logged in sur la cible DC-4" width="1368" height="522" loading="lazy" decoding="async">
                         </a>
-                        <figcaption>Interface web System Tools après authentification réussie</figcaption>
+                        <figcaption>Interface System Tools après authentification web.</figcaption>
                       </figure>
                     </li>
                     <li>
-                      <div class="scenario-head"><h5>Énumération locale et mouvement latéral</h5><span class="attck">MITRE ATT&amp;CK T1552</span></div>
+                      <div class="scenario-head"><h5>Injection de commandes et reverse shell</h5><span class="attck">MITRE ATT&amp;CK T1059.004</span></div>
                       <p>
-                        Lecture de <code>/var/mail/jim</code> : un message laisse apparaître un mot de
-                        passe transmis en clair pour le compte <code>charles</code>. Passage de
-                        <code>jim</code> à <code>charles</code> (les secrets ne sont pas reproduits ici).
+                        Dans Burp Suite Repeater, modification d'une requête POST vers <code>/command.php</code>
+                        pour exploiter une injection de commandes. La réponse HTTP 504 ne prouve pas
+                        seule l'accès ; la capture Netcat montre la connexion reçue et <code>id</code>
+                        confirme un shell sous <code>www-data</code>.
+                      </p>
+                      <figure class="detail-fig">
+                        <a href="assets/projets/burpsuite-netcat-reverse-shell.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
+                          <img src="assets/projets/burpsuite-netcat-reverse-shell.png" alt="Burp Suite Repeater : requête POST modifiée vers command.php et réponse HTTP 504" width="512" height="146" loading="lazy" decoding="async">
+                        </a>
+                        <figcaption>Requête d'injection dans Burp Suite Repeater.</figcaption>
+                      </figure>
+                      <figure class="detail-fig">
+                        <a href="assets/projets/acces-systeme.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
+                          <img src="assets/projets/acces-systeme.png" alt="Terminal Netcat : connexion reçue et commande id indiquant l'utilisateur www-data" width="625" height="154" loading="lazy" decoding="async">
+                        </a>
+                        <figcaption>Reverse shell Netcat : accès au système confirmé sous <code>www-data</code>.</figcaption>
+                      </figure>
+                    </li>
+                    <li>
+                      <div class="scenario-head"><h5>Énumération locale et progression</h5><span class="attck">MITRE ATT&amp;CK T1552.001</span></div>
+                      <p>
+                        Une session sous <code>jim</code> montre dans <code>/var/mail/jim</code> un
+                        mot de passe transmis en clair, permettant de progresser vers le compte
+                        <code>charles</code>. Les captures ne documentent pas le passage de
+                        <code>www-data</code> à <code>jim</code>.
                       </p>
                       <figure class="detail-fig">
                         <a href="assets/projets/mail_jim-redacted.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
                           <img src="assets/projets/mail_jim-redacted.png" alt="Terminal : cat /var/mail/jim, message de charles avec mot de passe censuré" width="846" height="412" loading="lazy" decoding="async">
                         </a>
-                        <figcaption>Boîte mail de jim : identifiants de charles exposés en clair</figcaption>
+                        <figcaption>Messagerie locale de jim : mot de passe de charles masqué sur la capture.</figcaption>
                       </figure>
                     </li>
                     <li>
-                      <div class="scenario-head"><h5>Élévation de privilèges</h5><span class="attck">MITRE ATT&amp;CK T1548.003</span></div>
+                      <div class="scenario-head"><h5>Analyse des privilèges</h5><span class="attck">MITRE ATT&amp;CK T1548.003</span></div>
                       <p>
                         <code>sudo -l</code> montre que <code>charles</code> peut exécuter
-                        <code>/usr/bin/teehee</code> en tant que root sans mot de passe. Cette
-                        autorisation a servi à ajouter une entrée dans <code>/etc/passwd</code> et à
-                        créer un compte disposant de l'UID 0.
+                        <code>/usr/bin/teehee</code> en tant que root sans mot de passe.
                       </p>
                       <figure class="detail-fig">
                         <a href="assets/projets/sudo-charles.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
@@ -542,19 +562,29 @@
                         <figcaption>Règle Sudo : teehee exécutable en root sans mot de passe</figcaption>
                       </figure>
                     </li>
+                    <li>
+                      <div class="scenario-head"><h5>Élévation de privilèges et root</h5><span class="attck">MITRE ATT&amp;CK T1548.003</span></div>
+                      <p>
+                        L'autorisation Sudo excessive permet d'ajouter une entrée à
+                        <code>/etc/passwd</code> via <code>teehee</code>, de créer un compte UID 0,
+                        puis de valider l'accès root et de lire le flag final. Cette étape n'a pas
+                        de capture disponible.
+                      </p>
+                    </li>
                   </ul>
                 </div>
                 <div class="detail-row">
                   <h4>Résultats obtenus</h4>
                   <ul class="dashes">
-                    <li>Chaîne d'attaque complète en laboratoire isolé, de la reconnaissance à root.</li>
+                    <li>Chaîne d'attaque documentée : réseau, accès web, injection de commandes, shell <code>www-data</code>, progression locale et root.</li>
                     <li>Validation des privilèges avec <code>id</code> (UID 0), puis lecture de <code>/root/flag.txt</code>.</li>
-                    <li>Deux failles principales exploitées : exposition d'identifiants et règle Sudo trop permissive.</li>
+                    <li>Failles exploitées : injection de commandes, identifiants exposés et règle Sudo trop permissive.</li>
                   </ul>
                 </div>
                 <div class="detail-row">
                   <h4>Analyse des failles</h4>
                   <ul class="dashes">
+                    <li><strong>Injection de commandes</strong> : l'interface web exécute une entrée contrôlée depuis <code>/command.php</code>, ouvrant un accès système sous <code>www-data</code>.</li>
                     <li><strong>Exposition d'identifiants</strong> : un mot de passe transmis en clair dans la messagerie locale a permis le mouvement latéral vers <code>charles</code>.</li>
                     <li><strong>Règle Sudo trop permissive</strong> : <code>teehee</code> exécutable en root (NOPASSWD) a permis d'écrire dans <code>/etc/passwd</code> et de créer un compte UID 0.</li>
                   </ul>
@@ -562,6 +592,7 @@
                 <div class="detail-row">
                   <h4>Recommandations de remédiation</h4>
                   <ul class="dashes">
+                    <li>Éliminer l'exécution de commandes système à partir d'entrées web non maîtrisées ; valider strictement les paramètres et limiter les droits du service.</li>
                     <li>Ne jamais transmettre de mots de passe en clair (messagerie, tickets, fichiers partagés) ; privilégier un gestionnaire de secrets et la rotation immédiate en cas d'exposition.</li>
                     <li>Restreindre les règles Sudo au strict nécessaire ; éviter NOPASSWD sur des binaires capables d'écrire des fichiers système.</li>
                     <li>Renforcer l'authentification du formulaire web (limitation de débit, verrouillage de compte, mots de passe robustes) pour freiner le brute force.</li>
@@ -571,8 +602,8 @@
                 <div class="detail-row">
                   <h4>Compétences et outils mobilisés</h4>
                   <p>
-                    Kali Linux, Nmap, Hydra, SSH, énumération Linux, analyse de règles Sudo et
-                    méthodologie de pentest offensif en environnement isolé.
+                    Kali Linux, Nmap, Burp Suite Intruder et Repeater, Netcat, énumération Linux,
+                    analyse de règles Sudo et méthodologie de pentest en environnement isolé.
                   </p>
                 </div>
               </div>
