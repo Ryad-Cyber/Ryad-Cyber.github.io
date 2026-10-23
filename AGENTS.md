@@ -7,6 +7,7 @@
 - Marque sans cadre RB, photo rectangulaire respectant son cadrage d’origine.
 - Projets en grille compacte régulière (2–3 colonnes sur ordinateur), sans carte vedette ; catégories lisibles.
 - Bloc Programmation synthétique ; ne pas réintroduire le paragraphe générique « Mon approche ».
+- Décrire les compétences de façon générale et exacte ; garder les détails chiffrés dans les expériences et études de cas.
 - Contact direct et mini-formulaire mailto honnête : brouillon dans la messagerie, aucun envoi depuis le site.
 - Maintenir la cohérence des six pages françaises et anglaises.
 - Ne jamais inventer d’expériences, compétences, certifications ou réalisations.
