@@ -4,16 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ryad Boujenan — Élève ingénieur cybersécurité</title>
-<meta name="theme-color" content="#142a2d">
+<meta name="theme-color" content="#080f20">
 <meta name="description" content="Ryad Boujenan, élève ingénieur en cybersécurité à l’EMSI Casablanca. Détection, sécurité cloud et gestion des risques. Recherche un stage de fin d’études de 4 à 6 mois à partir de février 2027, en priorité en France.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&display=swap">
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="assets/css/editorial.css">
+<link rel="icon" href="assets/favicon.svg?v=20261023-blue" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css?v=20261023-blue">
+<link rel="stylesheet" href="assets/css/security.css?v=20261023-blue">
 </head>
 <body>
+<div class="network-backdrop" aria-hidden="true"></div>
 <a class="skip-link" href="#main-content">Aller au contenu</a>
 
 <!-- Background intentionally quiet: content and evidence lead. -->
@@ -57,10 +58,7 @@
   <div class="container header-inner">
     <a class="brand" href="#accueil"><span class="brand-mark">RB</span>Ryad Boujenan</a>
 
-    <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">
-      <svg class="i i-open" aria-hidden="true"><use href="#i-menu"/></svg>
-      <svg class="i i-close" aria-hidden="true"><use href="#i-x"/></svg>
-    </button>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Ouvrir le menu" hidden><span class="menu-glyph" aria-hidden="true"></span></button>
 
     <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
       <ul>
@@ -86,13 +84,13 @@
   <section class="hero" id="accueil">
     <div class="container">
 
-      <div class="dossier-band"><span>RB / PORTFOLIO</span><span>2026 — 2027</span><span>FRANCE · STAGE DE FIN D’ÉTUDES</span></div>
+      <div class="hero-topline"><span>RYAD BOUJENAN / CYBERSECURITY</span><span>FRANCE · 2027</span></div>
 
       <div class="hero-grid">
         <div class="hero-main">
           <p class="status-pill"><span class="dot" aria-hidden="true"></span>En recherche — stage PFE · février 2027</p>
 
-          <p class="hero-kicker">CYBERSÉCURITÉ / PORTFOLIO INGÉNIEUR</p><h1>Ryad<span>Boujenan<span class="name-period">.</span></span></h1>
+          <p class="hero-kicker">SOC / CLOUD SECURITY</p><h1>Ryad<span>Boujenan<span class="name-period">.</span></span></h1>
           <p class="hero-role">Élève ingénieur en cybersécurité<br><span>Infrastructures · Cloud · Détection</span></p>
 
           <p class="lede">
@@ -116,9 +114,9 @@
         </div>
 
         <aside class="hero-side panel" aria-labelledby="stats-title">
-          <p class="portrait-label">01 / PROFIL</p><figure class="id-photo">
+          <div class="signal-map"><svg class="signal-wires" viewBox="0 0 400 350" aria-hidden="true"><circle cx="200" cy="175" r="114"/><circle class="orbit-outer" cx="200" cy="175" r="146"/><path d="M200 29V61M200 289V321M54 175H86M314 175H346M97 72L119 94M281 256L303 278M97 278L119 256M281 94L303 72"/><path class="signal-path" d="M46 77H115L147 109M354 120H306L270 145M348 287H286L255 250"/><circle cx="46" cy="77" r="3"/><circle cx="354" cy="120" r="3"/><circle cx="348" cy="287" r="3"/></svg><figure class="id-photo">
             <img src="assets/photo.jpeg" alt="Portrait de Ryad Boujenan" width="560" height="700" decoding="async">
-          </figure>
+          </figure><div class="signal-node signal-node--iam"><span>01 / CLOUD</span><strong>IAM · AWS</strong></div><div class="signal-node signal-node--soc"><span>02 / SOC</span><strong>SIEM · Logs</strong></div><div class="signal-node signal-node--net"><span>03 / NETWORK</span><strong>VPC · TCP/IP</strong></div></div>
 
           <div class="stats">
             <p class="stats-title" id="stats-title">Fiche synthèse</p>
@@ -154,26 +152,10 @@
         <button class="filter" type="button" data-filter="crypto" data-label="Cryptographie" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Cryptographie<span class="count"></span></button>
       </div>
 
-      <p class="project-index">TRAVAUX PRATIQUES / 05 PROJETS DOCUMENTÉS</p>
+      <p class="project-index">05 projets · objectifs, méthodes et résultats</p>
 <div class="cards" id="project-cards">
-<article class="card panel card--cloud" data-cat="cloud" aria-labelledby="p-aws">
-      <figure class="card-media card-media--aws"><img src="assets/projets/aws-vpc-architecture-routes.jpeg" alt="Lab VPC — 10.1.0.0/16, Public Subnet 1 — 10.1.11.0/24" width="2048" height="876" loading="lazy"><figcaption>AWS / IAM · VPC · EC2</figcaption></figure><div class="card-content">
-      <div class="card-badges"><span class="badge badge-cat">Cloud</span><span class="badge">2026 · AWS Academy</span></div>
-      <h3 id="p-aws"><span class="case-no">CAS Nº5</span>AWS Cloud Foundations — Infrastructure &amp; Security</h3>
-      <p class="card-desc">Première mise en pratique sur AWS : autorisations IAM, réseau VPC, instances EC2 et filtrage par Security Groups.</p>
-      <ul class="tags"><li>AWS</li><li>IAM</li><li>IAM Policies</li><li>VPC</li><li>Subnets</li><li>Route Tables</li><li>EC2</li><li>Security Groups</li><li>JSON</li><li>TCP/IP</li><li>SSH</li></ul>
-      <div class="card-actions"><details class="card-detail"><summary class="btn btn-soft"><span class="when-closed">Explorer le laboratoire ↗</span><span class="when-open">Replier le détail</span></summary>
-      <div class="detail-body"><div class="detail-row"><dl class="card-facts"><dt>Cadre</dt><dd>AWS Academy Cloud Foundations</dd><dt>Nature</dt><dd>Laboratoire pédagogique</dd></dl></div>
-      <div class="detail-row"><h4>Contexte et objectif</h4><p>Projet pratique réalisé dans le cadre de la formation AWS Academy Cloud Foundations pour manipuler les composants fondamentaux d’une infrastructure AWS et découvrir leur sécurité. Il s’agit d’un environnement de formation, sans audit professionnel ni infrastructure de production.</p></div>
-      <div class="detail-row"><h4>Réalisations techniques</h4><ol class="steps"><li><strong>Autorisations IAM.</strong> Analyse et configuration de <code>EC2-Admin-Policy</code> au format JSON : <code>ec2:Describe*</code>, <code>ec2:StartInstances</code> et <code>ec2:StopInstances</code>. Objectif : comprendre la granularité des permissions et le principe du moindre privilège.</li>
-    <li><strong>Architecture VPC.</strong> Étude de <code>Lab VPC — 10.1.0.0/16</code>, de <code>Public Subnet 1 — 10.1.11.0/24</code> et de la table de routage publique (Public Route Table, affichée « Public » sur la capture). Objectif : comprendre la segmentation, le routage et la connectivité.</li>
-    <li><strong>EC2 et Security Groups.</strong> Manipulation de <code>LabHost</code> et <code>Bastion Host</code> ; observation et configuration des règles réseau entrantes, dont SSH sur <code>TCP/22</code>. Objectif : comprendre l’administration des instances et le filtrage réseau.</li></ol></div>
-      <div class="detail-row"><h4>Captures commentées</h4><p>Chaque capture s’ouvre en pleine taille dans un nouvel onglet.</p><figure class="detail-fig"><a href="assets/projets/aws-iam-policy-json.png" target="_blank" rel="noopener" aria-label="Ouvrir la capture 01 / IAM"><img src="assets/projets/aws-iam-policy-json.png" width="1881" height="701" loading="lazy" alt="Politique EC2-Admin-Policy : permissions EC2 en JSON."></a><figcaption><strong>01 / IAM — Politique EC2-Admin-Policy : permissions EC2 en JSON.</strong> Les actions Describe, StartInstances et StopInstances sont visibles. La ressource « * » reste large : cette capture ne démontre pas un moindre privilège complet.</figcaption></figure><figure class="detail-fig"><a href="assets/projets/aws-vpc-architecture-routes.jpeg" target="_blank" rel="noopener" aria-label="Ouvrir la capture 02 / VPC"><img src="assets/projets/aws-vpc-architecture-routes.jpeg" width="2048" height="876" loading="lazy" alt="Lab VPC : réseau, sous-réseau et routage."></a><figcaption><strong>02 / VPC — Lab VPC : réseau, sous-réseau et routage.</strong> La carte montre 10.1.0.0/16, Public Subnet 1 en 10.1.11.0/24 et son association à la table « Public ». Le détail des destinations de routes n’est pas affiché.</figcaption></figure><figure class="detail-fig"><a href="assets/projets/aws-ec2-security-groups.png" target="_blank" rel="noopener" aria-label="Ouvrir la capture 03 / EC2"><img src="assets/projets/aws-ec2-security-groups.png" width="1657" height="694" loading="lazy" alt="LabHost et Bastion Host : instances et groupe de sécurité."></a><figcaption><strong>03 / EC2 — LabHost et Bastion Host : instances et groupe de sécurité.</strong> Les deux instances et le groupe associé à LabHost sont visibles. Le détail des règles entrantes est hors cadre : la capture ne permet pas de vérifier la source autorisée sur TCP/22.</figcaption></figure></div>
-      <div class="detail-row"><h4>Ce que ce laboratoire m’a appris</h4><p>Relier les permissions IAM, l’organisation du réseau et les règles des Security Groups. Distinguer une configuration d’apprentissage d’une configuration réellement durcie ; notamment, des actions IAM limitées ne suffisent pas si le périmètre des ressources reste large.</p></div></div></details>
-      <p class="no-repo">Laboratoire de formation · 3 captures documentées</p></div></div></article>
 
-        <!-- ===== CAS Nº1 : Lab SOC Elastic Security (image : capture de CE lab) ===== -->
-        <article class="card panel" data-cat="soc" aria-labelledby="p-elastic">
+<article class="card panel card--featured" data-cat="soc" aria-labelledby="p-elastic">
           <figure class="card-media card-media--screenshot">
             <img src="assets/projets/kibana-rules-overview.png" alt="Liste des règles de détection du lab dans Kibana : quatre règles personnalisées avec leur sévérité et leur dernière exécution" width="1660" height="538" loading="lazy" decoding="async">
             <figcaption>Les 4 règles de détection du lab, dans Kibana</figcaption>
@@ -193,7 +175,7 @@
 
           <div class="card-actions">
             <details class="card-detail">
-              <summary class="btn btn-soft"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span></summary>
+              <summary class="btn btn-soft"><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span><span aria-hidden="true">↗</span></summary>
               <div class="detail-body">
                 <div class="detail-row">
                   <dl class="card-facts">
@@ -281,16 +263,7 @@
           </div>
         </div></article>
 
-        <!-- ===== CAS Nº2 : Lab Wazuh — volontairement sans image tant qu'il
-             n'existe pas de vraie capture Wazuh. Ne jamais y mettre la capture
-             d'un autre projet. Une fois assets/projets/wazuh-alertes.jpg depose,
-             decommenter ce bloc et corriger width/height.
-          <figure class="card-media card-media--screenshot">
-            <img src="assets/projets/wazuh-alertes.jpg" alt="Tableau de bord Wazuh affichant les alertes des regles personnalisees" width="900" height="400" loading="lazy" decoding="async">
-            <figcaption>Alertes des regles personnalisees dans le dashboard Wazuh</figcaption>
-          </figure>
-        ===== -->
-        <article class="card panel" data-cat="soc" aria-labelledby="p-wazuh">
+<article class="card panel" data-cat="soc" aria-labelledby="p-wazuh">
           <figure class="card-media card-media--screenshot">
             <img src="assets/projets/wazuh-detection-alerts-rules.png" alt="Tableau de bord Wazuh Threat Hunting : alertes d'echec d'authentification SSH et PAM, et regle personnalisee 100002 niveau 10 sur la creation d'un compte suspect" width="924" height="396" loading="lazy" decoding="async">
             <figcaption>Alertes Wazuh : échecs d'authentification SSH/PAM, et règle personnalisée 100002 (niveau 10)</figcaption>
@@ -310,7 +283,7 @@
 
           <div class="card-actions">
             <details class="card-detail">
-              <summary class="btn btn-soft"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span></summary>
+              <summary class="btn btn-soft"><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span><span aria-hidden="true">↗</span></summary>
               <div class="detail-body">
                 <div class="detail-row">
                   <dl class="card-facts">
@@ -380,8 +353,7 @@
           </div>
         </div></article>
 
-        <!-- ===== CAS Nº3 : KASBAH 2026 (image : photo de CET exercice) ===== -->
-        <article class="card panel" data-cat="grc" aria-labelledby="p-kasbah">
+<article class="card panel" data-cat="grc" aria-labelledby="p-kasbah">
           <figure class="card-media">
             <img src="assets/projets/kasbah_photo.jpeg" alt="Présentation d'un scénario de crise devant l'écran de projection, pendant l'exercice KASBAH 2026" width="1206" height="904" loading="lazy" decoding="async">
             <figcaption>Présentation lors de l'exercice de crise KASBAH 2026</figcaption>
@@ -401,7 +373,7 @@
 
           <div class="card-actions">
             <details class="card-detail">
-              <summary class="btn btn-soft"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span></summary>
+              <summary class="btn btn-soft"><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span><span aria-hidden="true">↗</span></summary>
               <div class="detail-body">
                 <div class="detail-row">
                   <dl class="card-facts">
@@ -432,8 +404,7 @@
           </div>
         </div></article>
 
-        <!-- ===== CAS Nº4 : VulnHub DC-4 (Red Team / Pentest) ===== -->
-        <article class="card panel" data-cat="redteam" aria-labelledby="p-dc4">
+<article class="card panel" data-cat="redteam" aria-labelledby="p-dc4">
           <figure class="card-media card-media--screenshot">
             <img src="assets/projets/acces-interface-web.png" alt="Navigateur : interface System Tools, authentification réussie sur DC-4" width="1368" height="522" loading="lazy" decoding="async">
             <figcaption>Accès à l'interface web System Tools après authentification</figcaption>
@@ -453,7 +424,7 @@
 
           <div class="card-actions">
             <details class="card-detail">
-              <summary class="btn btn-soft"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span></summary>
+              <summary class="btn btn-soft"><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span><span aria-hidden="true">↗</span></summary>
               <div class="detail-body">
                 <div class="detail-row">
                   <dl class="card-facts">
@@ -568,7 +539,22 @@
           </div>
         </div></article>
 
-        <!-- ===== Emplacement : projet IA en preparation (pas de contenu invente) ===== -->
+<article class="card panel card--cloud" data-cat="cloud" aria-labelledby="p-aws">
+      <figure class="card-media card-media--aws"><img src="assets/projets/aws-vpc-architecture-routes.jpeg" alt="Lab VPC — 10.1.0.0/16, Public Subnet 1 — 10.1.11.0/24" width="2048" height="876" loading="lazy"><figcaption>AWS / IAM · VPC · EC2</figcaption></figure><div class="card-content">
+      <div class="card-badges"><span class="badge badge-cat">Cloud</span><span class="badge">2026 · AWS Academy</span></div>
+      <h3 id="p-aws"><span class="case-no">CAS Nº5</span>AWS Cloud Foundations — Infrastructure &amp; Security</h3>
+      <p class="card-desc">Première mise en pratique sur AWS : autorisations IAM, réseau VPC, instances EC2 et filtrage par Security Groups.</p>
+      <ul class="tags"><li>AWS</li><li>IAM</li><li>IAM Policies</li><li>VPC</li><li>Subnets</li><li>Route Tables</li><li>EC2</li><li>Security Groups</li><li>JSON</li><li>TCP/IP</li><li>SSH</li></ul>
+      <div class="card-actions"><details class="card-detail"><summary class="btn btn-soft"><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span><span aria-hidden="true">↗</span></summary>
+      <div class="detail-body"><div class="detail-row"><dl class="card-facts"><dt>Cadre</dt><dd>AWS Academy Cloud Foundations</dd><dt>Nature</dt><dd>Laboratoire pédagogique</dd></dl></div>
+      <div class="detail-row"><h4>Contexte et objectif</h4><p>Projet pratique réalisé dans le cadre de la formation AWS Academy Cloud Foundations pour manipuler les composants fondamentaux d’une infrastructure AWS et découvrir leur sécurité. Il s’agit d’un environnement de formation, sans audit professionnel ni infrastructure de production.</p></div>
+      <div class="detail-row"><h4>Réalisations techniques</h4><ol class="steps"><li><strong>Autorisations IAM.</strong> Analyse et configuration de <code>EC2-Admin-Policy</code> au format JSON : <code>ec2:Describe*</code>, <code>ec2:StartInstances</code> et <code>ec2:StopInstances</code>. Objectif : comprendre la granularité des permissions et le principe du moindre privilège.</li>
+    <li><strong>Architecture VPC.</strong> Étude de <code>Lab VPC — 10.1.0.0/16</code>, de <code>Public Subnet 1 — 10.1.11.0/24</code> et de la table de routage publique (Public Route Table, affichée « Public » sur la capture). Objectif : comprendre la segmentation, le routage et la connectivité.</li>
+    <li><strong>EC2 et Security Groups.</strong> Manipulation de <code>LabHost</code> et <code>Bastion Host</code> ; observation et configuration des règles réseau entrantes, dont SSH sur <code>TCP/22</code>. Objectif : comprendre l’administration des instances et le filtrage réseau.</li></ol></div>
+      <div class="detail-row"><h4>Captures commentées</h4><p>Cliquez sur une capture pour l’agrandir et parcourir la galerie.</p><figure class="detail-fig"><a href="assets/projets/aws-iam-policy-json.png" target="_blank" rel="noopener" aria-label="Ouvrir la capture 01 / IAM"><img src="assets/projets/aws-iam-policy-json.png" width="1881" height="701" loading="lazy" alt="Politique EC2-Admin-Policy : permissions EC2 en JSON."></a><figcaption><strong>01 / IAM — Politique EC2-Admin-Policy : permissions EC2 en JSON.</strong> Les actions Describe, StartInstances et StopInstances sont visibles. La ressource « * » reste large : cette capture ne démontre pas un moindre privilège complet.</figcaption></figure><figure class="detail-fig"><a href="assets/projets/aws-vpc-architecture-routes.jpeg" target="_blank" rel="noopener" aria-label="Ouvrir la capture 02 / VPC"><img src="assets/projets/aws-vpc-architecture-routes.jpeg" width="2048" height="876" loading="lazy" alt="Lab VPC : réseau, sous-réseau et routage."></a><figcaption><strong>02 / VPC — Lab VPC : réseau, sous-réseau et routage.</strong> La carte montre 10.1.0.0/16, Public Subnet 1 en 10.1.11.0/24 et son association à la table « Public ». Le détail des destinations de routes n’est pas affiché.</figcaption></figure><figure class="detail-fig"><a href="assets/projets/aws-ec2-security-groups.png" target="_blank" rel="noopener" aria-label="Ouvrir la capture 03 / EC2"><img src="assets/projets/aws-ec2-security-groups.png" width="1657" height="694" loading="lazy" alt="LabHost et Bastion Host : instances et groupe de sécurité."></a><figcaption><strong>03 / EC2 — LabHost et Bastion Host : instances et groupe de sécurité.</strong> Les deux instances et le groupe associé à LabHost sont visibles. Le détail des règles entrantes est hors cadre : la capture ne permet pas de vérifier la source autorisée sur TCP/22.</figcaption></figure></div>
+      <div class="detail-row"><h4>Ce que ce laboratoire m’a appris</h4><p>Relier les permissions IAM, l’organisation du réseau et les règles des Security Groups. Distinguer une configuration d’apprentissage d’une configuration réellement durcie ; notamment, des actions IAM limitées ne suffisent pas si le périmètre des ressources reste large.</p></div></div></details>
+      <p class="no-repo">Laboratoire de formation · 3 captures documentées</p></div></div></article>
+
         <article class="card card--placeholder panel" data-cat="ia" data-placeholder>
           <div class="card-badges">
             <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-chip"/></svg>IA</span>
@@ -907,13 +893,7 @@
             <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-languages"/></svg></span>
             <h3>Langues</h3>
           </div>
-          <dl class="kv">
-            <dt>Français</dt><dd>Courant</dd>
-            <dt>Anglais</dt><dd>C1</dd>
-            <dt>Arabe</dt><dd>Courant</dd>
-            <dt>Allemand</dt><dd>Notions</dd>
-            <dt>Espagnol</dt><dd>Débutant</dd>
-          </dl>
+          <dl class="language-grid"><div class="language-item"><dt>Français</dt><dd>Courant</dd></div><div class="language-item"><dt>Anglais</dt><dd>C1</dd></div><div class="language-item"><dt>Arabe</dt><dd>Courant</dd></div><div class="language-item"><dt>Allemand</dt><dd>Notions</dd></div><div class="language-item"><dt>Espagnol</dt><dd>Débutant</dd></div></dl>
         </div>
 
         <div class="panel panel--interests">
@@ -936,7 +916,7 @@
   <section class="section section--travel" id="voyages">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow"><svg class="i" aria-hidden="true"><use href="#i-globe"/></svg>05 · Voyages</p>
+        <p class="eyebrow"><svg class="i" aria-hidden="true"><use href="#i-globe"/></svg>04 · Voyages</p>
         <h2>Voyages</h2>
         <p class="section-sub">Voyager est ma passion première.</p>
       </div>
@@ -1106,46 +1086,11 @@
   </section>
 
   <!-- ============ CONTACT ============ -->
-  <section class="section" id="contact">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>06 · Contact</p>
-        <h2>Me contacter</h2>
-        <p class="section-sub">
-          Pour un stage, une question sur un projet ou simplement échanger : le plus simple est
-          l'e-mail, je réponds rapidement.
-        </p>
-      </div>
-
-      <div class="contact-grid">
-
-        <!-- Colonne gauche : coordonnees -->
-        <div class="contact-col panel">
-          <div class="panel-head">
-            <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg></span>
-            <div>
-              <h3>Coordonnées</h3>
-              <span class="sub">Réponse rapide par e-mail</span>
-            </div>
-          </div>
-
-          <div class="contact-rows">
-<a class="contact-row" href="tel:+33783897766"><span class="ico-tile" aria-hidden="true">↗</span><span><span class="k">Téléphone</span><span class="v">07 83 89 77 66</span></span></a>
-            <a class="contact-row" href="mailto:ryadboujenan@outlook.com">
-              <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg></span>
-              <span><span class="k">E-mail</span><span class="v">ryadboujenan@outlook.com</span></span>
-            </a>
-            <a class="contact-row" href="https://github.com/Ryad-Cyber" target="_blank" rel="noopener">
-              <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg></span>
-              <span><span class="k">GitHub</span><span class="v">Ryad-Cyber</span></span>
-            </a>
-            <a class="contact-row" href="https://www.linkedin.com/in/ryadboujenan" target="_blank" rel="noopener">
-              <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-linkedin"/></svg></span>
-              <span><span class="k">LinkedIn</span><span class="v">in/ryadboujenan</span></span>
-            </a>
-          </div>
-
-          <div class="availability">
+  <section class="section section--contact" id="contact"><div class="container">
+<div class="contact-intro"><div class="section-head"><p class="eyebrow">05 / CONTACT</p><h2>Me contacter<span aria-hidden="true">↗</span></h2></div><p>Stage PFE · février 2027 · 4 à 6 mois</p></div>
+<div class="contact-grid"><div class="contact-direct"><p class="contact-label">Écrivez-moi directement</p><a class="contact-email" href="mailto:ryadboujenan@outlook.com?subject=Contact%20portfolio">ryadboujenan@outlook.com<span aria-hidden="true">↗</span></a>
+<div class="contact-shortcuts"><a href="tel:+33783897766">07 83 89 77 66</a><button type="button" class="copy-email" data-copy-email="ryadboujenan@outlook.com" hidden>Copier l’e-mail</button><span class="sr-only" role="status" id="copy-status"></span></div>
+<div class="contact-socials"><a href="https://github.com/Ryad-Cyber" target="_blank" rel="noopener">GitHub ↗</a><a href="https://www.linkedin.com/in/ryadboujenan" target="_blank" rel="noopener">LinkedIn ↗</a></div></div><div class="availability">
             <h4>Recherche en cours</h4>
             <dl>
               <dt>Poste</dt><dd>Stage de fin d'études (PFE) — cybersécurité</dd>
@@ -1154,38 +1099,7 @@
               <dt>Lieu</dt><dd>France en priorité, Suisse également</dd>
               <dt>Nationalité</dt><dd>Espagnole — citoyen de l'Union européenne</dd>
             </dl>
-          </div>
-        </div>
-
-        <!-- Colonne droite : formulaire. Sans serveur : le message s'ouvre
-             dans la messagerie du visiteur (mailto). -->
-        <div class="contact-col panel">
-          <div class="panel-head">
-            <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg></span>
-            <div>
-              <h3>Envoyer un message</h3>
-              <span class="sub">Directement depuis cette page</span>
-            </div>
-          </div>
-
-          <form class="contact-form" id="contact-form" action="mailto:ryadboujenan@outlook.com" method="post" enctype="text/plain" data-to="ryadboujenan@outlook.com" data-subject="Contact portfolio">
-            <label for="cf-nom">Nom</label>
-            <input id="cf-nom" name="nom" type="text" autocomplete="name" required placeholder="Votre nom">
-
-            <label for="cf-email">E-mail</label>
-            <input id="cf-email" name="email" type="email" autocomplete="email" required placeholder="vous@exemple.com">
-
-            <label for="cf-message">Message</label>
-            <textarea id="cf-message" name="message" rows="6" required placeholder="Votre message…"></textarea>
-
-            <button class="btn btn-primary" type="submit"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg>Envoyer le message</button>
-            <p class="form-note">L'envoi ouvre votre messagerie avec le message prérempli.</p>
-          </form>
-        </div>
-
-      </div>
-    </div>
-  </section>
+          </div></div></div></section>
 
 </main>
 
@@ -1216,6 +1130,12 @@
   <div class="project-dialog-body" id="project-dialog-body"></div>
 </dialog>
 
-<script src="assets/js/main.js" defer></script>
+<dialog class="capture-dialog" id="capture-dialog" aria-labelledby="capture-title">
+  <div class="capture-toolbar"><p id="capture-title">Captures du projet</p><span id="capture-count"></span><button type="button" id="capture-close" aria-label="Fermer la capture">×</button></div>
+  <figure><img id="capture-image" alt=""><figcaption id="capture-caption"></figcaption></figure>
+  <div class="capture-controls"><button type="button" id="capture-prev" aria-label="Capture précédente">←</button><a id="capture-original" target="_blank" rel="noopener">Ouvrir l’original ↗</a><button type="button" id="capture-next" aria-label="Capture suivante">→</button></div>
+</dialog>
+
+<script src="assets/js/main.js?v=20261023-blue" defer></script>
 </body>
 </html>

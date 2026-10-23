@@ -2,14 +2,14 @@
    Ryad Boujenan - portfolio, comportements des pages.
    1. Filtres de projets (7 onglets fixes, etat vide).
    2. Section courante dans le menu.
-   3. Formulaire de contact -> messagerie de l'utilisateur.
+   3. Contact direct et copie de l'adresse e-mail.
    4. Carrousels de la section Voyages.
    5. Visionneuse : photos de voyage et certificats.
    6. Alternance des trois certificats Splunk.
    7. Detail des projets dans une fenetre modale.
    Sans JavaScript : toutes les cartes restent visibles, le detail
    des cas se deplie (<details>) a la place de la fenetre modale, le
-   formulaire s'envoie en mailto, les carrousels defilent au doigt ou
+   contact reste un lien mailto, les carrousels defilent au doigt ou
    a la barre, chaque photo et chaque certificat reste un lien vers
    l'image en pleine taille, et le visuel Splunk montre le premier
    des trois certificats.
@@ -30,15 +30,20 @@
   var menu = document.getElementById("site-nav");
   if (menuToggle && menu) {
     root.classList.add("has-js-menu");
+    var mobileMenuMedia = window.matchMedia("(max-width: 860px)");
+    var isEnglish = root.lang === "en";
     var closeMenu = function () {
       menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", isEnglish ? "Open navigation" : "Ouvrir le menu");
       menu.classList.remove("is-open");
       root.classList.remove("is-menu-open");
       toArray(document.querySelectorAll("main, .site-footer")).forEach(function (element) { element.inert = false; });
     };
     menuToggle.addEventListener("click", function () {
+      if (!mobileMenuMedia.matches) return;
       var opened = menuToggle.getAttribute("aria-expanded") !== "true";
       menuToggle.setAttribute("aria-expanded", String(opened));
+      menuToggle.setAttribute("aria-label", opened ? (isEnglish ? "Close navigation" : "Fermer le menu") : (isEnglish ? "Open navigation" : "Ouvrir le menu"));
       menu.classList.toggle("is-open", opened);
       root.classList.toggle("is-menu-open", opened);
       toArray(document.querySelectorAll("main, .site-footer")).forEach(function (element) { element.inert = opened; });
@@ -52,7 +57,12 @@
         menuToggle.focus();
       }
     });
-    window.matchMedia("(max-width: 860px)").addEventListener("change", closeMenu);
+    var updateMenuViewport = function () {
+      closeMenu();
+      menuToggle.hidden = !mobileMenuMedia.matches;
+    };
+    mobileMenuMedia.addEventListener("change", updateMenuViewport);
+    updateMenuViewport();
   }
 
   /* --- 1. Filtres de projets ------------------------------ */
@@ -100,6 +110,7 @@
         c.hidden = !on;
         if (on) shown++;
       });
+      grid.setAttribute("data-visible-count", String(shown));
 
       // Categorie sans projet : la grille cede la place a l'etat vide.
       grid.hidden = shown === 0;
@@ -163,24 +174,18 @@
     });
   }
 
-  /* --- 3. Formulaire de contact --------------------------- */
-  // Pas de serveur : le message est prepare dans la messagerie du
-  // visiteur, qui n'a plus qu'a l'envoyer.
-  var form = document.getElementById("contact-form");
-
-  if (form) {
-    form.addEventListener("submit", function (event) {
-      event.preventDefault();
-      var name = form.elements.nom.value.trim();
-      var email = form.elements.email.value.trim();
-      var message = form.elements.message.value.trim();
-      var subject = (form.getAttribute("data-subject") || "Contact") + " — " + name;
-      var body = message + "\n\n— " + name + "\n" + email;
-
-      window.location.href =
-        "mailto:" + form.getAttribute("data-to") +
-        "?subject=" + encodeURIComponent(subject) +
-        "&body=" + encodeURIComponent(body);
+  /* --- 3. Contact direct : copie facultative, mailto toujours disponible. */
+  var copyEmail = document.querySelector("[data-copy-email]");
+  if (copyEmail && navigator.clipboard && navigator.clipboard.writeText) {
+    copyEmail.hidden = false;
+    copyEmail.addEventListener("click", function () {
+      navigator.clipboard.writeText(copyEmail.getAttribute("data-copy-email")).then(function () {
+        var message = root.lang === "en" ? "Email copied" : "E-mail copié";
+        document.getElementById("copy-status").textContent = message;
+        copyEmail.textContent = message + " ✓";
+      }).catch(function () {
+        document.getElementById("copy-status").textContent = root.lang === "en" ? "Select the email address to copy it." : "Sélectionnez l’adresse e-mail pour la copier.";
+      });
     });
   }
 
@@ -488,6 +493,58 @@
         event.clientY >= rect.top &&
         event.clientY <= rect.bottom;
       if (!inside) projectDialog.close();
+    });
+  }
+
+  /* --- 8. Galerie des captures : dialogue natif au-dessus de l'étude de cas. */
+  var captureDialog = document.getElementById("capture-dialog");
+  if (captureDialog && "showModal" in captureDialog && projectDialogBody) {
+    var captureLinks = [];
+    var captureIndex = 0;
+    var captureOpener = null;
+    var captureImage = document.getElementById("capture-image");
+    var captureCaption = document.getElementById("capture-caption");
+    var capturePrevious = document.getElementById("capture-prev");
+    var captureNext = document.getElementById("capture-next");
+    var renderCapture = function (index) {
+      captureIndex = (index + captureLinks.length) % captureLinks.length;
+      var link = captureLinks[captureIndex];
+      var sourceImage = link.querySelector("img");
+      var figure = link.closest("figure");
+      var legend = figure && figure.querySelector("figcaption");
+      captureImage.src = link.getAttribute("href");
+      captureImage.alt = sourceImage ? sourceImage.alt : "";
+      captureCaption.textContent = legend ? legend.textContent.trim() : captureImage.alt;
+      document.getElementById("capture-count").textContent = (captureIndex + 1) + " / " + captureLinks.length;
+      document.getElementById("capture-original").href = captureImage.src;
+      capturePrevious.disabled = captureNext.disabled = captureLinks.length < 2;
+    };
+    projectDialogBody.addEventListener("click", function (event) {
+      var link = event.target.closest(".detail-fig a");
+      if (!link) return;
+      event.preventDefault();
+      captureLinks = toArray(projectDialogBody.querySelectorAll(".detail-fig a"));
+      captureOpener = link;
+      renderCapture(captureLinks.indexOf(link));
+      captureDialog.showModal();
+    });
+    document.getElementById("capture-close").addEventListener("click", function () { captureDialog.close(); });
+    capturePrevious.addEventListener("click", function () { renderCapture(captureIndex - 1); });
+    captureNext.addEventListener("click", function () { renderCapture(captureIndex + 1); });
+    captureDialog.addEventListener("keydown", function (event) {
+      if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+        event.preventDefault();
+        renderCapture(captureIndex + (event.key === "ArrowLeft" ? -1 : 1));
+      }
+    });
+    captureDialog.addEventListener("close", function () {
+      captureImage.removeAttribute("src");
+      if (captureOpener) captureOpener.focus();
+    });
+    captureDialog.addEventListener("click", function (event) {
+      if (event.target !== captureDialog) return;
+      var bounds = captureDialog.getBoundingClientRect();
+      if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) captureDialog.close();
     });
   }
 })();
