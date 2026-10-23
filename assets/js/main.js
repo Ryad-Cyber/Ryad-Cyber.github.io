@@ -175,6 +175,27 @@
   }
 
   /* --- 3. Contact direct : copie facultative, mailto toujours disponible. */
+  var contactForm = document.getElementById("contact-form");
+  if (contactForm) {
+    // Pure formatter, kept testable without launching the visitor's email app.
+    var draftUrl = function (name, email, message) {
+      var body = message.trim() + "\r\n\r\n" + name.trim() + "\r\n" + email.trim();
+      return "mailto:" + contactForm.getAttribute("data-to") +
+        "?subject=" + encodeURIComponent(contactForm.getAttribute("data-subject") + " — " + name.trim()) +
+        "&body=" + encodeURIComponent(body);
+    };
+    contactForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var fields = contactForm.elements;
+      fields.nom.setCustomValidity(fields.nom.value.trim() ? "" : (root.lang === "en" ? "Enter your name." : "Indiquez votre nom."));
+      fields.message.setCustomValidity(fields.message.value.trim() ? "" : (root.lang === "en" ? "Enter a message." : "Indiquez un message."));
+      if (!contactForm.reportValidity()) return;
+      window.location.href = draftUrl(fields.nom.value, fields.email.value, fields.message.value);
+    });
+    [contactForm.elements.nom, contactForm.elements.message].forEach(function (field) {
+      field.addEventListener("input", function () { field.setCustomValidity(""); });
+    });
+  }
   var copyEmail = document.querySelector("[data-copy-email]");
   if (copyEmail && navigator.clipboard && navigator.clipboard.writeText) {
     copyEmail.hidden = false;

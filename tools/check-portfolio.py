@@ -28,7 +28,7 @@ for path, page in pages.items():
     source = path.read_text(encoding='utf-8')
     if source.count('class="menu-toggle"') != 1 or 'class="menu-glyph"' not in source:
         errors.append(f'{path}: navigation must use one menu button and one glyph')
-    if 'security.css?v=20261023-blue' not in source or 'main.js?v=20261023-blue' not in source:
+    if 'security.css?v=20261023-adjustments' not in source or 'main.js?v=20261023-adjustments' not in source:
         errors.append(f'{path}: missing shared, versioned styles or script')
     duplicates = [key for key, n in Counter(page.ids).items() if n > 1]
     if duplicates: errors.append(f'{path}: duplicate IDs: {duplicates}')
@@ -44,6 +44,8 @@ for path, page in pages.items():
         elif url.fragment and target in pages and unquote(url.fragment) not in pages[target].ids:
             errors.append(f'{path.relative_to(ROOT)}: missing anchor {link}')
     if page.projects:
+        if 'card--featured' in source:
+            errors.append(f'{path}: project cards must not use a featured layout')
         if Counter(page.projects) != Counter({'soc': 2, 'redteam': 1, 'grc': 1, 'cloud': 1}):
             errors.append(f'{path}: unexpected projects {page.projects}')
         summaries = re.findall(r'<summary class="btn btn-soft">(.*?)</summary>', source, re.S)
@@ -55,8 +57,12 @@ for path, page in pages.items():
     if path in (ROOT/'index.html', ROOT/'en/index.html'):
         if page.telephones != ['tel:+33783897766']:
             errors.append(f'{path}: incorrect telephone {page.telephones}')
-        if 'id="contact-form"' in source or 'class="contact-email"' not in source:
-            errors.append(f'{path}: compact direct contact expected')
+        if 'class="contact-email"' not in source or 'class="contact-mini"' not in source or 'action="mailto:ryadboujenan@outlook.com"' not in source:
+            errors.append(f'{path}: direct contact and mailto mini-form expected')
+        if 'SOC / CLOUD SECURITY' in source or 'class="signal-map"' in source or 'class="skills-note panel"' in source:
+            errors.append(f'{path}: removed specialization, circular portrait or approach section remains')
+        if '<h3>Programmation</h3>' not in source and '<h3>Programming</h3>' not in source:
+            errors.append(f'{path}: programming skills missing')
         language_grid = re.search(r'<dl class="language-grid">(.*?)</dl>', source, re.S)
         expected_levels = ['Fluent', 'C1', 'Fluent', 'Basic', 'Beginner'] if path.parent.name == 'en' else ['Courant', 'C1', 'Courant', 'Notions', 'Débutant']
         if not language_grid or re.findall(r'<dd>(.*?)</dd>', language_grid[1]) != expected_levels:
