@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ryad Boujenan — Élève ingénieur cybersécurité</title>
 <meta name="theme-color" content="#080f20">
-<meta name="description" content="Ryad Boujenan, élève ingénieur en cybersécurité à l’EMSI Casablanca. Détection, sécurité cloud et gestion des risques. Recherche un stage de fin d’études de 4 à 6 mois à partir de février 2027, en priorité en France.">
+<meta name="description" content="Ryad Boujenan, élève ingénieur en cybersécurité à l’EMSI Casablanca. Orientation sécurité cloud, avec une pratique du SOC et du pentest. Recherche un stage de fin d’études de 4 à 6 mois à partir de février 2027, en priorité en France.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&display=swap">
-<link rel="icon" href="assets/favicon.svg?v=20261024-hero" type="image/svg+xml">
-<link rel="stylesheet" href="assets/css/style.css?v=20261024-hero">
-<link rel="stylesheet" href="assets/css/security.css?v=20261024-hero">
+<link rel="icon" href="assets/favicon.svg?v=20261025-positioning" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css?v=20261025-positioning">
+<link rel="stylesheet" href="assets/css/security.css?v=20261025-positioning">
 </head>
 <body>
 <div class="network-backdrop" aria-hidden="true"></div>
@@ -66,7 +66,6 @@
         <li><a href="#projets">Projets</a></li>
         <li><a href="#competences">Compétences</a></li>
         <li><a href="#parcours">Parcours</a></li>
-        <li><a href="#voyages">Voyages</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -90,9 +89,8 @@
 
           <div class="hero-name">
             <h1>Ryad<span>Boujenan<span class="name-period">.</span></span></h1>
-            <p class="hero-typed"><span class="typed-prefix" aria-hidden="true">Je suis</span><span class="typed-role" data-words="pentester|analyste SOC|ingénieur en sécurité cloud|ingénieur en détection|analyste cybersécurité|analyste forensic|ingénieur sécurité réseau" aria-hidden="true">pentester</span><span class="sr-only">Je suis pentester, analyste SOC, ingénieur en sécurité cloud, ingénieur en détection, analyste cybersécurité, analyste forensic ou ingénieur sécurité réseau.</span></p>
           </div>
-          <p class="hero-role">Élève ingénieur en informatique et réseaux<br><span>Cybersécurité · Systèmes · Réseaux</span></p>
+          <p class="hero-role">Élève ingénieur en cybersécurité<br><span>Cloud Security · SOC · Pentest</span></p>
 
           <p class="lede">
             Je termine un cycle d'ingénieur en <strong>informatique et réseaux, option
@@ -104,6 +102,8 @@
           <div class="hero-actions">
             <a class="btn btn-primary" href="projets/index.html"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg>Voir mes projets</a>
             <a class="btn btn-secondary" href="#contact">Me contacter ↗</a>
+            <!-- Bouton CV : ajouter href vers le PDF definitif (ex. assets/cv/...pdf), puis retirer hidden. Aucun fichier publie pour l'instant. -->
+            <a class="btn btn-ghost" data-cv-link hidden><svg class="i" aria-hidden="true"><use href="#i-clipboard"/></svg>Voir mon CV</a>
             <p class="hero-note">Passionné de voyages et d'échecs.</p>
           </div>
 
@@ -122,10 +122,10 @@
           <div class="stats">
             <p class="stats-title" id="stats-title">Fiche synthèse</p>
             <dl>
-              <div class="stats-row"><dt>Domaine</dt><dd class="txt">Cybersécurité</dd></div>
+              <div class="stats-row"><dt>Dernier stage</dt><dd class="txt"><a href="#nethash">Nethash</a></dd></div>
               <div class="stats-row"><dt>Disponibilité</dt><dd class="txt live">PFE · février 2027</dd></div>
               <div class="stats-row"><dt>Projets documentés</dt><dd data-project-total>06</dd></div>
-              <div class="stats-row"><dt>Formations &amp; certifications</dt><dd>06</dd></div>
+              <div class="stats-row"><dt>Formations &amp; attestations</dt><dd>06</dd></div>
             </dl>
           </div>
         </aside>
@@ -387,13 +387,13 @@
             <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-clipboard"/></svg>GRC</span>
             <span class="badge">09/2026 · EMSI × CyberSup</span>
           </div>
-          <h3 id="p-kasbah"><span class="case-no">CAS Nº3</span>KASBAH 2026 — gestion de crise cyber</h3>
+          <h3 id="p-kasbah"><span class="case-no">CAS Nº3</span>KASBAH 2026 — exercice immersif de gestion de crise cyber</h3>
           <p class="card-desc">
-            Trois jours de gestion de crise face à une cyberattaque simulée, au sein de la cellule
-            Direction.
+            Exercice pédagogique immersif de trois jours : une cyberattaque simulée à traiter en temps
+            réel, de l'analyse des alertes aux décisions de la cellule Direction.
           </p>
           <ul class="tags">
-            <li>Gestion de crise</li><li>Coordination</li><li>Prise de décision</li><li>Communication</li><li>Travail sous pression</li>
+            <li>Gestion d'incident</li><li>Analyse d'alertes</li><li>Priorisation</li><li>Prise de décision</li><li>Coordination</li><li>Communication de crise</li>
           </ul>
 
           <div class="card-actions">
@@ -418,10 +418,20 @@
                 <div class="detail-row">
                   <h4>Contexte</h4>
                   <p>
-                    Compétition de gestion de crise cyber sur trois jours : une cyberattaque simulée contre
-                    une organisation, à traiter en temps réel avec une information partielle et des
-                    décisions à prendre vite.
+                    Exercice immersif de gestion d'incident et de crise cyber, organisé sur trois jours dans
+                    le cadre de l'école avec CyberSup : une cyberattaque simulée contre une organisation, à
+                    traiter en temps réel avec une information partielle et des décisions à prendre vite.
+                    Il s'agit d'une simulation pédagogique, et non d'un incident réel en entreprise.
                   </p>
+                </div>
+                <div class="detail-row">
+                  <h4>Conditions de l'exercice</h4>
+                  <ul class="dashes">
+                    <li>Gestion d'incidents simulés, en temps réel.</li>
+                    <li>Analyse d'alertes, identification des faux positifs et gestion du bruit.</li>
+                    <li>Analyse et priorisation des événements.</li>
+                    <li>Prise de décision dans un contexte de crise.</li>
+                  </ul>
                 </div>
                 <div class="detail-row">
                   <h4>Ce que j'ai fait</h4>
@@ -538,10 +548,9 @@
                     <li>
                       <div class="scenario-head"><h5>Énumération locale et progression</h5><span class="attck">MITRE ATT&amp;CK T1552.001</span></div>
                       <p>
-                        Une session sous <code>jim</code> montre dans <code>/var/mail/jim</code> un
-                        mot de passe transmis en clair, permettant de progresser vers le compte
-                        <code>charles</code>. Les captures ne documentent pas le passage de
-                        <code>www-data</code> à <code>jim</code>.
+                        Progression locale jusqu'au compte <code>jim</code>, dont la boîte
+                        <code>/var/mail/jim</code> contient un mot de passe transmis en clair :
+                        il permet de passer au compte <code>charles</code>.
                       </p>
                       <figure class="detail-fig">
                         <a href="assets/projets/mail_jim-redacted.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
@@ -568,8 +577,7 @@
                       <p>
                         L'autorisation Sudo excessive permet d'ajouter une entrée à
                         <code>/etc/passwd</code> via <code>teehee</code>, de créer un compte UID 0,
-                        puis de valider l'accès root et de lire le flag final. Cette étape n'a pas
-                        de capture disponible.
+                        puis de valider l'accès root et de lire le flag final.
                       </p>
                     </li>
                   </ul>
@@ -615,17 +623,17 @@
 
 <article class="card panel card--cloud" data-cat="cloud" aria-labelledby="p-aws">
       <figure class="card-media card-media--aws"><img src="assets/projets/aws-vpc-architecture-routes.jpeg" alt="Lab VPC — 10.1.0.0/16, Public Subnet 1 — 10.1.11.0/24" width="2048" height="876" loading="lazy"><figcaption>AWS / IAM · VPC · EC2</figcaption></figure><div class="card-content">
-      <div class="card-badges"><span class="badge badge-cat">Cloud</span><span class="badge">2026 · AWS Academy</span></div>
-      <h3 id="p-aws"><span class="case-no">CAS Nº5</span>AWS Cloud Foundations — Infrastructure &amp; Security</h3>
-      <p class="card-desc">Première mise en pratique sur AWS : autorisations IAM, réseau VPC, instances EC2 et filtrage par Security Groups.</p>
+      <div class="card-badges"><span class="badge badge-cat">Cloud</span><span class="badge">2026 · Lab AWS Academy</span></div>
+      <h3 id="p-aws"><span class="case-no">CAS Nº5</span>AWS Security Lab — IAM, VPC &amp; EC2</h3>
+      <p class="card-desc">Laboratoire pratique de formation AWS Academy : permissions IAM, segmentation VPC, instances EC2 et filtrage réseau par Security Groups.</p>
       <ul class="tags"><li>AWS</li><li>IAM</li><li>IAM Policies</li><li>VPC</li><li>Subnets</li><li>Route Tables</li><li>EC2</li><li>Security Groups</li><li>JSON</li><li>TCP/IP</li><li>SSH</li></ul>
       <div class="card-actions"><details class="card-detail"><summary class="btn btn-soft"><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span><span aria-hidden="true">↗</span></summary>
-      <div class="detail-body"><div class="detail-row"><dl class="card-facts"><dt>Cadre</dt><dd>AWS Academy Cloud Foundations</dd><dt>Nature</dt><dd>Laboratoire pédagogique</dd></dl></div>
-      <div class="detail-row"><h4>Contexte et objectif</h4><p>Projet pratique réalisé dans le cadre de la formation AWS Academy Cloud Foundations pour manipuler les composants fondamentaux d’une infrastructure AWS et découvrir leur sécurité. Il s’agit d’un environnement de formation, sans audit professionnel ni infrastructure de production.</p></div>
+      <div class="detail-body"><div class="detail-row"><dl class="card-facts"><dt>Cadre</dt><dd>AWS Academy Cloud Foundations</dd><dt>Nature</dt><dd>Laboratoire pratique de formation</dd></dl></div>
+      <div class="detail-row"><h4>Contexte et objectif</h4><p>Laboratoire pratique réalisé pendant la formation AWS Academy Cloud Foundations, pour manipuler les briques fondamentales d’une infrastructure AWS sous l’angle de la sécurité : identités, réseau et exposition des instances.</p></div>
       <div class="detail-row"><h4>Réalisations techniques</h4><ol class="steps"><li><strong>Autorisations IAM.</strong> Analyse et configuration de <code>EC2-Admin-Policy</code> au format JSON : <code>ec2:Describe*</code>, <code>ec2:StartInstances</code> et <code>ec2:StopInstances</code>. Objectif : comprendre la granularité des permissions et le principe du moindre privilège.</li>
     <li><strong>Architecture VPC.</strong> Étude de <code>Lab VPC — 10.1.0.0/16</code>, de <code>Public Subnet 1 — 10.1.11.0/24</code> et de la table de routage publique (Public Route Table, affichée « Public » sur la capture). Objectif : comprendre la segmentation, le routage et la connectivité.</li>
     <li><strong>EC2 et Security Groups.</strong> Manipulation de <code>LabHost</code> et <code>Bastion Host</code> ; observation et configuration des règles réseau entrantes, dont SSH sur <code>TCP/22</code>. Objectif : comprendre l’administration des instances et le filtrage réseau.</li></ol></div>
-      <div class="detail-row"><h4>Captures commentées</h4><p>Cliquez sur une capture pour l’agrandir et parcourir la galerie.</p><figure class="detail-fig"><a href="assets/projets/aws-iam-policy-json.png" target="_blank" rel="noopener" aria-label="Ouvrir la capture 01 / IAM"><img src="assets/projets/aws-iam-policy-json.png" width="1881" height="701" loading="lazy" alt="Politique EC2-Admin-Policy : permissions EC2 en JSON."></a><figcaption><strong>01 / IAM — Politique EC2-Admin-Policy : permissions EC2 en JSON.</strong> Les actions Describe, StartInstances et StopInstances sont visibles. La ressource « * » reste large : cette capture ne démontre pas un moindre privilège complet.</figcaption></figure><figure class="detail-fig"><a href="assets/projets/aws-vpc-architecture-routes.jpeg" target="_blank" rel="noopener" aria-label="Ouvrir la capture 02 / VPC"><img src="assets/projets/aws-vpc-architecture-routes.jpeg" width="2048" height="876" loading="lazy" alt="Lab VPC : réseau, sous-réseau et routage."></a><figcaption><strong>02 / VPC — Lab VPC : réseau, sous-réseau et routage.</strong> La carte montre 10.1.0.0/16, Public Subnet 1 en 10.1.11.0/24 et son association à la table « Public ». Le détail des destinations de routes n’est pas affiché.</figcaption></figure><figure class="detail-fig"><a href="assets/projets/aws-ec2-security-groups.png" target="_blank" rel="noopener" aria-label="Ouvrir la capture 03 / EC2"><img src="assets/projets/aws-ec2-security-groups.png" width="1657" height="694" loading="lazy" alt="LabHost et Bastion Host : instances et groupe de sécurité."></a><figcaption><strong>03 / EC2 — LabHost et Bastion Host : instances et groupe de sécurité.</strong> Les deux instances et le groupe associé à LabHost sont visibles. Le détail des règles entrantes est hors cadre : la capture ne permet pas de vérifier la source autorisée sur TCP/22.</figcaption></figure></div>
+      <div class="detail-row"><h4>Captures commentées</h4><p>Cliquez sur une capture pour l’agrandir et parcourir la galerie.</p><figure class="detail-fig"><a href="assets/projets/aws-iam-policy-json.png" target="_blank" rel="noopener" aria-label="Ouvrir la capture 01 / IAM"><img src="assets/projets/aws-iam-policy-json.png" width="1881" height="701" loading="lazy" alt="Politique EC2-Admin-Policy : permissions EC2 en JSON."></a><figcaption><strong>01 / IAM — Politique EC2-Admin-Policy : permissions EC2 en JSON.</strong> Les actions Describe, StartInstances et StopInstances sont visibles. La ressource « * » reste large : c’est le point à restreindre pour appliquer pleinement le moindre privilège.</figcaption></figure><figure class="detail-fig"><a href="assets/projets/aws-vpc-architecture-routes.jpeg" target="_blank" rel="noopener" aria-label="Ouvrir la capture 02 / VPC"><img src="assets/projets/aws-vpc-architecture-routes.jpeg" width="2048" height="876" loading="lazy" alt="Lab VPC : réseau, sous-réseau et routage."></a><figcaption><strong>02 / VPC — Lab VPC : réseau, sous-réseau et routage.</strong> La carte montre 10.1.0.0/16, Public Subnet 1 en 10.1.11.0/24 et son association à la table « Public ».</figcaption></figure><figure class="detail-fig"><a href="assets/projets/aws-ec2-security-groups.png" target="_blank" rel="noopener" aria-label="Ouvrir la capture 03 / EC2"><img src="assets/projets/aws-ec2-security-groups.png" width="1657" height="694" loading="lazy" alt="LabHost et Bastion Host : instances et groupe de sécurité."></a><figcaption><strong>03 / EC2 — LabHost et Bastion Host : instances et groupe de sécurité.</strong> Les deux instances et le groupe de sécurité associé à LabHost sont visibles.</figcaption></figure></div>
       <div class="detail-row"><h4>Ce que ce laboratoire m’a appris</h4><p>Relier les permissions IAM, l’organisation du réseau et les règles des Security Groups. Distinguer une configuration d’apprentissage d’une configuration réellement durcie ; notamment, des actions IAM limitées ne suffisent pas si le périmètre des ressources reste large.</p></div></div></details>
       <p class="no-repo">Laboratoire de formation · 3 captures documentées</p></div></div></article>
 
@@ -698,22 +706,6 @@
           </div>
         </div></article>
 
-        <article class="card card--placeholder panel" data-cat="ia" data-placeholder>
-          <div class="card-badges">
-            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-chip"/></svg>IA</span>
-            <span class="badge badge-soon">En préparation</span>
-          </div>
-          <h3>Projet en cours de documentation</h3>
-        </article>
-
-        <!-- ===== Emplacement : projet Cryptographie en preparation (pas de contenu invente) ===== -->
-        <article class="card card--placeholder panel" data-cat="crypto" data-placeholder>
-          <div class="card-badges">
-            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Cryptographie</span>
-            <span class="badge badge-soon">En préparation</span>
-          </div>
-          <h3>Projet en cours de documentation</h3>
-        </article>
 
       </div>
 
@@ -783,7 +775,7 @@
             <li>AWS Academy Cloud Foundations</li><li>IAM</li><li>EC2</li><li>S3</li><li>VPC</li><li>CloudWatch</li><li>Modèle de responsabilité partagée</li><li>Docker</li>
           </ul>
         </div>
-        <div class="skill-group skill-group--programming panel"><div class="panel-head"><span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-code"/></svg></span><h3>Programmation</h3></div><p class="skill-lead">J'utilise différents langages et technologies selon les projets, du développement au scripting et à l'automatisation.</p><ul class="tags tags--quiet"><li>Python</li><li>Java</li><li>C/C++</li><li>JavaScript</li><li>PHP</li><li>SQL</li><li>Bash</li><li>PowerShell</li><li>HTML/CSS</li><li>Django</li></ul></div>
+        <div class="skill-group skill-group--programming panel"><div class="panel-head"><span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-code"/></svg></span><h3>Programmation</h3></div><p class="skill-lead">Les langages que j'utilise pour scripter, automatiser et interroger des données.</p><ul class="tags tags--quiet"><li>Python</li><li>Bash</li><li>PowerShell</li><li>SQL</li></ul></div>
       </div>
 
 
@@ -795,7 +787,7 @@
     <div class="container">
       <div class="section-head">
         <p class="eyebrow"><svg class="i" aria-hidden="true"><use href="#i-route"/></svg>03 · Parcours</p>
-        <h2>Études, stages et certifications</h2>
+        <h2>Études, stages et formations</h2>
       </div>
 
       <div class="parcours-grid">
@@ -811,16 +803,24 @@
           </div>
 
           <ol class="timeline">
-            <li>
+            <li class="tl-featured" id="nethash">
               <a class="tl-logo" href="https://nethash.fr/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="assets/logos/nethash.png" alt="" width="231" height="218" loading="lazy" decoding="async"></a>
               <span class="tl-when">07/2026 — 09/2026</span>
               <h4>Stagiaire en cybersécurité</h4>
               <p class="tl-where"><a href="https://nethash.fr/" target="_blank" rel="noopener">Nethash</a> — Paris, France</p>
-              <ul class="dashes">
-                <li>Automatisation de scans Nmap en Python, planifiés par Cron, avec consolidation des résultats.</li>
-                <li>Campagnes de scans de vulnérabilités avec GVM/OpenVAS déployé sous Docker : <strong>68 vulnérabilités et 122 CVE identifiées</strong>, dont des critiques notées CVSS 10.0.</li>
-                <li>Génération de rapports automatisés et intégration de la chaîne de scan en CI/CD avec GitHub Actions.</li>
+              <p class="tl-focus">Gestion des vulnérabilités et automatisation de la sécurité</p>
+              <ul class="tl-facts">
+                <li><strong>68</strong>vulnérabilités identifiées</li>
+                <li><strong>122</strong>CVE référencées</li>
+                <li><strong>CVSS 10.0</strong>criticité maximale relevée</li>
               </ul>
+              <ul class="dashes">
+                <li>Automatisation de scans de surface d'exposition en Python et Nmap, planifiés par Cron, avec consolidation des résultats.</li>
+                <li>Identification de vulnérabilités avec GVM/OpenVAS déployé sous Docker.</li>
+                <li>Analyse des vulnérabilités relevées et de leur criticité, à partir des références CVE et des scores CVSS.</li>
+                <li>Génération automatisée de rapports et intégration de la chaîne de scan dans un workflow CI/CD GitHub Actions.</li>
+              </ul>
+              <ul class="tags tags--quiet tl-tools"><li>Python</li><li>Nmap</li><li>Cron</li><li>GVM / OpenVAS</li><li>Docker</li><li>CVE / CVSS</li><li>GitHub Actions</li></ul>
             </li>
 
             <li>
@@ -861,13 +861,13 @@
           <div class="panel-head">
             <span class="ico-tile ico-tile--gold"><svg class="i" aria-hidden="true"><use href="#i-award"/></svg></span>
             <div>
-              <h3>Formations &amp; certifications</h3>
-              <span class="sub sub--gold">Certifications vérifiables</span>
+              <h3>Formations &amp; attestations</h3>
+              <span class="sub sub--gold">Justificatifs vérifiables</span>
             </div>
           </div>
           <p class="section-sub" style="margin: 0 0 18px; font-size: 0.9375rem">
-            Des formations dans plusieurs domaines de la cybersécurité : détection, administration
-            système, sécurité offensive et cloud.
+            Formations suivies, attestations et exercices pratiques en détection, administration
+            système, sécurité offensive et cloud. Les certifications professionnelles y seront ajoutées à leur obtention.
           </p>
 
           <div class="certs" id="certs" data-gallery>
@@ -888,6 +888,7 @@
                 <span class="cert-dots" aria-hidden="true"><i class="is-on"></i><i></i><i></i></span>
               </div>
               <div class="cert-body">
+                <p class="cert-type">Formation en ligne · 3 modules</p>
                 <h4>Cours SOC Splunk</h4>
                 <p class="cert-meta">
                   <span class="cert-org">Splunk Education</span>
@@ -907,6 +908,7 @@
                 <img src="assets/certifications/redhat-rh124.jpg" alt="Certificat Coursera : Administration Linux avec Red Hat RH124" width="1200" height="927" loading="lazy" decoding="async">
               </a>
               <div class="cert-body">
+                <p class="cert-type">Formation en ligne</p>
                 <h4>Administration Linux avec Red Hat RH124</h4>
                 <p class="cert-meta">
                   <span class="cert-org">Honoris Educational Network · Coursera</span>
@@ -922,6 +924,7 @@
                 <img src="assets/certifications/cisco-ethical-hacker.jpg" alt="Certificat Cisco Networking Academy : Ethical Hacker" width="1200" height="927" loading="lazy" decoding="async">
               </a>
               <div class="cert-body">
+                <p class="cert-type">Formation · badge Credly</p>
                 <h4>Ethical Hacker</h4>
                 <p class="cert-meta">
                   <span class="cert-org">Cisco Networking Academy</span>
@@ -937,13 +940,14 @@
                 <img src="assets/certifications/kasbah-participant.png" alt="Badge KASBAH 2026 : participant à l'exercice de gestion de crise cyber" width="1000" height="1000" loading="lazy" decoding="async">
               </a>
               <div class="cert-body">
-                <h4>Exercice KASBAH 2026 — gestion de crise cyber</h4>
+                <p class="cert-type">Exercice pratique · 3 jours</p>
+                <h4>KASBAH 2026 — exercice immersif de gestion de crise cyber</h4>
                 <p class="cert-meta">
                   <span class="cert-org">EMSI × CyberSup</span>
                   <span class="cert-date">09/2026</span>
                   <span class="cert-mention">Participant</span>
                 </p>
-                <p class="cert-desc">Trois jours de gestion de crise face à une cyberattaque simulée, au sein de la cellule Direction.</p>
+                <p class="cert-desc">Exercice pédagogique de trois jours face à une cyberattaque simulée : analyse et priorisation des alertes, décisions de crise au sein de la cellule Direction.</p>
                 <a class="cert-verify" href="https://kasbah.cybersup.ai/certificat/KSB26-0K0CQJVF" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-external"/></svg>Vérifier le certificat</a>
               </div>
             </article>
@@ -955,6 +959,7 @@
               <!-- Seconde page de l'attestation : pas de vignette, mais elle suit la premiere dans la visionneuse -->
               <a class="cert-visual" href="assets/certifications/supervision-reseaux-p2.jpg" data-caption="Supervision des réseaux — ENSET Mohammedia, 11/06/2026 · page 2/2" hidden></a>
               <div class="cert-body">
+                <p class="cert-type">Attestation de réussite</p>
                 <h4>Supervision des réseaux</h4>
                 <p class="cert-meta">
                   <span class="cert-org">ENSET Mohammedia — Prof. Azeddine Khiat</span>
@@ -969,6 +974,7 @@
                 <img src="assets/certifications/aws-cloud-foundations.png" alt="Badge AWS Academy Graduate : Cloud Foundations, Training Badge" width="601" height="601" loading="lazy" decoding="async">
               </a>
               <div class="cert-body">
+                <p class="cert-type">Formation · badge AWS Academy</p>
                 <h4>AWS Academy Graduate — Cloud Foundations</h4>
                 <p class="cert-meta">
                   <span class="cert-org">Amazon Web Services Training and Certification</span>
@@ -991,7 +997,7 @@
           <div class="learning-note">
             <h4>Continuer à apprendre</h4>
             <p>
-              Je complète mes projets par des formations et certifications pour élargir mes compétences
+              Je complète mes projets par des formations, et je prépare des certifications professionnelles, pour élargir mes compétences
               en cybersécurité, des systèmes et réseaux au cloud, et explorer l'intelligence artificielle.
             </p>
           </div>
@@ -1014,7 +1020,7 @@
             <h3>Centres d'intérêt</h3>
           </div>
           <div class="interest-grid">
-            <div class="interest-item"><svg class="i" aria-hidden="true"><use href="#i-globe"/></svg>Voyages</div>
+            <a class="interest-item" href="#voyages"><svg class="i" aria-hidden="true"><use href="#i-globe"/></svg>Voyages</a>
             <div class="interest-item"><svg class="i" aria-hidden="true"><use href="#i-chess"/></svg>Échecs</div>
             <div class="interest-item"><svg class="i" aria-hidden="true"><use href="#i-football"/></svg>Football américain</div>
           </div>
@@ -1253,6 +1259,6 @@
   <div class="capture-controls"><button type="button" id="capture-prev" aria-label="Capture précédente">←</button><a id="capture-original" target="_blank" rel="noopener">Ouvrir l’original ↗</a><button type="button" id="capture-next" aria-label="Capture suivante">→</button></div>
 </dialog>
 
-<script src="assets/js/main.js?v=20261024-hero" defer></script>
+<script src="assets/js/main.js?v=20261025-positioning" defer></script>
 </body>
 </html>

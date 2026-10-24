@@ -28,7 +28,7 @@ for path, page in pages.items():
     source = path.read_text(encoding='utf-8')
     if source.count('class="menu-toggle"') != 1 or 'class="menu-glyph"' not in source:
         errors.append(f'{path}: navigation must use one menu button and one glyph')
-    if 'security.css?v=20261024-hero' not in source or 'main.js?v=20261024-hero' not in source:
+    if 'security.css?v=20261025-positioning' not in source or 'main.js?v=20261025-positioning' not in source:
         errors.append(f'{path}: missing shared, versioned styles or script')
     duplicates = [key for key, n in Counter(page.ids).items() if n > 1]
     if duplicates: errors.append(f'{path}: duplicate IDs: {duplicates}')
@@ -75,13 +75,16 @@ for path, page in pages.items():
         if 'id="capture-dialog"' not in source:
             errors.append(f'{path}: missing screenshot gallery')
     if path in (ROOT/'index.html', ROOT/'en/index.html'):
-        typed = re.search(r'<span class="typed-prefix"[^>]*>(.*?)</span><span class="typed-role" data-words="([^"]+)"[^>]*>(.*?)</span>', source)
-        if not typed or typed[3] != typed[2].split('|')[0]:
-            errors.append(f'{path}: typed role fallback does not match first role')
-        elif path.parent.name == 'en' and (typed[1] != "I'm a" or any(role.startswith('a ') for role in typed[2].split('|'))):
-            errors.append(f'{path}: English typed prefix must remain fixed')
-        elif path.parent.name != 'en' and typed[1] != 'Je suis':
-            errors.append(f'{path}: French typed prefix must remain fixed')
+        role = re.search(r'<p class="hero-role">(.*?)<br><span>(.*?)</span></p>', source)
+        expected_role = (('Cybersecurity engineering student', 'Cloud Security · SOC · Penetration Testing')
+                         if path.parent.name == 'en' else ('Élève ingénieur en cybersécurité', 'Cloud Security · SOC · Pentest'))
+        if not role or (role[1], role[2]) != expected_role:
+            errors.append(f'{path}: hero positioning missing or changed')
+        if 'data-words=' in source or 'class="hero-typed"' in source:
+            errors.append(f'{path}: animated job titles must not return')
+        cv = re.search(r'<a class="btn btn-ghost" data-cv-link([^>]*)>', source)
+        if not cv or ' hidden' not in cv[1] or 'href=' in cv[1]:
+            errors.append(f'{path}: CV button must stay hidden and unlinked until a final PDF exists')
         if page.telephones != ['tel:[PHONE_REMOVED]']:
             errors.append(f'{path}: incorrect telephone {page.telephones}')
         if 'class="contact-email"' not in source or 'class="contact-mini"' not in source or 'action="mailto:ryadboujenan@outlook.com"' not in source:

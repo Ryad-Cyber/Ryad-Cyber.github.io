@@ -1,13 +1,12 @@
 /* ============================================================
    Ryad Boujenan - portfolio, comportements des pages.
-   1. Filtres de projets (7 onglets fixes, etat vide).
+   1. Filtres de projets (onglets vides masques, etat vide).
    2. Section courante dans le menu.
    3. Contact direct et copie de l'adresse e-mail.
    4. Carrousels de la section Voyages.
    5. Visionneuse : photos de voyage et certificats.
    6. Alternance des trois certificats Splunk.
    7. Detail des projets dans une fenetre modale.
-   8. « Je suis … » : roles tapes puis effaces en boucle.
    Sans JavaScript : toutes les cartes restent visibles, le detail
    des cas se deplie (<details>) a la place de la fenetre modale, le
    contact reste un lien mailto, les carrousels defilent au doigt ou
@@ -97,6 +96,9 @@
       }).length;
       var badge = b.querySelector(".count");
       if (badge) badge.textContent = String(n);
+      // Categorie sans projet publie : bouton masque, reactive des qu'une
+      // carte de cette categorie est ajoutee au HTML.
+      if (key !== "all") b.hidden = n === 0;
     });
 
     var apply = function (btn) {
@@ -567,45 +569,6 @@
       if (event.target !== captureDialog) return;
       var bounds = captureDialog.getBoundingClientRect();
       if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) captureDialog.close();
-    });
-  }
-
-  /* « Je suis … » : le premier role est deja dans le HTML (repli
-     sans JS et en mouvement reduit). Pause quand l'onglet est masque. */
-  var nameTag = document.querySelector(".typed-role[data-words]");
-  if (nameTag && !reduced) {
-    var words = nameTag.getAttribute("data-words").split("|");
-    var wordIndex = 0;
-    var typed = words[0].length;
-    var erasing = true;
-    var typeTimer = null;
-    var typeStep = function () {
-      var delay;
-      if (erasing) {
-        typed -= 1;
-        delay = 34;
-        if (typed <= 0) {
-          erasing = false;
-          wordIndex = (wordIndex + 1) % words.length;
-          delay = 450;
-        }
-      } else {
-        typed += 1;
-        delay = 60 + Math.random() * 45;
-        if (typed >= words[wordIndex].length) {
-          erasing = true;
-          delay = 2400;
-        }
-      }
-      nameTag.textContent = words[wordIndex].slice(0, typed);
-      nameTag.classList.toggle("is-typing", delay < 400);
-      typeTimer = window.setTimeout(typeStep, delay);
-    };
-    typeTimer = window.setTimeout(typeStep, 2400);
-    document.addEventListener("visibilitychange", function () {
-      window.clearTimeout(typeTimer);
-      nameTag.classList.remove("is-typing");
-      if (!document.hidden) typeTimer = window.setTimeout(typeStep, 800);
     });
   }
 })();

@@ -9,9 +9,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&display=swap">
-<link rel="icon" href="../assets/favicon.svg?v=20261024-hero" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/css/style.css?v=20261024-hero">
-<link rel="stylesheet" href="../assets/css/security.css?v=20261024-hero">
+<link rel="icon" href="../assets/favicon.svg?v=20261025-positioning" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/style.css?v=20261025-positioning">
+<link rel="stylesheet" href="../assets/css/security.css?v=20261025-positioning">
 </head>
 <body>
 <div class="network-backdrop" aria-hidden="true"></div>
@@ -61,7 +61,6 @@
         <li><a href="../index.html#projets">Projets</a></li>
         <li><a href="../index.html#competences">Compétences</a></li>
         <li><a href="../index.html#parcours">Parcours</a></li>
-        <li><a href="../index.html#voyages">Voyages</a></li>
         <li><a href="../index.html#contact">Contact</a></li>
       </ul>
     </nav>
@@ -337,13 +336,13 @@
             <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-clipboard"/></svg>GRC</span>
             <span class="badge">09/2026 · EMSI × CyberSup</span>
           </div>
-          <h3 id="p-kasbah"><span class="case-no">CAS Nº3</span>KASBAH 2026 — gestion de crise cyber</h3>
+          <h3 id="p-kasbah"><span class="case-no">CAS Nº3</span>KASBAH 2026 — exercice immersif de gestion de crise cyber</h3>
           <p class="card-desc">
-            Trois jours de gestion de crise face à une cyberattaque simulée, au sein de la cellule
-            Direction.
+            Exercice pédagogique immersif de trois jours : une cyberattaque simulée à traiter en temps
+            réel, de l'analyse des alertes aux décisions de la cellule Direction.
           </p>
           <ul class="tags">
-            <li>Gestion de crise</li><li>Coordination</li><li>Prise de décision</li><li>Communication</li><li>Travail sous pression</li>
+            <li>Gestion d'incident</li><li>Analyse d'alertes</li><li>Priorisation</li><li>Prise de décision</li><li>Coordination</li><li>Communication de crise</li>
           </ul>
 
           <div class="card-actions">
@@ -368,10 +367,20 @@
                 <div class="detail-row">
                   <h4>Contexte</h4>
                   <p>
-                    Compétition de gestion de crise cyber sur trois jours : une cyberattaque simulée contre
-                    une organisation, à traiter en temps réel avec une information partielle et des
-                    décisions à prendre vite.
+                    Exercice immersif de gestion d'incident et de crise cyber, organisé sur trois jours dans
+                    le cadre de l'école avec CyberSup : une cyberattaque simulée contre une organisation, à
+                    traiter en temps réel avec une information partielle et des décisions à prendre vite.
+                    Il s'agit d'une simulation pédagogique, et non d'un incident réel en entreprise.
                   </p>
+                </div>
+                <div class="detail-row">
+                  <h4>Conditions de l'exercice</h4>
+                  <ul class="dashes">
+                    <li>Gestion d'incidents simulés, en temps réel.</li>
+                    <li>Analyse d'alertes, identification des faux positifs et gestion du bruit.</li>
+                    <li>Analyse et priorisation des événements.</li>
+                    <li>Prise de décision dans un contexte de crise.</li>
+                  </ul>
                 </div>
                 <div class="detail-row">
                   <h4>Ce que j'ai fait</h4>
@@ -488,10 +497,9 @@
                     <li>
                       <div class="scenario-head"><h5>Énumération locale et progression</h5><span class="attck">MITRE ATT&amp;CK T1552.001</span></div>
                       <p>
-                        Une session sous <code>jim</code> montre dans <code>/var/mail/jim</code> un
-                        mot de passe transmis en clair, permettant de progresser vers le compte
-                        <code>charles</code>. Les captures ne documentent pas le passage de
-                        <code>www-data</code> à <code>jim</code>.
+                        Progression locale jusqu'au compte <code>jim</code>, dont la boîte
+                        <code>/var/mail/jim</code> contient un mot de passe transmis en clair :
+                        il permet de passer au compte <code>charles</code>.
                       </p>
                       <figure class="detail-fig">
                         <a href="../assets/projets/mail_jim-redacted.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
@@ -518,8 +526,7 @@
                       <p>
                         L'autorisation Sudo excessive permet d'ajouter une entrée à
                         <code>/etc/passwd</code> via <code>teehee</code>, de créer un compte UID 0,
-                        puis de valider l'accès root et de lire le flag final. Cette étape n'a pas
-                        de capture disponible.
+                        puis de valider l'accès root et de lire le flag final.
                       </p>
                     </li>
                   </ul>
@@ -565,17 +572,17 @@
 
 <article class="card panel card--cloud" data-cat="cloud" aria-labelledby="p-aws">
       <figure class="card-media card-media--aws"><img src="../assets/projets/aws-vpc-architecture-routes.jpeg" alt="Lab VPC — 10.1.0.0/16, Public Subnet 1 — 10.1.11.0/24" width="2048" height="876" loading="lazy"><figcaption>AWS / IAM · VPC · EC2</figcaption></figure><div class="card-content">
-      <div class="card-badges"><span class="badge badge-cat">Cloud</span><span class="badge">2026 · AWS Academy</span></div>
-      <h3 id="p-aws"><span class="case-no">CAS Nº5</span>AWS Cloud Foundations — Infrastructure &amp; Security</h3>
-      <p class="card-desc">Première mise en pratique sur AWS : autorisations IAM, réseau VPC, instances EC2 et filtrage par Security Groups.</p>
+      <div class="card-badges"><span class="badge badge-cat">Cloud</span><span class="badge">2026 · Lab AWS Academy</span></div>
+      <h3 id="p-aws"><span class="case-no">CAS Nº5</span>AWS Security Lab — IAM, VPC &amp; EC2</h3>
+      <p class="card-desc">Laboratoire pratique de formation AWS Academy : permissions IAM, segmentation VPC, instances EC2 et filtrage réseau par Security Groups.</p>
       <ul class="tags"><li>AWS</li><li>IAM</li><li>IAM Policies</li><li>VPC</li><li>Subnets</li><li>Route Tables</li><li>EC2</li><li>Security Groups</li><li>JSON</li><li>TCP/IP</li><li>SSH</li></ul>
       <div class="card-actions"><details class="card-detail"><summary class="btn btn-soft"><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span><span aria-hidden="true">↗</span></summary>
-      <div class="detail-body"><div class="detail-row"><dl class="card-facts"><dt>Cadre</dt><dd>AWS Academy Cloud Foundations</dd><dt>Nature</dt><dd>Laboratoire pédagogique</dd></dl></div>
-      <div class="detail-row"><h4>Contexte et objectif</h4><p>Projet pratique réalisé dans le cadre de la formation AWS Academy Cloud Foundations pour manipuler les composants fondamentaux d’une infrastructure AWS et découvrir leur sécurité. Il s’agit d’un environnement de formation, sans audit professionnel ni infrastructure de production.</p></div>
+      <div class="detail-body"><div class="detail-row"><dl class="card-facts"><dt>Cadre</dt><dd>AWS Academy Cloud Foundations</dd><dt>Nature</dt><dd>Laboratoire pratique de formation</dd></dl></div>
+      <div class="detail-row"><h4>Contexte et objectif</h4><p>Laboratoire pratique réalisé pendant la formation AWS Academy Cloud Foundations, pour manipuler les briques fondamentales d’une infrastructure AWS sous l’angle de la sécurité : identités, réseau et exposition des instances.</p></div>
       <div class="detail-row"><h4>Réalisations techniques</h4><ol class="steps"><li><strong>Autorisations IAM.</strong> Analyse et configuration de <code>EC2-Admin-Policy</code> au format JSON : <code>ec2:Describe*</code>, <code>ec2:StartInstances</code> et <code>ec2:StopInstances</code>. Objectif : comprendre la granularité des permissions et le principe du moindre privilège.</li>
     <li><strong>Architecture VPC.</strong> Étude de <code>Lab VPC — 10.1.0.0/16</code>, de <code>Public Subnet 1 — 10.1.11.0/24</code> et de la table de routage publique (Public Route Table, affichée « Public » sur la capture). Objectif : comprendre la segmentation, le routage et la connectivité.</li>
     <li><strong>EC2 et Security Groups.</strong> Manipulation de <code>LabHost</code> et <code>Bastion Host</code> ; observation et configuration des règles réseau entrantes, dont SSH sur <code>TCP/22</code>. Objectif : comprendre l’administration des instances et le filtrage réseau.</li></ol></div>
-      <div class="detail-row"><h4>Captures commentées</h4><p>Cliquez sur une capture pour l’agrandir et parcourir la galerie.</p><figure class="detail-fig"><a href="../assets/projets/aws-iam-policy-json.png" target="_blank" rel="noopener" aria-label="Ouvrir la capture 01 / IAM"><img src="../assets/projets/aws-iam-policy-json.png" width="1881" height="701" loading="lazy" alt="Politique EC2-Admin-Policy : permissions EC2 en JSON."></a><figcaption><strong>01 / IAM — Politique EC2-Admin-Policy : permissions EC2 en JSON.</strong> Les actions Describe, StartInstances et StopInstances sont visibles. La ressource « * » reste large : cette capture ne démontre pas un moindre privilège complet.</figcaption></figure><figure class="detail-fig"><a href="../assets/projets/aws-vpc-architecture-routes.jpeg" target="_blank" rel="noopener" aria-label="Ouvrir la capture 02 / VPC"><img src="../assets/projets/aws-vpc-architecture-routes.jpeg" width="2048" height="876" loading="lazy" alt="Lab VPC : réseau, sous-réseau et routage."></a><figcaption><strong>02 / VPC — Lab VPC : réseau, sous-réseau et routage.</strong> La carte montre 10.1.0.0/16, Public Subnet 1 en 10.1.11.0/24 et son association à la table « Public ». Le détail des destinations de routes n’est pas affiché.</figcaption></figure><figure class="detail-fig"><a href="../assets/projets/aws-ec2-security-groups.png" target="_blank" rel="noopener" aria-label="Ouvrir la capture 03 / EC2"><img src="../assets/projets/aws-ec2-security-groups.png" width="1657" height="694" loading="lazy" alt="LabHost et Bastion Host : instances et groupe de sécurité."></a><figcaption><strong>03 / EC2 — LabHost et Bastion Host : instances et groupe de sécurité.</strong> Les deux instances et le groupe associé à LabHost sont visibles. Le détail des règles entrantes est hors cadre : la capture ne permet pas de vérifier la source autorisée sur TCP/22.</figcaption></figure></div>
+      <div class="detail-row"><h4>Captures commentées</h4><p>Cliquez sur une capture pour l’agrandir et parcourir la galerie.</p><figure class="detail-fig"><a href="../assets/projets/aws-iam-policy-json.png" target="_blank" rel="noopener" aria-label="Ouvrir la capture 01 / IAM"><img src="../assets/projets/aws-iam-policy-json.png" width="1881" height="701" loading="lazy" alt="Politique EC2-Admin-Policy : permissions EC2 en JSON."></a><figcaption><strong>01 / IAM — Politique EC2-Admin-Policy : permissions EC2 en JSON.</strong> Les actions Describe, StartInstances et StopInstances sont visibles. La ressource « * » reste large : c’est le point à restreindre pour appliquer pleinement le moindre privilège.</figcaption></figure><figure class="detail-fig"><a href="../assets/projets/aws-vpc-architecture-routes.jpeg" target="_blank" rel="noopener" aria-label="Ouvrir la capture 02 / VPC"><img src="../assets/projets/aws-vpc-architecture-routes.jpeg" width="2048" height="876" loading="lazy" alt="Lab VPC : réseau, sous-réseau et routage."></a><figcaption><strong>02 / VPC — Lab VPC : réseau, sous-réseau et routage.</strong> La carte montre 10.1.0.0/16, Public Subnet 1 en 10.1.11.0/24 et son association à la table « Public ».</figcaption></figure><figure class="detail-fig"><a href="../assets/projets/aws-ec2-security-groups.png" target="_blank" rel="noopener" aria-label="Ouvrir la capture 03 / EC2"><img src="../assets/projets/aws-ec2-security-groups.png" width="1657" height="694" loading="lazy" alt="LabHost et Bastion Host : instances et groupe de sécurité."></a><figcaption><strong>03 / EC2 — LabHost et Bastion Host : instances et groupe de sécurité.</strong> Les deux instances et le groupe de sécurité associé à LabHost sont visibles.</figcaption></figure></div>
       <div class="detail-row"><h4>Ce que ce laboratoire m’a appris</h4><p>Relier les permissions IAM, l’organisation du réseau et les règles des Security Groups. Distinguer une configuration d’apprentissage d’une configuration réellement durcie ; notamment, des actions IAM limitées ne suffisent pas si le périmètre des ressources reste large.</p></div></div></details>
       <p class="no-repo">Laboratoire de formation · 3 captures documentées</p></div></div></article>
 
@@ -648,21 +655,6 @@
           </div>
         </div></article>
 
-        <article class="card card--placeholder panel" data-cat="ia" data-placeholder>
-          <div class="card-badges">
-            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-chip"/></svg>IA</span>
-            <span class="badge badge-soon">En préparation</span>
-          </div>
-          <h3>Projet en cours de documentation</h3>
-        </article>
-
-        <article class="card card--placeholder panel" data-cat="crypto" data-placeholder>
-          <div class="card-badges">
-            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Cryptographie</span>
-            <span class="badge badge-soon">En préparation</span>
-          </div>
-          <h3>Projet en cours de documentation</h3>
-        </article>
 
       </div>
 
@@ -697,6 +689,6 @@
   <div class="capture-controls"><button type="button" id="capture-prev" aria-label="Capture précédente">←</button><a id="capture-original" target="_blank" rel="noopener">Ouvrir l’original ↗</a><button type="button" id="capture-next" aria-label="Capture suivante">→</button></div>
 </dialog>
 
-<script src="../assets/js/main.js?v=20261024-hero" defer></script>
+<script src="../assets/js/main.js?v=20261025-positioning" defer></script>
 </body>
 </html>

@@ -1,7 +1,8 @@
 # Portfolio — règles permanentes
 
 - Conserver le design actuel bleu nuit / bleu électrique et ses animations ; faire des ajustements ciblés.
-- Présenter un profil informatique et cybersécurité généraliste, sans étiquette de spécialiste SOC / Cloud.
+- Positionnement : élève ingénieur en cybersécurité orienté Cloud Security (objectif principal), puis SOC et Pentest ; ne jamais revendiquer un titre de poste (pas d'animation de métiers).
+- Garder les projets fidèles à ce qui a été réalisé : ne pas requalifier un projet SOC ou Pentest en projet Cloud.
 - Concevoir un design original et professionnel, sans apparence de template IA.
 - Conserver les typographies du nom : Source Sans 3 dans la bannière, Barlow Condensed sur l’accueil.
 - Marque sans cadre RB, photo rectangulaire respectant son cadrage d’origine.
