@@ -57,8 +57,7 @@ a, button, summary { touch-action: manipulation; }
 .menu-toggle[aria-expanded="true"] .menu-glyph::after { top: 6px; transform: rotate(-45deg); }
 .hero { background: transparent; padding: 0; overflow: hidden; }
 .hero::before,.hero-main::before,.hero-side::before,.hero-side::after { display: none; }
-.hero-topline { display: flex; justify-content: space-between; padding: 23px 0; border-bottom: 1px solid #26364e80; font: 10px var(--font-mono); letter-spacing: .1em; color: #8297b9; }
-.hero-grid { grid-template-columns: minmax(0,1.1fr) minmax(0,.9fr); gap: 72px; align-items: center; padding: 58px 0 68px; }
+.hero-grid { grid-template-columns: minmax(0,1.1fr) minmax(0,.9fr); gap: 72px; align-items: center; padding: 72px 0 68px; }
 .hero-main { position: relative; padding: 0; min-width: 0; }
 .status-pill { display: inline-flex; padding: 0; margin: 0 0 27px; border: 0; background: none; color: #bdcde5; font-size: 10px; letter-spacing: .04em; }
 .status-pill .dot { background: var(--accent-2); width: 6px; height: 6px; border-radius: 50%; box-shadow: 0 0 0 4px #4b8fff12; }
@@ -68,13 +67,18 @@ a, button, summary { touch-action: manipulation; }
 .hero h1 { font-family: "Barlow Condensed", "Arial Narrow", sans-serif; color: var(--ink); font-size: var(--name-size); line-height: .88; font-weight: 600; text-transform: uppercase; letter-spacing: -.025em; }
 .hero h1 > span { display: block; }
 .name-period { color: var(--accent-2); }
-/* Annotation a droite de « Ryad », centree sur la premiere ligne du nom ; main.js tape les domaines en boucle. */
-.name-tag { position: absolute; top: calc(var(--name-size) * .44); left: calc(var(--name-size) * 1.64 + 28px); transform: translateY(-50%); display: flex; flex-direction: column; gap: 6px; margin: 0; padding: 2px 0 2px 13px; border-left: 1px solid #345a9080; font: 12px/1.2 var(--font-mono); white-space: nowrap; pointer-events: none; }
-.name-tag-label { color: #8297b9; font-size: 9px; letter-spacing: .18em; text-transform: uppercase; }
-.name-tag-text { min-height: 1.2em; color: var(--accent); }
-.name-tag-text::after { content: ""; display: inline-block; width: 6px; height: 1.05em; margin-left: 3px; vertical-align: -2px; background: var(--accent-2); opacity: .75; animation: rb-caret 1.1s steps(1) infinite; }
-.name-tag-text.is-typing::after { animation: none; }
+/* « Je suis … » : a droite de « Ryad » sur grand ecran, sous le nom ailleurs. main.js tape puis efface chaque role. */
+.hero-typed { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 .3em; margin: 18px 0 0; min-height: 1.3em; font: 600 21px/1.3 var(--font-body); color: var(--ink); }
+.typed-prefix { color: var(--muted); font-weight: 400; }
+.typed-role { color: var(--accent); white-space: nowrap; }
+.typed-role::after { content: ""; display: inline-block; width: 2px; height: 1.05em; margin-left: 3px; vertical-align: -.16em; background: var(--accent-2); box-shadow: 0 0 8px #4b8fffaa; animation: rb-caret 1.1s steps(1) infinite; }
+.typed-role.is-typing::after { animation: none; }
 @keyframes rb-caret { 50% { opacity: 0; } }
+@media (min-width: 1101px) {
+  .hero-typed { position: absolute; top: calc(var(--name-size) * .44); left: calc(var(--name-size) * 1.64 + 30px); transform: translateY(-50%); flex-direction: column; gap: 3px; margin: 0; padding-left: 16px; border-left: 1px solid #345a9080; }
+  .typed-prefix { font-size: 15px; }
+  .typed-role { font-size: 23px; }
+}
 .hero-role { color: var(--ink); font-size: 19px; font-weight: 500; line-height: 1.5; margin: 24px 0 18px; }
 .hero-role span { color: var(--accent); font-size: 15px; font-weight: 400; }
 .hero .lede { font-size: 16px; line-height: 1.65; max-width: 56ch; color: var(--muted); }
@@ -97,10 +101,10 @@ a, button, summary { touch-action: manipulation; }
 /* Cadre photo : un arc de lumiere fait le tour du liseré. ::after porte le fond et la bordure en degrade,
    ::before le halo flou, dont la moitie interieure reste masquee par le cadre opaque. */
 @property --orbit { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
-.profile-photo { position: relative; isolation: isolate; width: min(100%,200px); margin: 0 auto 28px; padding: 9px; border: 0; border-radius: 4px; background: none; }
+.profile-photo { position: relative; isolation: isolate; width: min(100%,200px); margin: 0 auto 28px; padding: 9px; border: 0; border-radius: 4px; background: none; box-shadow: 0 0 34px -10px #4b8fff59; }
 .profile-photo::before,.profile-photo::after { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none; }
-.profile-photo::before { inset: -2px; background: conic-gradient(from var(--orbit),transparent 0 80%,#4b8fff 93%,#bcd6ff 97%,transparent); filter: blur(9px); opacity: .4; }
-.profile-photo::after { border: 1px solid transparent; background: linear-gradient(#0c1729,#0c1729) padding-box,conic-gradient(from var(--orbit),#345077 0 74%,#4f80c8 88%,#cfe1ff 96.5%,#345077) border-box; }
+.profile-photo::before { inset: -3px; background: conic-gradient(from var(--orbit),transparent 0 72%,#4b8fff 90%,#d4e5ff 97%,transparent); filter: blur(10px); opacity: .6; }
+.profile-photo::after { border: 1px solid transparent; background: linear-gradient(#0c1729,#0c1729) padding-box,conic-gradient(from var(--orbit),#345077 0 68%,#4b8fff 88%,#eef5ff 97%,#345077) border-box; }
 .profile-photo img { width: 100%; height: auto; aspect-ratio: auto; object-fit: contain; border: 0; border-radius: 2px; }
 .stats { border-top: 1px solid var(--border); padding-top: 18px; }
 .stats-title { font: 10px var(--font-mono); color: #8297b9; letter-spacing: .12em; margin-bottom: 14px; }
@@ -279,8 +283,10 @@ a, button, summary { touch-action: manipulation; }
 @media (prefers-reduced-motion: no-preference) {
   .hero-main { animation: rb-arrive .6s ease both; }
   .hero-side { animation: rb-arrive .8s .1s ease both; }
-  .profile-photo::before,.profile-photo::after { animation: rb-orbit 9s linear infinite; }
+  .profile-photo::after { animation: rb-orbit 7s linear infinite; }
+  .profile-photo::before { animation: rb-orbit 7s linear infinite,rb-breathe 3.5s ease-in-out infinite alternate; }
   @keyframes rb-orbit { to { --orbit: 360deg; } }
+  @keyframes rb-breathe { from { opacity: .4; } to { opacity: .75; } }
   @keyframes rb-arrive { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: none; } }
 }
 @media (min-width: 1280px) {
@@ -333,12 +339,9 @@ a, button, summary { touch-action: manipulation; }
   .header-inner { gap: 14px; }
   .brand { font-size: 14px; }
   .lang-switch { padding-left: 14px; font-size: 10px; }
-  .hero-topline { padding-block: 17px; font-size: 8px; }
-  .hero-topline span:first-child { max-width: 190px; }
-  .hero-grid { grid-template-columns: 1fr; gap: 36px; padding: 34px 0 42px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 36px; padding: 40px 0 42px; }
   .hero-name { --name-size: clamp(70px,20vw,100px); }
-  .name-tag { left: calc(var(--name-size) * 1.64 + 16px); gap: 4px; padding-left: 10px; font-size: 11px; }
-  .name-tag-label { font-size: 8px; }
+  .hero-typed { margin-top: 14px; font-size: clamp(15px,4.4vw,18px); }
   .hero-kicker { font-size: 10px; }
   .status-pill { margin-bottom: 25px; }
   .hero-role { margin: 22px 0 16px; font-size: 18px; }
@@ -400,11 +403,11 @@ a, button, summary { touch-action: manipulation; }
 }
 @media print {
   :root { color-scheme: light; --text: #111; --ink: #111; --muted: #444; --bg: #fff; --panel: #fff; }
-  .network-backdrop,.hero-topline,.hero-actions,.capture-dialog,.skip-link { display: none; }
+  .network-backdrop,.hero-actions,.capture-dialog,.skip-link { display: none; }
   .hero { background: #fff; }
   .hero h1,.hero-role,.hero strong,.hero .lede,.hero-links a { color: #111; }
   .hero-grid { padding-block: 20px; }
-  .name-tag,.profile-photo::before { display: none; }
+  .hero-typed,.profile-photo::before { display: none; }
   .cards { display: block; }
   .card { break-inside: avoid; margin-bottom: 24px; }
 }

@@ -7,7 +7,7 @@
    5. Visionneuse : photos de voyage et certificats.
    6. Alternance des trois certificats Splunk.
    7. Detail des projets dans une fenetre modale.
-   8. Annotation du nom : domaines tapes puis effaces en boucle.
+   8. « Je suis … » : roles tapes puis effaces en boucle.
    Sans JavaScript : toutes les cartes restent visibles, le detail
    des cas se deplie (<details>) a la place de la fenetre modale, le
    contact reste un lien mailto, les carrousels defilent au doigt ou
@@ -570,9 +570,9 @@
     });
   }
 
-  /* Annotation du nom : le premier domaine est deja dans le HTML (repli
+  /* « Je suis … » : le premier role est deja dans le HTML (repli
      sans JS et en mouvement reduit). Pause quand l'onglet est masque. */
-  var nameTag = document.querySelector(".name-tag-text[data-words]");
+  var nameTag = document.querySelector(".typed-role[data-words]");
   if (nameTag && !reduced) {
     var words = nameTag.getAttribute("data-words").split("|");
     var wordIndex = 0;
