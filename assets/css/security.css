@@ -339,8 +339,9 @@ a, button, summary { touch-action: manipulation; }
   .header-inner { gap: 14px; }
   .brand { font-size: 14px; }
   .lang-switch { padding-left: 14px; font-size: 10px; }
-  .hero-grid { grid-template-columns: 1fr; gap: 36px; padding: 40px 0 42px; }
-  .hero-name { --name-size: clamp(70px,20vw,100px); }
+  .hero-grid { grid-template-columns: minmax(0,1fr); gap: 36px; padding: 40px 0 42px; }
+  .hero-main,.hero-name,.hero-typed,.hero h1,.hero h1 > span { min-width: 0; }
+  .hero-name { --name-size: clamp(58px,18vw,100px); }
   .hero-typed { margin-top: 14px; font-size: clamp(15px,4.4vw,18px); }
   .hero-kicker { font-size: 10px; }
   .status-pill { margin-bottom: 25px; }
