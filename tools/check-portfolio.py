@@ -46,7 +46,7 @@ for path, page in pages.items():
     if page.projects:
         if 'card--featured' in source:
             errors.append(f'{path}: project cards must not use a featured layout')
-        if Counter(page.projects) != Counter({'soc': 2, 'redteam': 1, 'grc': 1, 'cloud': 1}):
+        if Counter(page.projects) != Counter({'soc': 2, 'redteam': 2, 'grc': 1, 'cloud': 1}):
             errors.append(f'{path}: unexpected projects {page.projects}')
         cards = re.findall(r'<article class="card [^"]+" data-cat="(?:soc|redteam|grc|cloud)"[^>]*>(.*?)</article>', source, re.S)
         for card in cards:
@@ -54,15 +54,34 @@ for path, page in pages.items():
             detail_images = re.findall(r'<figure class="detail-fig">\s*<a href="([^"]+)"', card)
             if not cover or detail_images.count(cover[1]) != 1:
                 errors.append(f'{path}: project cover missing or duplicated in case gallery: {cover[1] if cover else "unknown"}')
-        if len(cards) != 5:
-            errors.append(f'{path}: expected five cards with image galleries, found {len(cards)}')
+        if len(cards) != 6:
+            errors.append(f'{path}: expected six cards with image galleries, found {len(cards)}')
         summaries = re.findall(r'<summary class="btn btn-soft">(.*?)</summary>', source, re.S)
         expected = 'Read the case in detail' if path.relative_to(ROOT).parts[0] == 'en' else 'Lire le cas en détail'
-        if len(summaries) != 5 or any(expected not in summary for summary in summaries):
+        if len(summaries) != 6 or any(expected not in summary for summary in summaries):
             errors.append(f'{path}: inconsistent project buttons')
+        juice = next((card for card in cards if 'id="p-juice-shop"' in card), '')
+        juice_images = re.findall(r'<figure class="detail-fig">\s*<a href="([^"]+)"', juice)
+        if [Path(urlsplit(url).path).name for url in juice_images] != [
+            '01-juice-shop-lab.png', '02-burp-repeater-http.png',
+            '03-sqli-product-disclosure.png', '04-xss-reflected.png',
+            '05-idor-basket-access.jpeg', '06-http-security-headers.png',
+            '07-api-error-information-disclosure.jpeg', '08-negative-quantity-api.jpeg',
+            '09-negative-quantity-persisted.jpeg', '10-cart-ui-quantity-mismatch.jpeg',
+        ]:
+            errors.append(f'{path}: Juice Shop gallery is incomplete or out of order')
+        if 'https://github.com/Ryad-Cyber/OWASP-Juice-Shop-Pentest' not in juice:
+            errors.append(f'{path}: Juice Shop repository link missing')
         if 'id="capture-dialog"' not in source:
             errors.append(f'{path}: missing screenshot gallery')
     if path in (ROOT/'index.html', ROOT/'en/index.html'):
+        typed = re.search(r'<span class="typed-prefix"[^>]*>(.*?)</span><span class="typed-role" data-words="([^"]+)"[^>]*>(.*?)</span>', source)
+        if not typed or typed[3] != typed[2].split('|')[0]:
+            errors.append(f'{path}: typed role fallback does not match first role')
+        elif path.parent.name == 'en' and (typed[1] != "I'm a" or any(role.startswith('a ') for role in typed[2].split('|'))):
+            errors.append(f'{path}: English typed prefix must remain fixed')
+        elif path.parent.name != 'en' and typed[1] != 'Je suis':
+            errors.append(f'{path}: French typed prefix must remain fixed')
         if page.telephones != ['tel:+33783897766']:
             errors.append(f'{path}: incorrect telephone {page.telephones}')
         if 'class="contact-email"' not in source or 'class="contact-mini"' not in source or 'action="mailto:ryadboujenan@outlook.com"' not in source:
@@ -80,4 +99,4 @@ for filename in ('aws-iam-policy-json.png', 'aws-vpc-architecture-routes.jpeg', 
     if not (ROOT/'assets/projets'/filename).is_file(): errors.append(f'Missing AWS screenshot: {filename}')
 if errors:
     raise SystemExit('\n'.join(errors))
-print(f'PASS: {len(pages)} HTML pages; {checked} local references; unique IDs; 5 projects and matching buttons; screenshot galleries; FR/EN contact and unchanged language levels; consistent navigation and versioned assets.')
+print(f'PASS: {len(pages)} HTML pages; {checked} local references; unique IDs; 6 projects and matching buttons; screenshot galleries; FR/EN contact and unchanged language levels; consistent navigation and versioned assets.')

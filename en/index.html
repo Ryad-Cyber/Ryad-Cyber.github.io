@@ -87,7 +87,7 @@
 
           <div class="hero-name">
             <h1>Ryad<span>Boujenan<span class="name-period">.</span></span></h1>
-            <p class="hero-typed"><span class="typed-prefix" aria-hidden="true">I’m</span><span class="typed-role" data-words="a Penetration Tester|a SOC Analyst|a Red Teamer|a Blue Teamer|a Cloud Security Engineer|a Network Engineer|a Threat Intelligence Analyst" aria-hidden="true">a Penetration Tester</span><span class="sr-only">I’m a Penetration Tester, a SOC Analyst, a Red Teamer, a Blue Teamer, a Cloud Security Engineer, a Network Engineer, a Threat Intelligence Analyst.</span></p>
+            <p class="hero-typed"><span class="typed-prefix" aria-hidden="true">I'm a</span><span class="typed-role" data-words="Penetration Tester|SOC Analyst|Cloud Security Engineer|Detection Engineer|Security Analyst|Digital Forensics Analyst|Network Security Engineer" aria-hidden="true">Penetration Tester</span><span class="sr-only">I'm a Penetration Tester, SOC Analyst, Cloud Security Engineer, Detection Engineer, Security Analyst, Digital Forensics Analyst or Network Security Engineer.</span></p>
           </div>
           <p class="hero-role">Computer engineering and networks student<br><span>Cybersecurity · Systems · Networks</span></p>
 
@@ -121,7 +121,7 @@
             <dl>
               <div class="stats-row"><dt>Field</dt><dd class="txt">Cybersecurity</dd></div>
               <div class="stats-row"><dt>Availability</dt><dd class="txt live">Internship · Feb 2027</dd></div>
-              <div class="stats-row"><dt>Documented projects</dt><dd data-project-total>05</dd></div>
+              <div class="stats-row"><dt>Documented projects</dt><dd data-project-total>06</dd></div>
               <div class="stats-row"><dt>Training &amp; certifications</dt><dd>06</dd></div>
             </dl>
           </div>
@@ -150,7 +150,7 @@
         <button class="filter" type="button" data-filter="crypto" data-label="Cryptography" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Cryptography<span class="count"></span></button>
       </div>
 
-      <p class="project-index">05 projects · objectives, methods and results</p>
+      <p class="project-index">06 projects · objectives, methods and results</p>
 <div class="cards" id="project-cards">
 
 <article class="card panel" data-cat="soc" aria-labelledby="p-elastic">
@@ -624,6 +624,75 @@
       <div class="detail-row"><h4>Annotated screenshots</h4><p>Select a screenshot to enlarge it and browse the gallery.</p><figure class="detail-fig"><a href="../assets/projets/aws-iam-policy-json.png" target="_blank" rel="noopener" aria-label="Open screenshot 01 / IAM"><img src="../assets/projets/aws-iam-policy-json.png" width="1881" height="701" loading="lazy" alt="EC2-Admin-Policy: EC2 permissions in JSON."></a><figcaption><strong>01 / IAM — EC2-Admin-Policy: EC2 permissions in JSON.</strong> Describe, StartInstances and StopInstances actions are visible. The wildcard resource remains broad: this screenshot does not establish full least privilege.</figcaption></figure><figure class="detail-fig"><a href="../assets/projets/aws-vpc-architecture-routes.jpeg" target="_blank" rel="noopener" aria-label="Open screenshot 02 / VPC"><img src="../assets/projets/aws-vpc-architecture-routes.jpeg" width="2048" height="876" loading="lazy" alt="Lab VPC: network, subnet and routing."></a><figcaption><strong>02 / VPC — Lab VPC: network, subnet and routing.</strong> The map shows 10.1.0.0/16, Public Subnet 1 at 10.1.11.0/24 and its association with the “Public” route table. Route destinations are not displayed.</figcaption></figure><figure class="detail-fig"><a href="../assets/projets/aws-ec2-security-groups.png" target="_blank" rel="noopener" aria-label="Open screenshot 03 / EC2"><img src="../assets/projets/aws-ec2-security-groups.png" width="1657" height="694" loading="lazy" alt="LabHost and Bastion Host: instances and security group."></a><figcaption><strong>03 / EC2 — LabHost and Bastion Host: instances and security group.</strong> Both instances and the group attached to LabHost are visible. Inbound rule details are outside the frame: the screenshot cannot verify the source allowed on TCP/22.</figcaption></figure></div>
       <div class="detail-row"><h4>What I learned</h4><p>Connect IAM permissions, network organization and Security Group rules. Distinguish a learning configuration from a hardened configuration; in particular, a limited set of IAM actions is insufficient when the resource scope remains broad.</p></div></div></details>
       <p class="no-repo">Training lab · 3 documented screenshots</p></div></div></article>
+
+<article class="card panel" data-cat="redteam" aria-labelledby="p-juice-shop">
+          <figure class="card-media card-media--screenshot">
+            <img src="../assets/projets/01-juice-shop-lab.png" alt="Local OWASP Juice Shop instance running in a browser" width="1919" height="937" loading="lazy" decoding="async">
+            <figcaption>OWASP Juice Shop in the local Docker lab</figcaption>
+          </figure><div class="card-content">
+          <div class="card-badges">
+            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-target"/></svg>Red Team / Pentest</span>
+            <span class="badge">10/2026 · Personal project</span>
+          </div>
+          <h3 id="p-juice-shop"><span class="case-no">CASE Nº6</span>Web Application Penetration Testing — OWASP Juice Shop</h3>
+          <p class="card-desc">Targeted manual assessment of a local Juice Shop instance: five validated findings across search, access control and REST API behavior.</p>
+          <ul class="tags"><li>Burp Suite</li><li>SQL injection</li><li>XSS</li><li>IDOR</li><li>REST API</li><li>JWT</li><li>Business logic</li><li>Docker</li></ul>
+          <div class="card-actions">
+            <details class="card-detail">
+              <summary class="btn btn-soft"><span class="when-closed">Read the case in detail</span><span class="when-open">Collapse the detail</span><span aria-hidden="true">↗</span></summary>
+              <div class="detail-body">
+                <div class="detail-row">
+                  <dl class="card-facts">
+                    <dt>Scope</dt><dd>Selected Juice Shop features and REST endpoints in a local training lab.</dd>
+                    <dt>Result</dt><dd>Five validated findings, with evidence and remediation in the security report.</dd>
+                  </dl>
+                </div>
+                <div class="detail-row">
+                  <h4>Context and method</h4>
+                  <p>OWASP Juice Shop, an intentionally vulnerable application, was deployed with Docker Desktop on Windows. I manually inspected requests and responses using Burp Suite Community Edition (Proxy, HTTP History and Repeater). This was a targeted assessment, not an exhaustive audit.</p>
+                </div>
+                <div class="detail-row">
+                  <h4>Validated findings</h4>
+                  <ol class="steps">
+                    <li><strong>SQL injection.</strong> A crafted product search query bypassed filtering and returned normally excluded records.</li>
+                    <li><strong>XSS.</strong> A crafted search input executed JavaScript; the exact reflected, stored or DOM classification was not established.</li>
+                    <li><strong>Broken access control / IDOR.</strong> Changing a basket identifier allowed a read of another user’s basket. The attempted write was rejected.</li>
+                    <li><strong>Information disclosure.</strong> An API error response exposed a stack trace and internal implementation details.</li>
+                    <li><strong>Business logic / input validation.</strong> The REST API accepted and stored a negative basket quantity. No payment amount manipulation was demonstrated.</li>
+                  </ol>
+                </div>
+                <div class="detail-row">
+                  <h4>Additional tests</h4>
+                  <p>Missing and invalid JWTs were rejected with 401 responses in the tested basket requests. I also checked authorization, HTTP headers, input validation and REST traffic; these checks do not establish other exploitable vulnerabilities.</p>
+                </div>
+                <div class="detail-row">
+                  <h4>Remediation priorities</h4>
+                  <ul class="dashes">
+                    <li>Use parameterized queries and enforce product visibility on the server.</li>
+                    <li>Encode output according to context and avoid unsafe HTML insertion.</li>
+                    <li>Check object-level authorization on each basket read; validate positive quantities server-side.</li>
+                    <li>Return generic client errors and keep stack traces in server logs.</li>
+                  </ul>
+                </div>
+                <div class="detail-row">
+                  <h4>Documented screenshots</h4>
+                  <p>Select a screenshot to enlarge it and browse the gallery. The full report explains the evidence and testing limits.</p>
+                    <figure class="detail-fig"><a href="../assets/projets/01-juice-shop-lab.png" target="_blank" rel="noopener" title="Open image full size"><img src="../assets/projets/01-juice-shop-lab.png" alt="Local OWASP Juice Shop instance running in a browser" width="1919" height="937" loading="lazy" decoding="async"></a><figcaption>01 / Local Juice Shop lab.</figcaption></figure>
+                    <figure class="detail-fig"><a href="../assets/projets/02-burp-repeater-http.png" target="_blank" rel="noopener" title="Open image full size"><img src="../assets/projets/02-burp-repeater-http.png" alt="HTTP request and response inspected in Burp Suite Repeater" width="1406" height="604" loading="lazy" decoding="async"></a><figcaption>02 / Manual HTTP analysis in Burp Suite Repeater.</figcaption></figure>
+                    <figure class="detail-fig"><a href="../assets/projets/03-sqli-product-disclosure.png" target="_blank" rel="noopener" title="Open image full size"><img src="../assets/projets/03-sqli-product-disclosure.png" alt="Product search SQL injection revealing records excluded from the catalog" width="1410" height="662" loading="lazy" decoding="async"></a><figcaption>03 / SQL injection: excluded product records disclosed.</figcaption></figure>
+                    <figure class="detail-fig"><a href="../assets/projets/04-xss-reflected.png" target="_blank" rel="noopener" title="Open image full size"><img src="../assets/projets/04-xss-reflected.png" alt="JavaScript execution through a crafted Juice Shop search input" width="1893" height="999" loading="lazy" decoding="async"></a><figcaption>04 / XSS: JavaScript execution through search.</figcaption></figure>
+                    <figure class="detail-fig"><a href="../assets/projets/05-idor-basket-access.jpeg" target="_blank" rel="noopener" title="Open image full size"><img src="../assets/projets/05-idor-basket-access.jpeg" alt="Burp response showing unauthorized read access to another user's basket" width="1600" height="660" loading="lazy" decoding="async"></a><figcaption>05 / IDOR: unauthorized basket read; write attempt was rejected.</figcaption></figure>
+                    <figure class="detail-fig"><a href="../assets/projets/06-http-security-headers.png" target="_blank" rel="noopener" title="Open image full size"><img src="../assets/projets/06-http-security-headers.png" alt="HTTP response headers inspected during the assessment" width="1402" height="601" loading="lazy" decoding="async"></a><figcaption>06 / HTTP response header inspection.</figcaption></figure>
+                    <figure class="detail-fig"><a href="../assets/projets/07-api-error-information-disclosure.jpeg" target="_blank" rel="noopener" title="Open image full size"><img src="../assets/projets/07-api-error-information-disclosure.jpeg" alt="API error exposing a stack trace and internal implementation details" width="2048" height="968" loading="lazy" decoding="async"></a><figcaption>07 / API error exposing internal details.</figcaption></figure>
+                    <figure class="detail-fig"><a href="../assets/projets/08-negative-quantity-api.jpeg" target="_blank" rel="noopener" title="Open image full size"><img src="../assets/projets/08-negative-quantity-api.jpeg" alt="API response accepting a negative basket quantity" width="1600" height="684" loading="lazy" decoding="async"></a><figcaption>08 / Negative quantity accepted by the API.</figcaption></figure>
+                    <figure class="detail-fig"><a href="../assets/projets/09-negative-quantity-persisted.jpeg" target="_blank" rel="noopener" title="Open image full size"><img src="../assets/projets/09-negative-quantity-persisted.jpeg" alt="Basket retrieval confirming persistence of the negative quantity" width="2048" height="876" loading="lazy" decoding="async"></a><figcaption>09 / Negative quantity persisted in the basket.</figcaption></figure>
+                    <figure class="detail-fig"><a href="../assets/projets/10-cart-ui-quantity-mismatch.jpeg" target="_blank" rel="noopener" title="Open image full size"><img src="../assets/projets/10-cart-ui-quantity-mismatch.jpeg" alt="Cart interface displaying a positive quantity despite the negative API value" width="2048" height="846" loading="lazy" decoding="async"></a><figcaption>10 / UI and API quantity mismatch; payment manipulation was not shown.</figcaption></figure>
+                </div>
+              </div>
+            </details>
+            <a class="btn btn-ghost" href="https://github.com/Ryad-Cyber/OWASP-Juice-Shop-Pentest" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-code"/></svg>Repository and security report</a>
+          </div>
+        </div></article>
 
         <article class="card card--placeholder panel" data-cat="ia" data-placeholder>
           <div class="card-badges">
