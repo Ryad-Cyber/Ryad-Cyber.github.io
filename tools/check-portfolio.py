@@ -28,7 +28,7 @@ for path, page in pages.items():
     source = path.read_text(encoding='utf-8')
     if source.count('class="menu-toggle"') != 1 or 'class="menu-glyph"' not in source:
         errors.append(f'{path}: navigation must use one menu button and one glyph')
-    if 'security.css?v=20261025-positioning' not in source or 'main.js?v=20261025-positioning' not in source:
+    if 'security.css?v=20261025-contact' not in source or 'main.js?v=20261025-contact' not in source:
         errors.append(f'{path}: missing shared, versioned styles or script')
     duplicates = [key for key, n in Counter(page.ids).items() if n > 1]
     if duplicates: errors.append(f'{path}: duplicate IDs: {duplicates}')
@@ -85,8 +85,8 @@ for path, page in pages.items():
         cv = re.search(r'<a class="btn btn-ghost" data-cv-link([^>]*)>', source)
         if not cv or ' hidden' not in cv[1] or 'href=' in cv[1]:
             errors.append(f'{path}: CV button must stay hidden and unlinked until a final PDF exists')
-        if page.telephones != ['tel:[PHONE_REMOVED]']:
-            errors.append(f'{path}: incorrect telephone {page.telephones}')
+        if page.telephones or re.search(r'(?:0[67]|\+33[67])(?:[ .-]?\d){8}', source):
+            errors.append(f'{path}: personal phone number must not be published')
         if 'class="contact-email"' not in source or 'class="contact-mini"' not in source or 'action="mailto:ryadboujenan@outlook.com"' not in source:
             errors.append(f'{path}: direct contact and mailto mini-form expected')
         if 'SOC / CLOUD SECURITY' in source or 'class="signal-map"' in source or 'class="skills-note panel"' in source:
