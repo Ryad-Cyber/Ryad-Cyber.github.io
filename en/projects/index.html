@@ -102,7 +102,7 @@
         <button class="filter" type="button" data-filter="crypto" data-label="Cryptography" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Cryptography<span class="count"></span></button>
       </div>
 
-      <p class="project-index">06 projects · objectives, methods and results</p>
+      <p class="project-index">07 projects · objectives, methods and results</p>
 <div class="cards" id="project-cards">
 
 <article class="card panel" data-cat="soc" aria-labelledby="p-elastic">
@@ -654,6 +654,26 @@
           </div>
         </div></article>
 
+
+<article class="card panel card--cloud" data-cat="cloud" aria-labelledby="p-terraform-docker">
+          <figure class="card-media card-media--screenshot"><img src="../../assets/projets/terraform-04-secure-web-server.png" alt="Nginx dashboard of the local Terraform lab" width="1908" height="930" loading="lazy" decoding="async"><figcaption>Nginx frontend in the local lab</figcaption></figure><div class="card-content">
+          <div class="card-badges"><span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-cloud"/></svg>Cloud Security</span><span class="badge">Personal project · local lab</span></div>
+          <h3 id="p-terraform-docker"><span class="case-no">CASE Nº7</span>Secure Infrastructure as Code — Terraform &amp; Docker</h3>
+          <p class="card-desc">Local infrastructure deployed with Terraform and Docker: Nginx frontend, HTTP Echo backend, network segmentation and container hardening.</p>
+          <ul class="tags"><li>Infrastructure as Code (IaC)</li><li>Terraform</li><li>Docker Security</li><li>Container Hardening</li><li>Network Segmentation</li><li>Least Privilege</li></ul>
+          <div class="card-actions">
+            <details class="card-detail"><summary class="btn btn-soft"><span class="when-closed">Read the case in detail</span><span class="when-open">Collapse the detail</span><span aria-hidden="true">↗</span></summary>
+              <div class="detail-body">
+                <div class="detail-row"><dl class="card-facts"><dt>Scope</dt><dd>Local Terraform and Docker lab; no AWS services</dd><dt>Outcome</dt><dd>Frontend bound to 127.0.0.1:8080; backend without a published port; controls documented in six screenshots.</dd></dl></div>
+                <div class="detail-row"><h4>Architecture and segmentation</h4><p>Terraform provisions an Nginx frontend and an HTTP Echo backend across two Docker networks. The frontend joins both networks; the backend joins only the internal network. The frontend can reach the backend without publishing a backend port on the host.</p></div>
+                <div class="detail-row"><h4>Security controls</h4><ul class="dashes"><li>Non-root execution: UID 101 for Nginx and UID 65532 for HTTP Echo.</li><li>No-new-privileges enabled and all additional Linux capabilities dropped.</li><li>Memory limits of 128 MiB for the frontend and 64 MiB for the backend; read-only HTML mount.</li></ul></div>
+                <div class="detail-row"><h4>Documented validation</h4><p>Docker checks in the repository verify UIDs, security options, the localhost binding on port 8080, the internal network and the absence of a published backend port. Frontend HTTP availability and frontend-to-backend communication were also checked. This segmentation reduces exposure but does not guarantee complete isolation from the host.</p></div>
+                <div class="detail-row"><h4>Six lab screenshots</h4><figure class="detail-fig"><a href="../../assets/projets/terraform-01-deployment.png" target="_blank" rel="noopener" aria-label="Open screenshot 01"><img src="../../assets/projets/terraform-01-deployment.png" alt="Terraform infrastructure deployment" width="1860" height="121" loading="lazy" decoding="async"></a><figcaption>01 / Automated deployment with Terraform.</figcaption></figure><figure class="detail-fig"><a href="../../assets/projets/terraform-02-security-controls.png" target="_blank" rel="noopener" aria-label="Open screenshot 02"><img src="../../assets/projets/terraform-02-security-controls.png" alt="Docker controls: non-root UID, privileges, capabilities and memory" width="1875" height="394" loading="lazy" decoding="async"></a><figcaption>02 / Container controls and localhost exposure.</figcaption></figure><figure class="detail-fig"><a href="../../assets/projets/terraform-03-network-configuration.png" target="_blank" rel="noopener" aria-label="Open screenshot 03"><img src="../../assets/projets/terraform-03-network-configuration.png" alt="Docker networks and local port configuration" width="1881" height="454" loading="lazy" decoding="async"></a><figcaption>03 / Docker networks and 127.0.0.1 binding.</figcaption></figure><figure class="detail-fig"><a href="../../assets/projets/terraform-04-secure-web-server.png" target="_blank" rel="noopener" aria-label="Open screenshot 04"><img src="../../assets/projets/terraform-04-secure-web-server.png" alt="Nginx frontend in the local lab" width="1908" height="930" loading="lazy" decoding="async"></a><figcaption>04 / Running Nginx frontend.</figcaption></figure><figure class="detail-fig"><a href="../../assets/projets/terraform-05-backend-isolation.png" target="_blank" rel="noopener" aria-label="Open screenshot 05"><img src="../../assets/projets/terraform-05-backend-isolation.png" alt="Backend communication without a published host port" width="1890" height="537" loading="lazy" decoding="async"></a><figcaption>05 / Unpublished backend port and internal communication.</figcaption></figure><figure class="detail-fig"><a href="../../assets/projets/terraform-06-internal-network.png" target="_blank" rel="noopener" aria-label="Open screenshot 06"><img src="../../assets/projets/terraform-06-internal-network.png" alt="Internal network and backend user checks" width="1893" height="225" loading="lazy" decoding="async"></a><figcaption>06 / Internal network and non-root backend execution.</figcaption></figure></div>
+              </div>
+            </details>
+            <a class="btn btn-ghost" href="https://github.com/Ryad-Cyber/terraform-security-lab" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-code"/></svg>View code and tests on GitHub</a>
+          </div>
+        </div></article>
 
       </div>
 

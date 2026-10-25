@@ -46,7 +46,7 @@ for path, page in pages.items():
     if page.projects:
         if 'card--featured' in source:
             errors.append(f'{path}: project cards must not use a featured layout')
-        if Counter(page.projects) != Counter({'soc': 2, 'redteam': 2, 'grc': 1, 'cloud': 1}):
+        if Counter(page.projects) != Counter({'soc': 2, 'redteam': 2, 'grc': 1, 'cloud': 2}):
             errors.append(f'{path}: unexpected projects {page.projects}')
         cards = re.findall(r'<article class="card [^"]+" data-cat="(?:soc|redteam|grc|cloud)"[^>]*>(.*?)</article>', source, re.S)
         for card in cards:
@@ -54,11 +54,11 @@ for path, page in pages.items():
             detail_images = re.findall(r'<figure class="detail-fig">\s*<a href="([^"]+)"', card)
             if not cover or detail_images.count(cover[1]) != 1:
                 errors.append(f'{path}: project cover missing or duplicated in case gallery: {cover[1] if cover else "unknown"}')
-        if len(cards) != 6:
-            errors.append(f'{path}: expected six cards with image galleries, found {len(cards)}')
+        if len(cards) != 7:
+            errors.append(f'{path}: expected seven cards with image galleries, found {len(cards)}')
         summaries = re.findall(r'<summary class="btn btn-soft">(.*?)</summary>', source, re.S)
         expected = 'Read the case in detail' if path.relative_to(ROOT).parts[0] == 'en' else 'Lire le cas en détail'
-        if len(summaries) != 6 or any(expected not in summary for summary in summaries):
+        if len(summaries) != 7 or any(expected not in summary for summary in summaries):
             errors.append(f'{path}: inconsistent project buttons')
         juice = next((card for card in cards if 'id="p-juice-shop"' in card), '')
         juice_images = re.findall(r'<figure class="detail-fig">\s*<a href="([^"]+)"', juice)
@@ -72,6 +72,16 @@ for path, page in pages.items():
             errors.append(f'{path}: Juice Shop gallery is incomplete or out of order')
         if 'https://github.com/Ryad-Cyber/OWASP-Juice-Shop-Pentest' not in juice:
             errors.append(f'{path}: Juice Shop repository link missing')
+        terraform = next((card for card in cards if 'id="p-terraform-docker"' in card), '')
+        terraform_images = re.findall(r'<figure class="detail-fig">\s*<a href="([^"]+)"', terraform)
+        if [Path(urlsplit(url).path).name for url in terraform_images] != [
+            'terraform-01-deployment.png', 'terraform-02-security-controls.png',
+            'terraform-03-network-configuration.png', 'terraform-04-secure-web-server.png',
+            'terraform-05-backend-isolation.png', 'terraform-06-internal-network.png',
+        ]:
+            errors.append(f'{path}: Terraform gallery is incomplete or out of order')
+        if 'https://github.com/Ryad-Cyber/terraform-security-lab' not in terraform:
+            errors.append(f'{path}: Terraform repository link missing')
         if 'id="capture-dialog"' not in source:
             errors.append(f'{path}: missing screenshot gallery')
     if path in (ROOT/'index.html', ROOT/'en/index.html'):
@@ -102,4 +112,4 @@ for filename in ('aws-iam-policy-json.png', 'aws-vpc-architecture-routes.jpeg', 
     if not (ROOT/'assets/projets'/filename).is_file(): errors.append(f'Missing AWS screenshot: {filename}')
 if errors:
     raise SystemExit('\n'.join(errors))
-print(f'PASS: {len(pages)} HTML pages; {checked} local references; unique IDs; 6 projects and matching buttons; screenshot galleries; FR/EN contact and unchanged language levels; consistent navigation and versioned assets.')
+print(f'PASS: {len(pages)} HTML pages; {checked} local references; unique IDs; 7 projects and matching buttons; screenshot galleries; FR/EN contact and unchanged language levels; consistent navigation and versioned assets.')
