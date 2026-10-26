@@ -443,6 +443,25 @@ section[data-tone] .h-no { color: var(--tone-soft); }
   .cards > .card.is-row-md .card-media img { height: 220px; }
 }
 
+/* Qualifications liees au filtre actif : simple bandeau, secondaire aux projets. */
+.related-creds { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; margin-top: 18px; padding: 10px 16px; border: 1px solid color-mix(in srgb,var(--tone) 28%,#22344f); border-left: 2px solid var(--tone); border-radius: 6px; background: color-mix(in srgb,var(--tone) 6%,#0b1527); font-size: 13px; }
+.related-label { display: inline-flex; align-items: center; gap: 8px; margin: 0; color: var(--tone-soft); font: 500 10px var(--font-mono); letter-spacing: .1em; text-transform: uppercase; }
+.related-label .i { width: 14px; height: 14px; }
+.related-list { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 0; }
+.related-list li { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+.related-list strong { color: var(--ink); font-weight: 600; }
+.related-meta { color: #8fa3c2; font: 11px var(--font-mono); }
+.related-list a { color: var(--tone-soft); font: 11px var(--font-mono); border-bottom: 1px solid color-mix(in srgb,var(--tone) 40%,transparent); }
+.related-list a:hover { color: var(--ink); border-bottom-color: var(--tone); text-decoration: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .related-creds:not([hidden]) { animation: rb-related-in .4s .15s ease both; }
+  @keyframes rb-related-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+}
+@media (max-width: 640px) {
+  .related-creds { padding: 10px 12px; gap: 6px; }
+  .related-list { flex-direction: column; gap: 6px; }
+}
+
 /* Parcours : experiences a gauche ; etudes, langues et interets a droite. */
 .parcours-grid { grid-template-columns: minmax(0,1.3fr) minmax(0,1fr); gap: 24px; align-items: start; }
 .parcours-side { display: grid; gap: 24px; min-width: 0; }

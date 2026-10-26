@@ -120,6 +120,8 @@
 
     // Teinte de la section : suit la categorie choisie ("all" = palette du site).
     var section = grid.closest("section");
+    // Qualifications liees : un encart par categorie, aucun pour "Tous".
+    var related = toArray(section ? section.querySelectorAll("[data-related]") : []);
 
     var apply = function (btn, animate) {
       var key = btn.getAttribute("data-filter");
@@ -137,6 +139,9 @@
       balance(visible);
       grid.setAttribute("data-visible-count", String(shown));
       if (section) section.setAttribute("data-tone", key);
+      related.forEach(function (r) {
+        r.hidden = r.getAttribute("data-related") !== key || shown === 0;
+      });
       // Courte apparition des cartes affichees apres un clic (CSS : .is-in).
       if (animate && !reduced) {
         visible.forEach(function (c, i) {
