@@ -28,7 +28,7 @@ for path, page in pages.items():
     source = path.read_text(encoding='utf-8')
     if source.count('class="menu-toggle"') != 1 or 'class="menu-glyph"' not in source:
         errors.append(f'{path}: navigation must use one menu button and one glyph')
-    if 'security.css?v=20261025-contact' not in source or 'main.js?v=20261025-contact' not in source:
+    if 'security.css?v=20261025-coherence' not in source or 'main.js?v=20261025-contact' not in source:
         errors.append(f'{path}: missing shared, versioned styles or script')
     duplicates = [key for key, n in Counter(page.ids).items() if n > 1]
     if duplicates: errors.append(f'{path}: duplicate IDs: {duplicates}')
@@ -44,16 +44,35 @@ for path, page in pages.items():
         elif url.fragment and target in pages and unquote(url.fragment) not in pages[target].ids:
             errors.append(f'{path.relative_to(ROOT)}: missing anchor {link}')
     if page.projects:
+        totals = re.findall(r'data-project-total>(\d+)</dd>', source)
+        index_total = re.search(r'class="project-index">(\d+) ', source)
+        if any(int(total) != len(page.projects) for total in totals) or not index_total or int(index_total[1]) != len(page.projects):
+            errors.append(f'{path}: static project counters do not match the actual project count')
         if 'card--featured' in source:
             errors.append(f'{path}: project cards must not use a featured layout')
         if Counter(page.projects) != Counter({'soc': 2, 'redteam': 2, 'grc': 1, 'cloud': 2}):
             errors.append(f'{path}: unexpected projects {page.projects}')
         cards = re.findall(r'<article class="card [^"]+" data-cat="(?:soc|redteam|grc|cloud)"[^>]*>(.*?)</article>', source, re.S)
+        distinct_covers = {
+            'p-elastic': ('Kibana.jpeg', 'kibana-rules-overview.png'),
+            'p-wazuh': ('Wazuh.png', 'wazuh-detection-alerts-rules.png'),
+            'p-dc4': ('Kali.jpg', 'acces-interface-web.png'),
+            'p-aws': ('AWS.jpg', 'aws-vpc-architecture-routes.jpeg'),
+        }
         for card in cards:
             cover = re.search(r'<figure class="card-media[^"]*">\s*<img src="([^"]+)"', card)
             detail_images = re.findall(r'<figure class="detail-fig">\s*<a href="([^"]+)"', card)
-            if not cover or detail_images.count(cover[1]) != 1:
-                errors.append(f'{path}: project cover missing or duplicated in case gallery: {cover[1] if cover else "unknown"}')
+            card_id = re.search(r'<h3 id="([^"]+)"', card)
+            separate = distinct_covers.get(card_id[1]) if card_id else None
+            if not cover:
+                errors.append(f'{path}: missing project cover')
+            elif separate:
+                cover_name, gallery_name = separate
+                gallery_names = [Path(urlsplit(url).path).name for url in detail_images]
+                if Path(urlsplit(cover[1]).path).name != cover_name or cover_name in gallery_names or gallery_names.count(gallery_name) != 1:
+                    errors.append(f'{path}: cover or original technical gallery image incorrect for {card_id[1]}')
+            elif detail_images.count(cover[1]) != 1:
+                errors.append(f'{path}: project cover missing or duplicated in case gallery: {cover[1]}')
         if len(cards) != 7:
             errors.append(f'{path}: expected seven cards with image galleries, found {len(cards)}')
         summaries = re.findall(r'<summary class="btn btn-soft">(.*?)</summary>', source, re.S)

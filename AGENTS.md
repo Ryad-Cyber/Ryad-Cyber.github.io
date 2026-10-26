@@ -12,7 +12,7 @@
 - Contact direct et mini-formulaire mailto honnête : brouillon dans la messagerie, aucun envoi depuis le site.
 - Maintenir la cohérence des six pages françaises et anglaises.
 - Ne jamais inventer d’expériences, compétences, certifications ou réalisations.
-- Préserver les six projets, leurs descriptions techniques, captures et fonctionnalités utiles.
+- Préserver les sept projets, leurs descriptions techniques, captures et fonctionnalités utiles.
 - Inclure chaque image de couverture dans la galerie du cas détaillé, une seule fois.
 - Respecter le responsive, le clavier, les contrastes et les préférences de mouvement réduit.
 - Éviter les dépendances inutiles ; conserver la compatibilité GitHub Pages.

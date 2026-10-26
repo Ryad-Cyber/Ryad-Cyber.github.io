@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&display=swap">
 <link rel="icon" href="../../assets/favicon.svg?v=20261025-contact" type="image/svg+xml">
 <link rel="stylesheet" href="../../assets/css/style.css?v=20261025-contact">
-<link rel="stylesheet" href="../../assets/css/security.css?v=20261025-contact">
+<link rel="stylesheet" href="../../assets/css/security.css?v=20261025-coherence">
 </head>
 <body>
 <div class="network-backdrop" aria-hidden="true"></div>
@@ -107,8 +107,8 @@
 
 <article class="card panel" data-cat="soc" aria-labelledby="p-elastic">
           <figure class="card-media card-media--screenshot">
-            <img src="../../assets/projets/kibana-rules-overview.png" alt="The lab's detection rules in Kibana: four custom rules with their severity and last run" width="1660" height="538" loading="lazy" decoding="async">
-            <figcaption>The lab's 4 detection rules, in Kibana</figcaption>
+            <img src="../../assets/projets/Kibana.jpeg" alt="Elasticsearch and Kibana logos for the SOC lab" width="623" height="362" loading="lazy" decoding="async">
+            <figcaption>Elasticsearch & Kibana</figcaption>
           </figure><div class="card-content">
           <div class="card-badges">
             <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Detection &amp; SIEM</span>
@@ -229,8 +229,8 @@
 
 <article class="card panel" data-cat="soc" aria-labelledby="p-wazuh">
           <figure class="card-media card-media--screenshot">
-            <img src="../../assets/projets/wazuh-detection-alerts-rules.png" alt="Wazuh Threat Hunting dashboard: SSH and PAM authentication-failure alerts, and custom rule 100002 level 10 for a suspicious account creation" width="924" height="396" loading="lazy" decoding="async">
-            <figcaption>Wazuh alerts: SSH/PAM authentication failures, and custom rule 100002 (level 10)</figcaption>
+            <img src="../../assets/projets/Wazuh.png" alt="Wazuh visual identity for the SIEM lab" width="693" height="442" loading="lazy" decoding="async">
+            <figcaption>Wazuh lab</figcaption>
           </figure><div class="card-content">
           <div class="card-badges">
             <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Detection &amp; SIEM</span>
@@ -238,8 +238,7 @@
           </div>
           <h3 id="p-wazuh"><span class="case-no">CASE Nº2</span>Lab Wazuh (SIEM) multi-VM</h3>
           <p class="card-desc">
-            An open-source SIEM deployed across several virtual machines, with 2 custom detection
-            rules tested using lab attack scenarios.
+            An open-source SIEM deployed across multiple VMs: Nmap and SSH scenarios, authentication alerts and a documented custom rule.
           </p>
           <ul class="tags">
             <li>Wazuh</li><li>VMware</li><li>Linux</li><li>Windows</li><li>MITRE ATT&amp;CK</li><li>Nmap</li><li>Syslog</li>
@@ -252,7 +251,7 @@
                 <div class="detail-row">
                   <dl class="card-facts">
                     <dt>Objective</dt><dd>Verify end to end that an open-source SIEM actually detects attacks, not merely that it collects logs.</dd>
-                    <dt>Outcome</dt><dd>2 custom rules mapped to MITRE ATT&amp;CK, tested with SSH brute force and Nmap scans, and compared with Elastic Security.</dd>
+                    <dt>Outcome</dt><dd>Nmap and SSH scenarios documented; SSH/PAM alerts observed and custom rule 100002 shown separately.</dd>
                   </dl>
                 </div>
                 <div class="detail-row">
@@ -276,8 +275,8 @@
                   <h4>What I did</h4>
                   <ol class="steps">
                     <li>Installed the Wazuh manager and deployed agents on Linux and Windows machines, with centralised log collection.</li>
-                    <li>Wrote <strong>2 custom detection rules</strong>, mapped to the MITRE ATT&amp;CK framework.</li>
-                    <li>Tested every rule using lab scenarios — SSH brute force and Nmap scans — then confirmed the alerts surfaced in the dashboard.</li>
+                    <li>Configured a documented <strong>custom detection rule (100002)</strong> for suspicious account creation.</li>
+                    <li>Ran Nmap and SSH attempts in the lab, then reviewed authentication events and alerts in Wazuh.</li>
                     <li>Compared how Wazuh and Elastic Security behave on equivalent scenarios, to understand what each tool makes easy or hard.</li>
                   </ol>
                 </div>
@@ -301,7 +300,7 @@
                       <div class="scenario-head"><h5>SSH brute force with Hydra</h5><span class="attck">MITRE ATT&amp;CK T1110</span></div>
                       <p>
                         Brute-force attempt against the SSH service identified above, to generate the
-                        authentication failures the detection rule has to surface.
+                        authentication failures for analysis in Wazuh.
                       </p>
                       <figure class="detail-fig">
                         <a href="../../assets/projets/wazuh-hydra-ssh-bruteforce.png" target="_blank" rel="noopener" title="Open image full size">
@@ -332,7 +331,7 @@
             <figcaption>Presenting during the KASBAH 2026 crisis exercise</figcaption>
           </figure><div class="card-content">
           <div class="card-badges">
-            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-clipboard"/></svg>GRC</span>
+            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-clipboard"/></svg>Incident response</span>
             <span class="badge">09/2026 · EMSI × CyberSup</span>
           </div>
           <h3 id="p-kasbah"><span class="case-no">CASE Nº3</span>KASBAH 2026 — immersive cyber crisis exercise</h3>
@@ -407,8 +406,8 @@
 
 <article class="card panel" data-cat="redteam" aria-labelledby="p-dc4">
           <figure class="card-media card-media--screenshot">
-            <img src="../../assets/projets/acces-interface-web.png" alt="Browser: System Tools interface, successful authentication on DC-4" width="1368" height="522" loading="lazy" decoding="async">
-            <figcaption>Access to the System Tools web interface after authentication</figcaption>
+            <img src="../../assets/projets/Kali.jpg" alt="Kali Linux logo for the DC-4 pentest lab" width="750" height="422" loading="lazy" decoding="async">
+            <figcaption>Linux pentest · Kali</figcaption>
           </figure><div class="card-content">
           <div class="card-badges">
             <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-target"/></svg>Red Team / Pentest</span>
@@ -570,7 +569,7 @@
         </div></article>
 
 <article class="card panel card--cloud" data-cat="cloud" aria-labelledby="p-aws">
-      <figure class="card-media card-media--aws"><img src="../../assets/projets/aws-vpc-architecture-routes.jpeg" alt="Lab VPC — 10.1.0.0/16, Public Subnet 1 — 10.1.11.0/24" width="2048" height="876" loading="lazy"><figcaption>AWS / IAM · VPC · EC2</figcaption></figure><div class="card-content">
+      <figure class="card-media card-media--aws"><img src="../../assets/projets/AWS.jpg" alt="AWS logo on a space background for the AWS Academy lab" width="736" height="416" loading="lazy" decoding="async"><figcaption>AWS Academy lab</figcaption></figure><div class="card-content">
       <div class="card-badges"><span class="badge badge-cat">Cloud</span><span class="badge">2026 · AWS Academy lab</span></div>
       <h3 id="p-aws"><span class="case-no">CASE Nº5</span>AWS Security Lab — IAM, VPC &amp; EC2</h3>
       <p class="card-desc">Hands-on AWS Academy training lab: IAM permissions, VPC segmentation, EC2 instances and network filtering with Security Groups.</p>
@@ -657,21 +656,21 @@
 
 <article class="card panel card--cloud" data-cat="cloud" aria-labelledby="p-terraform-docker">
           <figure class="card-media card-media--screenshot"><img src="../../assets/projets/terraform-04-secure-web-server.png" alt="Nginx dashboard of the local Terraform lab" width="1908" height="930" loading="lazy" decoding="async"><figcaption>Nginx frontend in the local lab</figcaption></figure><div class="card-content">
-          <div class="card-badges"><span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-cloud"/></svg>Cloud Security</span><span class="badge">Personal project · local lab</span></div>
+          <div class="card-badges"><span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-cloud"/></svg>Cloud / IaC</span><span class="badge">10/2026 · Personal project</span></div>
           <h3 id="p-terraform-docker"><span class="case-no">CASE Nº7</span>Secure Infrastructure as Code — Terraform &amp; Docker</h3>
           <p class="card-desc">Local infrastructure deployed with Terraform and Docker: Nginx frontend, HTTP Echo backend, network segmentation and container hardening.</p>
           <ul class="tags"><li>Infrastructure as Code (IaC)</li><li>Terraform</li><li>Docker Security</li><li>Container Hardening</li><li>Network Segmentation</li><li>Least Privilege</li></ul>
           <div class="card-actions">
             <details class="card-detail"><summary class="btn btn-soft"><span class="when-closed">Read the case in detail</span><span class="when-open">Collapse the detail</span><span aria-hidden="true">↗</span></summary>
               <div class="detail-body">
-                <div class="detail-row"><dl class="card-facts"><dt>Scope</dt><dd>Local Terraform and Docker lab; no AWS services</dd><dt>Outcome</dt><dd>Frontend bound to 127.0.0.1:8080; backend without a published port; controls documented in six screenshots.</dd></dl></div>
+                <div class="detail-row"><dl class="card-facts"><dt>Scope</dt><dd>Local Terraform and Docker lab; no AWS services</dd><dt>Outcome</dt><dd>Frontend bound to 127.0.0.1:8080; backend without a published port; non-root execution, restricted privileges, network isolation and limited host exposure validated.</dd></dl></div>
                 <div class="detail-row"><h4>Architecture and segmentation</h4><p>Terraform provisions an Nginx frontend and an HTTP Echo backend across two Docker networks. The frontend joins both networks; the backend joins only the internal network. The frontend can reach the backend without publishing a backend port on the host.</p></div>
                 <div class="detail-row"><h4>Security controls</h4><ul class="dashes"><li>Non-root execution: UID 101 for Nginx and UID 65532 for HTTP Echo.</li><li>No-new-privileges enabled and all additional Linux capabilities dropped.</li><li>Memory limits of 128 MiB for the frontend and 64 MiB for the backend; read-only HTML mount.</li></ul></div>
                 <div class="detail-row"><h4>Documented validation</h4><p>Docker checks in the repository verify UIDs, security options, the localhost binding on port 8080, the internal network and the absence of a published backend port. Frontend HTTP availability and frontend-to-backend communication were also checked. This segmentation reduces exposure but does not guarantee complete isolation from the host.</p></div>
-                <div class="detail-row"><h4>Six lab screenshots</h4><figure class="detail-fig"><a href="../../assets/projets/terraform-01-deployment.png" target="_blank" rel="noopener" aria-label="Open screenshot 01"><img src="../../assets/projets/terraform-01-deployment.png" alt="Terraform infrastructure deployment" width="1860" height="121" loading="lazy" decoding="async"></a><figcaption>01 / Automated deployment with Terraform.</figcaption></figure><figure class="detail-fig"><a href="../../assets/projets/terraform-02-security-controls.png" target="_blank" rel="noopener" aria-label="Open screenshot 02"><img src="../../assets/projets/terraform-02-security-controls.png" alt="Docker controls: non-root UID, privileges, capabilities and memory" width="1875" height="394" loading="lazy" decoding="async"></a><figcaption>02 / Container controls and localhost exposure.</figcaption></figure><figure class="detail-fig"><a href="../../assets/projets/terraform-03-network-configuration.png" target="_blank" rel="noopener" aria-label="Open screenshot 03"><img src="../../assets/projets/terraform-03-network-configuration.png" alt="Docker networks and local port configuration" width="1881" height="454" loading="lazy" decoding="async"></a><figcaption>03 / Docker networks and 127.0.0.1 binding.</figcaption></figure><figure class="detail-fig"><a href="../../assets/projets/terraform-04-secure-web-server.png" target="_blank" rel="noopener" aria-label="Open screenshot 04"><img src="../../assets/projets/terraform-04-secure-web-server.png" alt="Nginx frontend in the local lab" width="1908" height="930" loading="lazy" decoding="async"></a><figcaption>04 / Running Nginx frontend.</figcaption></figure><figure class="detail-fig"><a href="../../assets/projets/terraform-05-backend-isolation.png" target="_blank" rel="noopener" aria-label="Open screenshot 05"><img src="../../assets/projets/terraform-05-backend-isolation.png" alt="Backend communication without a published host port" width="1890" height="537" loading="lazy" decoding="async"></a><figcaption>05 / Unpublished backend port and internal communication.</figcaption></figure><figure class="detail-fig"><a href="../../assets/projets/terraform-06-internal-network.png" target="_blank" rel="noopener" aria-label="Open screenshot 06"><img src="../../assets/projets/terraform-06-internal-network.png" alt="Internal network and backend user checks" width="1893" height="225" loading="lazy" decoding="async"></a><figcaption>06 / Internal network and non-root backend execution.</figcaption></figure></div>
+                <div class="detail-row"><h4>Annotated screenshots</h4><figure class="detail-fig"><a href="../../assets/projets/terraform-01-deployment.png" target="_blank" rel="noopener" aria-label="Open screenshot 01"><img src="../../assets/projets/terraform-01-deployment.png" alt="Terraform infrastructure deployment" width="1860" height="121" loading="lazy" decoding="async"></a><figcaption>01 / Automated deployment with Terraform.</figcaption></figure><figure class="detail-fig"><a href="../../assets/projets/terraform-02-security-controls.png" target="_blank" rel="noopener" aria-label="Open screenshot 02"><img src="../../assets/projets/terraform-02-security-controls.png" alt="Docker controls: non-root UID, privileges, capabilities and memory" width="1875" height="394" loading="lazy" decoding="async"></a><figcaption>02 / Container controls and localhost exposure.</figcaption></figure><figure class="detail-fig"><a href="../../assets/projets/terraform-03-network-configuration.png" target="_blank" rel="noopener" aria-label="Open screenshot 03"><img src="../../assets/projets/terraform-03-network-configuration.png" alt="Docker networks and local port configuration" width="1881" height="454" loading="lazy" decoding="async"></a><figcaption>03 / Docker networks and 127.0.0.1 binding.</figcaption></figure><figure class="detail-fig"><a href="../../assets/projets/terraform-04-secure-web-server.png" target="_blank" rel="noopener" aria-label="Open screenshot 04"><img src="../../assets/projets/terraform-04-secure-web-server.png" alt="Nginx frontend in the local lab" width="1908" height="930" loading="lazy" decoding="async"></a><figcaption>04 / Running Nginx frontend.</figcaption></figure><figure class="detail-fig"><a href="../../assets/projets/terraform-05-backend-isolation.png" target="_blank" rel="noopener" aria-label="Open screenshot 05"><img src="../../assets/projets/terraform-05-backend-isolation.png" alt="Backend communication without a published host port" width="1890" height="537" loading="lazy" decoding="async"></a><figcaption>05 / Unpublished backend port and internal communication.</figcaption></figure><figure class="detail-fig"><a href="../../assets/projets/terraform-06-internal-network.png" target="_blank" rel="noopener" aria-label="Open screenshot 06"><img src="../../assets/projets/terraform-06-internal-network.png" alt="Internal network and backend user checks" width="1893" height="225" loading="lazy" decoding="async"></a><figcaption>06 / Internal network and non-root backend execution.</figcaption></figure></div>
               </div>
             </details>
-            <a class="btn btn-ghost" href="https://github.com/Ryad-Cyber/terraform-security-lab" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-code"/></svg>View code and tests on GitHub</a>
+            <a class="btn btn-ghost" href="https://github.com/Ryad-Cyber/terraform-security-lab" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-code"/></svg>View code and validation on GitHub</a>
           </div>
         </div></article>
 
