@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&display=swap">
 <link rel="icon" href="../assets/favicon.svg?v=20261025-contact" type="image/svg+xml">
 <link rel="stylesheet" href="../assets/css/style.css?v=20261025-contact">
-<link rel="stylesheet" href="../assets/css/security.css?v=20261025-coherence">
+<link rel="stylesheet" href="../assets/css/security.css?v=20261026-design">
 </head>
 <body>
 <div class="network-backdrop" aria-hidden="true"></div>
@@ -42,6 +42,7 @@
   <symbol id="i-code" viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></symbol>
   <symbol id="i-graduation" viewBox="0 0 24 24"><path d="M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.83l8.57 3.91a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></symbol>
   <symbol id="i-award" viewBox="0 0 24 24"><path d="M15.48 12.89l1.51 8.53a.5.5 0 0 1-.81.47l-3.58-2.69a1 1 0 0 0-1.2 0l-3.59 2.69a.5.5 0 0 1-.81-.47l1.51-8.53"/><circle cx="12" cy="8" r="6"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></symbol>
   <symbol id="i-send" viewBox="0 0 24 24"><path d="M22 2L15 22l-4-9-9-4z"/><path d="M22 2L11 13"/></symbol>
   <symbol id="i-languages" viewBox="0 0 24 24"><path d="M5 8l6 6"/><path d="M4 14l6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="M22 22l-5-10-5 10"/><path d="M14 18h6"/></symbol>
   <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"/></symbol>
@@ -99,8 +100,7 @@
           <div class="hero-actions">
             <a class="btn btn-primary" href="projects/index.html"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg>See my projects</a>
             <a class="btn btn-secondary" href="#contact">Let’s talk ↗</a>
-            <!-- Bouton CV : ajouter href vers le PDF definitif (ex. assets/cv/...pdf), puis retirer hidden. Aucun fichier publie pour l'instant. -->
-            <a class="btn btn-ghost" data-cv-link hidden><svg class="i" aria-hidden="true"><use href="#i-clipboard"/></svg>View my CV</a>
+            <a class="btn btn-ghost btn-cv" data-cv-link href="../assets/cv/CV_Ryad_Boujenan_EN.pdf" target="_blank" rel="noopener" type="application/pdf"><svg class="i" aria-hidden="true"><use href="#i-file"/></svg>My Resume<span class="sr-only"> (PDF, opens in a new tab)</span></a>
             <p class="hero-note">Passionate about travel and chess.</p>
           </div>
 
@@ -122,7 +122,7 @@
               <div class="stats-row"><dt>Latest internship</dt><dd class="txt"><a href="#nethash">Nethash</a></dd></div>
               <div class="stats-row"><dt>Availability</dt><dd class="txt live">Internship · Feb 2027</dd></div>
               <div class="stats-row"><dt>Documented projects</dt><dd data-project-total>07</dd></div>
-              <div class="stats-row"><dt>Training &amp; certificates</dt><dd>07</dd></div>
+              <div class="stats-row"><dt>Certificates &amp; training</dt><dd class="num"><a href="#certificats">07</a></dd></div>
             </dl>
           </div>
         </aside>
@@ -142,9 +142,9 @@
       <!-- Masquee sans JavaScript : toutes les cartes restent alors visibles. -->
       <div class="filters" id="filters" role="group" aria-label="Filter projects by category" hidden>
         <button class="filter" type="button" data-filter="all" data-label="All" aria-pressed="true"><svg class="i" aria-hidden="true"><use href="#i-grid"/></svg>All<span class="count"></span></button>
-        <button class="filter" type="button" data-filter="soc" data-label="Detection &amp; SIEM" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Detection &amp; SIEM<span class="count"></span></button>
+        <button class="filter" type="button" data-filter="soc" data-label="Blue Team / SOC" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Blue Team / SOC<span class="count"></span></button>
         <button class="filter" type="button" data-filter="redteam" data-label="Red Team / Pentest" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-target"/></svg>Red Team / Pentest<span class="count"></span></button>
-        <button class="filter" type="button" data-filter="cloud" data-label="Cloud" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-cloud"/></svg>Cloud<span class="count"></span></button>
+        <button class="filter" type="button" data-filter="cloud" data-label="Cloud Security" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-cloud"/></svg>Cloud Security<span class="count"></span></button>
         <button class="filter" type="button" data-filter="ia" data-label="AI" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-chip"/></svg>AI<span class="count"></span></button>
         <button class="filter" type="button" data-filter="grc" data-label="GRC" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-clipboard"/></svg>GRC<span class="count"></span></button>
         <button class="filter" type="button" data-filter="crypto" data-label="Cryptography" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Cryptography<span class="count"></span></button>
@@ -159,7 +159,7 @@
             <figcaption>Elasticsearch & Kibana</figcaption>
           </figure><div class="card-content">
           <div class="card-badges">
-            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Detection &amp; SIEM</span>
+            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Blue Team / SOC</span>
             <span class="badge">2026 · Personal project</span>
           </div>
           <h3 id="p-elastic"><span class="case-no">CASE Nº1</span>Lab SOC Elastic Security</h3>
@@ -281,7 +281,7 @@
             <figcaption>Wazuh lab</figcaption>
           </figure><div class="card-content">
           <div class="card-badges">
-            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Detection &amp; SIEM</span>
+            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Blue Team / SOC</span>
             <span class="badge">05/2026 · Academic project</span>
           </div>
           <h3 id="p-wazuh"><span class="case-no">CASE Nº2</span>Lab Wazuh (SIEM) multi-VM</h3>
@@ -379,7 +379,7 @@
             <figcaption>Presenting during the KASBAH 2026 crisis exercise</figcaption>
           </figure><div class="card-content">
           <div class="card-badges">
-            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-clipboard"/></svg>Incident response</span>
+            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-clipboard"/></svg>GRC</span>
             <span class="badge">09/2026 · EMSI × CyberSup</span>
           </div>
           <h3 id="p-kasbah"><span class="case-no">CASE Nº3</span>KASBAH 2026 — immersive cyber crisis exercise</h3>
@@ -618,7 +618,7 @@
 
 <article class="card panel card--cloud" data-cat="cloud" aria-labelledby="p-aws">
       <figure class="card-media card-media--aws"><img src="../assets/projets/AWS.jpg" alt="AWS logo on a space background for the AWS Academy lab" width="736" height="416" loading="lazy" decoding="async"><figcaption>AWS Academy lab</figcaption></figure><div class="card-content">
-      <div class="card-badges"><span class="badge badge-cat">Cloud</span><span class="badge">2026 · AWS Academy lab</span></div>
+      <div class="card-badges"><span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-cloud"/></svg>Cloud Security</span><span class="badge">2026 · AWS Academy lab</span></div>
       <h3 id="p-aws"><span class="case-no">CASE Nº5</span>AWS Security Lab — IAM, VPC &amp; EC2</h3>
       <p class="card-desc">Hands-on AWS Academy training lab: IAM permissions, VPC segmentation, EC2 instances and network filtering with Security Groups.</p>
       <ul class="tags"><li>AWS</li><li>IAM</li><li>IAM Policies</li><li>VPC</li><li>Subnets</li><li>Route Tables</li><li>EC2</li><li>Security Groups</li><li>JSON</li><li>TCP/IP</li><li>SSH</li></ul>
@@ -704,7 +704,7 @@
 
 <article class="card panel card--cloud" data-cat="cloud" aria-labelledby="p-terraform-docker">
           <figure class="card-media card-media--screenshot"><img src="../assets/projets/terraform-04-secure-web-server.png" alt="Nginx dashboard of the local Terraform lab" width="1908" height="930" loading="lazy" decoding="async"><figcaption>Nginx frontend in the local lab</figcaption></figure><div class="card-content">
-          <div class="card-badges"><span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-cloud"/></svg>Cloud / IaC</span><span class="badge">10/2026 · Personal project</span></div>
+          <div class="card-badges"><span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-cloud"/></svg>Cloud Security</span><span class="badge">10/2026 · Personal project</span></div>
           <h3 id="p-terraform-docker"><span class="case-no">CASE Nº7</span>Secure Infrastructure as Code — Terraform &amp; Docker</h3>
           <p class="card-desc">Local infrastructure deployed with Terraform and Docker: Nginx frontend, HTTP Echo backend, network segmentation and container hardening.</p>
           <ul class="tags"><li>Infrastructure as Code (IaC)</li><li>Terraform</li><li>Docker Security</li><li>Container Hardening</li><li>Network Segmentation</li><li>Least Privilege</li></ul>
@@ -802,263 +802,184 @@
     <div class="container">
       <div class="section-head">
         <p class="eyebrow"><svg class="i" aria-hidden="true"><use href="#i-route"/></svg>03 · Experience</p>
-        <h2>Education, internships and training</h2>
+        <h2>Experience, education and certificates</h2>
       </div>
 
       <div class="parcours-grid">
 
-        <!-- Colonne gauche : timeline -->
+        <!-- Experiences professionnelles -->
         <div class="parcours-col panel">
           <div class="panel-head">
-            <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-graduation"/></svg></span>
+            <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-server"/></svg></span>
             <div>
-              <h3>Education and experience</h3>
-              <span class="sub">Academic background and internships</span>
+              <h3>Experience</h3>
+              <span class="sub">Internships</span>
             </div>
           </div>
-
           <ol class="timeline">
-            <li class="tl-featured" id="nethash">
-              <a class="tl-logo" href="https://nethash.fr/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../assets/logos/nethash.png" alt="" width="231" height="218" loading="lazy" decoding="async"></a>
-              <span class="tl-when">07/2026 — 09/2026</span>
-              <h4>Cybersecurity intern</h4>
-              <p class="tl-where"><a href="https://nethash.fr/" target="_blank" rel="noopener">Nethash</a> — Paris, France</p>
-              <p class="tl-focus">Vulnerability management and security automation</p>
-              <ul class="tl-facts">
-                <li><strong>68</strong>vulnerabilities identified</li>
-                <li><strong>122</strong>CVEs referenced</li>
-                <li><strong>CVSS 10.0</strong>highest severity found</li>
-              </ul>
-              <ul class="dashes">
-                <li>Automated attack-surface scans with Python and Nmap, scheduled with Cron, with consolidation of the results.</li>
-                <li>Identified vulnerabilities with GVM/OpenVAS deployed in Docker.</li>
-                <li>Analysed the vulnerabilities found and their severity, using CVE references and CVSS scores.</li>
-                <li>Automated report generation and integrated the scanning pipeline into a GitHub Actions CI/CD workflow.</li>
-              </ul>
-              <ul class="tags tags--quiet tl-tools"><li>Python</li><li>Nmap</li><li>Cron</li><li>GVM / OpenVAS</li><li>Docker</li><li>CVE / CVSS</li><li>GitHub Actions</li></ul>
-            </li>
+              <li class="tl-featured" id="nethash">
+                <a class="tl-logo" href="https://nethash.fr/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../assets/logos/nethash.png" alt="" width="231" height="218" loading="lazy" decoding="async"></a>
+                <span class="tl-when">07/2026 — 09/2026</span>
+                <h4>Cybersecurity intern</h4>
+                <p class="tl-where"><a href="https://nethash.fr/" target="_blank" rel="noopener">Nethash</a> — Paris, France</p>
+                <p class="tl-focus">Vulnerability management and security automation</p>
+                <ul class="tl-facts">
+                  <li><strong>68</strong>vulnerabilities identified</li>
+                  <li><strong>122</strong>CVEs referenced</li>
+                  <li><strong>CVSS 10.0</strong>highest severity found</li>
+                </ul>
+                <ul class="dashes">
+                  <li>Automated attack-surface scans with Python and Nmap, scheduled with Cron, with consolidation of the results.</li>
+                  <li>Identified vulnerabilities with GVM/OpenVAS deployed in Docker.</li>
+                  <li>Analysed the vulnerabilities found and their severity, using CVE references and CVSS scores.</li>
+                  <li>Automated report generation and integrated the scanning pipeline into a GitHub Actions CI/CD workflow.</li>
+                </ul>
+                <ul class="tags tags--quiet tl-tools"><li>Python</li><li>Nmap</li><li>Cron</li><li>GVM / OpenVAS</li><li>Docker</li><li>CVE / CVSS</li><li>GitHub Actions</li></ul>
+              </li>
 
-            <li>
-              <span class="tl-when">07/2025 — 08/2025</span>
-              <h4>Full-stack web development intern</h4>
-              <p class="tl-where">SIMDATA — Orléans, France</p>
-              <ul class="dashes">
-                <li>Built a web application in Python/Django backed by a MySQL database.</li>
-                <li>Designed and implemented the entire front-end on my own.</li>
-                <li>Experience I now rely on to script and automate my own tooling.</li>
-              </ul>
-            </li>
-
-            <li class="is-current">
-              <a class="tl-logo tl-logo--light" href="https://emsi.ma/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../assets/logos/emsi.png" alt="" width="600" height="162" loading="lazy" decoding="async"></a>
-              <span class="tl-when">2022 — 2027</span>
-              <h4>Engineering degree — Computer engineering and networks, cybersecurity major</h4>
-              <p class="tl-where"><a href="https://emsi.ma/" target="_blank" rel="noopener">EMSI</a> — Casablanca, Morocco · 5th year, in progress</p>
-              <dl class="kv">
-                <dt>The foundations</dt>
-                <dd>Linux and Windows Server systems, Active Directory, TCP/IP, DNS, TLS, VPN, virtualisation, programming</dd>
-                <dt>Then the security specialisation</dt>
-                <dd>Cryptography, network security, vulnerability management, security monitoring</dd>
-              </dl>
-            </li>
-
-            <li>
-              <a class="tl-logo tl-logo--round" href="https://lyceepeguyorleans.fr/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../assets/logos/lycee.png" alt="" width="225" height="225" loading="lazy" decoding="async"></a>
-              <span class="tl-when">2022</span>
-              <h4>French baccalauréat — Mathematics, Physics &amp; Chemistry</h4>
-              <p class="tl-where"><a href="https://lyceepeguyorleans.fr/" target="_blank" rel="noopener">Lycée Charles Péguy</a> — Orléans, France</p>
-            </li>
+              <li>
+                <span class="tl-when">07/2025 — 08/2025</span>
+                <h4>Full-stack web development intern</h4>
+                <p class="tl-where">SIMDATA — Orléans, France</p>
+                <ul class="dashes">
+                  <li>Built a web application in Python/Django backed by a MySQL database.</li>
+                  <li>Designed and implemented the entire front-end on my own.</li>
+                  <li>Experience I now rely on to script and automate my own tooling.</li>
+                </ul>
+              </li>
           </ol>
         </div>
 
-        <!-- Colonne droite : certifications (seul usage de l'or) -->
-        <div class="parcours-col panel">
-          <div class="panel-head">
-            <span class="ico-tile ico-tile--gold"><svg class="i" aria-hidden="true"><use href="#i-award"/></svg></span>
-            <div>
-              <h3>Training &amp; certificates</h3>
-              <span class="sub sub--gold">Verifiable credentials</span>
+        <div class="parcours-side">
+          <div class="parcours-col panel">
+            <div class="panel-head">
+              <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-graduation"/></svg></span>
+              <div>
+                <h3>Education</h3>
+                <span class="sub">Academic background</span>
+              </div>
             </div>
-          </div>
-          <p class="section-sub" style="margin: 0 0 18px; font-size: 0.9375rem">
-            Courses, certificates of achievement and hands-on exercises in detection, systems
-            administration, offensive security and cloud. Professional certifications will be added here once earned.
-          </p>
+            <ol class="timeline">
+              <li class="is-current">
+                <a class="tl-logo tl-logo--light" href="https://emsi.ma/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../assets/logos/emsi.png" alt="" width="600" height="162" loading="lazy" decoding="async"></a>
+                <span class="tl-when">2022 — 2027</span>
+                <h4>Engineering degree — Computer engineering and networks, cybersecurity major</h4>
+                <p class="tl-where"><a href="https://emsi.ma/" target="_blank" rel="noopener">EMSI</a> — Casablanca, Morocco · 5th year, in progress</p>
+                <dl class="kv">
+                  <dt>The foundations</dt>
+                  <dd>Linux and Windows Server systems, Active Directory, TCP/IP, DNS, TLS, VPN, virtualisation, programming</dd>
+                  <dt>Then the security specialisation</dt>
+                  <dd>Cryptography, network security, vulnerability management, security monitoring</dd>
+                </dl>
+              </li>
 
-          <div class="certs" id="certs" data-gallery>
-
-            <article class="cert">
-              <div class="cert-media">
-                <span class="cert-rotator" data-rotator>
-                  <a class="cert-visual is-on" href="../assets/certifications/splunk-soc-essentials.jpg" data-caption="SOC Essentials: Investigating with Splunk ES 8.x — Splunk Education, 11/10/2026">
-                    <img src="../assets/certifications/splunk-soc-essentials.jpg" alt="Splunk certificate: SOC Essentials, Investigating with Splunk ES 8.x" width="1200" height="849" loading="lazy" decoding="async">
-                  </a>
-                  <a class="cert-visual" href="../assets/certifications/splunk-threat-hunting.jpg" data-caption="SOC Essentials: Introduction to Threat Hunting — Splunk Education, 13/10/2026" tabindex="-1" aria-hidden="true">
-                    <img src="../assets/certifications/splunk-threat-hunting.jpg" alt="Splunk certificate: SOC Essentials, Introduction to Threat Hunting" width="1200" height="849" loading="lazy" decoding="async">
-                  </a>
-                  <a class="cert-visual" href="../assets/certifications/splunk-detection-engineering.jpg" data-caption="Introduction to Detection Engineering with Splunk — Splunk Education, 13/10/2026" tabindex="-1" aria-hidden="true">
-                    <img src="../assets/certifications/splunk-detection-engineering.jpg" alt="Splunk certificate: Introduction to Detection Engineering with Splunk" width="1200" height="849" loading="lazy" decoding="async">
-                  </a>
-                </span>
-                <span class="cert-dots" aria-hidden="true"><i class="is-on"></i><i></i><i></i></span>
-              </div>
-              <div class="cert-body">
-                <p class="cert-type">Online training · 3 modules</p>
-                <h4>Splunk SOC courses</h4>
-                <p class="cert-meta">
-                  <span class="cert-org">Splunk Education</span>
-                  <span class="cert-date">10/2026 · 13 credit hours</span>
-                </p>
-                <ul class="cert-courses">
-                  <li>SOC Essentials: Investigating with Splunk ES 8.x <span class="when">11/10/2026 · 6 credit hours</span></li>
-                  <li>SOC Essentials: Introduction to Threat Hunting <span class="when">13/10/2026 · 4 credit hours</span></li>
-                  <li>Introduction to Detection Engineering with Splunk <span class="when">13/10/2026 · 3 credit hours</span></li>
-                </ul>
-                <p class="cert-desc">Searching and analysing data in Splunk, and using Splunk Enterprise Security for an analyst's day-to-day work: queries, dashboards, handling notable events.</p>
-              </div>
-            </article>
-
-            <article class="cert">
-              <a class="cert-visual" href="../assets/certifications/redhat-rh124.jpg" data-caption="Linux administration with Red Hat RH124 — Honoris Educational Network · Coursera, 12/10/2026">
-                <img src="../assets/certifications/redhat-rh124.jpg" alt="Coursera certificate: Linux administration with Red Hat RH124" width="1200" height="927" loading="lazy" decoding="async">
-              </a>
-              <div class="cert-body">
-                <p class="cert-type">Online course</p>
-                <h4>Linux administration with Red Hat RH124</h4>
-                <p class="cert-meta">
-                  <span class="cert-org">Honoris Educational Network · Coursera</span>
-                  <span class="cert-date">12/10/2026</span>
-                </p>
-                <p class="cert-desc">Red Hat Enterprise Linux system administration: users and permissions, services, networking, system logs — the groundwork you need to investigate on a Linux host.</p>
-                <a class="cert-verify" href="https://coursera.org/verify/B3DQ61QTQIX2" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-external"/></svg>Verify the certificate</a>
-              </div>
-            </article>
-
-            <article class="cert">
-              <a class="cert-visual" href="../assets/certifications/cisco-ethical-hacker.jpg" data-caption="Ethical Hacker — Cisco Networking Academy, 05/10/2026">
-                <img src="../assets/certifications/cisco-ethical-hacker.jpg" alt="Cisco Networking Academy certificate: Ethical Hacker" width="1200" height="927" loading="lazy" decoding="async">
-              </a>
-              <div class="cert-body">
-                <p class="cert-type">Training · Credly badge</p>
-                <h4>Ethical Hacker</h4>
-                <p class="cert-meta">
-                  <span class="cert-org">Cisco Networking Academy</span>
-                  <span class="cert-date">05/10/2026</span>
-                </p>
-                <p class="cert-desc">Attack methodology, reconnaissance, exploitation and reporting. On the defensive side, knowing how an attack is carried out is what makes it possible to write detections that matter.</p>
-                <a class="cert-verify" href="https://www.credly.com/badges/e7869115-2372-4988-b7e6-7b40f05216f7/public_url" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-external"/></svg>Verify on Credly</a>
-              </div>
-            </article>
-
-            <article class="cert">
-              <a class="cert-visual" href="../assets/certifications/kasbah-participant.png" data-caption="KASBAH 2026 exercise, cyber crisis management — EMSI × CyberSup, 09/2026">
-                <img src="../assets/certifications/kasbah-participant.png" alt="KASBAH 2026 badge: participant in the cyber crisis management exercise" width="1000" height="1000" loading="lazy" decoding="async">
-              </a>
-              <div class="cert-body">
-                <p class="cert-type">Hands-on exercise · 3 days</p>
-                <h4>KASBAH 2026 — immersive cyber crisis exercise</h4>
-                <p class="cert-meta">
-                  <span class="cert-org">EMSI × CyberSup</span>
-                  <span class="cert-date">09/2026</span>
-                  <span class="cert-mention">Participant</span>
-                </p>
-                <p class="cert-desc">A three-day training exercise facing a simulated cyberattack: analysing and prioritising alerts, and making crisis decisions within the executive cell.</p>
-                <a class="cert-verify" href="https://kasbah.cybersup.ai/certificat/KSB26-0K0CQJVF" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-external"/></svg>Verify the certificate</a>
-              </div>
-            </article>
-
-            <article class="cert">
-              <a class="cert-visual" href="../assets/certifications/supervision-reseaux-p1.jpg" data-caption="Network monitoring — ENSET Mohammedia, 11/06/2026 · page 1/2">
-                <img src="../assets/certifications/supervision-reseaux.jpg" alt="Certificate of completion: Network monitoring module" width="760" height="465" loading="lazy" decoding="async">
-              </a>
-              <!-- Seconde page de l'attestation : pas de vignette, mais elle suit la premiere dans la visionneuse -->
-              <a class="cert-visual" href="../assets/certifications/supervision-reseaux-p2.jpg" data-caption="Network monitoring — ENSET Mohammedia, 11/06/2026 · page 2/2" hidden></a>
-              <div class="cert-body">
-                <p class="cert-type">Certificate of achievement</p>
-                <h4>Network monitoring</h4>
-                <p class="cert-meta">
-                  <span class="cert-org">ENSET Mohammedia — Prof. Azeddine Khiat</span>
-                  <span class="cert-date">11/06/2026</span>
-                  <span class="cert-mention">Grade: Excellent — 98%</span>
-                </p>
-              </div>
-            </article>
-
-            <article class="cert">
-              <a class="cert-visual" href="../assets/certifications/aws-cloud-security-foundations.png" data-caption="AWS Academy Graduate — Cloud Security Foundations — Amazon Web Services (AWS), October 2026">
-                <img src="../assets/certifications/aws-cloud-security-foundations.png" alt="AWS Academy Graduate — Cloud Security Foundations training badge" width="601" height="601" loading="lazy" decoding="async">
-              </a>
-              <div class="cert-body">
-                <p class="cert-type">Training · AWS Academy badge</p>
-                <h4>AWS Academy Graduate — Cloud Security Foundations</h4>
-                <p class="cert-meta">
-                  <span class="cert-org">Amazon Web Services (AWS)</span>
-                  <span class="cert-date">October 2026 · 20 course hours</span>
-                </p>
-                <p class="cert-desc">Cloud security foundations covered through the AWS Academy learning programme.</p>
-                <p class="cert-links">
-                  <a class="cert-verify" href="https://www.credly.com/badges/27dc0ce8-628c-406e-aa0b-3bf08581a090/public_url" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-external"/></svg>Verify on Credly</a>
-                  <a class="cert-verify" href="../assets/certifications/aws-cloud-security-foundations.pdf" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg>View the certificate (PDF)</a>
-                </p>
-              </div>
-            </article>
-
-            <article class="cert">
-              <a class="cert-visual" href="../assets/certifications/aws-cloud-foundations.png" data-caption="AWS Academy Graduate - Cloud Foundations - Training Badge — Amazon Web Services Training and Certification, 19/10/2026">
-                <img src="../assets/certifications/aws-cloud-foundations.png" alt="AWS Academy Graduate badge: Cloud Foundations, Training Badge" width="601" height="601" loading="lazy" decoding="async">
-              </a>
-              <div class="cert-body">
-                <p class="cert-type">Training · AWS Academy badge</p>
-                <h4>AWS Academy Graduate — Cloud Foundations</h4>
-                <p class="cert-meta">
-                  <span class="cert-org">Amazon Web Services Training and Certification</span>
-                  <span class="cert-date">19/10/2026 · 20 course hours</span>
-                </p>
-                <p class="cert-desc">Core services, the shared responsibility model, identity and logging in the cloud.</p>
-                <p class="cert-links">
-                  <a class="cert-verify" href="https://www.credly.com/badges/86ad9681-e017-46e3-9d2f-404b4ad185d1/public_url" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-external"/></svg>Verify the badge</a>
-                  <a class="cert-verify" href="../assets/certifications/aws-cloud-foundations.pdf" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg>View the certificate (PDF)</a>
-                </p>
-              </div>
-            </article>
-
+              <li>
+                <a class="tl-logo tl-logo--round" href="https://lyceepeguyorleans.fr/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../assets/logos/lycee.png" alt="" width="225" height="225" loading="lazy" decoding="async"></a>
+                <span class="tl-when">2022</span>
+                <h4>French baccalauréat — Mathematics, Physics &amp; Chemistry</h4>
+                <p class="tl-where"><a href="https://lyceepeguyorleans.fr/" target="_blank" rel="noopener">Lycée Charles Péguy</a> — Orléans, France</p>
+              </li>
+            </ol>
           </div>
 
-          <a class="btn btn-soft certs-all" href="certifications/index.html">
-            <svg class="i" aria-hidden="true"><use href="#i-award"/></svg>View all certificates
-          </a>
+          <div class="panel panel--compact">
+            <div class="panel-head">
+              <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-languages"/></svg></span>
+              <h3>Languages</h3>
+            </div>
+            <dl class="language-grid"><div class="language-item"><dt>French</dt><dd>Fluent</dd></div><div class="language-item"><dt>English</dt><dd>C1</dd></div><div class="language-item"><dt>Arabic</dt><dd>Fluent</dd></div><div class="language-item"><dt>German</dt><dd>Basic</dd></div><div class="language-item"><dt>Spanish</dt><dd>Beginner</dd></div></dl>
+          </div>
 
-          <div class="learning-note">
-            <h4>Keep learning</h4>
-            <p>
-              I complement my projects with courses, and I am preparing professional certifications, to broaden my cybersecurity
-              skills, from systems and networks to cloud, and to explore artificial intelligence.
-            </p>
+          <div class="panel panel--compact panel--interests">
+            <div class="panel-head">
+              <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-heart"/></svg></span>
+              <h3>Interests</h3>
+            </div>
+            <div class="interest-grid" data-gallery>
+              <a class="interest-item" href="#voyages"><svg class="i" aria-hidden="true"><use href="#i-globe"/></svg><span>Travel<small>Travel journal</small></span></a>
+              <a class="interest-item interest-item--photo" href="../assets/interets/echecs.jpeg" data-lightbox data-caption="Chess — game in progress"><svg class="i" aria-hidden="true"><use href="#i-chess"/></svg><span>Chess<small>See the photo</small></span><img src="../assets/interets/echecs.jpeg" alt="" width="834" height="626" loading="lazy" decoding="async"></a>
+              <div class="interest-item"><svg class="i" aria-hidden="true"><use href="#i-football"/></svg><span>American football</span></div>
+            </div>
           </div>
         </div>
 
       </div>
 
-      <div class="side-panels">
-        <div class="panel">
+      <!-- Certificats : seul usage de l'or. Deux niveaux : principaux, puis cours complementaires. -->
+      <div class="credentials panel" id="certificats" data-gallery>
+        <div class="credentials-head">
           <div class="panel-head">
-            <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-languages"/></svg></span>
-            <h3>Languages</h3>
+            <span class="ico-tile ico-tile--gold"><svg class="i" aria-hidden="true"><use href="#i-award"/></svg></span>
+            <div>
+              <h3>Certificates &amp; training</h3>
+              <span class="sub sub--gold">Verifiable credentials</span>
+            </div>
           </div>
-          <dl class="language-grid"><div class="language-item"><dt>French</dt><dd>Fluent</dd></div><div class="language-item"><dt>English</dt><dd>C1</dd></div><div class="language-item"><dt>Arabic</dt><dd>Fluent</dd></div><div class="language-item"><dt>German</dt><dd>Basic</dd></div><div class="language-item"><dt>Spanish</dt><dd>Beginner</dd></div></dl>
+          <a class="btn btn-soft credentials-all" href="certifications/index.html">All certificates<span aria-hidden="true">→</span></a>
         </div>
-
-        <div class="panel panel--interests">
-          <div class="panel-head">
-            <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-heart"/></svg></span>
-            <h3>Interests</h3>
-          </div>
-          <div class="interest-grid">
-            <a class="interest-item" href="#voyages"><svg class="i" aria-hidden="true"><use href="#i-globe"/></svg>Travel</a>
-            <div class="interest-item"><svg class="i" aria-hidden="true"><use href="#i-chess"/></svg>Chess</div>
-            <div class="interest-item"><svg class="i" aria-hidden="true"><use href="#i-football"/></svg>American football</div>
-          </div>
-        </div>
+        <p class="credentials-note">Badges and certificates earned through training. Professional certifications will be added once earned.</p>
+        <h4 class="cred-group-title">Highlights</h4>
+        <ul class="cred-grid">
+            <li class="cred">
+              <a class="cert-visual cred-visual" href="../assets/certifications/cisco-ethical-hacker.jpg" data-caption="Ethical Hacker — Cisco Networking Academy, 05/10/2026">
+                <img src="../assets/certifications/cisco-ethical-hacker.jpg" alt="Cisco Networking Academy certificate: Ethical Hacker" width="1200" height="927" loading="lazy" decoding="async">
+              </a>
+              <div class="cred-body">
+                <p class="cred-kind">Offensive security</p>
+                <h4>Ethical Hacker</h4>
+                <p class="cred-meta">Cisco Networking Academy · 10/2026</p>
+                <p class="cred-links"><a href="https://www.credly.com/badges/e7869115-2372-4988-b7e6-7b40f05216f7/public_url" target="_blank" rel="noopener" aria-label="Verify on Credly — Ethical Hacker"><svg class="i" aria-hidden="true"><use href="#i-external"/></svg>Verify</a></p>
+              </div>
+            </li>
+            <li class="cred">
+              <a class="cert-visual cred-visual" href="../assets/certifications/aws-cloud-security-foundations.png" data-caption="AWS Academy Graduate — Cloud Security Foundations — Amazon Web Services (AWS), October 2026">
+                <img src="../assets/certifications/aws-cloud-security-foundations.png" alt="AWS Academy Graduate — Cloud Security Foundations training badge" width="601" height="601" loading="lazy" decoding="async">
+              </a>
+              <div class="cred-body">
+                <p class="cred-kind">Cloud security</p>
+                <h4>Cloud Security Foundations</h4>
+                <p class="cred-meta">AWS Academy · 10/2026 · 20 h</p>
+                <p class="cred-links"><a href="https://www.credly.com/badges/27dc0ce8-628c-406e-aa0b-3bf08581a090/public_url" target="_blank" rel="noopener" aria-label="Verify on Credly — Cloud Security Foundations"><svg class="i" aria-hidden="true"><use href="#i-external"/></svg>Verify</a><a href="../assets/certifications/aws-cloud-security-foundations.pdf" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-file"/></svg>PDF</a></p>
+              </div>
+            </li>
+            <li class="cred">
+              <a class="cert-visual cred-visual" href="../assets/certifications/aws-cloud-foundations.png" data-caption="AWS Academy Graduate - Cloud Foundations - Training Badge — Amazon Web Services Training and Certification, 19/10/2026">
+                <img src="../assets/certifications/aws-cloud-foundations.png" alt="AWS Academy Graduate badge: Cloud Foundations, Training Badge" width="601" height="601" loading="lazy" decoding="async">
+              </a>
+              <div class="cred-body">
+                <p class="cred-kind">Cloud</p>
+                <h4>Cloud Foundations</h4>
+                <p class="cred-meta">AWS Academy · 10/2026 · 20 h</p>
+                <p class="cred-links"><a href="https://www.credly.com/badges/86ad9681-e017-46e3-9d2f-404b4ad185d1/public_url" target="_blank" rel="noopener" aria-label="Verify on Credly — Cloud Foundations"><svg class="i" aria-hidden="true"><use href="#i-external"/></svg>Verify</a><a href="../assets/certifications/aws-cloud-foundations.pdf" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-file"/></svg>PDF</a></p>
+              </div>
+            </li>
+            <li class="cred">
+              <a class="cert-visual cred-visual" href="../assets/certifications/kasbah-participant.png" data-caption="KASBAH 2026 exercise, cyber crisis management — EMSI × CyberSup, 09/2026">
+                <img src="../assets/certifications/kasbah-participant.png" alt="KASBAH 2026 badge: participant in the cyber crisis management exercise" width="1000" height="1000" loading="lazy" decoding="async">
+              </a>
+              <div class="cred-body">
+                <p class="cred-kind">Crisis management</p>
+                <h4>KASBAH 2026 — Cyber crisis</h4>
+                <p class="cred-meta">EMSI × CyberSup · 09/2026 · 3 days · Participant</p>
+                <p class="cred-links"><a href="https://kasbah.cybersup.ai/certificat/KSB26-0K0CQJVF" target="_blank" rel="noopener" aria-label="Verify the certificate — KASBAH 2026"><svg class="i" aria-hidden="true"><use href="#i-external"/></svg>Verify</a></p>
+              </div>
+            </li>
+        </ul>
+        <h4 class="cred-group-title">Additional courses</h4>
+        <ul class="cred-list">
+            <li>
+              <p class="cred-row-main"><strong>Splunk — 3 SOC courses</strong><span>Splunk Education · 10/2026 · 13 credit hours</span></p>
+              <p class="cred-row-links"><a class="cert-visual cert-visual--text" href="../assets/certifications/splunk-soc-essentials.jpg" data-caption="SOC Essentials: Investigating with Splunk ES 8.x — Splunk Education, 11/10/2026">View all 3</a><a class="cert-visual" href="../assets/certifications/splunk-threat-hunting.jpg" data-caption="SOC Essentials: Introduction to Threat Hunting — Splunk Education, 13/10/2026" hidden></a><a class="cert-visual" href="../assets/certifications/splunk-detection-engineering.jpg" data-caption="Introduction to Detection Engineering with Splunk — Splunk Education, 13/10/2026" hidden></a></p>
+            </li>
+            <li>
+              <p class="cred-row-main"><strong>Red Hat RH124 — Linux administration</strong><span>Coursera · 10/2026</span></p>
+              <p class="cred-row-links"><a class="cert-visual cert-visual--text" href="../assets/certifications/redhat-rh124.jpg" data-caption="Linux administration with Red Hat RH124 — Honoris Educational Network · Coursera, 12/10/2026">View</a><a href="https://coursera.org/verify/B3DQ61QTQIX2" target="_blank" rel="noopener" aria-label="Verify the certificate — Red Hat RH124"><svg class="i" aria-hidden="true"><use href="#i-external"/></svg>Verify</a></p>
+            </li>
+            <li>
+              <p class="cred-row-main"><strong>Network monitoring</strong><span>ENSET Mohammedia · 06/2026 · <em>Grade: Excellent — 98%</em></span></p>
+              <p class="cred-row-links"><a class="cert-visual cert-visual--text" href="../assets/certifications/supervision-reseaux-p1.jpg" data-caption="Network monitoring — ENSET Mohammedia, 11/06/2026 · page 1/2">View</a><a class="cert-visual" href="../assets/certifications/supervision-reseaux-p2.jpg" data-caption="Network monitoring — ENSET Mohammedia, 11/06/2026 · page 2/2" hidden></a></p>
+            </li>
+        </ul>
       </div>
     </div>
   </section>
@@ -1293,6 +1214,6 @@
   <div class="capture-controls"><button type="button" id="capture-prev" aria-label="Previous screenshot">←</button><a id="capture-original" target="_blank" rel="noopener">Open original ↗</a><button type="button" id="capture-next" aria-label="Next screenshot">→</button></div>
 </dialog>
 
-<script src="../assets/js/main.js?v=20261025-contact" defer></script>
+<script src="../assets/js/main.js?v=20261026-design" defer></script>
 </body>
 </html>

@@ -28,7 +28,7 @@ for path, page in pages.items():
     source = path.read_text(encoding='utf-8')
     if source.count('class="menu-toggle"') != 1 or 'class="menu-glyph"' not in source:
         errors.append(f'{path}: navigation must use one menu button and one glyph')
-    if 'security.css?v=20261025-coherence' not in source or 'main.js?v=20261025-contact' not in source:
+    if 'security.css?v=20261026-design' not in source or 'main.js?v=20261026-design' not in source:
         errors.append(f'{path}: missing shared, versioned styles or script')
     duplicates = [key for key, n in Counter(page.ids).items() if n > 1]
     if duplicates: errors.append(f'{path}: duplicate IDs: {duplicates}')
@@ -111,9 +111,12 @@ for path, page in pages.items():
             errors.append(f'{path}: hero positioning missing or changed')
         if 'data-words=' in source or 'class="hero-typed"' in source:
             errors.append(f'{path}: animated job titles must not return')
-        cv = re.search(r'<a class="btn btn-ghost" data-cv-link([^>]*)>', source)
-        if not cv or ' hidden' not in cv[1] or 'href=' in cv[1]:
-            errors.append(f'{path}: CV button must stay hidden and unlinked until a final PDF exists')
+        cv = re.search(r'<a class="btn btn-ghost btn-cv" data-cv-link href="([^"]+)" target="_blank" rel="noopener"[^>]*>(.*?)</a>', source)
+        expected_cv = ('../assets/cv/CV_Ryad_Boujenan_EN.pdf', 'My Resume') if path.parent.name == 'en' else ('assets/cv/CV_Ryad_Boujenan_FR.pdf', 'Mon CV')
+        if not cv or cv[1] != expected_cv[0] or expected_cv[1] not in cv[2] or ' hidden' in cv[0]:
+            errors.append(f'{path}: CV button must open the {expected_cv[1]} PDF in a new tab')
+        if 'id="certificats"' not in source or source.count('class="cred"') != 4 or 'assets/interets/echecs.jpeg" data-lightbox' not in source:
+            errors.append(f'{path}: certificates block or chess photo link missing')
         if page.telephones or re.search(r'(?:0[67]|\+33[67])(?:[ .-]?\d){8}', source):
             errors.append(f'{path}: personal phone number must not be published')
         if 'class="contact-email"' not in source or 'class="contact-mini"' not in source or 'action="mailto:ryadboujenan@outlook.com"' not in source:

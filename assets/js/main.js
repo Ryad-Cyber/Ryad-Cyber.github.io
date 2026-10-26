@@ -4,7 +4,7 @@
    2. Section courante dans le menu.
    3. Contact direct et copie de l'adresse e-mail.
    4. Carrousels de la section Voyages.
-   5. Visionneuse : photos de voyage et certificats.
+   5. Visionneuse : photos de voyage, certificats et centres d'interet.
    6. Alternance des trois certificats Splunk.
    7. Detail des projets dans une fenetre modale.
    Sans JavaScript : toutes les cartes restent visibles, le detail
@@ -101,9 +101,29 @@
       if (key !== "all") b.hidden = n === 0;
     });
 
-    var apply = function (btn) {
+    // Repartition des cartes visibles : la derniere rangee n'est jamais
+    // une carte isolee. Sur 3 colonnes (grille de 6 pistes), le reste
+    // passe en cartes larges (ex. 7 = 3 + 2 + 2) ; sur 2 colonnes, une
+    // carte impaire occupe toute la rangee en disposition horizontale.
+    var balance = function (visible) {
+      var n = visible.length;
+      var wide = n % 3 === 1 && n >= 4 ? 4 : n % 3 === 2 ? 2 : 0;
+      cards.forEach(function (c) {
+        c.classList.remove("is-wide", "is-row-lg", "is-row-md");
+      });
+      visible.forEach(function (c, i) {
+        if (n === 1) c.classList.add("is-row-lg");
+        else if (i >= n - wide) c.classList.add("is-wide");
+        if (n % 2 === 1 && i === n - 1) c.classList.add("is-row-md");
+      });
+    };
+
+    // Teinte de la section : suit la categorie choisie ("all" = palette du site).
+    var section = grid.closest("section");
+
+    var apply = function (btn, animate) {
       var key = btn.getAttribute("data-filter");
-      var shown = 0;
+      var visible = [];
 
       buttons.forEach(function (x) {
         x.setAttribute("aria-pressed", x === btn ? "true" : "false");
@@ -111,9 +131,21 @@
       cards.forEach(function (c) {
         var on = matches(c, key);
         c.hidden = !on;
-        if (on) shown++;
+        if (on) visible.push(c);
       });
+      var shown = visible.length;
+      balance(visible);
       grid.setAttribute("data-visible-count", String(shown));
+      if (section) section.setAttribute("data-tone", key);
+      // Courte apparition des cartes affichees apres un clic (CSS : .is-in).
+      if (animate && !reduced) {
+        visible.forEach(function (c, i) {
+          c.style.animationDelay = i * 40 + "ms";
+          c.classList.remove("is-in");
+          void c.offsetWidth;
+          c.classList.add("is-in");
+        });
+      }
 
       // Categorie sans projet : la grille cede la place a l'etat vide.
       grid.hidden = shown === 0;
@@ -127,7 +159,7 @@
     bar.hidden = false;
     bar.addEventListener("click", function (event) {
       var b = event.target.closest(".filter");
-      if (b) apply(b);
+      if (b && b.getAttribute("aria-pressed") !== "true") apply(b, true);
     });
 
     // Etat initial : "Tous", donc sans les cartes en preparation.
@@ -286,7 +318,7 @@
     /* Un groupe = une suite parcourable : les photos d'un pays,
        ou l'ensemble des certificats. */
     var tilesOf = function (group) {
-      return toArray(group.querySelectorAll("a.photo, a.cert-visual"));
+      return toArray(group.querySelectorAll("a.photo, a.cert-visual, a[data-lightbox]"));
     };
 
     var show = function (i) {

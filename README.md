@@ -47,7 +47,9 @@ The website uses no front-end framework or build process. Its lightweight archit
 
 * **Bilingual website:** French and English versions with matching content and structure.
 * **SOC / Cloud visual identity:** midnight blue, restrained electric blue accents, a subtle network grid, and Barlow Condensed name typography.
-* **Interactive project portfolio:** regular compact project grid, visible category labels, detailed studies and keyboard-accessible screenshot galleries.
+* **Interactive project portfolio:** balanced compact grid (no isolated last card), category filters with a subtle per-category colour, detailed studies and keyboard-accessible screenshot galleries.
+* **Resume:** French and English PDF resumes linked from the hero.
+* **Certificates & training:** main badges highlighted, additional courses listed compactly, each with its verification link.
 * **Project documentation:** objectives, results, tools, and practical scenarios.
 * **Responsive design:** adapted to desktop, tablet, and mobile screens.
 * **Travel gallery:** country-based photo carousels and an image viewer.
@@ -68,6 +70,8 @@ The website uses no front-end framework or build process. Its lightweight archit
 │   ├── js/
 │   │   └── main.js         # Interactive features
 │   ├── certifications/     # Certification images
+│   ├── cv/                 # French and English PDF resumes
+│   ├── interets/           # Interest photos (chess)
 │   ├── projets/            # Project screenshots and visuals
 │   ├── logos/              # Education and organization logos
 │   ├── flags/              # Travel section flags
