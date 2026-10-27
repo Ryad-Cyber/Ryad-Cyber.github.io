@@ -115,7 +115,7 @@ for path, page in pages.items():
         if 'data-words=' in source or 'class="hero-typed"' in source:
             errors.append(f'{path}: animated job titles must not return')
         cv = re.search(r'<a class="btn btn-ghost btn-cv" data-cv-link href="([^"]+)" target="_blank" rel="noopener"[^>]*>(.*?)</a>', source)
-        expected_cv = ('../assets/cv/CV_Ryad_Boujenan_EN.pdf', 'My Resume') if path.parent.name == 'en' else ('assets/cv/CV_Ryad_Boujenan_FR.pdf', 'Mon CV')
+        expected_cv = ('../assets/cv/CV_Ryad_Boujenan_EN.pdf?v=20261027', 'My Resume') if path.parent.name == 'en' else ('assets/cv/CV_Ryad_Boujenan_FR.pdf?v=20261027', 'Mon CV')
         if not cv or cv[1] != expected_cv[0] or expected_cv[1] not in cv[2] or ' hidden' in cv[0]:
             errors.append(f'{path}: CV button must open the {expected_cv[1]} PDF in a new tab')
         if 'id="certificats"' not in source or source.count('class="cred"') != 4 or 'assets/interets/echecs.jpeg" data-lightbox' not in source:
