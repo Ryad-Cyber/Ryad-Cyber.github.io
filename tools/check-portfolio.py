@@ -58,6 +58,7 @@ for path, page in pages.items():
             'p-wazuh': ('Wazuh.png', 'wazuh-detection-alerts-rules.png'),
             'p-dc4': ('Kali.jpg', 'acces-interface-web.png'),
             'p-aws': ('AWS.jpg', 'aws-vpc-architecture-routes.jpeg'),
+            'p-llm-pentest': ('Ollama.jpg', 'ollama-supportbot-injection-persistence.png'),
         }
         for card in cards:
             cover = re.search(r'<figure class="card-media[^"]*">\s*<img src="([^"]+)"', card)
