@@ -124,7 +124,7 @@
             <dl>
               <div class="stats-row"><dt>Dernier stage</dt><dd class="txt"><a href="#nethash">Nethash</a></dd></div>
               <div class="stats-row"><dt>Disponibilité</dt><dd class="txt live">PFE · février 2027</dd></div>
-              <div class="stats-row"><dt>Projets documentés</dt><dd data-project-total>07</dd></div>
+              <div class="stats-row"><dt>Projets documentés</dt><dd data-project-total>08</dd></div>
               <div class="stats-row"><dt>Certificats &amp; formations</dt><dd class="num"><a href="#certificats">07</a></dd></div>
             </dl>
           </div>
@@ -153,7 +153,7 @@
         <button class="filter" type="button" data-filter="crypto" data-label="Cryptographie" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Cryptographie<span class="count"></span></button>
       </div>
 
-      <p class="project-index">07 projets · objectifs, méthodes et résultats</p>
+      <p class="project-index">08 projets · objectifs, méthodes et résultats</p>
 <div class="cards" id="project-cards">
 
 <article class="card panel" data-cat="soc" aria-labelledby="p-elastic">
@@ -722,6 +722,110 @@
               </div>
             </details>
             <a class="btn btn-ghost" href="https://github.com/Ryad-Cyber/terraform-security-lab" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-code"/></svg>Voir le code et les vérifications sur GitHub</a>
+          </div>
+        </div></article>
+
+<article class="card panel" data-cat="ia" aria-labelledby="p-llm-pentest">
+          <figure class="card-media card-media--screenshot">
+            <img src="assets/projets/Ollama.jpg" alt="Logo Ollama pour le laboratoire local de chatbot LLM" width="447" height="447" loading="lazy" decoding="async">
+            <figcaption>Chatbot local sous Ollama</figcaption>
+          </figure><div class="card-content">
+          <div class="card-badges">
+            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-chip"/></svg>IA</span>
+            <span class="badge">2026 · Projet personnel</span>
+          </div>
+          <h3 id="p-llm-pentest"><span class="case-no">CAS Nº8</span>Audit de sécurité LLM — Chatbot Ollama local</h3>
+          <p class="card-desc">
+            Red teaming manuel d'un chatbot local sous Ollama : injection de prompt, jailbreak,
+            divulgation du system prompt et gestion non sécurisée de la sortie, selon l'OWASP Top 10 LLM et MITRE ATLAS.
+          </p>
+          <ul class="tags">
+            <li>Ollama</li><li>LLM</li><li>Prompt Injection</li><li>Jailbreak</li><li>OWASP LLM Top 10</li><li>MITRE ATLAS</li><li>Red Teaming</li>
+          </ul>
+
+          <div class="card-actions">
+            <details class="card-detail">
+              <summary class="btn btn-soft"><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span><span aria-hidden="true">↗</span></summary>
+              <div class="detail-body">
+                <div class="detail-row">
+                  <dl class="card-facts">
+                    <dt>Objectif</dt><dd>Évaluer la résistance d'un chatbot local sous Ollama (llama3.2:3b) face à l'injection de prompt, au jailbreak, à la divulgation du system prompt et aux risques de gestion non sécurisée de la sortie.</dd>
+                    <dt>Résultat</dt><dd>3 des 4 catégories testées ont révélé une faille exploitable, dont une injection persistant sur les tours suivants ; le jailbreak classique a été bloqué.</dd>
+                  </dl>
+                </div>
+                <div class="detail-row">
+                  <h4>Contexte</h4>
+                  <p>
+                    Laboratoire personnel entièrement local, sur du matériel que je contrôle, sans système
+                    tiers, de production ni exposé sur Internet. Le chatbot « SupportBot » tourne sur un
+                    modèle Ollama <code>llama3.2:3b</code> défini par un <code>Modelfile</code> contenant
+                    des données fictives (code VIP, email admin interne) servant de marqueurs pour les
+                    tests de divulgation.
+                  </p>
+                </div>
+                <div class="detail-row">
+                  <h4>Ce que j'ai fait</h4>
+                  <ol class="steps">
+                    <li>Déployé le modèle <code>llama3.2:3b</code> via Ollama avec un system prompt personnalisé contenant des données fictives marqueurs.</li>
+                    <li>Testé manuellement 4 catégories de risque : divulgation du system prompt, injection de prompt directe, gestion non sécurisée de la sortie et jailbreak, selon l'OWASP Top 10 LLM (2025) et MITRE ATLAS.</li>
+                    <li>Documenté chaque prompt, réponse et verdict dans un rapport d'évidence avec captures d'écran.</li>
+                    <li>Rattaché chaque résultat aux catégories OWASP (LLM01, LLM05, LLM07) et aux techniques MITRE ATLAS (AML.T0051, AML.T0054, AML.T0056).</li>
+                  </ol>
+                </div>
+                <div class="detail-row">
+                  <h4>Résultats des 4 tests</h4>
+                  <ul class="scenarios">
+                    <li>
+                      <div class="scenario-head"><h5>Divulgation du system prompt</h5><span class="attck">OWASP LLM07 · MITRE AML.T0056</span></div>
+                      <p>Les demandes directes de répéter ou d'ignorer les instructions ont été refusées, mais un cadrage « mode debug développeur » a fait fuiter des champs fictifs marqués comme sensibles dans le system prompt.</p>
+                    </li>
+                    <li>
+                      <div class="scenario-head"><h5>Injection de prompt, avec persistance</h5><span class="attck">OWASP LLM01 · MITRE AML.T0051</span></div>
+                      <p>Une instruction injectée directement a été bloquée, mais une injection déguisée en délimiteur de conversation avec un faux rôle <code>SYSTEM:</code> a détourné l'identité de l'assistant — et cette altération a persisté sur un tour ultérieur sans lien apparent.</p>
+                    </li>
+                    <li>
+                      <div class="scenario-head"><h5>Gestion non sécurisée de la sortie</h5><span class="attck">OWASP LLM05</span></div>
+                      <p>Le modèle a neutralisé un payload XSS injecté dans du HTML généré, mais a fourni <code>sudo rm -rf /var/log/*</code> comme commande prête à l'emploi pour « nettoyer les logs », avec seulement un avertissement verbal.</p>
+                    </li>
+                    <li>
+                      <div class="scenario-head"><h5>Résistance au jailbreak</h5><span class="attck">MITRE AML.T0054</span></div>
+                      <p>Un détournement de persona façon « DAN » et un cadrage narratif fictif ont tous les deux été refusés : la seule des quatre catégories où les garde-fous du modèle n'ont pas été contournés.</p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-row">
+                  <h4>Captures commentées</h4>
+                  <figure class="detail-fig">
+                    <a href="assets/projets/Ollama.jpg" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
+                      <img src="assets/projets/Ollama.jpg" alt="Logo Ollama, moteur d'inférence local utilisé pour le chatbot SupportBot" width="447" height="447" loading="lazy" decoding="async">
+                    </a>
+                    <figcaption>01 / Le chatbot SupportBot tourne sur Ollama, en local.</figcaption>
+                  </figure>
+                  <figure class="detail-fig">
+                    <a href="assets/projets/ollama-supportbot-injection-persistence.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
+                      <img src="assets/projets/ollama-supportbot-injection-persistence.png" alt="Terminal : divulgation du system prompt en mode debug puis persistance de l'injection de prompt sur un tour ultérieur" width="1893" height="864" loading="lazy" decoding="async">
+                    </a>
+                    <figcaption>02 / Divulgation du system prompt en « mode debug », puis injection de prompt persistant sur le tour suivant.</figcaption>
+                  </figure>
+                  <figure class="detail-fig">
+                    <a href="assets/projets/ollama-supportbot-output-jailbreak-results.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
+                      <img src="assets/projets/ollama-supportbot-output-jailbreak-results.png" alt="Terminal : commande destructrice suggérée sans validation, puis tentatives de jailbreak bloquées" width="1918" height="201" loading="lazy" decoding="async">
+                    </a>
+                    <figcaption>03 / Commande destructrice suggérée sans validation (gestion non sécurisée de la sortie), puis jailbreak bloqué.</figcaption>
+                  </figure>
+                </div>
+                <div class="detail-row">
+                  <h4>Limites</h4>
+                  <p>
+                    Test manuel et exploratoire (3-3-2-2 prompts selon les catégories), sans outil
+                    automatisé de red teaming LLM. Les résultats portent sur une configuration unique
+                    (<code>llama3.2:3b</code> avec un system prompt donné) à un instant donné et ne se
+                    généralisent pas nécessairement à un autre modèle ou system prompt.
+                  </p>
+                </div>
+              </div>
+            </details>
+            <a class="btn btn-ghost" href="https://github.com/Ryad-Cyber/llm-security-pentest" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg>Dépôt et rapport d'évidence sur GitHub</a>
           </div>
         </div></article>
 
