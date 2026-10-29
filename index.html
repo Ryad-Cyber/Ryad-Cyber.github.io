@@ -124,7 +124,7 @@
             <dl>
               <div class="stats-row"><dt>Dernier stage</dt><dd class="txt"><a href="#nethash">Nethash</a></dd></div>
               <div class="stats-row"><dt>Disponibilité</dt><dd class="txt live">PFE · février 2027</dd></div>
-              <div class="stats-row"><dt>Projets documentés</dt><dd data-project-total>08</dd></div>
+              <div class="stats-row"><dt>Projets documentés</dt><dd data-project-total>09</dd></div>
               <div class="stats-row"><dt>Certificats &amp; formations</dt><dd class="num"><a href="#certificats">07</a></dd></div>
             </dl>
           </div>
@@ -153,7 +153,7 @@
         <button class="filter" type="button" data-filter="crypto" data-label="Cryptographie" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Cryptographie<span class="count"></span></button>
       </div>
 
-      <p class="project-index">08 projets · objectifs, méthodes et résultats</p>
+      <p class="project-index">09 projets · objectifs, méthodes et résultats</p>
 <div class="cards" id="project-cards">
 
 <article class="card panel" data-cat="soc" aria-labelledby="p-elastic">
@@ -820,6 +820,84 @@
               </div>
             </details>
             <a class="btn btn-ghost" href="https://github.com/Ryad-Cyber/llm-security-pentest" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg>Dépôt et rapport d'évidence sur GitHub</a>
+          </div>
+        </div></article>
+
+<article class="card panel" data-cat="ia" aria-labelledby="p-soc-anomaly-ml">
+          <figure class="card-media card-media--screenshot">
+            <img src="assets/projets/soc-ml-01-distribution-scores.png" alt="Distribution des scores d’anomalie Isolation Forest" width="1075" height="654" loading="lazy" decoding="async">
+            <figcaption>Scores d’anomalie — Isolation Forest</figcaption>
+          </figure><div class="card-content">
+          <div class="card-badges">
+            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-chip"/></svg>IA</span>
+            <span class="badge">2026 · Projet académique (EMSI)</span>
+          </div>
+          <h3 id="p-soc-anomaly-ml"><span class="case-no">CAS Nº9</span>Détection d'anomalies SOC avec Isolation Forest</h3>
+          <p class="card-desc">
+            Détection non supervisée d'anomalies sur 2,6 millions d'alertes SOC multi-réseaux : fenêtrage temporel, Isolation Forest, seuil au 99<sup>e</sup> centile, regroupement en incidents et explication par chemins d'arbres.
+          </p>
+          <ul class="tags">
+            <li>Python</li><li>pandas</li><li>scikit-learn</li><li>Isolation Forest</li><li>Détection d'anomalies</li><li>Machine Learning non supervisé</li><li>SOC</li>
+          </ul>
+
+          <div class="card-actions">
+            <details class="card-detail">
+              <summary class="btn btn-soft"><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span><span aria-hidden="true">↗</span></summary>
+              <div class="detail-body">
+                <div class="detail-row">
+                  <dl class="card-facts">
+                    <dt>Objectif</dt><dd>Réduire le bruit d'alertes et faire remonter les fenêtres temporelles les plus suspectes dans l'<a href="https://github.com/ait-aecid/alert-data-set" target="_blank" rel="noopener">AIT Alert Data Set</a> (huit réseaux d'entreprise simulés), sans dépendre d'étiquettes au préalable.</dd>
+                    <dt>Résultat</dt><dd>41 fenêtres signalées sur la période surveillée, dont 23 contenant une étape d'attaque étiquetée (précision 56,1 %) ; 32,4 % des fenêtres d'intrusion surveillées retrouvées ; 21 incidents regroupés sur les huit réseaux.</dd>
+                  </dl>
+                </div>
+                <div class="detail-row">
+                  <h4>Contexte</h4>
+                  <p>Travail académique réalisé à l'EMSI, dans le module <em>Intelligence Artificielle pour la Cybersécurité</em>. Le dataset combine des alertes déjà générées par Wazuh, Suricata et AMiner sur huit réseaux simulés, avec des étapes d'attaque documentées — ces outils n'ont pas été déployés dans le cadre de ce projet : le travail porte sur l'analyse des alertes qu'ils ont produites.</p>
+                </div>
+                <div class="detail-row">
+                  <h4>Ce que j'ai fait</h4>
+                  <ol class="steps">
+                    <li>Chargé et préparé 2,6 millions d'alertes issues des huit réseaux, avec identification du détecteur d'origine (Wazuh, Suricata, AMiner).</li><li>Construit des fenêtres de 10 minutes par réseau et par hôte, et appliqué une transformation <code>log1p</code> aux comptages d'alertes.</li><li>Entraîné un <code>IsolationForest</code> non supervisé sur les fenêtres du premier jour de chaque réseau, utilisées comme référence « normale ».</li><li>Fixé le seuil de détection au 99<sup>e</sup> centile des scores du premier jour, plutôt qu'à une valeur arbitraire.</li><li>Regroupé et classé les fenêtres signalées en incidents, puis expliqué les fenêtres les plus suspectes à partir des chemins de décision des arbres.</li><li>Comparé les résultats aux étapes d'attaque étiquetées du dataset, et étudié l'effet des hyperparamètres (taille d'échantillon, nombre d'arbres).</li>
+                  </ol>
+                </div>
+                <div class="detail-row">
+                  <h4>Résultats de la détection</h4>
+                  <ul class="dashes">
+                    <li>Seuil retenu : 0,493 (99<sup>e</sup> centile des scores du premier jour).</li><li>41 fenêtres signalées sur la période surveillée ; 23 contenaient au moins une étape d'attaque étiquetée.</li><li>Précision des fenêtres signalées : 56,1 % — taux de fenêtres d'intrusion surveillées retrouvées : 32,4 %.</li><li>21 incidents regroupés sur les huit réseaux, classés par nombre d'hôtes concernés et score cumulé.</li>
+                  </ul>
+                </div>
+                <div class="detail-row">
+                  <h4>Étude de cas — réseau wilson</h4>
+                  <p>Sur le réseau <code>wilson</code>, trois incidents ont été signalés et classés. L'incident le mieux classé correspond à l'attaque réellement documentée sur ce réseau (scan de service → <code>wpscan</code> → <code>dirb</code> → webshell → craquage de mot de passe → élévation <code>sudo</code>), touchant sept hôtes. Mais la détection reste partielle : certaines étapes d'attaque, comme le craquage de mots de passe, ne sont retrouvées sur aucun des huit réseaux.</p>
+                </div>
+                <div class="detail-row">
+                  <h4>Captures commentées</h4>
+                  <figure class="detail-fig">
+                    <a href="assets/projets/soc-ml-01-distribution-scores.png" target="_blank" rel="noopener" title="Ouvrir l’image en grand">
+                      <img src="assets/projets/soc-ml-01-distribution-scores.png" alt="Terminal : histogramme de la distribution des scores d’anomalie, seuil au 99e centile a 0,493" width="1075" height="654" loading="lazy" decoding="async">
+                    </a>
+                    <figcaption>01 / Distribution des scores d'anomalie (jour 1 vs période surveillée) et seuil retenu à 0,493.</figcaption>
+                  </figure>
+                  <figure class="detail-fig">
+                    <a href="assets/projets/soc-ml-02-incidents.png" target="_blank" rel="noopener" title="Ouvrir l’image en grand">
+                      <img src="assets/projets/soc-ml-02-incidents.png" alt="Terminal : trois incidents regroupes et classes sur le reseau wilson" width="622" height="192" loading="lazy" decoding="async">
+                    </a>
+                    <figcaption>02 / Les trois incidents regroupés sur le réseau wilson, classés par score cumulé.</figcaption>
+                  </figure>
+                  <figure class="detail-fig">
+                    <a href="assets/projets/soc-ml-03-resultats-detection.png" target="_blank" rel="noopener" title="Ouvrir l’image en grand">
+                      <img src="assets/projets/soc-ml-03-resultats-detection.png" alt="Terminal : bilan de detection sur huit reseaux, precision et etapes d’attaque retrouvees" width="801" height="406" loading="lazy" decoding="async">
+                    </a>
+                    <figcaption>03 / Bilan de détection sur les huit réseaux : fenêtres signalées, précision, et présence des étapes d'attaque par réseau.</figcaption>
+                  </figure>
+                </div>
+                <div class="detail-row">
+                  <h4>Limites</h4>
+                  <p>Chiffres propres à ce jeu de données et à cette configuration (taille de fenêtre, seuil au 99<sup>e</sup> centile) : ils ne constituent pas une garantie de performance en environnement réel. La baseline du premier jour est supposée « normale » sans vérification indépendante. La détection reste partielle : plusieurs étapes d'attaque documentées échappent au signalement sur un ou plusieurs réseaux.</p>
+                </div>
+              </div>
+            </details>
+            <a class="btn btn-ghost" href="https://github.com/Ryad-Cyber/soc-anomaly-detection-isolation-forest" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg>Dépôt et notebook sur GitHub</a>
           </div>
         </div></article>
 
