@@ -369,7 +369,8 @@ a, button, summary { touch-action: manipulation; }
 [data-tone="all"] { --tone: #4b8fff; --tone-soft: #9cc2ff; }
 [data-cat="soc"],[data-filter="soc"],[data-tone="soc"] { --tone: #3f97ff; --tone-soft: #a9cfff; }
 [data-cat="redteam"],[data-filter="redteam"],[data-tone="redteam"] { --tone: #f0566a; --tone-soft: #ffb4be; }
-[data-cat="cloud"],[data-filter="cloud"],[data-tone="cloud"] { --tone: #22bfd4; --tone-soft: #9debf5; }
+[data-cat="cloud"],[data-filter="cloud"],[data-tone="cloud"] { --tone: #2fbf7e; --tone-soft: #a8f0c9; }
+[data-cat="ia"],[data-filter="ia"],[data-tone="ia"] { --tone: #9b6bf0; --tone-soft: #d9c8ff; }
 [data-cat="grc"],[data-filter="grc"],[data-tone="grc"] { --tone: #cda661; --tone-soft: #efd9a8; }
 
 /* Hero : trois actions, le CV en bouton discret mais lisible. */
