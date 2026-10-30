@@ -124,7 +124,7 @@
             <dl>
               <div class="stats-row"><dt>Dernier stage</dt><dd class="txt"><a href="#nethash">Nethash</a></dd></div>
               <div class="stats-row"><dt>Disponibilité</dt><dd class="txt live">PFE · février 2027</dd></div>
-              <div class="stats-row"><dt>Projets documentés</dt><dd data-project-total>09</dd></div>
+              <div class="stats-row"><dt>Projets documentés</dt><dd data-project-total>11</dd></div>
               <div class="stats-row"><dt>Certificats &amp; formations</dt><dd class="num"><a href="#certificats">07</a></dd></div>
             </dl>
           </div>
@@ -153,7 +153,7 @@
         <button class="filter" type="button" data-filter="crypto" data-label="Cryptographie" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Cryptographie<span class="count"></span></button>
       </div>
 
-      <p class="project-index">10 projets · objectifs, méthodes et résultats</p>
+      <p class="project-index">11 projets · objectifs, méthodes et résultats</p>
 <div class="cards" id="project-cards">
 
 <article class="card panel card--cloud" data-cat="cloud" aria-labelledby="p-aws">
@@ -917,6 +917,92 @@
           </div>
         </div></article>
 
+<article class="card panel" data-cat="soc" aria-labelledby="p-dfir-windows">
+          <figure class="card-media card-media--screenshot">
+            <img src="assets/projets/dfir-windows-intrusion-lab-cover.png" alt="Visuel de synthèse du projet : investigation forensic Windows avec Autopsy, Volatility 3 et TheHive" width="1820" height="800" loading="lazy" decoding="async">
+            <figcaption>Investigation forensic Windows — préparation du scénario, de la méthodologie et des gabarits</figcaption>
+          </figure><div class="card-content">
+          <div class="card-badges">
+            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Blue Team / SOC</span>
+            <span class="badge">10/2026 · Investigation à réaliser</span>
+          </div>
+          <h3 id="p-dfir-windows"><span class="case-no">CAS Nº10</span>Investigation forensic d'un poste Windows compromis</h3>
+          <p class="card-desc">
+            Scénario, environnement et méthodologie préparés pour une investigation DFIR complète :
+            analyse d'image disque avec Autopsy, analyse de capture mémoire avec Volatility 3, et
+            documentation du cas dans TheHive. L'investigation elle-même reste à réaliser.
+          </p>
+          <ul class="tags">
+            <li>Autopsy</li><li>Volatility 3</li><li>TheHive</li><li>Forensic Windows</li><li>Chronologie</li><li>Indicateurs de compromission</li>
+          </ul>
+
+          <div class="card-actions">
+            <details class="card-detail">
+              <summary class="btn btn-soft"><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span><span aria-hidden="true">↗</span></summary>
+              <div class="detail-body">
+                <div class="detail-row">
+                  <dl class="card-facts">
+                    <dt>Objectif</dt><dd>Mener une investigation DFIR complète sur un poste Windows compromis, en recoupant une analyse disque et une analyse mémoire d'un même incident.</dd>
+                    <dt>État</dt><dd>Préparation terminée (scénario, méthodologie, environnement, gabarits de documentation). Investigation à réaliser ; ce projet sera mis à jour avec les constats réels.</dd>
+                  </dl>
+                </div>
+                <div class="detail-row">
+                  <h4>Aperçu</h4>
+                  <figure class="detail-fig">
+                    <a href="assets/projets/dfir-windows-intrusion-lab-cover.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
+                      <img src="assets/projets/dfir-windows-intrusion-lab-cover.png" alt="Visuel de synthèse du projet : investigation forensic Windows avec Autopsy, Volatility 3 et TheHive" width="1820" height="800" loading="lazy" decoding="async">
+                    </a>
+                    <figcaption>Visuel de synthèse du projet et de son état d'avancement — aucune capture d'analyse réelle n'est encore disponible.</figcaption>
+                  </figure>
+                </div>
+                <div class="detail-row">
+                  <h4>Scénario et jeu de données</h4>
+                  <p>
+                    Jeu de données public d'entraînement DFIR mettant en scène le vol d'un document
+                    sensible depuis un poste de travail Windows, avec une image disque et une capture
+                    mémoire cohérentes entre elles (même poste, même incident) — condition nécessaire
+                    pour recouper réellement les deux analyses plutôt que de combiner deux cas sans
+                    rapport. Une alternative de repli (jeu de données NIST CFReDS) est documentée dans
+                    le dépôt si ce jeu de données venait à ne plus être accessible.
+                  </p>
+                </div>
+                <div class="detail-row">
+                  <h4>Méthodologie prévue</h4>
+                  <ol class="steps">
+                    <li><strong>Préparation.</strong> Vérification des empreintes des preuves, mise en place d'un répertoire de travail en lecture seule.</li>
+                    <li><strong>Analyse disque (Autopsy).</strong> Ingestion de l'image, revue des artefacts utilisateur, des journaux d'événements et des clés de persistance.</li>
+                    <li><strong>Analyse mémoire (Volatility 3).</strong> Processus, connexions réseau, injections de code, lignes de commande et registre chargé en mémoire.</li>
+                    <li><strong>Recoupement et chronologie.</strong> Mise en correspondance des constats disque et mémoire dans une chronologie unique.</li>
+                    <li><strong>Documentation TheHive.</strong> Création du cas, ajout des observables identifiés, suivi des tâches d'investigation.</li>
+                    <li><strong>Conclusions.</strong> Constats finaux et recommandations de remédiation directement liées aux observations.</li>
+                  </ol>
+                </div>
+                <div class="detail-row">
+                  <h4>Déjà préparé dans le dépôt</h4>
+                  <ul class="dashes">
+                    <li>README détaillé : contexte, objectifs, scénario, environnement et livrables attendus.</li>
+                    <li>Méthodologie pas à pas avec les commandes Volatility de référence.</li>
+                    <li>Gabarits de rapport d'incident, de chronologie et de suivi des indicateurs de compromission.</li>
+                    <li>Script PowerShell d'enchaînement des plugins Volatility 3 de base.</li>
+                    <li>Checklist d'ingestion et de revue Autopsy.</li>
+                    <li>Exemples de structure de cas TheHive et de tableau d'IOC, avec des données fictives clairement identifiées.</li>
+                  </ul>
+                </div>
+                <div class="detail-row">
+                  <h4>Limites assumées</h4>
+                  <p>
+                    Aucun résultat, indicateur ou capture d'écran n'est présenté comme réel dans ce
+                    dépôt tant que l'investigation n'a pas été menée. Il s'agit d'un exercice personnel
+                    basé sur un jeu de données public d'entraînement, et non d'une expertise judiciaire.
+                  </p>
+                </div>
+              </div>
+            </details>
+            <a class="btn btn-ghost" href="https://github.com/Ryad-Cyber/dfir-windows-intrusion-lab" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg>Dépôt — scénario, méthodologie et gabarits sur GitHub</a>
+          </div>
+        </div></article>
+
+
 <article class="card panel" data-cat="ia" aria-labelledby="p-soc-anomaly-ml">
           <figure class="card-media card-media--screenshot">
             <img src="assets/projets/soc-ml-01-distribution-scores.png" alt="Distribution des scores d’anomalie Isolation Forest" width="1075" height="654" loading="lazy" decoding="async">
@@ -926,7 +1012,7 @@
             <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-chip"/></svg>IA</span>
             <span class="badge">2026 · Projet académique (EMSI)</span>
           </div>
-          <h3 id="p-soc-anomaly-ml"><span class="case-no">CAS Nº10</span>Détection d'anomalies SOC avec Isolation Forest</h3>
+          <h3 id="p-soc-anomaly-ml"><span class="case-no">CAS Nº11</span>Détection d'anomalies SOC avec Isolation Forest</h3>
           <p class="card-desc">
             Détection non supervisée d'anomalies sur 2,6 millions d'alertes SOC multi-réseaux : fenêtrage temporel, Isolation Forest, seuil au 99<sup>e</sup> centile, regroupement en incidents et explication par chemins d'arbres.
           </p>
