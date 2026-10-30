@@ -153,8 +153,24 @@
         <button class="filter" type="button" data-filter="crypto" data-label="Cryptographie" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Cryptographie<span class="count"></span></button>
       </div>
 
-      <p class="project-index">09 projets · objectifs, méthodes et résultats</p>
+      <p class="project-index">10 projets · objectifs, méthodes et résultats</p>
 <div class="cards" id="project-cards">
+
+<article class="card panel card--cloud" data-cat="cloud" aria-labelledby="p-aws">
+      <figure class="card-media card-media--aws"><img src="assets/projets/AWS.jpg" alt="Logo AWS sur un fond spatial pour le laboratoire AWS Academy" width="736" height="416" loading="lazy" decoding="async"><figcaption>Laboratoire AWS Academy</figcaption></figure><div class="card-content">
+      <div class="card-badges"><span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-cloud"/></svg>Cloud Security</span><span class="badge">2026 · Lab AWS Academy</span></div>
+      <h3 id="p-aws"><span class="case-no">CAS Nº1</span>AWS Security Lab — IAM, VPC &amp; EC2</h3>
+      <p class="card-desc">Laboratoire pratique de formation AWS Academy : permissions IAM, segmentation VPC, instances EC2 et filtrage réseau par Security Groups.</p>
+      <ul class="tags"><li>AWS</li><li>IAM</li><li>IAM Policies</li><li>VPC</li><li>Subnets</li><li>Route Tables</li><li>EC2</li><li>Security Groups</li><li>JSON</li><li>TCP/IP</li><li>SSH</li></ul>
+      <div class="card-actions"><details class="card-detail"><summary class="btn btn-soft"><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span><span aria-hidden="true">↗</span></summary>
+      <div class="detail-body"><div class="detail-row"><dl class="card-facts"><dt>Cadre</dt><dd>AWS Academy Cloud Foundations</dd><dt>Nature</dt><dd>Laboratoire pratique de formation</dd></dl></div>
+      <div class="detail-row"><h4>Contexte et objectif</h4><p>Laboratoire pratique réalisé pendant la formation AWS Academy Cloud Foundations, pour manipuler les briques fondamentales d’une infrastructure AWS sous l’angle de la sécurité : identités, réseau et exposition des instances.</p></div>
+      <div class="detail-row"><h4>Réalisations techniques</h4><ol class="steps"><li><strong>Autorisations IAM.</strong> Analyse et configuration de <code>EC2-Admin-Policy</code> au format JSON : <code>ec2:Describe*</code>, <code>ec2:StartInstances</code> et <code>ec2:StopInstances</code>. Objectif : comprendre la granularité des permissions et le principe du moindre privilège.</li>
+    <li><strong>Architecture VPC.</strong> Étude de <code>Lab VPC — 10.1.0.0/16</code>, de <code>Public Subnet 1 — 10.1.11.0/24</code> et de la table de routage publique (Public Route Table, affichée « Public » sur la capture). Objectif : comprendre la segmentation, le routage et la connectivité.</li>
+    <li><strong>EC2 et Security Groups.</strong> Manipulation de <code>LabHost</code> et <code>Bastion Host</code> ; observation et configuration des règles réseau entrantes, dont SSH sur <code>TCP/22</code>. Objectif : comprendre l’administration des instances et le filtrage réseau.</li></ol></div>
+      <div class="detail-row"><h4>Captures commentées</h4><p>Cliquez sur une capture pour l’agrandir et parcourir la galerie.</p><figure class="detail-fig"><a href="assets/projets/aws-iam-policy-json.png" target="_blank" rel="noopener" aria-label="Ouvrir la capture 01 / IAM"><img src="assets/projets/aws-iam-policy-json.png" width="1881" height="701" loading="lazy" alt="Politique EC2-Admin-Policy : permissions EC2 en JSON."></a><figcaption><strong>01 / IAM — Politique EC2-Admin-Policy : permissions EC2 en JSON.</strong> Les actions Describe, StartInstances et StopInstances sont visibles. La ressource « * » reste large : c’est le point à restreindre pour appliquer pleinement le moindre privilège.</figcaption></figure><figure class="detail-fig"><a href="assets/projets/aws-vpc-architecture-routes.jpeg?v=20261028-redacted" target="_blank" rel="noopener" aria-label="Ouvrir la capture 02 / VPC"><img src="assets/projets/aws-vpc-architecture-routes.jpeg?v=20261028-redacted" width="2048" height="876" loading="lazy" alt="Lab VPC : réseau, sous-réseau et routage."></a><figcaption><strong>02 / VPC — Lab VPC : réseau, sous-réseau et routage.</strong> La carte montre 10.1.0.0/16, Public Subnet 1 en 10.1.11.0/24 et son association à la table « Public ».</figcaption></figure><figure class="detail-fig"><a href="assets/projets/aws-ec2-security-groups.png?v=20261028-redacted" target="_blank" rel="noopener" aria-label="Ouvrir la capture 03 / EC2"><img src="assets/projets/aws-ec2-security-groups.png?v=20261028-redacted" width="1657" height="694" loading="lazy" alt="LabHost et Bastion Host : instances et groupe de sécurité."></a><figcaption><strong>03 / EC2 — LabHost et Bastion Host : instances et groupe de sécurité.</strong> Les deux instances et le groupe de sécurité associé à LabHost sont visibles.</figcaption></figure></div>
+      <div class="detail-row"><h4>Ce que ce laboratoire m’a appris</h4><p>Relier les permissions IAM, l’organisation du réseau et les règles des Security Groups. Distinguer une configuration d’apprentissage d’une configuration réellement durcie ; notamment, des actions IAM limitées ne suffisent pas si le périmètre des ressources reste large.</p></div></div></details>
+      <p class="no-repo">Laboratoire de formation</p><a class="btn btn-ghost" href="https://github.com/Ryad-Cyber/aws-security-lab" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg>Documentation complète sur GitHub</a></div></div></article>
 
 <article class="card panel" data-cat="soc" aria-labelledby="p-elastic">
           <figure class="card-media card-media--screenshot">
@@ -165,7 +181,7 @@
             <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Blue Team / SOC</span>
             <span class="badge">2026 · Projet personnel</span>
           </div>
-          <h3 id="p-elastic"><span class="case-no">CAS Nº1</span>Lab SOC Elastic Security</h3>
+          <h3 id="p-elastic"><span class="case-no">CAS Nº2</span>Lab SOC Elastic Security</h3>
           <p class="card-desc">
             Un environnement de détection monté en laboratoire : 4 règles personnalisées,
             testées à l'aide d'attaques simulées sur des machines Linux et Windows.
@@ -279,6 +295,194 @@
           </div>
         </div></article>
 
+<article class="card panel" data-cat="redteam" aria-labelledby="p-juice-shop">
+          <figure class="card-media card-media--screenshot">
+            <img src="assets/projets/01-juice-shop-lab.png" alt="Instance locale d’OWASP Juice Shop ouverte dans le navigateur" width="1919" height="937" loading="lazy" decoding="async">
+            <figcaption>OWASP Juice Shop dans le laboratoire Docker local</figcaption>
+          </figure><div class="card-content">
+          <div class="card-badges">
+            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-target"/></svg>Red Team / Pentest</span>
+            <span class="badge">10/2026 · Projet personnel</span>
+          </div>
+          <h3 id="p-juice-shop"><span class="case-no">CAS Nº3</span>Pentest d’application web — OWASP Juice Shop</h3>
+          <p class="card-desc">Audit manuel ciblé de Juice Shop en local : cinq constats validés sur la recherche, les contrôles d’accès et l’API REST.</p>
+          <ul class="tags"><li>Burp Suite</li><li>Injection SQL</li><li>XSS</li><li>IDOR</li><li>API REST</li><li>JWT</li><li>Logique métier</li><li>Docker</li></ul>
+          <div class="card-actions">
+            <details class="card-detail">
+              <summary class="btn btn-soft"><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span><span aria-hidden="true">↗</span></summary>
+              <div class="detail-body">
+                <div class="detail-row">
+                  <dl class="card-facts">
+                    <dt>Périmètre</dt><dd>Fonctions et endpoints REST sélectionnés de Juice Shop, en laboratoire local.</dd>
+                    <dt>Résultat</dt><dd>Cinq constats validés, documentés avec preuves et remédiations dans le rapport.</dd>
+                  </dl>
+                </div>
+                <div class="detail-row">
+                  <h4>Contexte et méthode</h4>
+                  <p>OWASP Juice Shop, application volontairement vulnérable, a été déployée avec Docker Desktop sous Windows. J’ai analysé manuellement les requêtes et réponses avec Burp Suite Community Edition (Proxy, HTTP History et Repeater). L’audit était ciblé, non exhaustif.</p>
+                </div>
+                <div class="detail-row">
+                  <h4>Constats validés</h4>
+                  <ol class="steps">
+                    <li><strong>Injection SQL.</strong> Une requête de recherche construite a contourné le filtrage et révélé des produits normalement exclus du catalogue.</li>
+                    <li><strong>XSS.</strong> Une entrée de recherche construite a exécuté du JavaScript ; le type précis (réfléchi, stocké ou DOM) reste à vérifier.</li>
+                    <li><strong>Contrôle d’accès / IDOR.</strong> La modification d’un identifiant de panier a permis de lire celui d’un autre utilisateur. La tentative de modification a été refusée.</li>
+                    <li><strong>Divulgation d’informations.</strong> Une erreur de l’API a exposé une stack trace et des détails d’implémentation internes.</li>
+                    <li><strong>Logique métier / validation.</strong> L’API REST a accepté puis conservé une quantité négative. Aucune manipulation du montant du paiement n’a été démontrée.</li>
+                  </ol>
+                </div>
+                <div class="detail-row">
+                  <h4>Contrôles complémentaires</h4>
+                  <p>Les JWT absents ou invalides ont été rejetés avec une réponse 401 lors des requêtes de panier testées. J’ai aussi vérifié les autorisations, les en-têtes HTTP, la validation des entrées et les échanges REST, sans en déduire d’autres failles exploitables.</p>
+                </div>
+                <div class="detail-row">
+                  <h4>Priorités de remédiation</h4>
+                  <ul class="dashes">
+                    <li>Paramétrer les requêtes SQL et appliquer la visibilité des produits côté serveur.</li>
+                    <li>Encoder les sorties selon le contexte et éviter l’insertion HTML non sûre.</li>
+                    <li>Vérifier l’autorisation sur chaque lecture de panier et valider les quantités positives côté serveur.</li>
+                    <li>Renvoyer des erreurs génériques au client et réserver les stack traces aux journaux serveur.</li>
+                  </ul>
+                </div>
+                <div class="detail-row">
+                  <h4>Captures commentées</h4>
+                  <p>Cliquez sur une capture pour l’agrandir et parcourir la galerie. Le rapport détaille les preuves et les limites des tests.</p>
+                    <figure class="detail-fig"><a href="assets/projets/01-juice-shop-lab.png" target="_blank" rel="noopener" title="Ouvrir l’image en grand"><img src="assets/projets/01-juice-shop-lab.png" alt="Instance locale d’OWASP Juice Shop ouverte dans le navigateur" width="1919" height="937" loading="lazy" decoding="async"></a><figcaption>01 / Laboratoire Juice Shop local.</figcaption></figure>
+                    <figure class="detail-fig"><a href="assets/projets/02-burp-repeater-http.png" target="_blank" rel="noopener" title="Ouvrir l’image en grand"><img src="assets/projets/02-burp-repeater-http.png" alt="Requête et réponse HTTP analysées dans Burp Suite Repeater" width="1406" height="604" loading="lazy" decoding="async"></a><figcaption>02 / Analyse manuelle HTTP dans Burp Suite Repeater.</figcaption></figure>
+                    <figure class="detail-fig"><a href="assets/projets/03-sqli-product-disclosure.png" target="_blank" rel="noopener" title="Ouvrir l’image en grand"><img src="assets/projets/03-sqli-product-disclosure.png" alt="Injection SQL dans la recherche révélant des produits exclus du catalogue" width="1410" height="662" loading="lazy" decoding="async"></a><figcaption>03 / Injection SQL : divulgation de produits exclus.</figcaption></figure>
+                    <figure class="detail-fig"><a href="assets/projets/04-xss-reflected.png" target="_blank" rel="noopener" title="Ouvrir l’image en grand"><img src="assets/projets/04-xss-reflected.png" alt="Exécution de JavaScript via une recherche Juice Shop construite" width="1893" height="999" loading="lazy" decoding="async"></a><figcaption>04 / XSS : exécution de JavaScript via la recherche.</figcaption></figure>
+                    <figure class="detail-fig"><a href="assets/projets/05-idor-basket-access.jpeg" target="_blank" rel="noopener" title="Ouvrir l’image en grand"><img src="assets/projets/05-idor-basket-access.jpeg" alt="Réponse Burp montrant l’accès en lecture au panier d’un autre utilisateur" width="1600" height="660" loading="lazy" decoding="async"></a><figcaption>05 / IDOR : lecture du panier d’autrui ; modification refusée.</figcaption></figure>
+                    <figure class="detail-fig"><a href="assets/projets/06-http-security-headers.png" target="_blank" rel="noopener" title="Ouvrir l’image en grand"><img src="assets/projets/06-http-security-headers.png" alt="En-têtes de réponse HTTP analysés pendant l’audit" width="1402" height="601" loading="lazy" decoding="async"></a><figcaption>06 / Analyse des en-têtes de réponse HTTP.</figcaption></figure>
+                    <figure class="detail-fig"><a href="assets/projets/07-api-error-information-disclosure.jpeg" target="_blank" rel="noopener" title="Ouvrir l’image en grand"><img src="assets/projets/07-api-error-information-disclosure.jpeg" alt="Erreur API exposant une stack trace et des détails internes" width="2048" height="968" loading="lazy" decoding="async"></a><figcaption>07 / Erreur API révélant des détails internes.</figcaption></figure>
+                    <figure class="detail-fig"><a href="assets/projets/08-negative-quantity-api.jpeg" target="_blank" rel="noopener" title="Ouvrir l’image en grand"><img src="assets/projets/08-negative-quantity-api.jpeg" alt="Réponse API acceptant une quantité négative dans le panier" width="1600" height="684" loading="lazy" decoding="async"></a><figcaption>08 / Quantité négative acceptée par l’API.</figcaption></figure>
+                    <figure class="detail-fig"><a href="assets/projets/09-negative-quantity-persisted.jpeg" target="_blank" rel="noopener" title="Ouvrir l’image en grand"><img src="assets/projets/09-negative-quantity-persisted.jpeg" alt="Lecture du panier confirmant la persistance de la quantité négative" width="2048" height="876" loading="lazy" decoding="async"></a><figcaption>09 / Quantité négative persistée dans le panier.</figcaption></figure>
+                    <figure class="detail-fig"><a href="assets/projets/10-cart-ui-quantity-mismatch.jpeg" target="_blank" rel="noopener" title="Ouvrir l’image en grand"><img src="assets/projets/10-cart-ui-quantity-mismatch.jpeg" alt="Interface du panier affichant une quantité positive malgré la valeur négative dans l’API" width="2048" height="846" loading="lazy" decoding="async"></a><figcaption>10 / Divergence interface/API ; aucune manipulation du paiement démontrée.</figcaption></figure>
+                </div>
+              </div>
+            </details>
+            <a class="btn btn-ghost" href="https://github.com/Ryad-Cyber/OWASP-Juice-Shop-Pentest" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-code"/></svg>Dépôt et rapport de sécurité</a>
+          </div>
+        </div></article>
+
+
+<article class="card panel" data-cat="ia" aria-labelledby="p-llm-pentest">
+          <figure class="card-media card-media--screenshot">
+            <img src="assets/projets/Ollama.jpg" alt="Logo Ollama pour le laboratoire local de chatbot LLM" width="447" height="447" loading="lazy" decoding="async">
+            <figcaption>Chatbot local sous Ollama</figcaption>
+          </figure><div class="card-content">
+          <div class="card-badges">
+            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-chip"/></svg>IA</span>
+            <span class="badge">2026 · Projet personnel</span>
+          </div>
+          <h3 id="p-llm-pentest"><span class="case-no">CAS Nº4</span>Audit de sécurité LLM — Chatbot Ollama local</h3>
+          <p class="card-desc">
+            Red teaming manuel d'un chatbot local sous Ollama : injection de prompt, jailbreak,
+            divulgation du system prompt et gestion non sécurisée de la sortie, selon l'OWASP Top 10 LLM et MITRE ATLAS.
+          </p>
+          <ul class="tags">
+            <li>Ollama</li><li>LLM</li><li>Prompt Injection</li><li>Jailbreak</li><li>OWASP LLM Top 10</li><li>MITRE ATLAS</li><li>Red Teaming</li>
+          </ul>
+
+          <div class="card-actions">
+            <details class="card-detail">
+              <summary class="btn btn-soft"><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span><span aria-hidden="true">↗</span></summary>
+              <div class="detail-body">
+                <div class="detail-row">
+                  <dl class="card-facts">
+                    <dt>Objectif</dt><dd>Évaluer la résistance d'un chatbot local sous Ollama (llama3.2:3b) face à l'injection de prompt, au jailbreak, à la divulgation du system prompt et aux risques de gestion non sécurisée de la sortie.</dd>
+                    <dt>Résultat</dt><dd>3 des 4 catégories testées ont révélé une faille exploitable, dont une injection persistant sur les tours suivants ; le jailbreak classique a été bloqué.</dd>
+                  </dl>
+                </div>
+                <div class="detail-row">
+                  <h4>Contexte</h4>
+                  <p>
+                    Laboratoire personnel entièrement local, sur du matériel que je contrôle, sans système
+                    tiers, de production ni exposé sur Internet. Le chatbot « SupportBot » tourne sur un
+                    modèle Ollama <code>llama3.2:3b</code> défini par un <code>Modelfile</code> contenant
+                    des données fictives (code VIP, email admin interne) servant de marqueurs pour les
+                    tests de divulgation.
+                  </p>
+                </div>
+                <div class="detail-row">
+                  <h4>Ce que j'ai fait</h4>
+                  <ol class="steps">
+                    <li>Déployé le modèle <code>llama3.2:3b</code> via Ollama avec un system prompt personnalisé contenant des données fictives marqueurs.</li>
+                    <li>Testé manuellement 4 catégories de risque : divulgation du system prompt, injection de prompt directe, gestion non sécurisée de la sortie et jailbreak, selon l'OWASP Top 10 LLM (2025) et MITRE ATLAS.</li>
+                    <li>Documenté chaque prompt, réponse et verdict dans un rapport d'évidence avec captures d'écran.</li>
+                    <li>Rattaché chaque résultat aux catégories OWASP (LLM01, LLM05, LLM07) et aux techniques MITRE ATLAS (AML.T0051, AML.T0054, AML.T0056).</li>
+                  </ol>
+                </div>
+                <div class="detail-row">
+                  <h4>Résultats des 4 tests</h4>
+                  <ul class="scenarios">
+                    <li>
+                      <div class="scenario-head"><h5>Divulgation du system prompt</h5><span class="attck">OWASP LLM07 · MITRE AML.T0056</span></div>
+                      <p>Les demandes directes de répéter ou d'ignorer les instructions ont été refusées, mais un cadrage « mode debug développeur » a fait fuiter des champs fictifs marqués comme sensibles dans le system prompt.</p>
+                    </li>
+                    <li>
+                      <div class="scenario-head"><h5>Injection de prompt, avec persistance</h5><span class="attck">OWASP LLM01 · MITRE AML.T0051</span></div>
+                      <p>Une instruction injectée directement a été bloquée, mais une injection déguisée en délimiteur de conversation avec un faux rôle <code>SYSTEM:</code> a détourné l'identité de l'assistant — et cette altération a persisté sur un tour ultérieur sans lien apparent.</p>
+                    </li>
+                    <li>
+                      <div class="scenario-head"><h5>Gestion non sécurisée de la sortie</h5><span class="attck">OWASP LLM05</span></div>
+                      <p>Le modèle a neutralisé un payload XSS injecté dans du HTML généré, mais a fourni <code>sudo rm -rf /var/log/*</code> comme commande prête à l'emploi pour « nettoyer les logs », avec seulement un avertissement verbal.</p>
+                    </li>
+                    <li>
+                      <div class="scenario-head"><h5>Résistance au jailbreak</h5><span class="attck">MITRE AML.T0054</span></div>
+                      <p>Un détournement de persona façon « DAN » et un cadrage narratif fictif ont tous les deux été refusés : la seule des quatre catégories où les garde-fous du modèle n'ont pas été contournés.</p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-row">
+                  <h4>Captures commentées</h4>
+                  <figure class="detail-fig">
+                    <a href="assets/projets/ollama-supportbot-injection-persistence.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
+                      <img src="assets/projets/ollama-supportbot-injection-persistence.png" alt="Terminal : divulgation du system prompt en mode debug puis persistance de l'injection de prompt sur un tour ultérieur" width="1893" height="864" loading="lazy" decoding="async">
+                    </a>
+                    <figcaption>01 / Divulgation du system prompt en « mode debug », puis injection de prompt persistant sur le tour suivant.</figcaption>
+                  </figure>
+                  <figure class="detail-fig">
+                    <a href="assets/projets/ollama-supportbot-output-jailbreak-results.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
+                      <img src="assets/projets/ollama-supportbot-output-jailbreak-results.png" alt="Terminal : commande destructrice suggérée sans validation, puis tentatives de jailbreak bloquées" width="1918" height="201" loading="lazy" decoding="async">
+                    </a>
+                    <figcaption>02 / Commande destructrice suggérée sans validation (gestion non sécurisée de la sortie), puis jailbreak bloqué.</figcaption>
+                  </figure>
+                </div>
+                <div class="detail-row">
+                  <h4>Limites</h4>
+                  <p>
+                    Test manuel et exploratoire (3-3-2-2 prompts selon les catégories), sans outil
+                    automatisé de red teaming LLM. Les résultats portent sur une configuration unique
+                    (<code>llama3.2:3b</code> avec un system prompt donné) à un instant donné et ne se
+                    généralisent pas nécessairement à un autre modèle ou system prompt.
+                  </p>
+                </div>
+              </div>
+            </details>
+            <a class="btn btn-ghost" href="https://github.com/Ryad-Cyber/llm-security-pentest" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg>Dépôt et rapport d'évidence sur GitHub</a>
+          </div>
+        </div></article>
+
+<article class="card panel card--cloud" data-cat="cloud" aria-labelledby="p-terraform-docker">
+          <figure class="card-media card-media--screenshot"><img src="assets/projets/terraform-04-secure-web-server.png" alt="Tableau de bord Nginx du laboratoire Terraform local" width="1908" height="930" loading="lazy" decoding="async"><figcaption>Frontend Nginx du laboratoire local</figcaption></figure><div class="card-content">
+          <div class="card-badges"><span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-cloud"/></svg>Cloud Security</span><span class="badge">10/2026 · Projet personnel</span></div>
+          <h3 id="p-terraform-docker"><span class="case-no">CAS Nº5</span>Infrastructure sécurisée avec Terraform &amp; Docker</h3>
+          <p class="card-desc">Infrastructure locale déployée avec Terraform et Docker : frontend Nginx, backend HTTP Echo, segmentation réseau et durcissement des conteneurs.</p>
+          <ul class="tags"><li>Infrastructure as Code (IaC)</li><li>Terraform</li><li>Sécurité Docker</li><li>Durcissement des conteneurs</li><li>Segmentation réseau</li><li>Moindre privilège</li></ul>
+          <div class="card-actions">
+            <details class="card-detail"><summary class="btn btn-soft"><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span><span aria-hidden="true">↗</span></summary>
+              <div class="detail-body">
+                <div class="detail-row"><dl class="card-facts"><dt>Cadre</dt><dd>Laboratoire local Terraform et Docker ; aucun service AWS</dd><dt>Résultat</dt><dd>Frontend limité à 127.0.0.1:8080 ; backend sans port publié ; exécution non-root, privilèges restreints, réseau interne et exposition locale vérifiés.</dd></dl></div>
+                <div class="detail-row"><h4>Architecture et segmentation</h4><p>Terraform provisionne un frontend Nginx et un backend HTTP Echo sur deux réseaux Docker. Le frontend rejoint les deux réseaux ; le backend est uniquement relié au réseau interne. Le backend reste accessible au frontend sans port publié sur l’hôte.</p></div>
+                <div class="detail-row"><h4>Contrôles de sécurité</h4><ul class="dashes"><li>Exécution sans root : UID 101 pour Nginx et UID 65532 pour HTTP Echo.</li><li>Option no-new-privileges et suppression de toutes les capacités Linux supplémentaires.</li><li>Mémoire limitée à 128 Mio pour le frontend et 64 Mio pour le backend ; montage HTML en lecture seule.</li></ul></div>
+                <div class="detail-row"><h4>Vérifications documentées</h4><p>Les tests Docker consignés dans le dépôt vérifient les UID, les options de sécurité, la liaison locale du port 8080, le réseau interne et l’absence de port backend publié. La réponse HTTP du frontend et la communication frontend–backend ont également été contrôlées. Cette segmentation réduit l’exposition, sans garantir une isolation complète de l’hôte.</p></div>
+                <div class="detail-row"><h4>Captures commentées</h4><figure class="detail-fig"><a href="assets/projets/terraform-01-deployment.png" target="_blank" rel="noopener" aria-label="Ouvrir la capture 01"><img src="assets/projets/terraform-01-deployment.png" alt="Déploiement Terraform de l’infrastructure" width="1860" height="121" loading="lazy" decoding="async"></a><figcaption>01 / Déploiement automatisé avec Terraform.</figcaption></figure><figure class="detail-fig"><a href="assets/projets/terraform-02-security-controls.png" target="_blank" rel="noopener" aria-label="Ouvrir la capture 02"><img src="assets/projets/terraform-02-security-controls.png" alt="Contrôles Docker : UID non-root, privilèges, capacités et mémoire" width="1875" height="394" loading="lazy" decoding="async"></a><figcaption>02 / Contrôles des conteneurs et exposition locale.</figcaption></figure><figure class="detail-fig"><a href="assets/projets/terraform-03-network-configuration.png" target="_blank" rel="noopener" aria-label="Ouvrir la capture 03"><img src="assets/projets/terraform-03-network-configuration.png" alt="Configuration des réseaux Docker et port local" width="1881" height="454" loading="lazy" decoding="async"></a><figcaption>03 / Réseaux Docker et liaison à 127.0.0.1.</figcaption></figure><figure class="detail-fig"><a href="assets/projets/terraform-04-secure-web-server.png" target="_blank" rel="noopener" aria-label="Ouvrir la capture 04"><img src="assets/projets/terraform-04-secure-web-server.png" alt="Frontend Nginx du laboratoire local" width="1908" height="930" loading="lazy" decoding="async"></a><figcaption>04 / Frontend Nginx en fonctionnement.</figcaption></figure><figure class="detail-fig"><a href="assets/projets/terraform-05-backend-isolation.png" target="_blank" rel="noopener" aria-label="Ouvrir la capture 05"><img src="assets/projets/terraform-05-backend-isolation.png" alt="Communication avec le backend sans port publié" width="1890" height="537" loading="lazy" decoding="async"></a><figcaption>05 / Backend sans port publié et communication interne.</figcaption></figure><figure class="detail-fig"><a href="assets/projets/terraform-06-internal-network.png" target="_blank" rel="noopener" aria-label="Ouvrir la capture 06"><img src="assets/projets/terraform-06-internal-network.png" alt="Vérification du réseau interne et de l’utilisateur backend" width="1893" height="225" loading="lazy" decoding="async"></a><figcaption>06 / Réseau interne et exécution non-root du backend.</figcaption></figure></div>
+              </div>
+            </details>
+            <a class="btn btn-ghost" href="https://github.com/Ryad-Cyber/terraform-security-lab" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-code"/></svg>Voir le code et les vérifications sur GitHub</a>
+          </div>
+        </div></article>
+
 <article class="card panel" data-cat="soc" aria-labelledby="p-wazuh">
           <figure class="card-media card-media--screenshot">
             <img src="assets/projets/Wazuh.png" alt="Identité visuelle Wazuh du laboratoire SIEM" width="693" height="442" loading="lazy" decoding="async">
@@ -288,7 +492,7 @@
             <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Blue Team / SOC</span>
             <span class="badge">05/2026 · Projet académique</span>
           </div>
-          <h3 id="p-wazuh"><span class="case-no">CAS Nº2</span>Lab Wazuh (SIEM) multi-VM</h3>
+          <h3 id="p-wazuh"><span class="case-no">CAS Nº6</span>Lab Wazuh (SIEM) multi-VM</h3>
           <p class="card-desc">
             Un SIEM open source déployé sur plusieurs VM : scénarios Nmap et SSH, alertes d’authentification et règle personnalisée documentée.
           </p>
@@ -376,22 +580,23 @@
           </div>
         </div></article>
 
-<article class="card panel" data-cat="grc" aria-labelledby="p-kasbah">
-          <figure class="card-media">
-            <img src="assets/projets/kasbah_photo.jpeg" alt="Présentation d'un scénario de crise devant l'écran de projection, pendant l'exercice KASBAH 2026" width="1206" height="904" loading="lazy" decoding="async">
-            <figcaption>Présentation lors de l'exercice de crise KASBAH 2026</figcaption>
+<article class="card panel" data-cat="crypto" aria-labelledby="p-cryptokit">
+          <figure class="card-media card-media--screenshot">
+            <img src="assets/projets/cryptokit-cli-demo.png" alt="Terminal : commandes CryptoKit (chiffrement de fichier, empreinte SHA-256, verification de signature, inspection de certificat)" width="1820" height="800" loading="lazy" decoding="async">
+            <figcaption>CryptoKit — commandes reelles de l'outil en ligne de commande</figcaption>
           </figure><div class="card-content">
           <div class="card-badges">
-            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-clipboard"/></svg>GRC</span>
-            <span class="badge">09/2026 · EMSI × CyberSup</span>
+            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Cryptographie</span>
+            <span class="badge">10/2026 · Projet personnel</span>
           </div>
-          <h3 id="p-kasbah"><span class="case-no">CAS Nº3</span>KASBAH 2026 — exercice immersif de gestion de crise cyber</h3>
+          <h3 id="p-cryptokit"><span class="case-no">CAS Nº7</span>CryptoKit — boîte à outils de cryptographie en Python</h3>
           <p class="card-desc">
-            Exercice pédagogique immersif de trois jours : une cyberattaque simulée à traiter en temps
-            réel, de l'analyse des alertes aux décisions de la cellule Direction.
+            Outil en ligne de commande développé en Python : chiffrement de fichiers AES-256-GCM,
+            empreintes, signatures numériques RSA et certificats X.509, avec les chiffres
+            historiques clairement séparés des fonctionnalités modernes.
           </p>
           <ul class="tags">
-            <li>Gestion d'incident</li><li>Analyse d'alertes</li><li>Priorisation</li><li>Prise de décision</li><li>Coordination</li><li>Communication de crise</li>
+            <li>Python</li><li>cryptography</li><li>AES-256-GCM</li><li>PBKDF2-HMAC</li><li>RSA-PSS</li><li>X.509</li><li>argparse</li><li>pytest</li>
           </ul>
 
           <div class="card-actions">
@@ -400,62 +605,76 @@
               <div class="detail-body">
                 <div class="detail-row">
                   <dl class="card-facts">
-                    <dt>Objectif</dt><dd>Traiter en temps réel une cyberattaque simulée, avec une information partielle et des décisions à prendre vite.</dd>
-                    <dt>Résultat</dt><dd>Arbitrage des priorités au sein de la cellule Direction, et coordination avec les cellules techniques et les interlocuteurs externes.</dd>
+                    <dt>Objectif</dt><dd>Construire un outil de cryptographie réellement utilisable en ligne de commande, en s'appuyant sur des primitives modernes éprouvées plutôt que sur des primitives écrites à la main.</dd>
+                    <dt>Résultat</dt><dd>Boîte à outils complète et testée (19 tests automatisés passants) : chiffrement de fichiers authentifié, empreintes, signatures numériques et certificats X.509, publiée en open source.</dd>
                   </dl>
                 </div>
                 <div class="detail-row">
-                  <h4>Présentation de l'exercice</h4>
-                  <figure class="detail-fig">
-                    <a href="assets/projets/kasbah_photo.jpeg" target="_blank" rel="noopener" title="Ouvrir la photo en grand">
-                      <img src="assets/projets/kasbah_photo.jpeg" alt="Présentation d'un scénario de crise lors de l'exercice KASBAH 2026" width="1206" height="904" loading="lazy" decoding="async">
-                    </a>
-                    <figcaption>Présentation d'un scénario de crise pendant l'exercice KASBAH 2026.</figcaption>
-                  </figure>
-                </div>
-                <div class="detail-row">
-                  <h4>Contexte</h4>
+                  <h4>Présentation et objectifs</h4>
                   <p>
-                    Exercice immersif de gestion d'incident et de crise cyber, organisé sur trois jours dans
-                    le cadre de l'école avec CyberSup : une cyberattaque simulée contre une organisation, à
-                    traiter en temps réel avec une information partielle et des décisions à prendre vite.
-                    Il s'agit d'une simulation pédagogique, et non d'un incident réel en entreprise.
+                    Projet personnel construit pour manipuler des primitives cryptographiques
+                    réelles plutôt que de rester au niveau théorique, dans la perspective de postes
+                    orientés sécurité des déploiements, authentification et gestion de certificats.
+                    CryptoKit réunit, sous une seule interface en ligne de commande, des chiffres
+                    historiques pédagogiques et des fonctionnalités cryptographiques modernes
+                    clairement séparées les unes des autres.
                   </p>
                 </div>
                 <div class="detail-row">
-                  <h4>Conditions de l'exercice</h4>
+                  <h4>Fonctionnalités</h4>
+                  <ol class="steps">
+                    <li><strong>Chiffres historiques.</strong> César et Vigenère, avec un mode <code>bruteforce</code> qui affiche les 26 décalages possibles du chiffre de César — pour illustrer concrètement pourquoi il ne protège rien.</li>
+                    <li><strong>Chiffrement de fichiers.</strong> AES-256-GCM (chiffrement authentifié), clé dérivée d'une phrase secrète par PBKDF2-HMAC-SHA256 ; toute altération du fichier chiffré fait échouer le déchiffrement au lieu de produire des données corrompues silencieusement.</li>
+                    <li><strong>Empreintes de fichiers.</strong> Calcul et vérification en SHA-256/384/512, lecture par blocs pour les fichiers volumineux.</li>
+                    <li><strong>Signatures numériques.</strong> Génération de paires de clés RSA-2048, signature et vérification de fichiers (padding PSS, SHA-256).</li>
+                    <li><strong>Certificats X.509.</strong> Génération de certificats auto-signés pour un environnement de test, et inspection d'un certificat existant (sujet, émetteur, validité, taille de clé).</li>
+                  </ol>
+                </div>
+                <div class="detail-row">
+                  <h4>Choix techniques</h4>
                   <ul class="dashes">
-                    <li>Gestion d'incidents simulés, en temps réel.</li>
-                    <li>Analyse d'alertes, identification des faux positifs et gestion du bruit.</li>
-                    <li>Analyse et priorisation des événements.</li>
-                    <li>Prise de décision dans un contexte de crise.</li>
+                    <li>Bibliothèque <code>cryptography</code> (implémentations liées à OpenSSL) plutôt que des primitives écrites à la main.</li>
+                    <li>AES-256-GCM plutôt qu'un mode non authentifié : toute altération du fichier chiffré est détectée.</li>
+                    <li>Dérivation de clé en 390 000 itérations PBKDF2-HMAC-SHA256, conforme à la recommandation OWASP (2023).</li>
+                    <li>Signatures en padding PSS plutôt que PKCS#1 v1.5, recommandation actuelle pour RSA.</li>
+                    <li>Code organisé en modules indépendants (classique, moderne, empreintes, signatures, certificats), séparés de l'interface en ligne de commande.</li>
                   </ul>
                 </div>
                 <div class="detail-row">
-                  <h4>Ce que j'ai fait</h4>
-                  <ul class="dashes">
-                    <li>Membre de la <strong>cellule Direction</strong> : arbitrage des priorités pendant toute la durée de la crise.</li>
-                    <li>Décisions de confinement mises en balance avec la continuité d'activité.</li>
-                    <li>Coordination et communication avec les cellules techniques et les interlocuteurs externes.</li>
-                    <li>Retour d'expérience utile pour un analyste : une alerte n'a de valeur que si elle est qualifiée et transmise clairement à ceux qui décident.</li>
-                  </ul>
-                </div>
-                <div class="detail-row">
-                  <h4>Présentation devant le jury</h4>
+                  <h4>Captures commentées</h4>
                   <figure class="detail-fig">
-                    <a href="assets/projets/Kasbah_presentation.jpeg" target="_blank" rel="noopener" title="Ouvrir la photo en grand">
-                      <img src="assets/projets/Kasbah_presentation.jpeg" alt="Jury et professionnels de la cybersécurité présents lors de l'exercice KASBAH 2026" width="1206" height="889" loading="lazy" decoding="async">
+                    <a href="assets/projets/cryptokit-cli-demo.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
+                      <img src="assets/projets/cryptokit-cli-demo.png" alt="Terminal : commandes CryptoKit (chiffrement de fichier, empreinte SHA-256, verification de signature, inspection de certificat)" width="1820" height="800" loading="lazy" decoding="async">
                     </a>
-                    <figcaption>Une partie du jury et des professionnels présents lors de l'exercice de crise KASBAH 2026.</figcaption>
+                    <figcaption>Exécution réelle de l'outil : chiffrement d'un fichier, calcul d'empreinte, vérification de signature et inspection d'un certificat X.509.</figcaption>
                   </figure>
+                </div>
+                <div class="detail-row">
+                  <h4>Résultats et vérifications</h4>
+                  <ul class="dashes">
+                    <li>19 tests automatisés (pytest) passants : aller-retour chiffrement/déchiffrement, détection d'une phrase secrète incorrecte, détection d'un fichier altéré, cohérence des empreintes avec <code>hashlib</code>, validité et invalidité des signatures, génération/inspection de certificats.</li>
+                    <li>Les six commandes principales ont été exécutées manuellement et vérifiées de bout en bout (texte chiffré/déchiffré, fichier chiffré/déchiffré, empreinte calculée et vérifiée, signature générée et vérifiée, certificat généré et inspecté).</li>
+                    <li>Dépôt publié en open source, avec licence MIT et documentation technique complète.</li>
+                  </ul>
+                </div>
+                <div class="detail-row">
+                  <h4>Limites assumées</h4>
+                  <p>
+                    Projet d'apprentissage et de démonstration, non audité par un tiers : à ne pas
+                    utiliser pour protéger des données réelles en production. Le format de fichier
+                    chiffré est propre au projet et n'est pas interopérable avec d'autres outils ;
+                    les clés privées générées par les commandes de démonstration ne sont pas
+                    chiffrées sur disque ; les certificats générés sont auto-signés, sans autorité
+                    de certification reconnue.
+                  </p>
                 </div>
               </div>
             </details>
-            <a class="btn btn-ghost" href="https://kasbah.cybersup.ai/certificat/KSB26-0K0CQJVF" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-award"/></svg>Certificat de participation</a>
+            <a class="btn btn-ghost" href="https://github.com/Ryad-Cyber/cryptokit" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg>Code source et documentation sur GitHub</a>
           </div>
         </div></article>
 
-<article class="card panel" data-cat="redteam" aria-labelledby="p-dc4">
+      <article class="card panel" data-cat="redteam" aria-labelledby="p-dc4">
           <figure class="card-media card-media--screenshot">
             <img src="assets/projets/Kali.jpg" alt="Logo Kali Linux associé au laboratoire de pentest DC-4" width="750" height="422" loading="lazy" decoding="async">
             <figcaption>Pentest Linux · Kali</figcaption>
@@ -464,7 +683,7 @@
             <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-target"/></svg>Red Team / Pentest</span>
             <span class="badge">10/2026 · Projet personnel</span>
           </div>
-          <h3 id="p-dc4"><span class="case-no">CAS Nº4</span>Pentest Linux — VulnHub DC-4</h3>
+          <h3 id="p-dc4"><span class="case-no">CAS Nº8</span>Pentest Linux — VulnHub DC-4</h3>
           <p class="card-desc">
             Pentest en laboratoire isolé : accès web, injection de commandes, reverse shell,
             progression locale et élévation de privilèges jusqu'à root.
@@ -619,128 +838,22 @@
           </div>
         </div></article>
 
-<article class="card panel card--cloud" data-cat="cloud" aria-labelledby="p-aws">
-      <figure class="card-media card-media--aws"><img src="assets/projets/AWS.jpg" alt="Logo AWS sur un fond spatial pour le laboratoire AWS Academy" width="736" height="416" loading="lazy" decoding="async"><figcaption>Laboratoire AWS Academy</figcaption></figure><div class="card-content">
-      <div class="card-badges"><span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-cloud"/></svg>Cloud Security</span><span class="badge">2026 · Lab AWS Academy</span></div>
-      <h3 id="p-aws"><span class="case-no">CAS Nº5</span>AWS Security Lab — IAM, VPC &amp; EC2</h3>
-      <p class="card-desc">Laboratoire pratique de formation AWS Academy : permissions IAM, segmentation VPC, instances EC2 et filtrage réseau par Security Groups.</p>
-      <ul class="tags"><li>AWS</li><li>IAM</li><li>IAM Policies</li><li>VPC</li><li>Subnets</li><li>Route Tables</li><li>EC2</li><li>Security Groups</li><li>JSON</li><li>TCP/IP</li><li>SSH</li></ul>
-      <div class="card-actions"><details class="card-detail"><summary class="btn btn-soft"><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span><span aria-hidden="true">↗</span></summary>
-      <div class="detail-body"><div class="detail-row"><dl class="card-facts"><dt>Cadre</dt><dd>AWS Academy Cloud Foundations</dd><dt>Nature</dt><dd>Laboratoire pratique de formation</dd></dl></div>
-      <div class="detail-row"><h4>Contexte et objectif</h4><p>Laboratoire pratique réalisé pendant la formation AWS Academy Cloud Foundations, pour manipuler les briques fondamentales d’une infrastructure AWS sous l’angle de la sécurité : identités, réseau et exposition des instances.</p></div>
-      <div class="detail-row"><h4>Réalisations techniques</h4><ol class="steps"><li><strong>Autorisations IAM.</strong> Analyse et configuration de <code>EC2-Admin-Policy</code> au format JSON : <code>ec2:Describe*</code>, <code>ec2:StartInstances</code> et <code>ec2:StopInstances</code>. Objectif : comprendre la granularité des permissions et le principe du moindre privilège.</li>
-    <li><strong>Architecture VPC.</strong> Étude de <code>Lab VPC — 10.1.0.0/16</code>, de <code>Public Subnet 1 — 10.1.11.0/24</code> et de la table de routage publique (Public Route Table, affichée « Public » sur la capture). Objectif : comprendre la segmentation, le routage et la connectivité.</li>
-    <li><strong>EC2 et Security Groups.</strong> Manipulation de <code>LabHost</code> et <code>Bastion Host</code> ; observation et configuration des règles réseau entrantes, dont SSH sur <code>TCP/22</code>. Objectif : comprendre l’administration des instances et le filtrage réseau.</li></ol></div>
-      <div class="detail-row"><h4>Captures commentées</h4><p>Cliquez sur une capture pour l’agrandir et parcourir la galerie.</p><figure class="detail-fig"><a href="assets/projets/aws-iam-policy-json.png" target="_blank" rel="noopener" aria-label="Ouvrir la capture 01 / IAM"><img src="assets/projets/aws-iam-policy-json.png" width="1881" height="701" loading="lazy" alt="Politique EC2-Admin-Policy : permissions EC2 en JSON."></a><figcaption><strong>01 / IAM — Politique EC2-Admin-Policy : permissions EC2 en JSON.</strong> Les actions Describe, StartInstances et StopInstances sont visibles. La ressource « * » reste large : c’est le point à restreindre pour appliquer pleinement le moindre privilège.</figcaption></figure><figure class="detail-fig"><a href="assets/projets/aws-vpc-architecture-routes.jpeg?v=20261028-redacted" target="_blank" rel="noopener" aria-label="Ouvrir la capture 02 / VPC"><img src="assets/projets/aws-vpc-architecture-routes.jpeg?v=20261028-redacted" width="2048" height="876" loading="lazy" alt="Lab VPC : réseau, sous-réseau et routage."></a><figcaption><strong>02 / VPC — Lab VPC : réseau, sous-réseau et routage.</strong> La carte montre 10.1.0.0/16, Public Subnet 1 en 10.1.11.0/24 et son association à la table « Public ».</figcaption></figure><figure class="detail-fig"><a href="assets/projets/aws-ec2-security-groups.png?v=20261028-redacted" target="_blank" rel="noopener" aria-label="Ouvrir la capture 03 / EC2"><img src="assets/projets/aws-ec2-security-groups.png?v=20261028-redacted" width="1657" height="694" loading="lazy" alt="LabHost et Bastion Host : instances et groupe de sécurité."></a><figcaption><strong>03 / EC2 — LabHost et Bastion Host : instances et groupe de sécurité.</strong> Les deux instances et le groupe de sécurité associé à LabHost sont visibles.</figcaption></figure></div>
-      <div class="detail-row"><h4>Ce que ce laboratoire m’a appris</h4><p>Relier les permissions IAM, l’organisation du réseau et les règles des Security Groups. Distinguer une configuration d’apprentissage d’une configuration réellement durcie ; notamment, des actions IAM limitées ne suffisent pas si le périmètre des ressources reste large.</p></div></div></details>
-      <p class="no-repo">Laboratoire de formation</p><a class="btn btn-ghost" href="https://github.com/Ryad-Cyber/aws-security-lab" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg>Documentation complète sur GitHub</a></div></div></article>
-
-<article class="card panel" data-cat="redteam" aria-labelledby="p-juice-shop">
-          <figure class="card-media card-media--screenshot">
-            <img src="assets/projets/01-juice-shop-lab.png" alt="Instance locale d’OWASP Juice Shop ouverte dans le navigateur" width="1919" height="937" loading="lazy" decoding="async">
-            <figcaption>OWASP Juice Shop dans le laboratoire Docker local</figcaption>
+<article class="card panel" data-cat="grc" aria-labelledby="p-kasbah">
+          <figure class="card-media">
+            <img src="assets/projets/kasbah_photo.jpeg" alt="Présentation d'un scénario de crise devant l'écran de projection, pendant l'exercice KASBAH 2026" width="1206" height="904" loading="lazy" decoding="async">
+            <figcaption>Présentation lors de l'exercice de crise KASBAH 2026</figcaption>
           </figure><div class="card-content">
           <div class="card-badges">
-            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-target"/></svg>Red Team / Pentest</span>
-            <span class="badge">10/2026 · Projet personnel</span>
+            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-clipboard"/></svg>GRC</span>
+            <span class="badge">09/2026 · EMSI × CyberSup</span>
           </div>
-          <h3 id="p-juice-shop"><span class="case-no">CAS Nº6</span>Pentest d’application web — OWASP Juice Shop</h3>
-          <p class="card-desc">Audit manuel ciblé de Juice Shop en local : cinq constats validés sur la recherche, les contrôles d’accès et l’API REST.</p>
-          <ul class="tags"><li>Burp Suite</li><li>Injection SQL</li><li>XSS</li><li>IDOR</li><li>API REST</li><li>JWT</li><li>Logique métier</li><li>Docker</li></ul>
-          <div class="card-actions">
-            <details class="card-detail">
-              <summary class="btn btn-soft"><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span><span aria-hidden="true">↗</span></summary>
-              <div class="detail-body">
-                <div class="detail-row">
-                  <dl class="card-facts">
-                    <dt>Périmètre</dt><dd>Fonctions et endpoints REST sélectionnés de Juice Shop, en laboratoire local.</dd>
-                    <dt>Résultat</dt><dd>Cinq constats validés, documentés avec preuves et remédiations dans le rapport.</dd>
-                  </dl>
-                </div>
-                <div class="detail-row">
-                  <h4>Contexte et méthode</h4>
-                  <p>OWASP Juice Shop, application volontairement vulnérable, a été déployée avec Docker Desktop sous Windows. J’ai analysé manuellement les requêtes et réponses avec Burp Suite Community Edition (Proxy, HTTP History et Repeater). L’audit était ciblé, non exhaustif.</p>
-                </div>
-                <div class="detail-row">
-                  <h4>Constats validés</h4>
-                  <ol class="steps">
-                    <li><strong>Injection SQL.</strong> Une requête de recherche construite a contourné le filtrage et révélé des produits normalement exclus du catalogue.</li>
-                    <li><strong>XSS.</strong> Une entrée de recherche construite a exécuté du JavaScript ; le type précis (réfléchi, stocké ou DOM) reste à vérifier.</li>
-                    <li><strong>Contrôle d’accès / IDOR.</strong> La modification d’un identifiant de panier a permis de lire celui d’un autre utilisateur. La tentative de modification a été refusée.</li>
-                    <li><strong>Divulgation d’informations.</strong> Une erreur de l’API a exposé une stack trace et des détails d’implémentation internes.</li>
-                    <li><strong>Logique métier / validation.</strong> L’API REST a accepté puis conservé une quantité négative. Aucune manipulation du montant du paiement n’a été démontrée.</li>
-                  </ol>
-                </div>
-                <div class="detail-row">
-                  <h4>Contrôles complémentaires</h4>
-                  <p>Les JWT absents ou invalides ont été rejetés avec une réponse 401 lors des requêtes de panier testées. J’ai aussi vérifié les autorisations, les en-têtes HTTP, la validation des entrées et les échanges REST, sans en déduire d’autres failles exploitables.</p>
-                </div>
-                <div class="detail-row">
-                  <h4>Priorités de remédiation</h4>
-                  <ul class="dashes">
-                    <li>Paramétrer les requêtes SQL et appliquer la visibilité des produits côté serveur.</li>
-                    <li>Encoder les sorties selon le contexte et éviter l’insertion HTML non sûre.</li>
-                    <li>Vérifier l’autorisation sur chaque lecture de panier et valider les quantités positives côté serveur.</li>
-                    <li>Renvoyer des erreurs génériques au client et réserver les stack traces aux journaux serveur.</li>
-                  </ul>
-                </div>
-                <div class="detail-row">
-                  <h4>Captures commentées</h4>
-                  <p>Cliquez sur une capture pour l’agrandir et parcourir la galerie. Le rapport détaille les preuves et les limites des tests.</p>
-                    <figure class="detail-fig"><a href="assets/projets/01-juice-shop-lab.png" target="_blank" rel="noopener" title="Ouvrir l’image en grand"><img src="assets/projets/01-juice-shop-lab.png" alt="Instance locale d’OWASP Juice Shop ouverte dans le navigateur" width="1919" height="937" loading="lazy" decoding="async"></a><figcaption>01 / Laboratoire Juice Shop local.</figcaption></figure>
-                    <figure class="detail-fig"><a href="assets/projets/02-burp-repeater-http.png" target="_blank" rel="noopener" title="Ouvrir l’image en grand"><img src="assets/projets/02-burp-repeater-http.png" alt="Requête et réponse HTTP analysées dans Burp Suite Repeater" width="1406" height="604" loading="lazy" decoding="async"></a><figcaption>02 / Analyse manuelle HTTP dans Burp Suite Repeater.</figcaption></figure>
-                    <figure class="detail-fig"><a href="assets/projets/03-sqli-product-disclosure.png" target="_blank" rel="noopener" title="Ouvrir l’image en grand"><img src="assets/projets/03-sqli-product-disclosure.png" alt="Injection SQL dans la recherche révélant des produits exclus du catalogue" width="1410" height="662" loading="lazy" decoding="async"></a><figcaption>03 / Injection SQL : divulgation de produits exclus.</figcaption></figure>
-                    <figure class="detail-fig"><a href="assets/projets/04-xss-reflected.png" target="_blank" rel="noopener" title="Ouvrir l’image en grand"><img src="assets/projets/04-xss-reflected.png" alt="Exécution de JavaScript via une recherche Juice Shop construite" width="1893" height="999" loading="lazy" decoding="async"></a><figcaption>04 / XSS : exécution de JavaScript via la recherche.</figcaption></figure>
-                    <figure class="detail-fig"><a href="assets/projets/05-idor-basket-access.jpeg" target="_blank" rel="noopener" title="Ouvrir l’image en grand"><img src="assets/projets/05-idor-basket-access.jpeg" alt="Réponse Burp montrant l’accès en lecture au panier d’un autre utilisateur" width="1600" height="660" loading="lazy" decoding="async"></a><figcaption>05 / IDOR : lecture du panier d’autrui ; modification refusée.</figcaption></figure>
-                    <figure class="detail-fig"><a href="assets/projets/06-http-security-headers.png" target="_blank" rel="noopener" title="Ouvrir l’image en grand"><img src="assets/projets/06-http-security-headers.png" alt="En-têtes de réponse HTTP analysés pendant l’audit" width="1402" height="601" loading="lazy" decoding="async"></a><figcaption>06 / Analyse des en-têtes de réponse HTTP.</figcaption></figure>
-                    <figure class="detail-fig"><a href="assets/projets/07-api-error-information-disclosure.jpeg" target="_blank" rel="noopener" title="Ouvrir l’image en grand"><img src="assets/projets/07-api-error-information-disclosure.jpeg" alt="Erreur API exposant une stack trace et des détails internes" width="2048" height="968" loading="lazy" decoding="async"></a><figcaption>07 / Erreur API révélant des détails internes.</figcaption></figure>
-                    <figure class="detail-fig"><a href="assets/projets/08-negative-quantity-api.jpeg" target="_blank" rel="noopener" title="Ouvrir l’image en grand"><img src="assets/projets/08-negative-quantity-api.jpeg" alt="Réponse API acceptant une quantité négative dans le panier" width="1600" height="684" loading="lazy" decoding="async"></a><figcaption>08 / Quantité négative acceptée par l’API.</figcaption></figure>
-                    <figure class="detail-fig"><a href="assets/projets/09-negative-quantity-persisted.jpeg" target="_blank" rel="noopener" title="Ouvrir l’image en grand"><img src="assets/projets/09-negative-quantity-persisted.jpeg" alt="Lecture du panier confirmant la persistance de la quantité négative" width="2048" height="876" loading="lazy" decoding="async"></a><figcaption>09 / Quantité négative persistée dans le panier.</figcaption></figure>
-                    <figure class="detail-fig"><a href="assets/projets/10-cart-ui-quantity-mismatch.jpeg" target="_blank" rel="noopener" title="Ouvrir l’image en grand"><img src="assets/projets/10-cart-ui-quantity-mismatch.jpeg" alt="Interface du panier affichant une quantité positive malgré la valeur négative dans l’API" width="2048" height="846" loading="lazy" decoding="async"></a><figcaption>10 / Divergence interface/API ; aucune manipulation du paiement démontrée.</figcaption></figure>
-                </div>
-              </div>
-            </details>
-            <a class="btn btn-ghost" href="https://github.com/Ryad-Cyber/OWASP-Juice-Shop-Pentest" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-code"/></svg>Dépôt et rapport de sécurité</a>
-          </div>
-        </div></article>
-
-
-<article class="card panel card--cloud" data-cat="cloud" aria-labelledby="p-terraform-docker">
-          <figure class="card-media card-media--screenshot"><img src="assets/projets/terraform-04-secure-web-server.png" alt="Tableau de bord Nginx du laboratoire Terraform local" width="1908" height="930" loading="lazy" decoding="async"><figcaption>Frontend Nginx du laboratoire local</figcaption></figure><div class="card-content">
-          <div class="card-badges"><span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-cloud"/></svg>Cloud Security</span><span class="badge">10/2026 · Projet personnel</span></div>
-          <h3 id="p-terraform-docker"><span class="case-no">CAS Nº7</span>Infrastructure sécurisée avec Terraform &amp; Docker</h3>
-          <p class="card-desc">Infrastructure locale déployée avec Terraform et Docker : frontend Nginx, backend HTTP Echo, segmentation réseau et durcissement des conteneurs.</p>
-          <ul class="tags"><li>Infrastructure as Code (IaC)</li><li>Terraform</li><li>Sécurité Docker</li><li>Durcissement des conteneurs</li><li>Segmentation réseau</li><li>Moindre privilège</li></ul>
-          <div class="card-actions">
-            <details class="card-detail"><summary class="btn btn-soft"><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span><span aria-hidden="true">↗</span></summary>
-              <div class="detail-body">
-                <div class="detail-row"><dl class="card-facts"><dt>Cadre</dt><dd>Laboratoire local Terraform et Docker ; aucun service AWS</dd><dt>Résultat</dt><dd>Frontend limité à 127.0.0.1:8080 ; backend sans port publié ; exécution non-root, privilèges restreints, réseau interne et exposition locale vérifiés.</dd></dl></div>
-                <div class="detail-row"><h4>Architecture et segmentation</h4><p>Terraform provisionne un frontend Nginx et un backend HTTP Echo sur deux réseaux Docker. Le frontend rejoint les deux réseaux ; le backend est uniquement relié au réseau interne. Le backend reste accessible au frontend sans port publié sur l’hôte.</p></div>
-                <div class="detail-row"><h4>Contrôles de sécurité</h4><ul class="dashes"><li>Exécution sans root : UID 101 pour Nginx et UID 65532 pour HTTP Echo.</li><li>Option no-new-privileges et suppression de toutes les capacités Linux supplémentaires.</li><li>Mémoire limitée à 128 Mio pour le frontend et 64 Mio pour le backend ; montage HTML en lecture seule.</li></ul></div>
-                <div class="detail-row"><h4>Vérifications documentées</h4><p>Les tests Docker consignés dans le dépôt vérifient les UID, les options de sécurité, la liaison locale du port 8080, le réseau interne et l’absence de port backend publié. La réponse HTTP du frontend et la communication frontend–backend ont également été contrôlées. Cette segmentation réduit l’exposition, sans garantir une isolation complète de l’hôte.</p></div>
-                <div class="detail-row"><h4>Captures commentées</h4><figure class="detail-fig"><a href="assets/projets/terraform-01-deployment.png" target="_blank" rel="noopener" aria-label="Ouvrir la capture 01"><img src="assets/projets/terraform-01-deployment.png" alt="Déploiement Terraform de l’infrastructure" width="1860" height="121" loading="lazy" decoding="async"></a><figcaption>01 / Déploiement automatisé avec Terraform.</figcaption></figure><figure class="detail-fig"><a href="assets/projets/terraform-02-security-controls.png" target="_blank" rel="noopener" aria-label="Ouvrir la capture 02"><img src="assets/projets/terraform-02-security-controls.png" alt="Contrôles Docker : UID non-root, privilèges, capacités et mémoire" width="1875" height="394" loading="lazy" decoding="async"></a><figcaption>02 / Contrôles des conteneurs et exposition locale.</figcaption></figure><figure class="detail-fig"><a href="assets/projets/terraform-03-network-configuration.png" target="_blank" rel="noopener" aria-label="Ouvrir la capture 03"><img src="assets/projets/terraform-03-network-configuration.png" alt="Configuration des réseaux Docker et port local" width="1881" height="454" loading="lazy" decoding="async"></a><figcaption>03 / Réseaux Docker et liaison à 127.0.0.1.</figcaption></figure><figure class="detail-fig"><a href="assets/projets/terraform-04-secure-web-server.png" target="_blank" rel="noopener" aria-label="Ouvrir la capture 04"><img src="assets/projets/terraform-04-secure-web-server.png" alt="Frontend Nginx du laboratoire local" width="1908" height="930" loading="lazy" decoding="async"></a><figcaption>04 / Frontend Nginx en fonctionnement.</figcaption></figure><figure class="detail-fig"><a href="assets/projets/terraform-05-backend-isolation.png" target="_blank" rel="noopener" aria-label="Ouvrir la capture 05"><img src="assets/projets/terraform-05-backend-isolation.png" alt="Communication avec le backend sans port publié" width="1890" height="537" loading="lazy" decoding="async"></a><figcaption>05 / Backend sans port publié et communication interne.</figcaption></figure><figure class="detail-fig"><a href="assets/projets/terraform-06-internal-network.png" target="_blank" rel="noopener" aria-label="Ouvrir la capture 06"><img src="assets/projets/terraform-06-internal-network.png" alt="Vérification du réseau interne et de l’utilisateur backend" width="1893" height="225" loading="lazy" decoding="async"></a><figcaption>06 / Réseau interne et exécution non-root du backend.</figcaption></figure></div>
-              </div>
-            </details>
-            <a class="btn btn-ghost" href="https://github.com/Ryad-Cyber/terraform-security-lab" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-code"/></svg>Voir le code et les vérifications sur GitHub</a>
-          </div>
-        </div></article>
-
-<article class="card panel" data-cat="ia" aria-labelledby="p-llm-pentest">
-          <figure class="card-media card-media--screenshot">
-            <img src="assets/projets/Ollama.jpg" alt="Logo Ollama pour le laboratoire local de chatbot LLM" width="447" height="447" loading="lazy" decoding="async">
-            <figcaption>Chatbot local sous Ollama</figcaption>
-          </figure><div class="card-content">
-          <div class="card-badges">
-            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-chip"/></svg>IA</span>
-            <span class="badge">2026 · Projet personnel</span>
-          </div>
-          <h3 id="p-llm-pentest"><span class="case-no">CAS Nº8</span>Audit de sécurité LLM — Chatbot Ollama local</h3>
+          <h3 id="p-kasbah"><span class="case-no">CAS Nº9</span>KASBAH 2026 — exercice immersif de gestion de crise cyber</h3>
           <p class="card-desc">
-            Red teaming manuel d'un chatbot local sous Ollama : injection de prompt, jailbreak,
-            divulgation du system prompt et gestion non sécurisée de la sortie, selon l'OWASP Top 10 LLM et MITRE ATLAS.
+            Exercice pédagogique immersif de trois jours : une cyberattaque simulée à traiter en temps
+            réel, de l'analyse des alertes aux décisions de la cellule Direction.
           </p>
           <ul class="tags">
-            <li>Ollama</li><li>LLM</li><li>Prompt Injection</li><li>Jailbreak</li><li>OWASP LLM Top 10</li><li>MITRE ATLAS</li><li>Red Teaming</li>
+            <li>Gestion d'incident</li><li>Analyse d'alertes</li><li>Priorisation</li><li>Prise de décision</li><li>Coordination</li><li>Communication de crise</li>
           </ul>
 
           <div class="card-actions">
@@ -749,77 +862,58 @@
               <div class="detail-body">
                 <div class="detail-row">
                   <dl class="card-facts">
-                    <dt>Objectif</dt><dd>Évaluer la résistance d'un chatbot local sous Ollama (llama3.2:3b) face à l'injection de prompt, au jailbreak, à la divulgation du system prompt et aux risques de gestion non sécurisée de la sortie.</dd>
-                    <dt>Résultat</dt><dd>3 des 4 catégories testées ont révélé une faille exploitable, dont une injection persistant sur les tours suivants ; le jailbreak classique a été bloqué.</dd>
+                    <dt>Objectif</dt><dd>Traiter en temps réel une cyberattaque simulée, avec une information partielle et des décisions à prendre vite.</dd>
+                    <dt>Résultat</dt><dd>Arbitrage des priorités au sein de la cellule Direction, et coordination avec les cellules techniques et les interlocuteurs externes.</dd>
                   </dl>
+                </div>
+                <div class="detail-row">
+                  <h4>Présentation de l'exercice</h4>
+                  <figure class="detail-fig">
+                    <a href="assets/projets/kasbah_photo.jpeg" target="_blank" rel="noopener" title="Ouvrir la photo en grand">
+                      <img src="assets/projets/kasbah_photo.jpeg" alt="Présentation d'un scénario de crise lors de l'exercice KASBAH 2026" width="1206" height="904" loading="lazy" decoding="async">
+                    </a>
+                    <figcaption>Présentation d'un scénario de crise pendant l'exercice KASBAH 2026.</figcaption>
+                  </figure>
                 </div>
                 <div class="detail-row">
                   <h4>Contexte</h4>
                   <p>
-                    Laboratoire personnel entièrement local, sur du matériel que je contrôle, sans système
-                    tiers, de production ni exposé sur Internet. Le chatbot « SupportBot » tourne sur un
-                    modèle Ollama <code>llama3.2:3b</code> défini par un <code>Modelfile</code> contenant
-                    des données fictives (code VIP, email admin interne) servant de marqueurs pour les
-                    tests de divulgation.
+                    Exercice immersif de gestion d'incident et de crise cyber, organisé sur trois jours dans
+                    le cadre de l'école avec CyberSup : une cyberattaque simulée contre une organisation, à
+                    traiter en temps réel avec une information partielle et des décisions à prendre vite.
+                    Il s'agit d'une simulation pédagogique, et non d'un incident réel en entreprise.
                   </p>
                 </div>
                 <div class="detail-row">
-                  <h4>Ce que j'ai fait</h4>
-                  <ol class="steps">
-                    <li>Déployé le modèle <code>llama3.2:3b</code> via Ollama avec un system prompt personnalisé contenant des données fictives marqueurs.</li>
-                    <li>Testé manuellement 4 catégories de risque : divulgation du system prompt, injection de prompt directe, gestion non sécurisée de la sortie et jailbreak, selon l'OWASP Top 10 LLM (2025) et MITRE ATLAS.</li>
-                    <li>Documenté chaque prompt, réponse et verdict dans un rapport d'évidence avec captures d'écran.</li>
-                    <li>Rattaché chaque résultat aux catégories OWASP (LLM01, LLM05, LLM07) et aux techniques MITRE ATLAS (AML.T0051, AML.T0054, AML.T0056).</li>
-                  </ol>
-                </div>
-                <div class="detail-row">
-                  <h4>Résultats des 4 tests</h4>
-                  <ul class="scenarios">
-                    <li>
-                      <div class="scenario-head"><h5>Divulgation du system prompt</h5><span class="attck">OWASP LLM07 · MITRE AML.T0056</span></div>
-                      <p>Les demandes directes de répéter ou d'ignorer les instructions ont été refusées, mais un cadrage « mode debug développeur » a fait fuiter des champs fictifs marqués comme sensibles dans le system prompt.</p>
-                    </li>
-                    <li>
-                      <div class="scenario-head"><h5>Injection de prompt, avec persistance</h5><span class="attck">OWASP LLM01 · MITRE AML.T0051</span></div>
-                      <p>Une instruction injectée directement a été bloquée, mais une injection déguisée en délimiteur de conversation avec un faux rôle <code>SYSTEM:</code> a détourné l'identité de l'assistant — et cette altération a persisté sur un tour ultérieur sans lien apparent.</p>
-                    </li>
-                    <li>
-                      <div class="scenario-head"><h5>Gestion non sécurisée de la sortie</h5><span class="attck">OWASP LLM05</span></div>
-                      <p>Le modèle a neutralisé un payload XSS injecté dans du HTML généré, mais a fourni <code>sudo rm -rf /var/log/*</code> comme commande prête à l'emploi pour « nettoyer les logs », avec seulement un avertissement verbal.</p>
-                    </li>
-                    <li>
-                      <div class="scenario-head"><h5>Résistance au jailbreak</h5><span class="attck">MITRE AML.T0054</span></div>
-                      <p>Un détournement de persona façon « DAN » et un cadrage narratif fictif ont tous les deux été refusés : la seule des quatre catégories où les garde-fous du modèle n'ont pas été contournés.</p>
-                    </li>
+                  <h4>Conditions de l'exercice</h4>
+                  <ul class="dashes">
+                    <li>Gestion d'incidents simulés, en temps réel.</li>
+                    <li>Analyse d'alertes, identification des faux positifs et gestion du bruit.</li>
+                    <li>Analyse et priorisation des événements.</li>
+                    <li>Prise de décision dans un contexte de crise.</li>
                   </ul>
                 </div>
                 <div class="detail-row">
-                  <h4>Captures commentées</h4>
-                  <figure class="detail-fig">
-                    <a href="assets/projets/ollama-supportbot-injection-persistence.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
-                      <img src="assets/projets/ollama-supportbot-injection-persistence.png" alt="Terminal : divulgation du system prompt en mode debug puis persistance de l'injection de prompt sur un tour ultérieur" width="1893" height="864" loading="lazy" decoding="async">
-                    </a>
-                    <figcaption>01 / Divulgation du system prompt en « mode debug », puis injection de prompt persistant sur le tour suivant.</figcaption>
-                  </figure>
-                  <figure class="detail-fig">
-                    <a href="assets/projets/ollama-supportbot-output-jailbreak-results.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
-                      <img src="assets/projets/ollama-supportbot-output-jailbreak-results.png" alt="Terminal : commande destructrice suggérée sans validation, puis tentatives de jailbreak bloquées" width="1918" height="201" loading="lazy" decoding="async">
-                    </a>
-                    <figcaption>02 / Commande destructrice suggérée sans validation (gestion non sécurisée de la sortie), puis jailbreak bloqué.</figcaption>
-                  </figure>
+                  <h4>Ce que j'ai fait</h4>
+                  <ul class="dashes">
+                    <li>Membre de la <strong>cellule Direction</strong> : arbitrage des priorités pendant toute la durée de la crise.</li>
+                    <li>Décisions de confinement mises en balance avec la continuité d'activité.</li>
+                    <li>Coordination et communication avec les cellules techniques et les interlocuteurs externes.</li>
+                    <li>Retour d'expérience utile pour un analyste : une alerte n'a de valeur que si elle est qualifiée et transmise clairement à ceux qui décident.</li>
+                  </ul>
                 </div>
                 <div class="detail-row">
-                  <h4>Limites</h4>
-                  <p>
-                    Test manuel et exploratoire (3-3-2-2 prompts selon les catégories), sans outil
-                    automatisé de red teaming LLM. Les résultats portent sur une configuration unique
-                    (<code>llama3.2:3b</code> avec un system prompt donné) à un instant donné et ne se
-                    généralisent pas nécessairement à un autre modèle ou system prompt.
-                  </p>
+                  <h4>Présentation devant le jury</h4>
+                  <figure class="detail-fig">
+                    <a href="assets/projets/Kasbah_presentation.jpeg" target="_blank" rel="noopener" title="Ouvrir la photo en grand">
+                      <img src="assets/projets/Kasbah_presentation.jpeg" alt="Jury et professionnels de la cybersécurité présents lors de l'exercice KASBAH 2026" width="1206" height="889" loading="lazy" decoding="async">
+                    </a>
+                    <figcaption>Une partie du jury et des professionnels présents lors de l'exercice de crise KASBAH 2026.</figcaption>
+                  </figure>
                 </div>
               </div>
             </details>
-            <a class="btn btn-ghost" href="https://github.com/Ryad-Cyber/llm-security-pentest" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg>Dépôt et rapport d'évidence sur GitHub</a>
+            <a class="btn btn-ghost" href="https://kasbah.cybersup.ai/certificat/KSB26-0K0CQJVF" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-award"/></svg>Certificat de participation</a>
           </div>
         </div></article>
 
@@ -832,7 +926,7 @@
             <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-chip"/></svg>IA</span>
             <span class="badge">2026 · Projet académique (EMSI)</span>
           </div>
-          <h3 id="p-soc-anomaly-ml"><span class="case-no">CAS Nº9</span>Détection d'anomalies SOC avec Isolation Forest</h3>
+          <h3 id="p-soc-anomaly-ml"><span class="case-no">CAS Nº10</span>Détection d'anomalies SOC avec Isolation Forest</h3>
           <p class="card-desc">
             Détection non supervisée d'anomalies sur 2,6 millions d'alertes SOC multi-réseaux : fenêtrage temporel, Isolation Forest, seuil au 99<sup>e</sup> centile, regroupement en incidents et explication par chemins d'arbres.
           </p>
@@ -904,7 +998,7 @@
       </div>
 
       <!-- Qualifications liees a la categorie filtree : affichees par main.js, jamais sur "Tous". -->
-      <div class="related-creds" data-related="soc" data-cat="soc" hidden>
+<div class="related-creds" data-related="soc" data-cat="soc" hidden>
         <p class="related-label"><svg class="i" aria-hidden="true"><use href="#i-award"/></svg>Formation associée</p>
         <ul class="related-list"><li><strong>Splunk — 3 cours SOC</strong><span class="related-meta">Splunk Education</span><a href="certifications/index.html#cert-splunk">Voir<span class="sr-only"> — Splunk — 3 cours SOC</span><span aria-hidden="true"> ↗</span></a></li></ul>
       </div>
