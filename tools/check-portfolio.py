@@ -108,10 +108,10 @@ for path, page in pages.items():
         if 'id="capture-dialog"' not in source:
             errors.append(f'{path}: missing screenshot gallery')
     if path in (ROOT/'index.html', ROOT/'en/index.html'):
-        role = re.search(r'<p class="hero-role">(.*?)<br><span>(.*?)</span></p>', source)
-        expected_role = (('Cybersecurity engineering student', 'Cloud Security · SOC · Penetration Testing')
-                         if path.parent.name == 'en' else ('Élève ingénieur en cybersécurité', 'Cloud Security · SOC · Pentest'))
-        if not role or (role[1], role[2]) != expected_role:
+        role = re.search(r'<p class="hero-role">(.*?)</p>', source)
+        expected_role = ('Cybersecurity engineering student'
+                         if path.parent.name == 'en' else 'Élève ingénieur en cybersécurité')
+        if not role or role[1] != expected_role:
             errors.append(f'{path}: hero positioning missing or changed')
         if 'data-words=' in source or 'class="hero-typed"' in source:
             errors.append(f'{path}: animated job titles must not return')
