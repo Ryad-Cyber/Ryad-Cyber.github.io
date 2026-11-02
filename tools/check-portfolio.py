@@ -103,8 +103,8 @@ for path, page in pages.items():
         if 'https://github.com/Ryad-Cyber/terraform-security-lab' not in terraform:
             errors.append(f'{path}: Terraform repository link missing')
         related = re.findall(r'<div class="related-creds" data-related="(\w+)"[^>]*?( hidden)?>', source)
-        if [key for key, _ in related] != ['soc', 'redteam', 'cloud', 'crypto'] or any(not hidden for _, hidden in related):
-            errors.append(f'{path}: related qualifications must exist for SOC, Red Team, Cloud and Crypto only, hidden by default')
+        if [key for key, _ in related] != ['soc', 'redteam', 'cloud', 'crypto', 'ia', 'grc'] or any(not hidden for _, hidden in related):
+            errors.append(f'{path}: related qualifications must exist for SOC, Red Team, Cloud, Crypto, IA and GRC only, hidden by default')
         if 'id="capture-dialog"' not in source:
             errors.append(f'{path}: missing screenshot gallery')
     if path in (ROOT/'index.html', ROOT/'en/index.html'):
