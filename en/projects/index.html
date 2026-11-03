@@ -744,6 +744,18 @@
                         <code>/etc/passwd</code> via <code>teehee</code>, creating a UID 0 account.
                         Root access was then validated and the final flag read.
                       </p>
+                      <figure class="detail-fig">
+                        <a href="../../assets/projets/07-teehee-root-account.png" target="_blank" rel="noopener" title="Open the image full size">
+                          <img src="../../assets/projets/07-teehee-root-account.png" alt="Terminal: appending a UID 0 entry to /etc/passwd via teehee, cat /etc/passwd confirming the new root account" width="748" height="640" loading="lazy" decoding="async">
+                        </a>
+                        <figcaption>UID 0 entry added to /etc/passwd through the teehee Sudo rule.</figcaption>
+                      </figure>
+                      <figure class="detail-fig">
+                        <a href="../../assets/projets/08-root-flag.png" target="_blank" rel="noopener" title="Open the image full size">
+                          <img src="../../assets/projets/08-root-flag.png" alt="Terminal: su to the new root account, id confirming uid=0(root), then cat /root/flag.txt showing the final flag" width="750" height="472" loading="lazy" decoding="async">
+                        </a>
+                        <figcaption>Root access confirmed (uid=0) and the final flag read from /root/flag.txt.</figcaption>
+                      </figure>
                     </li>
                   </ul>
                 </div>
