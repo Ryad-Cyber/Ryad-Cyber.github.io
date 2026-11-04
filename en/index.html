@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&display=swap">
 <link rel="icon" href="../assets/favicon.svg?v=20261025-contact" type="image/svg+xml">
 <link rel="stylesheet" href="../assets/css/style.css?v=20261025-contact">
-<link rel="stylesheet" href="../assets/css/security.css?v=20261104-domains">
+<link rel="stylesheet" href="../assets/css/security.css?v=20261104-domains2">
 </head>
 <body>
 <div class="network-backdrop" aria-hidden="true"></div>
@@ -142,7 +142,7 @@
       <!-- Masquee sans JavaScript : toutes les cartes restent alors visibles. -->
       <div class="filters" id="filters" role="group" aria-label="Filter projects by category" hidden>
         <button class="filter" type="button" data-filter="all" data-label="All" aria-pressed="true"><svg class="i" aria-hidden="true"><use href="#i-grid"/></svg>All<span class="count"></span></button>
-        <button class="filter" type="button" data-filter="soc" data-label="Blue Team / SOC" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Blue Team / SOC<span class="count"></span></button>
+        <button class="filter" type="button" data-filter="soc" data-label="Blue Team / Defense" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Blue Team / Defense<span class="count"></span></button>
         <button class="filter" type="button" data-filter="redteam" data-label="Red Team / Pentest" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-target"/></svg>Red Team / Pentest<span class="count"></span></button>
         <button class="filter" type="button" data-filter="cloud" data-label="Cloud Security" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-cloud"/></svg>Cloud Security<span class="count"></span></button>
         <button class="filter" type="button" data-filter="ia" data-label="AI" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-chip"/></svg>AI<span class="count"></span></button>
@@ -175,7 +175,7 @@
             <figcaption>Elasticsearch & Kibana</figcaption>
           </figure><div class="card-content">
           <div class="card-badges">
-            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Blue Team / SOC</span>
+            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Blue Team / Defense</span>
             <span class="badge">2026 · Personal project</span>
           </div>
           <h3 id="p-elastic"><span class="case-no">CASE Nº2</span>Lab SOC Elastic Security</h3>
@@ -485,7 +485,7 @@
             <figcaption>Wazuh lab</figcaption>
           </figure><div class="card-content">
           <div class="card-badges">
-            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Blue Team / SOC</span>
+            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Blue Team / Defense</span>
             <span class="badge">05/2026 · Academic project</span>
           </div>
           <h3 id="p-wazuh"><span class="case-no">CASE Nº6</span>Lab Wazuh (SIEM) multi-VM</h3>
@@ -930,7 +930,7 @@
             <figcaption>Windows forensic investigation — scenario, methodology and templates prepared</figcaption>
           </figure><div class="card-content">
           <div class="card-badges">
-            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Blue Team / SOC</span>
+            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Blue Team / Defense</span>
             <span class="badge">10/2026 · Investigation to be carried out</span>
           </div>
           <h3 id="p-dfir-windows"><span class="case-no">CASE Nº10</span>Forensic Investigation of a Compromised Windows Workstation</h3>
@@ -1249,7 +1249,7 @@
                 <ul class="dashes">
                   <li>Automated attack-surface scans with Python and Nmap, scheduled with Cron, with consolidation of the results.</li>
                   <li>Identified vulnerabilities with GVM/OpenVAS deployed in Docker.</li>
-                  <li>Analysed the vulnerabilities found and their severity, using CVE references and CVSS scores.</li>
+                  <li>Analysed and prioritised vulnerabilities using CVE/CPE references, CVSS and EPSS scores, and the KEV catalogue.</li>
                   <li>Automated report generation and integrated the scanning pipeline into a GitHub Actions CI/CD workflow.</li>
                 </ul>
                 <ul class="tags tags--quiet tl-tools"><li>Python</li><li>Nmap</li><li>Cron</li><li>GVM / OpenVAS</li><li>Docker</li><li>CVE / CVSS</li><li>GitHub Actions</li></ul>
@@ -1315,12 +1315,7 @@
             <details class="domains-detail" data-dialog-label="Domains and technologies studied and practised">
               <summary class="btn btn-soft domains-more"><span class="when-closed">See all domains</span><span class="when-open">Collapse domains</span><span aria-hidden="true">↗</span></summary>
               <div class="detail-body domains-body">
-                <p class="domains-intro">
-                  Areas covered during my engineering degree at EMSI, my personal projects, my internships and my own
-                  learning. These are domains studied or practised: not all of them have been applied in a professional
-                  setting. The security tools I have actually worked with are detailed in the
-                  <a href="#skills">Skills</a> section.
-                </p>
+                <p class="domains-intro">Areas explored through my engineering degree, projects, internships and personal practice.</p>
                 <div class="domains-grid">
 
                   <div class="domains-group" data-tone="soc">
@@ -1328,36 +1323,35 @@
                     <ul class="domains-list">
                       <li>Cryptography</li><li>Security protocols &amp; cryptanalysis</li><li>Web application security</li><li>Mobile security</li><li>Ethical hacking</li><li>Cybersecurity auditing</li><li>Intrusion management</li><li>Incident management</li><li>Digital forensics</li><li>Cloud security</li><li>Governance, risk &amp; compliance</li><li>Blockchain</li><li>AI applied to cybersecurity</li>
                     </ul>
-                    <p class="domains-note">Vulnerability management: the CVE, CPE, CVSS, EPSS and KEV references and scores, along with Tenable's VPR, studied with Nessus in ethical hacking.</p>
                   </div>
 
                   <div class="domains-group" data-tone="cloud">
                     <h4>Systems, networks &amp; cloud</h4>
                     <ul class="domains-list">
-                      <li>Unix administration</li><li>Linux administration</li><li>Windows administration</li><li>Oracle administration</li><li>Virtualisation</li><li>Cloud</li><li>Networks</li><li>Network monitoring</li><li>VPN deployment &amp; security</li>
+                      <li>Unix administration</li><li>Linux administration</li><li>Windows administration</li><li>Virtualisation</li><li>Cloud</li><li>Networks</li><li>Network monitoring</li><li>VPN deployment &amp; security</li>
                     </ul>
                   </div>
 
                   <div class="domains-group" data-tone="ia">
-                    <h4>Development, data &amp; AI</h4>
+                    <h4>Development, data &amp; AI</h4><div class="domains-feature"><h5>Database design &amp; modelling</h5><p>Data models, schema design and relational and document databases.</p><ul class="domains-list"><li>MySQL</li><li>MariaDB</li><li>MongoDB</li><li>PostgreSQL</li><li>Oracle Database</li><li>SQL Server</li><li>Redis</li><li>SQLite</li></ul></div>
                     <ul class="domains-list">
-                      <li>Advanced Java</li><li>.NET</li><li>Mobile development</li><li>MySQL</li><li>NoSQL</li><li>Big Data</li><li>Data analysis</li><li>Operations research</li><li>Machine learning</li><li>Deep learning</li><li>Introduction to AI &amp; AI ethics</li>
+                      <li>Advanced Java</li><li>.NET</li><li>Mobile development</li><li>NoSQL</li><li>Big Data</li><li>Data analysis</li><li>Operations research</li><li>Machine learning</li><li>Deep learning</li><li>Introduction to AI &amp; AI ethics</li>
                     </ul>
                   </div>
 
                   <div class="domains-group" data-tone="grc">
                     <h4>Project management</h4>
-                    <ul class="domains-list"><li>Agile methods</li></ul>
+                    <ul class="domains-list"><li>Task organisation &amp; breakdown</li><li>Planning</li><li>Project tracking</li><li>Gantt charts</li><li>Agile methods</li></ul>
                   </div>
 
                   <div class="domains-group domains-group--wide" data-tone="crypto">
                     <h4>Languages &amp; technologies</h4>
                     <p class="domains-sub" id="dom-lang">Languages</p>
-                    <ul class="domains-list" aria-labelledby="dom-lang"><li>Python</li><li>Java</li><li>C</li><li>C++</li><li>Go</li><li>JavaScript</li><li>TypeScript</li><li>SQL</li><li>Bash</li><li>PowerShell</li></ul>
+                    <ul class="domains-list" aria-labelledby="dom-lang"><li>Python</li><li>Java</li><li>C</li><li>C++</li><li>Go</li><li>JavaScript</li><li>TypeScript</li><li>PHP</li><li>SQL</li><li>Bash</li><li>PowerShell</li></ul>
                     <p class="domains-sub" id="dom-web">Web &amp; frameworks</p>
-                    <ul class="domains-list" aria-labelledby="dom-web"><li>HTML</li><li>CSS</li><li>Angular</li><li>Vue.js</li><li>Node.js</li><li>Django</li><li>Flask</li></ul>
-                    <p class="domains-sub" id="dom-tools">Tools</p>
-                    <ul class="domains-list" aria-labelledby="dom-tools"><li>Git</li><li>GitHub Actions</li><li>Docker</li></ul>
+                    <ul class="domains-list" aria-labelledby="dom-web"><li>HTML / CSS</li><li>Angular</li><li>Vue.js</li><li>Node.js</li><li>Django</li><li>Flask</li></ul>
+                    <p class="domains-sub" id="dom-tools">Infrastructure &amp; delivery</p>
+                    <ul class="domains-list" aria-labelledby="dom-tools"><li>Git</li><li>GitHub Actions</li><li>Docker</li><li>Kubernetes</li><li>Terraform</li></ul>
                   </div>
 
                 </div>
