@@ -28,7 +28,7 @@ for path, page in pages.items():
     source = path.read_text(encoding='utf-8')
     if source.count('class="menu-toggle"') != 1 or 'class="menu-glyph"' not in source:
         errors.append(f'{path}: navigation must use one menu button and one glyph')
-    if 'security.css?v=20261104-domains2' not in source or 'main.js?v=20261104-domains' not in source:
+    if 'security.css?v=20261104-projects' not in source or 'main.js?v=20261104-projects' not in source:
         errors.append(f'{path}: missing shared, versioned styles or script')
     duplicates = [key for key, n in Counter(page.ids).items() if n > 1]
     if duplicates: errors.append(f'{path}: duplicate IDs: {duplicates}')

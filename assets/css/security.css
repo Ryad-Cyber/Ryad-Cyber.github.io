@@ -405,10 +405,15 @@ section[data-tone] .h-no { color: var(--tone-soft); }
 @media (prefers-reduced-motion: reduce) { .filter { transition: none; } }
 .project-index { position: relative; margin: 0; padding: 0 0 16px; border-bottom: 1px solid var(--border); color: #8297b9; font: 10px var(--font-mono); }
 .project-index::after { content: ""; position: absolute; left: 0; bottom: -1px; width: 140px; height: 1px; background: linear-gradient(90deg,var(--tone),transparent); }
+.projects-more { display: flex; justify-content: center; margin-top: 26px; }
+.projects-more .btn { min-height: 44px; padding: 10px 20px; border: 1px solid #35557e; border-radius: 6px; background: #10213a; color: #dceaff; }
+.projects-more .btn:hover { border-color: #79afff; background: #172d4c; box-shadow: 0 0 24px -12px #4b8fff; }
+.projects-more .btn:focus-visible { outline: 2px solid #8bbdff; outline-offset: 3px; }
 
 /* Cartes projets : panneau compact, image en tete, accent de categorie. */
 .cards { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); grid-auto-rows: auto; gap: 22px; margin-top: 24px; align-items: stretch; }
 .cards > .card { position: relative; display: flex; flex-direction: column; align-items: stretch; min-width: 0; padding: 0; gap: 0; border: 1px solid #22344f; border-radius: 9px; background: linear-gradient(180deg,#0f1c31,#0b1527); overflow: hidden; transition: border-color .3s,box-shadow .35s,transform .35s; }
+.cards > .card { scroll-margin-top: 90px; }
 .cards > .card::before { content: ""; display: block; position: absolute; inset: 0 0 auto; z-index: 2; height: 2px; background: linear-gradient(90deg,var(--tone),color-mix(in srgb,var(--tone) 0%,transparent) 85%); opacity: .85; }
 .cards > .card:hover,.cards > .card:focus-within { border-color: color-mix(in srgb,var(--tone) 48%,#22344f); box-shadow: 0 22px 44px -30px color-mix(in srgb,var(--tone) 75%,transparent); transform: translateY(-3px); }
 .cards > .card .card-media { position: relative; flex-shrink: 0; margin: 0; padding: 0; border: 0; border-bottom: 1px solid #1d2e47; border-radius: 0; background: radial-gradient(90% 120% at 50% 0%,#14243d,#0a1321); }

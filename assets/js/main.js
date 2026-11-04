@@ -69,6 +69,7 @@
   var bar = document.getElementById("filters");
   var grid = document.getElementById("project-cards");
   var empty = document.getElementById("projects-empty");
+  var projectToggle = document.getElementById("projects-toggle");
 
   if (bar && grid) {
     var cards = toArray(grid.querySelectorAll(".card"));
@@ -122,20 +123,30 @@
     var section = grid.closest("section");
     // Qualifications liees : un encart par categorie, aucun pour "Tous".
     var related = toArray(section ? section.querySelectorAll("[data-related]") : []);
+    var expanded = false;
+    var initialLimit = 6;
+    var activeButton = buttons[0];
 
     var apply = function (btn, animate) {
       var key = btn.getAttribute("data-filter");
+      var matched = cards.filter(function (card) { return matches(card, key); });
       var visible = [];
+      activeButton = btn;
 
       buttons.forEach(function (x) {
         x.setAttribute("aria-pressed", x === btn ? "true" : "false");
       });
       cards.forEach(function (c) {
-        var on = matches(c, key);
+        var on = matches(c, key) && (key !== "all" || expanded || matched.indexOf(c) < initialLimit);
         c.hidden = !on;
         if (on) visible.push(c);
       });
       var shown = visible.length;
+      if (projectToggle) {
+        projectToggle.parentElement.hidden = key !== "all" || matched.length <= initialLimit;
+        projectToggle.setAttribute("aria-expanded", String(expanded));
+        projectToggle.querySelector("[data-toggle-label]").textContent = projectToggle.getAttribute(expanded ? "data-less-label" : "data-more-label");
+      }
       balance(visible);
       grid.setAttribute("data-visible-count", String(shown));
       if (section) section.setAttribute("data-tone", key);
@@ -164,11 +175,34 @@
     bar.hidden = false;
     bar.addEventListener("click", function (event) {
       var b = event.target.closest(".filter");
-      if (b && b.getAttribute("aria-pressed") !== "true") apply(b, true);
+      if (b && b.getAttribute("aria-pressed") !== "true") {
+        expanded = false;
+        apply(b, true);
+      }
     });
+
+    if (projectToggle) {
+      projectToggle.addEventListener("click", function () {
+        expanded = !expanded;
+        apply(activeButton, expanded);
+        if (!expanded) projectToggle.scrollIntoView({ block: "nearest" });
+      });
+    }
 
     // Etat initial : "Tous", donc sans les cartes en preparation.
     apply(buttons[0]);
+
+    // Un lien direct vers un projet masque doit toujours rester accessible.
+    var revealLinkedProject = function () {
+      var target = document.getElementById(window.location.hash.slice(1));
+      var card = target && target.closest(".card");
+      if (!card || cards.indexOf(card) === -1 || !card.hidden || isPlaceholder(card)) return;
+      expanded = true;
+      apply(buttons[0]);
+      card.scrollIntoView({ block: "start" });
+    };
+    revealLinkedProject();
+    window.addEventListener("hashchange", revealLinkedProject);
   }
 
   /* --- 2. Section courante dans le menu ------------------- */
