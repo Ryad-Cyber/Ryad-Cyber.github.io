@@ -50,7 +50,7 @@ for path, page in pages.items():
             errors.append(f'{path}: static project counters do not match the actual project count')
         if 'card--featured' in source:
             errors.append(f'{path}: project cards must not use a featured layout')
-        if Counter(page.projects) != Counter({'soc': 3, 'redteam': 2, 'grc': 1, 'cloud': 2, 'ia': 2, 'crypto': 1}):
+        if Counter(page.projects) != Counter({'soc': 3, 'redteam': 2, 'grc': 1, 'cloud': 2, 'ia': 2, 'crypto': 2}):
             errors.append(f'{path}: unexpected projects {page.projects}')
         cards = re.findall(r'<article class="card [^"]+" data-cat="(?:soc|redteam|grc|cloud|ia|crypto)"[^>]*>(.*?)</article>', source, re.S)
         distinct_covers = {
@@ -74,11 +74,11 @@ for path, page in pages.items():
                     errors.append(f'{path}: cover or original technical gallery image incorrect for {card_id[1]}')
             elif detail_images.count(cover[1]) != 1:
                 errors.append(f'{path}: project cover missing or duplicated in case gallery: {cover[1]}')
-        if len(cards) != 11:
-            errors.append(f'{path}: expected eleven cards with image galleries, found {len(cards)}')
+        if len(cards) != 12:
+            errors.append(f'{path}: expected twelve cards with image galleries, found {len(cards)}')
         summaries = re.findall(r'<summary class="btn btn-soft">(.*?)</summary>', source, re.S)
-        expected = 'Read the case in detail' if path.relative_to(ROOT).parts[0] == 'en' else 'Lire le cas en détail'
-        if len(summaries) != 11 or any(expected not in summary for summary in summaries):
+        expected = ('Read the case in detail', 'Read the full case') if path.relative_to(ROOT).parts[0] == 'en' else ('Lire le cas en détail',)
+        if len(summaries) != 12 or any(not any(label in summary for label in expected) for summary in summaries):
             errors.append(f'{path}: inconsistent project buttons')
         juice = next((card for card in cards if 'id="p-juice-shop"' in card), '')
         juice_images = re.findall(r'<figure class="detail-fig">\s*<a href="([^"]+)"', juice)
@@ -116,7 +116,7 @@ for path, page in pages.items():
         if 'data-words=' in source or 'class="hero-typed"' in source:
             errors.append(f'{path}: animated job titles must not return')
         cv = re.search(r'<a class="btn btn-ghost btn-cv" data-cv-link href="([^"]+)" target="_blank" rel="noopener"[^>]*>(.*?)</a>', source)
-        expected_cv = ('../assets/cv/CV_Ryad_Boujenan_EN.pdf?v=20261027', 'My Resume') if path.parent.name == 'en' else ('assets/cv/CV_Ryad_Boujenan_FR.pdf?v=20261027', 'Mon CV')
+        expected_cv = ('../assets/cv/CV_EN.pdf?v=20261104', 'My Resume') if path.parent.name == 'en' else ('assets/cv/CV_FR.pdf?v=20261104', 'Mon CV')
         if not cv or cv[1] != expected_cv[0] or expected_cv[1] not in cv[2] or ' hidden' in cv[0]:
             errors.append(f'{path}: CV button must open the {expected_cv[1]} PDF in a new tab')
         if 'id="certificats"' not in source or source.count('class="cred"') != 4 or 'assets/interets/echecs.jpeg" data-lightbox' not in source:
@@ -138,4 +138,4 @@ for filename in ('aws-iam-policy-json.png', 'aws-vpc-architecture-routes.jpeg', 
     if not (ROOT/'assets/projets'/filename).is_file(): errors.append(f'Missing AWS screenshot: {filename}')
 if errors:
     raise SystemExit('\n'.join(errors))
-print(f'PASS: {len(pages)} HTML pages; {checked} local references; unique IDs; 11 projects and matching buttons; screenshot galleries; FR/EN contact and unchanged language levels; consistent navigation and versioned assets.')
+print(f'PASS: {len(pages)} HTML pages; {checked} local references; unique IDs; 12 projects and matching buttons; screenshot galleries; FR/EN contact and unchanged language levels; consistent navigation and versioned assets.')
