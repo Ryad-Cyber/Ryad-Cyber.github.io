@@ -153,7 +153,7 @@
         <button class="filter" type="button" data-filter="crypto" data-label="Cryptographie" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Cryptographie<span class="count"></span></button>
       </div>
 
-      <p class="project-index">11 projets · objectifs, méthodes et résultats</p>
+      <p class="project-index">12 projets · objectifs, méthodes et résultats</p>
 <div class="cards" id="project-cards">
 
 <article class="card panel card--cloud" data-cat="cloud" aria-labelledby="p-aws">
@@ -1091,6 +1091,76 @@
               </div>
             </details>
             <a class="btn btn-ghost" href="https://github.com/Ryad-Cyber/soc-anomaly-detection-isolation-forest" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg>Dépôt et notebook sur GitHub</a>
+          </div>
+        </div></article>
+
+<article class="card panel" data-cat="crypto" aria-labelledby="p-pfa-stego">
+          <figure class="card-media card-media--screenshot">
+            <img src="assets/projets/pfa-stego-interface.png" alt="Interface web : chiffrement AES et dissimulation stéganographique d'un message dans une image" width="459" height="596" loading="lazy" decoding="async">
+            <figcaption>Interface de l'application — chiffrement AES et dissimulation stéganographique</figcaption>
+          </figure><div class="card-content">
+          <div class="card-badges">
+            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Cryptographie</span>
+            <span class="badge">2025–2026 · PFA (EMSI), en binôme</span>
+          </div>
+          <h3 id="p-pfa-stego"><span class="case-no">CAS Nº12</span>PFA — Chiffrement et stéganographie multi-supports</h3>
+          <p class="card-desc">
+            Projet de Fin d'Année en binôme : application web combinant chiffrement AES-256-CBC et dissimulation stéganographique LSB sur image, audio et vidéo, avec authentification et conteneurisation Docker.
+          </p>
+          <ul class="tags">
+            <li>Python</li><li>Flask</li><li>AES-256-CBC</li><li>Stéganographie LSB</li><li>Docker</li><li>SQLite</li><li>UML</li>
+          </ul>
+
+          <div class="card-actions">
+            <details class="card-detail">
+              <summary class="btn btn-soft"><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span><span aria-hidden="true">↗</span></summary>
+              <div class="detail-body">
+                <div class="detail-row">
+                  <dl class="card-facts">
+                    <dt>Objectif</dt><dd>Combiner deux niveaux de protection complémentaires — confidentialité du contenu par chiffrement, confidentialité de l'existence du message par stéganographie — dans une application web utilisable.</dd>
+                    <dt>Résultat</dt><dd>Application fonctionnelle testée (8 tests validés), chiffrement et dissimulation sur trois types de supports (image, audio, vidéo), PSNR supérieur à 50 dB sur les images stéganographiées.</dd>
+                  </dl>
+                </div>
+                <div class="detail-row">
+                  <h4>Contexte</h4>
+                  <p>Projet de Fin d'Année (PFA) de 4<sup>e</sup> année, filière Cybersécurité de l'EMSI, année universitaire 2025–2026, réalisé en binôme avec Mohammed Bagdid, encadré par M. Chiba Zouhair. Ma contribution, telle qu'indiquée dans le rapport officiel : les modules cryptographiques et l'infrastructure de l'application Flask (authentification, sessions, HTTPS). Mohammed Bagdid a développé les modules stéganographiques (image, audio, vidéo) et conduit les tests de validation ; la rédaction du rapport a été faite en commun.</p>
+                </div>
+                <div class="detail-row">
+                  <h4>Ce qui a été réalisé</h4>
+                  <ol class="steps">
+                    <li><strong>Chiffrement.</strong> AES-256 en mode CBC (bibliothèque <code>cryptography</code>), vecteur d'initialisation aléatoire de 16 octets à chaque opération, résultat encodé en Base64.</li>
+                    <li><strong>Stéganographie LSB.</strong> Dissimulation du message chiffré par substitution du bit de poids faible, étendue à trois supports : image PNG, audio WAV et vidéo (codec FFV1 sans perte) — l'originalité technique revendiquée par le rapport par rapport aux implémentations académiques classiques, limitées à l'image.</li>
+                    <li><strong>Application web Flask.</strong> Authentification avec hachage PBKDF2 (Werkzeug), gestion de sessions, HTTPS par certificat OpenSSL, stockage SQLite3.</li>
+                    <li><strong>Déploiement.</strong> Conteneurisation avec Docker et Docker Compose pour la portabilité et la reproductibilité.</li>
+                    <li><strong>Conception.</strong> Modélisation UML complète (cas d'utilisation, séquence, activité, classes), modèle relationnel de données, planning en diagramme de Gantt, méthodologie Agile/Scrum sur 16 semaines.</li>
+                  </ol>
+                </div>
+                <div class="detail-row">
+                  <h4>Captures commentées</h4>
+                  <figure class="detail-fig">
+                    <a href="assets/projets/pfa-stego-interface.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
+                      <img src="assets/projets/pfa-stego-interface.png" alt="Interface web : chiffrement AES et dissimulation stéganographique d'un message dans une image" width="459" height="596" loading="lazy" decoding="async">
+                    </a>
+                    <figcaption>Interface principale de l'application : choix de l'action, du support et saisie de la clé secrète avant chiffrement et dissimulation.</figcaption>
+                  </figure>
+                </div>
+                <div class="detail-row">
+                  <h4>Résultats et vérifications</h4>
+                  <ul class="dashes">
+                    <li>8 tests fonctionnels validés (T01–T08) : aller-retour chiffrement/dissimulation/extraction/déchiffrement sur les trois supports, gestion d'un support trop petit, doublon d'inscription, accès à une route protégée sans authentification.</li>
+                    <li>Transparence stéganographique vérifiée par analyse statistique : PSNR supérieur à 50 dB sur les images testées, bien au-dessus du seuil de perception humaine (environ 35 dB).</li>
+                    <li>Temps mesurés : image PNG (1,2 Mo) 0,4 s / 0,3 s ; audio WAV (5,8 Mo) 1,1 s / 0,9 s ; vidéo FFV1 (12,4 Mo) 18,7 s / 14,2 s.</li>
+                  </ul>
+                </div>
+                <div class="detail-row">
+                  <h4>Limites assumées</h4>
+                  <p>
+                    Projet académique évalué par rapport et soutenance, pas un produit audité ou déployé en production. La clé AES est normalisée par un simple remplissage d'octets nuls — le rapport identifie lui-même une dérivation PBKDF2 ou Argon2 comme amélioration à apporter. Autres pistes citées par le rapport : stéganographie fréquentielle (DCT/DWT) pour mieux résister à la stéganalyse statistique, échange de clé asymétrique (RSA ou courbes elliptiques), et parallélisation du traitement vidéo.
+                  </p>
+                </div>
+              </div>
+            </details>
+            <a class="btn btn-ghost" href="https://github.com/Ryad-Cyber/pfa-cryptography-steganography" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg>Rapport complet et contexte sur GitHub</a>
           </div>
         </div></article>
 

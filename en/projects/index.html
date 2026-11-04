@@ -103,7 +103,7 @@
         <button class="filter" type="button" data-filter="crypto" data-label="Cryptography" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Cryptography<span class="count"></span></button>
       </div>
 
-      <p class="project-index">11 projects · objectives, methods and results</p>
+      <p class="project-index">12 projects · objectives, methods and results</p>
 <div class="cards" id="project-cards">
 
 <article class="card panel card--cloud" data-cat="cloud" aria-labelledby="p-aws">
@@ -1038,6 +1038,76 @@
               </div>
             </details>
             <a class="btn btn-ghost" href="https://github.com/Ryad-Cyber/soc-anomaly-detection-isolation-forest" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg>Repository and notebook on GitHub</a>
+          </div>
+        </div></article>
+
+<article class="card panel" data-cat="crypto" aria-labelledby="p-pfa-stego">
+          <figure class="card-media card-media--screenshot">
+            <img src="../../assets/projets/pfa-stego-interface.png" alt="Web interface: AES encryption and steganographic concealment of a message in an image" width="459" height="596" loading="lazy" decoding="async">
+            <figcaption>Application interface — AES encryption and steganographic concealment</figcaption>
+          </figure><div class="card-content">
+          <div class="card-badges">
+            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Cryptography</span>
+            <span class="badge">2025–2026 · Year-end project (EMSI), pair project</span>
+          </div>
+          <h3 id="p-pfa-stego"><span class="case-no">CASE Nº12</span>Year-End Project — Multi-Carrier Encryption and Steganography</h3>
+          <p class="card-desc">
+            Pair year-end project: a web application combining AES-256-CBC encryption with LSB steganographic concealment across image, audio and video, with authentication and Docker containerization.
+          </p>
+          <ul class="tags">
+            <li>Python</li><li>Flask</li><li>AES-256-CBC</li><li>LSB steganography</li><li>Docker</li><li>SQLite</li><li>UML</li>
+          </ul>
+
+          <div class="card-actions">
+            <details class="card-detail">
+              <summary class="btn btn-soft"><span class="when-closed">Read the full case</span><span class="when-open">Collapse details</span><span aria-hidden="true">↗</span></summary>
+              <div class="detail-body">
+                <div class="detail-row">
+                  <dl class="card-facts">
+                    <dt>Objective</dt><dd>Combine two complementary layers of protection — content confidentiality through encryption, and message-existence confidentiality through steganography — in a usable web application.</dd>
+                    <dt>Result</dt><dd>Working, tested application (8 tests passed), encryption and concealment across three carrier types (image, audio, video), PSNR above 50 dB on steganographed images.</dd>
+                  </dl>
+                </div>
+                <div class="detail-row">
+                  <h4>Context</h4>
+                  <p>4th-year year-end project (PFA), Cybersecurity track at EMSI, academic year 2025–2026, built as a pair with Mohammed Bagdid, supervised by M. Chiba Zouhair. My contribution, as stated in the official report: the cryptographic modules and the Flask application infrastructure (authentication, sessions, HTTPS). Mohammed Bagdid built the steganographic modules (image, audio, video) and ran the validation tests; the report was written jointly.</p>
+                </div>
+                <div class="detail-row">
+                  <h4>What was built</h4>
+                  <ol class="steps">
+                    <li><strong>Encryption.</strong> AES-256 in CBC mode (<code>cryptography</code> library), a random 16-byte initialization vector per operation, result Base64-encoded.</li>
+                    <li><strong>LSB steganography.</strong> Concealment of the encrypted message by least-significant-bit substitution, extended to three carriers: PNG image, WAV audio and video (lossless FFV1 codec) — the technical originality the report claims over classic academic implementations, usually limited to images.</li>
+                    <li><strong>Flask web application.</strong> PBKDF2 password hashing (Werkzeug), session management, HTTPS via an OpenSSL certificate, SQLite3 storage.</li>
+                    <li><strong>Deployment.</strong> Containerized with Docker and Docker Compose for portability and reproducibility.</li>
+                    <li><strong>Design.</strong> Full UML modelling (use-case, sequence, activity, class diagrams), a relational data model, a Gantt-chart plan, Agile/Scrum methodology over 16 weeks.</li>
+                  </ol>
+                </div>
+                <div class="detail-row">
+                  <h4>Annotated screenshot</h4>
+                  <figure class="detail-fig">
+                    <a href="../../assets/projets/pfa-stego-interface.png" target="_blank" rel="noopener" title="Open image full-size">
+                      <img src="../../assets/projets/pfa-stego-interface.png" alt="Web interface: AES encryption and steganographic concealment of a message in an image" width="459" height="596" loading="lazy" decoding="async">
+                    </a>
+                    <figcaption>Main application interface: choosing the action and carrier, entering the secret key before encryption and concealment.</figcaption>
+                  </figure>
+                </div>
+                <div class="detail-row">
+                  <h4>Results and verification</h4>
+                  <ul class="dashes">
+                    <li>8 functional tests passed (T01–T08): round-trip encryption/concealment/extraction/decryption across the three carriers, oversized-carrier handling, duplicate sign-up, access to a protected route without authentication.</li>
+                    <li>Steganographic transparency verified through statistical analysis: PSNR above 50 dB on test images, well above the ~35 dB human-perceptible threshold.</li>
+                    <li>Measured times: PNG image (1.2 MB) 0.4 s / 0.3 s; WAV audio (5.8 MB) 1.1 s / 0.9 s; FFV1 video (12.4 MB) 18.7 s / 14.2 s.</li>
+                  </ul>
+                </div>
+                <div class="detail-row">
+                  <h4>Acknowledged limitations</h4>
+                  <p>
+                    An academic project assessed through a report and oral defence, not an audited or production-deployed product. The AES key is normalized by simple null-byte padding — the report itself identifies PBKDF2 or Argon2 derivation as an improvement to make. Other avenues the report names: frequency-domain steganography (DCT/DWT) for better resistance to statistical steganalysis, an asymmetric key exchange (RSA or elliptic curves), and parallelizing the video pipeline.
+                  </p>
+                </div>
+              </div>
+            </details>
+            <a class="btn btn-ghost" href="https://github.com/Ryad-Cyber/pfa-cryptography-steganography" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg>Full report and context on GitHub</a>
           </div>
         </div></article>
 
