@@ -499,6 +499,7 @@
   ) {
     var activeDetails = null;
     var activePlaceholder = null;
+    var dialogLabel = projectDialog.getAttribute("aria-label");
 
     // Seule la fermeture native (bouton, clic hors cadre, Echap)
     // restaure le contenu : un point unique, quelle que soit la
@@ -512,20 +513,25 @@
         var summaryEl = activeDetails.querySelector(":scope > summary");
         if (summaryEl) summaryEl.focus();
       }
+      projectDialog.setAttribute("aria-label", dialogLabel);
       activeDetails = null;
       activePlaceholder = null;
     });
 
-    toArray(document.querySelectorAll(".card-detail")).forEach(function (details) {
+    // Meme mecanique pour le detail d'un projet et pour la liste
+    // complete des domaines : <details> sans JS, fenetre avec.
+    toArray(document.querySelectorAll(".card-detail, .domains-detail")).forEach(function (details) {
       var summary = details.querySelector(":scope > summary");
       var body = details.querySelector(":scope > .detail-body");
-      var card = details.closest(".card");
+      var card = details.closest(".card, .panel");
       var heading = card && card.querySelector("h3");
+      var ownLabel = details.getAttribute("data-dialog-label");
       if (!summary || !body) return;
 
       summary.addEventListener("click", function (event) {
         event.preventDefault();
         if (projectDialog.open) projectDialog.close();
+        projectDialog.setAttribute("aria-label", ownLabel || dialogLabel);
 
         projectDialogBody.innerHTML = "";
         if (heading) {
@@ -544,6 +550,12 @@
 
     projectDialogClose.addEventListener("click", function () {
       projectDialog.close();
+    });
+
+    // Un lien interne (ex. « Compétences ») doit rendre la page :
+    // sans cela, le site defilerait derriere la fenetre restee ouverte.
+    projectDialogBody.addEventListener("click", function (event) {
+      if (event.target.closest("a[href^='#']") && projectDialog.open) projectDialog.close();
     });
 
     projectDialog.addEventListener("click", function (event) {

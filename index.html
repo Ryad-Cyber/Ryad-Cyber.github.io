@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&display=swap">
 <link rel="icon" href="assets/favicon.svg?v=20261025-contact" type="image/svg+xml">
 <link rel="stylesheet" href="assets/css/style.css?v=20261025-contact">
-<link rel="stylesheet" href="assets/css/security.css?v=20261029-tones2">
+<link rel="stylesheet" href="assets/css/security.css?v=20261104-domains">
 </head>
 <body>
 <div class="network-backdrop" aria-hidden="true"></div>
@@ -1306,22 +1306,69 @@
             </ol>
           </div>
 
-          <div class="panel panel--compact">
+          <div class="panel panel--compact panel--domains">
             <div class="panel-head">
               <span class="ico-tile"><svg class="i" aria-hidden="true"><use href="#i-layers"/></svg></span>
               <div>
-                <h3>Matières étudiées</h3>
-                <span class="sub">Sélection, cursus EMSI</span>
+                <h3>Domaines &amp; technologies</h3>
+                <span class="sub">Formation, projets, pratique personnelle</span>
               </div>
             </div>
-            <dl class="kv">
-              <dt>Cybersécurité</dt>
-              <dd><ul class="tags tags--quiet"><li>Cryptographie &amp; protocoles de sécurité</li><li>Sécurité web &amp; mobile</li><li>Ethical hacking</li><li>Forensic numérique</li><li>Sécurité cloud</li><li>GRC</li><li>Blockchain</li><li>IA appliquée à la cybersécurité</li></ul></dd>
-              <dt>Systèmes, réseaux &amp; cloud</dt>
-              <dd><ul class="tags tags--quiet"><li>Administration Linux &amp; Windows</li><li>Administration Unix &amp; Oracle</li><li>Virtualisation &amp; cloud</li><li>Supervision réseau</li></ul></dd>
-              <dt>Développement &amp; données</dt>
-              <dd><ul class="tags tags--quiet"><li>Java</li><li>.NET</li><li>Développement mobile</li><li>NoSQL &amp; Big Data</li><li>Machine learning</li></ul></dd>
-            </dl>
+            <p class="domains-lead">Un aperçu des domaines abordés pendant mon cycle ingénieur, mes projets et mon apprentissage personnel.</p>
+            <ul class="tags tags--quiet domains-preview">
+              <li>Cryptographie</li><li>Ethical hacking</li><li>Forensic numérique</li><li>Sécurité cloud</li><li>GRC</li><li>Administration Linux &amp; Windows</li><li>Réseaux &amp; supervision</li><li>Machine learning</li><li>Python</li>
+            </ul>
+            <details class="domains-detail" data-dialog-label="Domaines et technologies étudiés et pratiqués">
+              <summary class="btn btn-soft domains-more"><span class="when-closed">Voir tous les domaines</span><span class="when-open">Replier les domaines</span><span aria-hidden="true">↗</span></summary>
+              <div class="detail-body domains-body">
+                <p class="domains-intro">
+                  Domaines abordés pendant mon cycle ingénieur à l'EMSI, mes projets personnels, mes stages et mon
+                  apprentissage autonome. Il s'agit de domaines étudiés ou pratiqués : tous n'ont pas été mis en œuvre
+                  en entreprise. Les outils de sécurité que j'ai réellement manipulés sont détaillés dans la section
+                  <a href="#competences">Compétences</a>.
+                </p>
+                <div class="domains-grid">
+
+                  <div class="domains-group" data-tone="soc">
+                    <h4>Cybersécurité</h4>
+                    <ul class="domains-list">
+                      <li>Cryptographie</li><li>Protocoles de sécurité &amp; cryptanalyse</li><li>Sécurité des applications web</li><li>Sécurité mobile</li><li>Ethical hacking</li><li>Audit en cybersécurité</li><li>Gestion des intrusions</li><li>Gestion des incidents</li><li>Forensic numérique</li><li>Sécurité cloud</li><li>Gouvernance, risques &amp; conformité</li><li>Blockchain</li><li>IA appliquée à la cybersécurité</li>
+                    </ul>
+                    <p class="domains-note">Gestion des vulnérabilités : référentiels et scores CVE, CPE, CVSS, EPSS et KEV, ainsi que le VPR de Tenable, étudié avec Nessus en ethical hacking.</p>
+                  </div>
+
+                  <div class="domains-group" data-tone="cloud">
+                    <h4>Systèmes, réseaux &amp; cloud</h4>
+                    <ul class="domains-list">
+                      <li>Administration Unix</li><li>Administration Linux</li><li>Administration Windows</li><li>Administration Oracle</li><li>Virtualisation</li><li>Cloud</li><li>Réseaux</li><li>Supervision réseau</li><li>Mise en place &amp; sécurité des VPN</li>
+                    </ul>
+                  </div>
+
+                  <div class="domains-group" data-tone="ia">
+                    <h4>Développement, données &amp; IA</h4>
+                    <ul class="domains-list">
+                      <li>Java avancé</li><li>.NET</li><li>Développement mobile</li><li>MySQL</li><li>NoSQL</li><li>Big Data</li><li>Analyse de données</li><li>Recherche opérationnelle</li><li>Machine learning</li><li>Deep learning</li><li>Introduction &amp; éthique de l'IA</li>
+                    </ul>
+                  </div>
+
+                  <div class="domains-group" data-tone="grc">
+                    <h4>Gestion de projet</h4>
+                    <ul class="domains-list"><li>Méthodes agiles</li></ul>
+                  </div>
+
+                  <div class="domains-group domains-group--wide" data-tone="crypto">
+                    <h4>Langages &amp; technologies</h4>
+                    <p class="domains-sub" id="dom-lang">Langages</p>
+                    <ul class="domains-list" aria-labelledby="dom-lang"><li>Python</li><li>Java</li><li>C</li><li>C++</li><li>Go</li><li>JavaScript</li><li>TypeScript</li><li>SQL</li><li>Bash</li><li>PowerShell</li></ul>
+                    <p class="domains-sub" id="dom-web">Web &amp; frameworks</p>
+                    <ul class="domains-list" aria-labelledby="dom-web"><li>HTML</li><li>CSS</li><li>Angular</li><li>Vue.js</li><li>Node.js</li><li>Django</li><li>Flask</li></ul>
+                    <p class="domains-sub" id="dom-tools">Outils</p>
+                    <ul class="domains-list" aria-labelledby="dom-tools"><li>Git</li><li>GitHub Actions</li><li>Docker</li></ul>
+                  </div>
+
+                </div>
+              </div>
+            </details>
           </div>
 
           <div class="panel panel--compact">
@@ -1656,6 +1703,6 @@
   <div class="capture-controls"><button type="button" id="capture-prev" aria-label="Capture précédente">←</button><a id="capture-original" target="_blank" rel="noopener">Ouvrir l’original ↗</a><button type="button" id="capture-next" aria-label="Capture suivante">→</button></div>
 </dialog>
 
-<script src="assets/js/main.js?v=20261026-related" defer></script>
+<script src="assets/js/main.js?v=20261104-domains" defer></script>
 </body>
 </html>

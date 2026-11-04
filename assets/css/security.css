@@ -580,3 +580,35 @@ a.cert-visual--text { display: inline-flex; padding: 0; border: 0; border-radius
   section[data-tone]::before { display: none; }
   .cards { display: block; }
 }
+
+/* Domaines & technologies : apercu dans le parcours, liste complete en
+   fenetre (ou depliee sur place sans JavaScript). Chaque groupe reprend
+   une teinte deja definie plus haut pour rester dans la palette du site. */
+.panel--domains .domains-lead { margin: 0 0 14px; color: var(--muted); font-size: 13.5px; line-height: 1.6; }
+.domains-preview { margin: 0; }
+.domains-detail { margin-top: 16px; }
+.domains-detail > summary { display: inline-flex; align-items: center; gap: 8px; width: fit-content; list-style: none; cursor: pointer; }
+.domains-detail > summary::-webkit-details-marker { display: none; }
+.domains-detail > summary .when-open { display: none; }
+.domains-detail[open] > summary .when-open { display: inline; }
+.domains-detail[open] > summary .when-closed { display: none; }
+.domains-body { margin-top: 18px; }
+.domains-body .domains-intro { max-width: 80ch; margin: 0 0 22px; color: var(--muted); font-size: 15px; line-height: 1.65; }
+.domains-body .domains-intro a { color: var(--accent); border-bottom: 1px solid var(--accent-line); }
+.domains-body .domains-intro a:hover { color: var(--ink); border-bottom-color: var(--accent); text-decoration: none; }
+/* auto-fit : deux colonnes dans la fenetre, une seule dans le panneau
+   etroit du parcours (repli sans JavaScript). Pas de requete de media :
+   la grille suit la largeur reelle de son conteneur. */
+.domains-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(400px,1fr)); gap: 16px; align-items: start; }
+.domains-group { min-width: 0; padding: 15px 18px 18px; border: 1px solid #22344f; border-top: 2px solid var(--tone); border-radius: 7px; background: color-mix(in srgb,var(--tone) 5%,#0b1527); }
+.domains-group--wide { grid-column: 1/-1; }
+.domains-body .domains-group h4 { margin: 0 0 12px; color: var(--tone-soft); font: 600 16px/1.3 var(--font-body); letter-spacing: -.01em; }
+.domains-list { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.domains-body .domains-list li { padding: 3px 9px; border: 1px solid #22354f; border-radius: 4px; background: #0b1628; color: #bacae3; font: 11.5px/1.6 var(--font-mono); }
+.domains-body .domains-sub { margin: 15px 0 8px; color: #8297b9; font: 10px var(--font-mono); letter-spacing: .1em; text-transform: uppercase; }
+.domains-body .domains-sub:first-of-type { margin-top: 0; }
+.domains-body .domains-note { margin: 13px 0 0; color: #93a7c5; font-size: 12.5px; line-height: 1.6; }
+@media (max-width: 640px) {
+  .domains-grid { grid-template-columns: minmax(0,1fr); }
+  .domains-group { padding: 14px 15px 16px; }
+}
