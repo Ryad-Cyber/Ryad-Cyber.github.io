@@ -700,11 +700,11 @@
           </div>
           <h3 id="p-dc4"><span class="case-no">CASE Nº8</span>Linux pentest — VulnHub DC-4</h3>
           <p class="card-desc">
-            Isolated lab: Nmap reconnaissance, Burp Suite web testing, command injection,
-            reverse shell and Linux privilege escalation to root.
+            Nmap, Hydra and Burp Suite: reconnaissance, web brute force, command injection,
+            reverse shell and Linux privilege escalation.
           </p>
           <ul class="tags">
-            <li>Kali Linux</li><li>Nmap</li><li>Burp Suite</li><li>Netcat</li><li>SSH</li><li>Linux</li><li>Sudo</li><li>VulnHub</li><li>MITRE ATT&amp;CK</li>
+            <li>Kali Linux</li><li>Nmap</li><li>Hydra</li><li>Burp Suite</li><li>Netcat</li><li>SSH</li><li>Linux</li><li>Sudo</li><li>VulnHub</li><li>MITRE ATT&amp;CK</li>
           </ul>
 
           <div class="card-actions">
@@ -745,9 +745,9 @@
                     <li>
                       <div class="scenario-head"><h5>Web authentication</h5><span class="attck">MITRE ATT&amp;CK T1110</span></div>
                       <p>
-                        Used Burp Suite Intruder to intercept HTTP requests to <code>login.php</code>
-                        and test authentication in the lab, gaining access to the “System Tools”
-                        administrative interface.
+                        Analysed and tested <code>login.php</code> HTTP requests with Burp Suite,
+                        including Intruder. A Hydra brute-force attack using a targeted wordlist
+                        obtained the credentials and provided access to “System Tools”.
                       </p>
                       <figure class="detail-fig">
                         <a href="../assets/projets/acces-interface-web.png" target="_blank" rel="noopener" title="Open image full size">
@@ -855,7 +855,7 @@
                 <div class="detail-row">
                   <h4>Skills and tools used</h4>
                   <p>
-                    Kali Linux, Nmap, Burp Suite Intruder and Repeater, Netcat, Linux enumeration, Sudo rule analysis and offensive
+                    Kali Linux, Nmap, Hydra, Burp Suite Intruder and Repeater, Netcat, Linux enumeration, Sudo rule analysis and offensive
                     pentest methodology in an isolated environment.
                   </p>
                 </div>
