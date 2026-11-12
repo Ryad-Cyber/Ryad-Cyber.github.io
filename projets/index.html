@@ -902,86 +902,34 @@
 
 <article class="card panel" data-cat="soc" aria-labelledby="p-dfir-windows">
           <figure class="card-media card-media--screenshot">
-            <img src="../assets/projets/dfir-windows-intrusion-lab-cover.png" alt="Visuel de synthèse du projet : investigation forensic Windows avec Autopsy, Volatility 3 et TheHive" width="1820" height="800" loading="lazy" decoding="async">
-            <figcaption>Investigation forensic Windows — préparation du scénario, de la méthodologie et des gabarits</figcaption>
+            <img src="../assets/projets/04_Encoded_PowerShell_Alert.png" alt="Alerte Elastic Security pour une commande PowerShell encodée en laboratoire contrôlé" width="1639" height="555" loading="lazy" decoding="async">
+            <figcaption>Elastic : alerte et événement PowerShell source.</figcaption>
           </figure><div class="card-content">
-          <div class="card-badges">
-            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Blue Team / Défense</span>
-            <span class="badge">10/2026 · Investigation à réaliser</span>
-          </div>
-          <h3 id="p-dfir-windows"><span class="case-no">CAS Nº10</span>Investigation forensic d'un poste Windows compromis</h3>
-          <p class="card-desc">
-            Scénario, environnement et méthodologie préparés pour une investigation DFIR complète :
-            analyse d'image disque avec Autopsy, analyse de capture mémoire avec Volatility 3, et
-            documentation du cas dans TheHive. L'investigation elle-même reste à réaliser.
-          </p>
-          <ul class="tags">
-            <li>Autopsy</li><li>Volatility 3</li><li>TheHive</li><li>Forensic Windows</li><li>Chronologie</li><li>Indicateurs de compromission</li>
-          </ul>
-
+          <div class="card-badges"><span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Blue Team / Défense</span><span class="badge">11/2026 · Lab personnel</span></div>
+          <h3 id="p-dfir-windows"><span class="case-no">CAS Nº10</span>Détection SOC et investigation numérique d’un incident Windows</h3>
+          <p class="card-desc">Scénario PowerShell contrôlé : détection Sysmon et Elastic, artefacts Windows, analyse mémoire et préparation TheHive.</p>
+          <ul class="tags"><li>Sysmon</li><li>Elastic Security</li><li>KAPE</li><li>PECmd</li><li>RECmd</li><li>FTK Imager</li><li>Autopsy</li><li>Volatility 3</li><li>TheHive</li></ul>
           <div class="card-actions">
             <details class="card-detail">
               <summary class="btn btn-soft"><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span><span aria-hidden="true">↗</span></summary>
               <div class="detail-body">
-                <div class="detail-row">
-                  <dl class="card-facts">
-                    <dt>Objectif</dt><dd>Mener une investigation DFIR complète sur un poste Windows compromis, en recoupant une analyse disque et une analyse mémoire d'un même incident.</dd>
-                    <dt>État</dt><dd>Préparation terminée (scénario, méthodologie, environnement, gabarits de documentation). Investigation à réaliser ; ce projet sera mis à jour avec les constats réels.</dd>
-                  </dl>
-                </div>
-                <div class="detail-row">
-                  <h4>Aperçu</h4>
-                  <figure class="detail-fig">
-                    <a href="../assets/projets/dfir-windows-intrusion-lab-cover.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
-                      <img src="../assets/projets/dfir-windows-intrusion-lab-cover.png" alt="Visuel de synthèse du projet : investigation forensic Windows avec Autopsy, Volatility 3 et TheHive" width="1820" height="800" loading="lazy" decoding="async">
-                    </a>
-                    <figcaption>Visuel de synthèse du projet et de son état d'avancement — aucune capture d'analyse réelle n'est encore disponible.</figcaption>
-                  </figure>
-                </div>
-                <div class="detail-row">
-                  <h4>Scénario et jeu de données</h4>
-                  <p>
-                    Jeu de données public d'entraînement DFIR mettant en scène le vol d'un document
-                    sensible depuis un poste de travail Windows, avec une image disque et une capture
-                    mémoire cohérentes entre elles (même poste, même incident) — condition nécessaire
-                    pour recouper réellement les deux analyses plutôt que de combiner deux cas sans
-                    rapport. Une alternative de repli (jeu de données NIST CFReDS) est documentée dans
-                    le dépôt si ce jeu de données venait à ne plus être accessible.
-                  </p>
-                </div>
-                <div class="detail-row">
-                  <h4>Méthodologie prévue</h4>
-                  <ol class="steps">
-                    <li><strong>Préparation.</strong> Vérification des empreintes des preuves, mise en place d'un répertoire de travail en lecture seule.</li>
-                    <li><strong>Analyse disque (Autopsy).</strong> Ingestion de l'image, revue des artefacts utilisateur, des journaux d'événements et des clés de persistance.</li>
-                    <li><strong>Analyse mémoire (Volatility 3).</strong> Processus, connexions réseau, injections de code, lignes de commande et registre chargé en mémoire.</li>
-                    <li><strong>Recoupement et chronologie.</strong> Mise en correspondance des constats disque et mémoire dans une chronologie unique.</li>
-                    <li><strong>Documentation TheHive.</strong> Création du cas, ajout des observables identifiés, suivi des tâches d'investigation.</li>
-                    <li><strong>Conclusions.</strong> Constats finaux et recommandations de remédiation directement liées aux observations.</li>
-                  </ol>
-                </div>
-                <div class="detail-row">
-                  <h4>Déjà préparé dans le dépôt</h4>
-                  <ul class="dashes">
-                    <li>README détaillé : contexte, objectifs, scénario, environnement et livrables attendus.</li>
-                    <li>Méthodologie pas à pas avec les commandes Volatility de référence.</li>
-                    <li>Gabarits de rapport d'incident, de chronologie et de suivi des indicateurs de compromission.</li>
-                    <li>Script PowerShell d'enchaînement des plugins Volatility 3 de base.</li>
-                    <li>Checklist d'ingestion et de revue Autopsy.</li>
-                    <li>Exemples de structure de cas TheHive et de tableau d'IOC, avec des données fictives clairement identifiées.</li>
-                  </ul>
-                </div>
-                <div class="detail-row">
-                  <h4>Limites assumées</h4>
-                  <p>
-                    Aucun résultat, indicateur ou capture d'écran n'est présenté comme réel dans ce
-                    dépôt tant que l'investigation n'a pas été menée. Il s'agit d'un exercice personnel
-                    basé sur un jeu de données public d'entraînement, et non d'une expertise judiciaire.
-                  </p>
+                <div class="detail-row"><dl class="card-facts"><dt>Contexte</dt><dd>Laboratoire VMware isolé ; activité simulée, aucune compromission réelle.</dd><dt>État</dt><dd>Détection et analyse réalisées ; dossier TheHive en attente de validation de licence.</dd></dl></div>
+                <div class="detail-row"><h4>Contexte</h4><p>Une activité bénigne a été simulée sur une VM Windows 11 de laboratoire. La télémétrie de processus Sysmon a alimenté une alerte Elastic Security ; l'investigation combine collecte ciblée, artefacts Windows et analyse mémoire.</p></div>
+                <div class="detail-row"><h4>Détection et corrélation</h4><p>La règle personnalisée <strong>Suspicious PowerShell Encoded Command</strong> a généré une alerte High (risk score 73), associée à MITRE ATT&amp;CK T1059.001. Sysmon Event ID 1 relève un processus PowerShell à <code>11:28:46.231 UTC</code> ; PECmd rapporte sa dernière exécution Prefetch à <code>11:28:46 UTC</code>. Cette concordance est temporelle : elle ne rend pas les 14 exécutions malveillantes ni identiques.</p></div>
+                <div class="detail-row"><h4>Collecte et artefacts Windows</h4><p>KAPE a copié 789 fichiers et dédupliqué 78. RECmd a examiné la sous-clé de laboratoire <code>Run\SOC-DFIR-Lab</code>, dont la valeur par défaut contient <code>notepad.exe</code> ; le fuseau de sa modification n'est pas confirmé et aucune persistance fonctionnelle n'a été démontrée. FTK Imager a servi à une acquisition logique et Autopsy à créer un dossier et importer les données ; la recherche par mots-clés a rencontré un problème.</p></div>
+                <div class="detail-row"><h4>Analyse mémoire</h4><p>DumpIt a acquis la mémoire ; Volatility 3 a exécuté <code>windows.info</code> et <code>windows.pstree</code>. Le processus PowerShell PID 10172 a été créé à <code>13:40:49 UTC</code>, après l'événement initial ; il n'est pas identifié comme son processus.</p></div>
+                <div class="detail-row"><h4>État de TheHive</h4><p>TheHive 6.0.0 a été installé nativement sous Ubuntu après une première tentative Docker. L'organisation <code>SOC-DFIR-Lab</code> est active et un compte analyste dispose d'un profil en lecture seule. La validation de la licence Community est en attente : le dossier prévu <code>SOC-DFIR-001</code> n'a pas encore été créé.</p></div>
+                <div class="detail-row"><h4>Captures commentées</h4>
+                  <figure class="detail-fig"><a href="../assets/projets/04_Encoded_PowerShell_Alert.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand"><img src="../assets/projets/04_Encoded_PowerShell_Alert.png" alt="Elastic : alerte et événement PowerShell source." width="1639" height="555" loading="lazy" decoding="async"></a><figcaption>Elastic : alerte et événement PowerShell source.</figcaption></figure>
+                  <figure class="detail-fig"><a href="../assets/projets/05_KAPE_Forensic_Collection.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand"><img src="../assets/projets/05_KAPE_Forensic_Collection.png" alt="KAPE : 789 fichiers copiés, 78 dédupliqués." width="1735" height="790" loading="lazy" decoding="async"></a><figcaption>KAPE : 789 fichiers copiés, 78 dédupliqués.</figcaption></figure>
+                  <figure class="detail-fig"><a href="../assets/projets/06_PowerShell_Prefetch_Analysis.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand"><img src="../assets/projets/06_PowerShell_Prefetch_Analysis.png" alt="Extrait Prefetch : 14 exécutions et dernière heure ; le nom du fichier n’est pas visible sur ce recadrage." width="247" height="48" loading="lazy" decoding="async"></a><figcaption>Extrait Prefetch : 14 exécutions et dernière heure ; le nom du fichier n’est pas visible sur ce recadrage.</figcaption></figure>
+                  <figure class="detail-fig"><a href="../assets/projets/07_Registry_Persistence_Forensics.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand"><img src="../assets/projets/07_Registry_Persistence_Forensics.png" alt="RECmd : sous-clé de laboratoire et valeur par défaut." width="1084" height="379" loading="lazy" decoding="async"></a><figcaption>RECmd : sous-clé de laboratoire et valeur par défaut.</figcaption></figure>
+                  <figure class="detail-fig"><a href="../assets/projets/09_Volatility_Memory_Analysis.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand"><img src="../assets/projets/09_Volatility_Memory_Analysis.png" alt="Volatility : processus PowerShell ultérieur observé en mémoire." width="1069" height="246" loading="lazy" decoding="async"></a><figcaption>Volatility : processus PowerShell ultérieur observé en mémoire.</figcaption></figure>
+                  <figure class="detail-fig"><a href="../assets/projets/10_TheHive_SOC_DFIR_Organization.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand"><img src="../assets/projets/10_TheHive_SOC_DFIR_Organization.png" alt="TheHive : organisation SOC-DFIR-Lab active." width="1902" height="750" loading="lazy" decoding="async"></a><figcaption>TheHive : organisation SOC-DFIR-Lab active.</figcaption></figure>
                 </div>
               </div>
             </details>
-            <a class="btn btn-ghost" href="https://github.com/Ryad-Cyber/dfir-windows-intrusion-lab" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg>Dépôt — scénario, méthodologie et gabarits sur GitHub</a>
+            <a class="btn btn-ghost" href="https://github.com/Ryad-Cyber/dfir-windows-intrusion-lab" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg>Lire l'investigation sur GitHub</a>
           </div>
         </div></article>
 

@@ -899,86 +899,34 @@
 
 <article class="card panel" data-cat="soc" aria-labelledby="p-dfir-windows">
           <figure class="card-media card-media--screenshot">
-            <img src="../../assets/projets/dfir-windows-intrusion-lab-cover.png" alt="Project summary visual: Windows forensic investigation with Autopsy, Volatility 3 and TheHive" width="1820" height="800" loading="lazy" decoding="async">
-            <figcaption>Windows forensic investigation — scenario, methodology and templates prepared</figcaption>
+            <img src="../../assets/projets/04_Encoded_PowerShell_Alert.png" alt="Elastic Security alert for encoded PowerShell in a controlled lab" width="1639" height="555" loading="lazy" decoding="async">
+            <figcaption>Elastic: alert and source PowerShell event.</figcaption>
           </figure><div class="card-content">
-          <div class="card-badges">
-            <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Blue Team / Defense</span>
-            <span class="badge">10/2026 · Investigation to be carried out</span>
-          </div>
-          <h3 id="p-dfir-windows"><span class="case-no">CASE Nº10</span>Forensic Investigation of a Compromised Windows Workstation</h3>
-          <p class="card-desc">
-            Scenario, environment and methodology prepared for a complete DFIR investigation: disk
-            image analysis with Autopsy, memory capture analysis with Volatility 3, and case
-            documentation in TheHive. The investigation itself has not been carried out yet.
-          </p>
-          <ul class="tags">
-            <li>Autopsy</li><li>Volatility 3</li><li>TheHive</li><li>Windows Forensics</li><li>Timeline</li><li>IOC</li>
-          </ul>
-
+          <div class="card-badges"><span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Blue Team / Defense</span><span class="badge">11/2026 · Personal lab</span></div>
+          <h3 id="p-dfir-windows"><span class="case-no">CASE Nº10</span>SOC Detection and Digital Forensics — Windows Incident Response Lab</h3>
+          <p class="card-desc">A controlled PowerShell scenario: Sysmon and Elastic detection, Windows artifacts, memory analysis and TheHive preparation.</p>
+          <ul class="tags"><li>Sysmon</li><li>Elastic Security</li><li>KAPE</li><li>PECmd</li><li>RECmd</li><li>FTK Imager</li><li>Autopsy</li><li>Volatility 3</li><li>TheHive</li></ul>
           <div class="card-actions">
             <details class="card-detail">
               <summary class="btn btn-soft"><span class="when-closed">Read the case in detail</span><span class="when-open">Collapse the detail</span><span aria-hidden="true">↗</span></summary>
               <div class="detail-body">
-                <div class="detail-row">
-                  <dl class="card-facts">
-                    <dt>Objective</dt><dd>Carry out a complete DFIR investigation on a compromised Windows workstation, cross-referencing a disk analysis and a memory analysis of the same incident.</dd>
-                    <dt>Status</dt><dd>Preparation completed (scenario, methodology, environment, documentation templates). Investigation still to be carried out; this project will be updated with the actual findings.</dd>
-                  </dl>
-                </div>
-                <div class="detail-row">
-                  <h4>Preview</h4>
-                  <figure class="detail-fig">
-                    <a href="../../assets/projets/dfir-windows-intrusion-lab-cover.png" target="_blank" rel="noopener" title="Open the image full size">
-                      <img src="../../assets/projets/dfir-windows-intrusion-lab-cover.png" alt="Project summary visual: Windows forensic investigation with Autopsy, Volatility 3 and TheHive" width="1820" height="800" loading="lazy" decoding="async">
-                    </a>
-                    <figcaption>Project summary visual and current status — no real analysis screenshot is available yet.</figcaption>
-                  </figure>
-                </div>
-                <div class="detail-row">
-                  <h4>Scenario and dataset</h4>
-                  <p>
-                    Public DFIR training dataset depicting the theft of a sensitive document from a
-                    Windows workstation, with a disk image and a memory capture consistent with each
-                    other (same machine, same incident) — a necessary condition to genuinely
-                    cross-reference both analyses rather than forcing together two unrelated cases. A
-                    fallback dataset (NIST CFReDS) is documented in the repository in case this one
-                    becomes unavailable.
-                  </p>
-                </div>
-                <div class="detail-row">
-                  <h4>Planned methodology</h4>
-                  <ol class="steps">
-                    <li><strong>Preparation.</strong> Verifying evidence hashes, setting up a read-only working directory.</li>
-                    <li><strong>Disk analysis (Autopsy).</strong> Image ingestion, review of user artifacts, event logs and persistence keys.</li>
-                    <li><strong>Memory analysis (Volatility 3).</strong> Processes, network connections, code injection, command lines and registry loaded in memory.</li>
-                    <li><strong>Cross-referencing and timeline.</strong> Matching disk and memory findings into a single timeline.</li>
-                    <li><strong>TheHive documentation.</strong> Case creation, adding identified observables, tracking investigation tasks.</li>
-                    <li><strong>Conclusions.</strong> Final findings and remediation recommendations directly tied to the observations.</li>
-                  </ol>
-                </div>
-                <div class="detail-row">
-                  <h4>Already prepared in the repository</h4>
-                  <ul class="dashes">
-                    <li>Detailed README: context, objectives, scenario, environment and expected deliverables.</li>
-                    <li>Step-by-step methodology with reference Volatility commands.</li>
-                    <li>Incident report, timeline and indicator-of-compromise tracking templates.</li>
-                    <li>PowerShell script chaining the core Volatility 3 plugins.</li>
-                    <li>Autopsy ingestion and review checklist.</li>
-                    <li>Example TheHive case structure and IOC table, with clearly labeled fictitious data.</li>
-                  </ul>
-                </div>
-                <div class="detail-row">
-                  <h4>Acknowledged limits</h4>
-                  <p>
-                    No finding, indicator or screenshot in this repository is presented as real until
-                    the investigation has actually been carried out. This is a personal exercise based
-                    on a public training dataset, not a forensic expert report.
-                  </p>
+                <div class="detail-row"><dl class="card-facts"><dt>Scope</dt><dd>Isolated VMware lab; simulated activity, no real compromise.</dd><dt>Status</dt><dd>Detection and forensic analysis performed; TheHive case pending licence activation.</dd></dl></div>
+                <div class="detail-row"><h4>Context</h4><p>A benign activity was simulated on a Windows 11 lab VM. Sysmon process telemetry supported an Elastic Security alert; the investigation combined targeted collection, Windows artifacts and memory analysis.</p></div>
+                <div class="detail-row"><h4>Detection and correlation</h4><p>The custom <strong>Suspicious PowerShell Encoded Command</strong> rule generated a High alert (risk score 73), mapped to MITRE ATT&amp;CK T1059.001. Sysmon Event ID 1 records a PowerShell process at <code>11:28:46.231 UTC</code>; PECmd reports its last Prefetch execution at <code>11:28:46 UTC</code>. This is a temporal correlation, not proof that all 14 executions were malicious or identical.</p></div>
+                <div class="detail-row"><h4>Collection and Windows artifacts</h4><p>KAPE copied 789 files and deduplicated 78. RECmd examined the lab-created <code>Run\SOC-DFIR-Lab</code> subkey whose default data is <code>notepad.exe</code>; the recorded modification has no confirmed timezone, and working persistence was not demonstrated. FTK Imager was used for logical acquisition and Autopsy for case creation and data import; keyword search encountered a problem.</p></div>
+                <div class="detail-row"><h4>Memory analysis</h4><p>DumpIt captured memory; Volatility 3 ran <code>windows.info</code> and <code>windows.pstree</code>. PowerShell PID 10172 was created at <code>13:40:49 UTC</code>, later than the initial event; it is not identified as the initial process.</p></div>
+                <div class="detail-row"><h4>TheHive status</h4><p>TheHive 6.0.0 was installed natively on Ubuntu after an initial Docker attempt. The <code>SOC-DFIR-Lab</code> organisation is active and an analyst account has a read-only profile. Community licence validation is pending: planned case <code>SOC-DFIR-001</code> has not yet been created.</p></div>
+                <div class="detail-row"><h4>Annotated screenshots</h4>
+                  <figure class="detail-fig"><a href="../../assets/projets/04_Encoded_PowerShell_Alert.png" target="_blank" rel="noopener" title="Open image full size"><img src="../../assets/projets/04_Encoded_PowerShell_Alert.png" alt="Elastic: alert and source PowerShell event." width="1639" height="555" loading="lazy" decoding="async"></a><figcaption>Elastic: alert and source PowerShell event.</figcaption></figure>
+                  <figure class="detail-fig"><a href="../../assets/projets/05_KAPE_Forensic_Collection.png" target="_blank" rel="noopener" title="Open image full size"><img src="../../assets/projets/05_KAPE_Forensic_Collection.png" alt="KAPE: 789 files copied, 78 deduplicated." width="1735" height="790" loading="lazy" decoding="async"></a><figcaption>KAPE: 789 files copied, 78 deduplicated.</figcaption></figure>
+                  <figure class="detail-fig"><a href="../../assets/projets/06_PowerShell_Prefetch_Analysis.png" target="_blank" rel="noopener" title="Open image full size"><img src="../../assets/projets/06_PowerShell_Prefetch_Analysis.png" alt="Prefetch excerpt: 14 runs and last execution; the file name is not visible in this crop." width="247" height="48" loading="lazy" decoding="async"></a><figcaption>Prefetch excerpt: 14 runs and last execution; the file name is not visible in this crop.</figcaption></figure>
+                  <figure class="detail-fig"><a href="../../assets/projets/07_Registry_Persistence_Forensics.png" target="_blank" rel="noopener" title="Open image full size"><img src="../../assets/projets/07_Registry_Persistence_Forensics.png" alt="RECmd: lab-created registry subkey and default data." width="1084" height="379" loading="lazy" decoding="async"></a><figcaption>RECmd: lab-created registry subkey and default data.</figcaption></figure>
+                  <figure class="detail-fig"><a href="../../assets/projets/09_Volatility_Memory_Analysis.png" target="_blank" rel="noopener" title="Open image full size"><img src="../../assets/projets/09_Volatility_Memory_Analysis.png" alt="Volatility: later PowerShell process observed in memory." width="1069" height="246" loading="lazy" decoding="async"></a><figcaption>Volatility: later PowerShell process observed in memory.</figcaption></figure>
+                  <figure class="detail-fig"><a href="../../assets/projets/10_TheHive_SOC_DFIR_Organization.png" target="_blank" rel="noopener" title="Open image full size"><img src="../../assets/projets/10_TheHive_SOC_DFIR_Organization.png" alt="TheHive: active SOC-DFIR-Lab organisation." width="1902" height="750" loading="lazy" decoding="async"></a><figcaption>TheHive: active SOC-DFIR-Lab organisation.</figcaption></figure>
                 </div>
               </div>
             </details>
-            <a class="btn btn-ghost" href="https://github.com/Ryad-Cyber/dfir-windows-intrusion-lab" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg>Repository — scenario, methodology and templates on GitHub</a>
+            <a class="btn btn-ghost" href="https://github.com/Ryad-Cyber/dfir-windows-intrusion-lab" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg>Read the investigation on GitHub</a>
           </div>
         </div></article>
 

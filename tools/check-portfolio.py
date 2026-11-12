@@ -76,7 +76,7 @@ for path, page in pages.items():
             elif detail_images.count(cover[1]) != 1:
                 errors.append(f'{path}: project cover missing or duplicated in case gallery: {cover[1]}')
         if len(cards) != 13:
-            errors.append(f'{path}: expected twelve cards with image galleries, found {len(cards)}')
+            errors.append(f'{path}: expected thirteen cards with image galleries, found {len(cards)}')
         summaries = re.findall(r'<summary class="btn btn-soft">(.*?)</summary>', source, re.S)
         expected = ('Read the case in detail', 'Read the full case') if path.relative_to(ROOT).parts[0] == 'en' else ('Lire le cas en détail',)
         if len(summaries) != 13 or any(not any(label in summary for label in expected) for summary in summaries):
@@ -117,8 +117,8 @@ for path, page in pages.items():
         if 'data-words=' in source or 'class="hero-typed"' in source:
             errors.append(f'{path}: animated job titles must not return')
         cv = re.search(r'<a class="btn btn-ghost btn-cv" data-cv-link href="([^"]+)" target="_blank" rel="noopener"[^>]*>(.*?)</a>', source)
-        expected_cv = ('../assets/cv/CV_EN.pdf?v=20261104', 'My Resume') if path.parent.name == 'en' else ('assets/cv/CV_FR.pdf?v=20261104', 'Mon CV')
-        if not cv or cv[1] != expected_cv[0] or expected_cv[1] not in cv[2] or ' hidden' in cv[0]:
+        expected_cv = ('../assets/cv/CV_EN.pdf', 'My Resume') if path.parent.name == 'en' else ('assets/cv/CV_FR.pdf', 'Mon CV')
+        if not cv or urlsplit(cv[1]).path != expected_cv[0] or expected_cv[1] not in cv[2] or ' hidden' in cv[0]:
             errors.append(f'{path}: CV button must open the {expected_cv[1]} PDF in a new tab')
         if 'id="certificats"' not in source or source.count('class="cred"') != 4 or 'assets/interets/echecs.jpeg" data-lightbox' not in source:
             errors.append(f'{path}: certificates block or chess photo link missing')
