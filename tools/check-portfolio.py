@@ -59,6 +59,7 @@ for path, page in pages.items():
             'p-dc4': ('Kali.jpg', 'acces-interface-web.png'),
             'p-aws': ('AWS.jpg', 'aws-vpc-architecture-routes.jpeg'),
             'p-llm-pentest': ('Ollama.jpg', 'ollama-supportbot-injection-persistence.png'),
+            'p-dfir-windows': ('DFIR_project.jpg', '04_Encoded_PowerShell_Alert.png'),
             'p-gcp': ('gcp-logo-cover.png', 'gcp-cloud-storage-bucket.png'),
         }
         for card in cards:
