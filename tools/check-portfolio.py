@@ -121,7 +121,7 @@ for path, page in pages.items():
         expected_cv = ('../assets/cv/CV_EN.pdf', 'My Resume') if path.parent.name == 'en' else ('assets/cv/CV_FR.pdf', 'Mon CV')
         if not cv or urlsplit(cv[1]).path != expected_cv[0] or expected_cv[1] not in cv[2] or ' hidden' in cv[0]:
             errors.append(f'{path}: CV button must open the {expected_cv[1]} PDF in a new tab')
-        if 'id="certificats"' not in source or source.count('class="cred"') != 6 or 'assets/interets/echecs.jpeg" data-lightbox' not in source:
+        if 'id="certificats"' not in source or source.count('class="cred"') != 7 or 'assets/interets/echecs.jpeg" data-lightbox' not in source:
             errors.append(f'{path}: certificates block or chess photo link missing')
         if page.telephones or re.search(r'(?:0[67]|\+33[67])(?:[ .-]?\d){8}', source):
             errors.append(f'{path}: personal phone number must not be published')
