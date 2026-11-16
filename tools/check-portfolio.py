@@ -28,7 +28,7 @@ for path, page in pages.items():
     source = path.read_text(encoding='utf-8')
     if source.count('class="menu-toggle"') != 1 or 'class="menu-glyph"' not in source:
         errors.append(f'{path}: navigation must use one menu button and one glyph')
-    if 'security.css?v=20261116-network' not in source or 'main.js?v=20261104-projects' not in source:
+    if 'security.css?v=20261116-fingerprint' not in source or 'main.js?v=20261104-projects' not in source:
         errors.append(f'{path}: missing shared, versioned styles or script')
     duplicates = [key for key, n in Counter(page.ids).items() if n > 1]
     if duplicates: errors.append(f'{path}: duplicate IDs: {duplicates}')
@@ -112,7 +112,7 @@ for path, page in pages.items():
     if path in (ROOT/'index.html', ROOT/'en/index.html'):
         role = re.search(r'<p class="hero-role">(.*?)</p>', source)
         expected_role = ('Cybersecurity engineering student'
-                         if path.parent.name == 'en' else 'Élève ingénieur en cybersécurité')
+                         if path.parent.name == 'en' else 'Étudiant en ingénierie cybersécurité')
         if not role or role[1] != expected_role:
             errors.append(f'{path}: hero positioning missing or changed')
         if 'data-words=' in source or 'class="hero-typed"' in source:

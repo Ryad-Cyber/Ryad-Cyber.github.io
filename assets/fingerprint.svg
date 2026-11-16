@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 216 216" fill="none">
+  <defs>
+    <linearGradient id="ridges" x1="44" y1="31" x2="174" y2="184" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8dbbff"/>
+      <stop offset=".55" stop-color="#599aff"/>
+      <stop offset="1" stop-color="#3878d5" stop-opacity=".28"/>
+    </linearGradient>
+  </defs>
+  <path d="M30 52V32h20m116 0h20v20M30 164v20h20m116 0h20v-20" stroke="#599aff" stroke-opacity=".48"/>
+  <g stroke="url(#ridges)" stroke-width="1.7" stroke-linecap="round">
+    <path d="M57 67c12-20 31-30 51-30 25 0 46 14 58 35"/>
+    <path d="M46 99c4-26 28-51 61-51 33 0 55 23 61 50"/>
+    <path d="M43 117h10l5-7c0-26 20-50 49-50 30 0 50 24 50 49 0 13 3 26 10 37"/>
+    <path d="M54 138c11-6 15-14 15-26 0-21 15-40 38-40 21 0 38 17 38 38 0 22 4 36 13 48"/>
+    <path d="M62 149c13-7 19-20 19-36 0-16 10-29 26-29 15 0 26 12 26 27 0 23 5 43 15 56"/>
+    <path d="M72 159c15-10 21-27 21-45 0-10 5-18 14-18 8 0 14 6 14 15 0 26 6 48 17 63"/>
+    <path d="M83 168c17-13 24-36 24-58m-13 65c7-7 12-15 16-24m-2 29c2-4 5-8 7-14m7 14 3 4"/>
+    <path d="M170 109h10l7-7h14M54 158l-9 9H24" stroke-dasharray="5 4"/>
+  </g>
+  <g fill="#8dbbff">
+    <circle cx="43" cy="117" r="2.3"/>
+    <circle cx="201" cy="102" r="2"/>
+    <circle cx="24" cy="167" r="2" opacity=".6"/>
+  </g>
+</svg>
