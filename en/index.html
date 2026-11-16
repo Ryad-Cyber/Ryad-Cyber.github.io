@@ -390,16 +390,12 @@
             <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-chip"/></svg>AI</span>
             <span class="badge">2026 · Personal project</span>
           </div>
-          <h3 id="p-llm-pentest"><span class="case-no">CASE Nº4</span>LLM Security Pentest — Local Ollama Chatbot</h3>
-          <p class="card-desc">
-            Manual red-teaming of a local Ollama chatbot: prompt injection, jailbreak attempts, system
-            prompt disclosure and insecure output handling, mapped to the OWASP LLM Top 10 and MITRE ATLAS.
-          </p>
+          <h3 id="p-llm-pentest"><span class="case-no">CASE Nº4</span>LLM Security Pentest — RAG &amp; Guardrails</h3>
+          <p class="card-desc">Manual LLM security audit followed by a local RAG application and automated baseline / protected comparison.</p>
           <ul class="tags">
             <li>Ollama</li><li>LLM</li><li>Prompt Injection</li><li>Jailbreak</li><li>OWASP LLM Top 10</li><li>MITRE ATLAS</li><li>Red Teaming</li>
           </ul>
-
-          <div class="card-actions">
+<div class="card-actions">
             <details class="card-detail">
               <summary class="btn btn-soft"><span class="when-closed">Read the case in detail</span><span class="when-open">Collapse the detail</span><span aria-hidden="true">↗</span></summary>
               <div class="detail-body">
@@ -428,7 +424,7 @@
                   </ol>
                 </div>
                 <div class="detail-row">
-                  <h4>Results of the 4 tests</h4>
+                  <h4>Initial manual audit: results of the 4 tests</h4>
                   <ul class="scenarios">
                     <li>
                       <div class="scenario-head"><h5>System prompt disclosure</h5><span class="attck">OWASP LLM07 · MITRE AML.T0056</span></div>
@@ -448,8 +444,12 @@
                     </li>
                   </ul>
                 </div>
+                <div class="detail-row"><h4>Phase 2 — RAG security evaluation</h4><p>SupportBot combines FastAPI, Ollama, embeddings and FAISS retrieval over fictional documents. Adversarial scenarios test direct and indirect prompt injection, disclosure and jailbreaks. Protected mode adds input checks, instructions for untrusted documents and an output marker check. MLflow tracks the runs; Streamlit visualizes them. GitHub Actions runs Bandit and pip-audit.</p><p>Across 30 executions, four baseline responses contained forbidden markers versus zero in protected mode; six attacks were explicitly blocked in protected mode. Blocking and marker detection are different measures. This limited test set does not establish general protection.</p></div>
                 <div class="detail-row">
                   <h4>Annotated screenshots</h4>
+                  <figure class="detail-fig"><a href="../assets/projets/06_Security_Dashboard.png" target="_blank" rel="noopener"><img src="../assets/projets/06_Security_Dashboard.png" alt="Security dashboard: comparison of both modes." width="1918" height="739" loading="lazy" decoding="async"></a><figcaption>Security dashboard: comparison of both modes.</figcaption></figure>
+                  <figure class="detail-fig"><a href="../assets/projets/03_Prompt_Injection.png" target="_blank" rel="noopener"><img src="../assets/projets/03_Prompt_Injection.png" alt="Prompt injection: baseline response and protected block." width="495" height="280" loading="lazy" decoding="async"></a><figcaption>Prompt injection: baseline response and protected block.</figcaption></figure>
+                  <figure class="detail-fig"><a href="../assets/projets/02_RAG_Retrieval.png" target="_blank" rel="noopener"><img src="../assets/projets/02_RAG_Retrieval.png" alt="RAG retrieval and source documents." width="1458" height="826" loading="lazy" decoding="async"></a><figcaption>RAG retrieval and source documents.</figcaption></figure>
                   <figure class="detail-fig">
                     <a href="../assets/projets/ollama-supportbot-injection-persistence.png" target="_blank" rel="noopener" title="Open screenshot in full size">
                       <img src="../assets/projets/ollama-supportbot-injection-persistence.png" alt="Terminal: debug-mode system prompt disclosure, then prompt injection persisting into a later turn" width="1893" height="864" loading="lazy" decoding="async">
@@ -466,7 +466,7 @@
                 <div class="detail-row">
                   <h4>Limitations</h4>
                   <p>
-                    Manual, exploratory testing (3-3-2-2 prompts across categories), with no automated
+                    The initial phase used manual, exploratory testing (3-3-2-2 prompts across categories), with no automated
                     LLM red-teaming tool. Results reflect a single configuration (<code>llama3.2:3b</code>
                     with one system prompt) at one point in time, and do not necessarily generalize to a
                     different model or system prompt.

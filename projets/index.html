@@ -344,16 +344,12 @@
             <span class="badge badge-cat"><svg class="i" aria-hidden="true"><use href="#i-chip"/></svg>IA</span>
             <span class="badge">2026 · Projet personnel</span>
           </div>
-          <h3 id="p-llm-pentest"><span class="case-no">CAS Nº4</span>Audit de sécurité LLM — Chatbot Ollama local</h3>
-          <p class="card-desc">
-            Red teaming manuel d'un chatbot local sous Ollama : injection de prompt, jailbreak,
-            divulgation du system prompt et gestion non sécurisée de la sortie, selon l'OWASP Top 10 LLM et MITRE ATLAS.
-          </p>
+          <h3 id="p-llm-pentest"><span class="case-no">CAS Nº4</span>Sécurité LLM — RAG et garde-fous</h3>
+          <p class="card-desc">Audit manuel de sécurité LLM, puis application RAG locale et comparaison automatisée des modes baseline et protégé.</p>
           <ul class="tags">
             <li>Ollama</li><li>LLM</li><li>Prompt Injection</li><li>Jailbreak</li><li>OWASP LLM Top 10</li><li>MITRE ATLAS</li><li>Red Teaming</li>
           </ul>
-
-          <div class="card-actions">
+<div class="card-actions">
             <details class="card-detail">
               <summary class="btn btn-soft"><span class="when-closed">Lire le cas en détail</span><span class="when-open">Replier le détail</span><span aria-hidden="true">↗</span></summary>
               <div class="detail-body">
@@ -383,7 +379,7 @@
                   </ol>
                 </div>
                 <div class="detail-row">
-                  <h4>Résultats des 4 tests</h4>
+                  <h4>Audit manuel initial : résultats des 4 tests</h4>
                   <ul class="scenarios">
                     <li>
                       <div class="scenario-head"><h5>Divulgation du system prompt</h5><span class="attck">OWASP LLM07 · MITRE AML.T0056</span></div>
@@ -403,8 +399,12 @@
                     </li>
                   </ul>
                 </div>
+                <div class="detail-row"><h4>Phase 2 — Évaluation de sécurité RAG</h4><p>SupportBot associe FastAPI, Ollama, embeddings et recherche FAISS sur des documents fictifs. Les scénarios testent l’injection directe et indirecte, la divulgation et les jailbreaks. Le mode protégé ajoute des contrôles d’entrée, des instructions sur les documents non fiables et un contrôle de marqueur en sortie. MLflow suit les essais, Streamlit les visualise ; GitHub Actions exécute Bandit et pip-audit.</p><p>Sur 30 exécutions, quatre réponses baseline contiennent un marqueur interdit contre zéro en mode protégé ; six attaques sont explicitement bloquées en mode protégé. Blocages et marqueurs sont deux mesures distinctes. Ce jeu de tests limité ne démontre pas une protection générale.</p></div>
                 <div class="detail-row">
                   <h4>Captures commentées</h4>
+                  <figure class="detail-fig"><a href="../assets/projets/06_Security_Dashboard.png" target="_blank" rel="noopener"><img src="../assets/projets/06_Security_Dashboard.png" alt="Tableau de bord : comparaison des deux modes." width="1918" height="739" loading="lazy" decoding="async"></a><figcaption>Tableau de bord : comparaison des deux modes.</figcaption></figure>
+                  <figure class="detail-fig"><a href="../assets/projets/03_Prompt_Injection.png" target="_blank" rel="noopener"><img src="../assets/projets/03_Prompt_Injection.png" alt="Injection de prompt : réponse baseline et blocage en mode protégé." width="495" height="280" loading="lazy" decoding="async"></a><figcaption>Injection de prompt : réponse baseline et blocage en mode protégé.</figcaption></figure>
+                  <figure class="detail-fig"><a href="../assets/projets/02_RAG_Retrieval.png" target="_blank" rel="noopener"><img src="../assets/projets/02_RAG_Retrieval.png" alt="Recherche RAG et documents sources." width="1458" height="826" loading="lazy" decoding="async"></a><figcaption>Recherche RAG et documents sources.</figcaption></figure>
                   <figure class="detail-fig">
                     <a href="../assets/projets/ollama-supportbot-injection-persistence.png" target="_blank" rel="noopener" title="Ouvrir l'image en grand">
                       <img src="../assets/projets/ollama-supportbot-injection-persistence.png" alt="Terminal : divulgation du system prompt en mode debug puis persistance de l'injection de prompt sur un tour ultérieur" width="1893" height="864" loading="lazy" decoding="async">
