@@ -630,3 +630,29 @@ a.cert-visual--text { display: inline-flex; padding: 0; border: 0; border-radius
   .domains-grid { grid-template-columns: minmax(0,1fr); }
   .domains-group { padding: 14px 15px 16px; }
 }
+
+/* Subtle network paths connect the introduction to the portrait without
+   adding content or affecting the portrait's original crop. */
+.hero { position: relative; }
+.hero::before {
+  display: block;
+  content: "";
+  position: absolute;
+  inset: 11% 30% 9% 43%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 14% 35%, #78acff 0 2px, transparent 3px),
+    radial-gradient(circle at 42% 35%, #78acff 0 2px, transparent 3px),
+    radial-gradient(circle at 42% 65%, #78acff 0 2px, transparent 3px),
+    radial-gradient(circle at 68% 65%, #78acff 0 2px, transparent 3px),
+    linear-gradient(90deg, transparent 14%, #78acff 14% 42%, transparent 42%) 0 35% / 100% 1px no-repeat,
+    linear-gradient(#78acff, #78acff) 42% 50% / 1px 30% no-repeat,
+    linear-gradient(90deg, transparent 42%, #78acff 42% 68%, transparent 68%) 0 65% / 100% 1px no-repeat;
+  opacity: .18;
+  mask-image: linear-gradient(90deg, transparent, #000 18%, #000 76%, transparent);
+}
+.hero-grid { position: relative; }
+@media (max-width: 640px) {
+  .hero::before { inset: 4% -25% 45% 44%; opacity: .1; }
+}
+@media print { .hero::before { display: none; } }
