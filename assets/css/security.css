@@ -662,3 +662,10 @@ a.cert-visual--text { display: inline-flex; padding: 0; border: 0; border-radius
   }
 }
 @media print { .hero-grid::before { display: none; } }
+
+/* Concept card: the image opens an honest, keyboard-accessible status. */
+.card-media--concept .concept-status summary { position: absolute; inset: 0 0 30px; z-index: 1; cursor: pointer; list-style: none; }
+.card-media--concept .concept-status summary::-webkit-details-marker { display: none; }
+.card-media--concept .concept-status summary span { position: absolute; inset-inline-end: 12px; bottom: 8px; padding: 4px 8px; border-radius: 4px; background: #0a1529; color: #c5dbff; font-size: 11px; }
+.card-media--concept .concept-status summary:focus-visible { outline: 2px solid #86b6ff; outline-offset: -4px; }
+.card-media--concept .concept-status p { margin: 0; padding: 10px 16px; color: #dbeaff; font-size: 13px; }
