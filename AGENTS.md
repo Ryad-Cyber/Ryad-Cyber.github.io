@@ -18,4 +18,4 @@
 - Éviter les dépendances inutiles ; conserver la compatibilité GitHub Pages.
 - Ne pas modifier les CV.
 - Vérifier les liens, les interactions et le rendu mobile / ordinateur avant de terminer.
-- Ne jamais effectuer de commit ou push sans demande explicite de l’utilisateur.
+- Après chaque modification du portfolio, vérifier puis effectuer un commit ciblé et un push pour publier, sauf demande explicite contraire de l’utilisateur.
